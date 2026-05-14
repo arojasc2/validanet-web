@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Áreas privadas / admin (no indexar)
+Disallow: /admin/
+Disallow: /portal/
+
+# Sitemap dinámico generado por backend (incluye perfiles OTEC + blog)
+Sitemap: https://app.validanet.cl/sitemap.xml
+
+# Bot específicos comunes
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
