@@ -30,22 +30,49 @@ set -e
 LOGFILE="/var/log/validanet_aulas.log"
 exec >>"$LOGFILE" 2>&1
 
-# Captura ENV vars de WHM hook
-user="${1:-${user}}"
-domain="${2:-${domain}}"
-plan="${plan:-}"
-contactemail="${contactemail:-}"
+# ─── 1) Cargar config desde /etc/validanet_aulas.conf si existe ───
+# cPanel hooks corren con env minimal (no carga /etc/environment ni .bashrc).
+# Por eso AULA_HOOK_TOKEN y VALIDANET_CALLBACK_URL se cargan de un config
+# explícito que admin escribe una vez:
+#   /etc/validanet_aulas.conf con líneas KEY=value
+if [ -r /etc/validanet_aulas.conf ]; then
+  set -a
+  . /etc/validanet_aulas.conf
+  set +a
+fi
+# Fallback secundario: /etc/environment (algunas configs de cPanel sí lo cargan)
+if [ -z "$AULA_HOOK_TOKEN" ] && [ -r /etc/environment ]; then
+  set -a
+  . /etc/environment
+  set +a
+fi
 
-echo "=== $(date -Iseconds) postwwwacct user=$user domain=$domain plan=$plan ==="
-
-# ─── Lectura de configuración del entorno ───
-# AULA_HOOK_TOKEN — debe coincidir con el del .env de ValidaNet (VPS1)
-# VALIDANET_CALLBACK_URL — endpoint que recibe el callback HTTP tras install
 : "${AULA_HOOK_TOKEN:=}"
 : "${VALIDANET_CALLBACK_URL:=https://app.validanet.cl/webhooks/aulas/hook-completed}"
 
+# ─── 2) Parsear argumentos cPanel ───
+# cPanel postwwwacct (WHM 11.x) llama el hook con pares nombre-valor:
+#   /usr/local/cpanel/scripts/postwwwacct owner root user X domain Y plan Z password P ...
+# NO con posicional puro. Convertimos $@ en hash.
+declare -A ARGS
+while [ "$#" -gt 1 ]; do
+  ARGS["$1"]="$2"
+  shift 2
+done
+
+user="${ARGS[user]:-${user:-}}"
+domain="${ARGS[domain]:-${domain:-}}"
+plan="${ARGS[plan]:-${plan:-}}"
+contactemail="${ARGS[contactemail]:-${ARGS[email]:-${contactemail:-}}}"
+owner="${ARGS[owner]:-}"
+
+echo "=== $(date -Iseconds) postwwwacct user=$user domain=$domain plan=$plan owner=$owner ==="
+echo "    AULA_HOOK_TOKEN: $([ -n "$AULA_HOOK_TOKEN" ] && echo 'set ('${#AULA_HOOK_TOKEN}' chars)' || echo 'EMPTY')"
+echo "    CALLBACK_URL:    $VALIDANET_CALLBACK_URL"
+echo "    Args recibidos:  ${!ARGS[*]}"
+
 if [ -z "$AULA_HOOK_TOKEN" ]; then
-  echo "[!] AULA_HOOK_TOKEN no configurado en environment — el callback no se autenticará"
+  echo "[!] AULA_HOOK_TOKEN no configurado — admin debe crear /etc/validanet_aulas.conf"
 fi
 
 # ─── Filtro: solo planes aula_* ───
