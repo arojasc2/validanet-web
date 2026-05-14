@@ -146,7 +146,12 @@ SHORTNAME=$(echo "$user" | tr -cd 'a-z0-9' | head -c 20)
 # install.php hace todo (DB schema + admin user + config). dbtype=mysqli en
 # lugar de mariadb evita que Moodle aplique checks de MariaDB legacy que
 # fallan contra MySQL 8.x (que cPanel reporta como "mariadb 8.x").
-sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/install.php" \
+# -d flags: max_input_vars=5000 (Moodle requirement) + memory_limit=512M
+sudo -u "$user" "$PHP" \
+  -d max_input_vars=5000 \
+  -d memory_limit=512M \
+  -d max_execution_time=300 \
+  "$HOME_DIR/public_html/admin/cli/install.php" \
   --non-interactive --lang=es \
   --wwwroot="https://$domain" \
   --dataroot="$HOME_DIR/moodledata" \
