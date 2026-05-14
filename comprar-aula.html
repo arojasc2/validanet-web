@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compra tu Aula Virtual Moodle — ValidaNet</title>
+<meta name="description" content="Aula Virtual Moodle gestionada por NortEduc para OTECs, universidades, CFT e IP. Hosting incluido, backups diarios, 99.9% uptime. Desde $29.990/mes.">
+<link rel="icon" type="image/png" href="https://app.validanet.cl/static/favicon-validanet.png">
+<meta property="og:title" content="Aula Virtual Moodle Gestionada — ValidaNet">
+<meta property="og:description" content="Tu campus Moodle listo en minutos. Hosting + backups + SSL + soporte chileno.">
+<meta property="og:image" content="https://app.validanet.cl/static/logo-validanet.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;line-height:1.5;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+nav a img{height:36px;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:white;padding:64px 40px 48px;text-align:center;}
+.hero h1{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:16px;line-height:1.15;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;max-width:680px;margin:0 auto 24px;color:rgba(255,255,255,.88);}
+.tag{display:inline-block;background:rgba(122,179,26,.15);border:1px solid rgba(122,179,26,.3);color:#7ab31a;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:18px;}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:48px 0;}
+
+.planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px;}
+.plan{background:white;border:2px solid #e2e8f0;border-radius:14px;padding:32px;cursor:pointer;transition:.18s;position:relative;}
+.plan:hover{border-color:#7ab31a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(122,179,26,.12);}
+.plan.selected{border-color:#7ab31a;background:#f7fdf2;}
+.plan.popular::before{content:"Más popular";position:absolute;top:-12px;right:20px;background:#f47920;color:white;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;}
+.plan h3{font-size:20px;font-weight:800;margin-bottom:6px;}
+.price{font-size:32px;font-weight:800;color:#0f172a;margin:8px 0;}
+.price small{font-size:14px;color:#64748b;font-weight:400;}
+.estudiantes{display:inline-block;background:#f1f5f9;color:#0f172a;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:16px;}
+.features{list-style:none;padding:0;margin-top:14px;}
+.features li{padding:6px 0;font-size:13px;color:#475569;}
+.features li::before{content:"✓ ";color:#7ab31a;font-weight:bold;}
+
+.form-section{background:white;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.04);margin-top:32px;}
+.form-section h2{font-size:24px;margin-bottom:8px;}
+.form-section .sub{color:#64748b;font-size:14px;margin-bottom:24px;}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:13px;font-weight:600;color:#0f172a;}
+.field input,.field select{padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;font-family:inherit;transition:.15s;}
+.field input:focus,.field select:focus{border-color:#7ab31a;outline:0;}
+.subd-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;}
+.subd-suffix{padding:11px 14px;background:#f1f5f9;border-radius:8px;font-size:14px;color:#64748b;font-family:monospace;}
+.subd-status{font-size:12px;margin-top:4px;min-height:16px;}
+.subd-status.ok{color:#15803d;}
+.subd-status.err{color:#dc2626;}
+.tos{display:flex;gap:10px;align-items:flex-start;margin:16px 0;}
+.tos input{margin-top:3px;}
+.tos label{font-size:13px;color:#475569;line-height:1.5;}
+.tos a{color:#7ab31a;text-decoration:underline;}
+.btn-pay{background:#7ab31a;color:white;border:0;padding:16px 32px;font-size:16px;font-weight:700;border-radius:10px;cursor:pointer;width:100%;margin-top:12px;transition:.15s;}
+.btn-pay:hover{background:#5e8c14;}
+.btn-pay:disabled{background:#94a3b8;cursor:not-allowed;}
+.alert{padding:14px 16px;border-radius:8px;margin-top:16px;font-size:14px;}
+.alert.error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;}
+.alert.success{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+.alert.info{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;}
+
+.faq{background:white;border-radius:14px;padding:32px;margin-top:32px;}
+.faq h2{margin-bottom:20px;}
+.faq details{border-bottom:1px solid #e2e8f0;padding:14px 0;}
+.faq summary{cursor:pointer;font-weight:600;font-size:15px;color:#0f172a;}
+.faq summary:hover{color:#7ab31a;}
+.faq p{margin-top:10px;color:#475569;font-size:14px;line-height:1.6;}
+
+footer{background:#0f172a;color:#64748b;padding:40px 24px;text-align:center;font-size:13px;margin-top:48px;}
+footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
+
+@media (max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links a:not(.btn-orange):not(.btn-green-o){display:none;}
+  .row{grid-template-columns:1fr;}
+  .form-section{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://validanet.cl"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"></a>
+  <div class="nav-links">
+    <a href="https://validanet.cl/#features">Funciones</a>
+    <a href="https://validanet.cl/#pricing">Precios</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="tag">Moodle gestionado · Hosting incluido</span>
+  <h1>Tu <span>Aula Virtual Moodle</span> lista en minutos</h1>
+  <p>Para OTECs, universidades, CFT, IP, consultoras y áreas de capacitación. Hosting dedicado, backups diarios, 99.9% uptime, SSL, soporte chileno. Sin servidor propio, sin instalación, sin DevOps.</p>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 style="font-size:24px;text-align:center;margin-bottom:8px;">Elige tu plan</h2>
+    <p style="text-align:center;color:#64748b;font-size:14px;">Todos los planes incluyen hosting, SSL, backups, soporte chileno por email. Cancela cuando quieras.</p>
+    <div class="planes" id="planes">
+      <!-- Render dinámico desde /api/aulas/planes -->
+    </div>
+
+    <div class="form-section">
+      <h2>Datos de contacto y configuración</h2>
+      <p class="sub">Te enviaremos tus credenciales a este email cuando tu aula esté lista.</p>
+
+      <form id="form" onsubmit="return submitForm(event)">
+        <div class="row">
+          <div class="field">
+            <label>Tu nombre</label>
+            <input type="text" name="nombre" required minlength="2" placeholder="Juan Pérez">
+          </div>
+          <div class="field">
+            <label>Nombre de tu organización</label>
+            <input type="text" name="org_name" required minlength="2" placeholder="Mi OTEC SpA">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="contacto@miotec.cl">
+          </div>
+          <div class="field">
+            <label>Teléfono (opcional)</label>
+            <input type="tel" name="phone" placeholder="+56 9 1234 5678">
+          </div>
+        </div>
+        <div class="field">
+          <label>Subdominio para tu aula</label>
+          <div class="subd-row">
+            <input type="text" name="subdomain_pref" id="subd-input" required minlength="3" maxlength="32" pattern="[a-zA-Z0-9-]+" placeholder="mi-otec">
+            <div class="subd-suffix">.aulas.validanet.cl</div>
+          </div>
+          <div class="subd-status" id="subd-status"></div>
+        </div>
+
+        <div class="tos">
+          <input type="checkbox" id="tos" required>
+          <label for="tos">Acepto los <a href="https://connect.validanet.cl/legal/terminos" target="_blank">términos y condiciones</a> y la <a href="https://connect.validanet.cl/legal/privacidad" target="_blank">política de privacidad</a> (Ley 21.719).</label>
+        </div>
+
+        <button type="submit" class="btn-pay" id="btn-pay" disabled>Selecciona un plan para continuar</button>
+        <div id="result"></div>
+      </form>
+    </div>
+
+    <div class="faq">
+      <h2>Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Necesito tener cuenta en ValidaNet para comprar?</summary>
+        <p>No. Esta compra crea tu cuenta automáticamente. Recibirás un email con las credenciales de tu Aula Virtual y un link para acceder al panel de ValidaNet (donde podrás contratar otros servicios como certificados, integración SENCE, etc.).</p>
+      </details>
+      <details>
+        <summary>¿Cuánto demora la creación del aula?</summary>
+        <p>Entre 5 y 15 minutos para casos típicos. Recibirás un email con tus credenciales en cuanto esté lista. Si por capacidad temporal del servidor entras a lista de espera, no se cobra nada y te avisamos cuando se libere cupo.</p>
+      </details>
+      <details>
+        <summary>¿Ya tengo un Moodle anterior, puedo usar éste también?</summary>
+        <p>Sí. Esta aula es independiente. Puedes mantener tu Moodle anterior y usar éste para nuevos cursos, o migrar gradualmente. Si quieres migrar datos del anterior, escríbenos a contacto@norteduc.cl — es un servicio aparte.</p>
+      </details>
+      <details>
+        <summary>¿Qué incluye el hosting?</summary>
+        <p>Servidor dedicado en Chile, SSL gratuito, backups automáticos diarios, soporte por email y WhatsApp en horario hábil. En el plan Business: SLA 99.95% y soporte 24/7.</p>
+      </details>
+      <details>
+        <summary>¿Puedo cambiar de plan después?</summary>
+        <p>Sí, puedes hacer upgrade en cualquier momento desde tu dashboard ValidaNet. Downgrade requiere que tengas la cantidad de estudiantes permitida en el nuevo plan.</p>
+      </details>
+      <details>
+        <summary>¿Soy OTEC, universidad, CFT, IP, empresa o relator?</summary>
+        <p>El Aula Virtual funciona para cualquier institución educativa o equipo que necesite un Moodle gestionado. No estás limitado a OTECs.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>ValidaNet · NortEduc Edtech SpA · RUT 76.624.932-9 · Chile</div>
+  <div style="margin-top:12px;">
+    <a href="https://validanet.cl">Home</a> ·
+    <a href="https://validanet.cl/para-otec">Para OTECs</a> ·
+    <a href="https://validanet.cl/blog/">Blog</a> ·
+    <a href="https://connect.validanet.cl/legal/terminos">Términos</a> ·
+    <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
+    <a href="mailto:contacto@norteduc.cl">contacto@norteduc.cl</a>
+  </div>
+</footer>
+
+<script>
+let selectedPlan = null;
+let subdomainOk = false;
+let checkTimer = null;
+
+async function loadPlanes(){
+  try{
+    const r = await fetch('https://app.validanet.cl/api/aulas/planes');
+    const data = await r.json();
+    const cont = document.getElementById('planes');
+    data.planes.forEach((p,i)=>{
+      const popular = p.slug === 'pro' ? 'popular' : '';
+      const card = document.createElement('div');
+      card.className = `plan ${popular}`;
+      card.dataset.slug = p.slug;
+      card.innerHTML = `
+        <h3>${p.name.replace('Aula Virtual ','')}</h3>
+        <div class="estudiantes">${p.max_estudiantes} estudiantes</div>
+        <div class="price">$${p.price_clp.toLocaleString('es-CL')}<small>/mes</small></div>
+        <ul class="features">
+          ${p.slug === 'starter' ? `
+            <li>Moodle 4.x última versión</li>
+            <li>Subdominio gratuito</li>
+            <li>SSL incluido</li>
+            <li>Backups diarios</li>
+            <li>Soporte por email</li>
+            <li>2 GB almacenamiento</li>
+          ` : p.slug === 'pro' ? `
+            <li>Todo lo de Starter +</li>
+            <li>Dominio propio opcional</li>
+            <li>CDN para velocidad</li>
+            <li>Integración SENCE</li>
+            <li>Soporte WhatsApp prioritario</li>
+            <li>10 GB almacenamiento</li>
+          ` : `
+            <li>Todo lo de Pro +</li>
+            <li>White-label completo</li>
+            <li>Backups cada 6 horas</li>
+            <li>Integración con ERP</li>
+            <li>Soporte 24/7</li>
+            <li>SLA 99.95% · 50 GB</li>
+          `}
+        </ul>
+      `;
+      card.onclick = ()=> selectPlan(p.slug);
+      cont.appendChild(card);
+    });
+  }catch(e){
+    document.getElementById('planes').innerHTML = '<div class="alert error">Error cargando planes. Recarga la página.</div>';
+  }
+}
+
+function selectPlan(slug){
+  selectedPlan = slug;
+  document.querySelectorAll('.plan').forEach(c=>{
+    c.classList.toggle('selected', c.dataset.slug === slug);
+  });
+  updateBtn();
+}
+
+document.getElementById('subd-input').addEventListener('input', e=>{
+  clearTimeout(checkTimer);
+  const v = e.target.value;
+  const st = document.getElementById('subd-status');
+  if(v.length < 3){ st.textContent = ''; subdomainOk = false; updateBtn(); return; }
+  st.textContent = 'Verificando...';
+  st.className = 'subd-status';
+  checkTimer = setTimeout(async ()=>{
+    try{
+      const r = await fetch('https://app.validanet.cl/api/aulas/check-subdomain?s=' + encodeURIComponent(v));
+      const data = await r.json();
+      e.target.value = data.subdomain;
+      if(data.available){
+        st.textContent = `✓ Disponible — ${data.preview_url}`;
+        st.className = 'subd-status ok';
+        subdomainOk = true;
+      }else{
+        st.textContent = `✗ No disponible (intenta otro o agregaremos sufijo único)`;
+        st.className = 'subd-status err';
+        subdomainOk = false;
+      }
+    }catch{ st.textContent = ''; subdomainOk = false; }
+    updateBtn();
+  }, 400);
+});
+
+function updateBtn(){
+  const btn = document.getElementById('btn-pay');
+  if(!selectedPlan){
+    btn.disabled = true;
+    btn.textContent = 'Selecciona un plan para continuar';
+    return;
+  }
+  btn.disabled = false;
+  btn.textContent = `Pagar y crear mi Aula Virtual`;
+}
+
+async function submitForm(e){
+  e.preventDefault();
+  if(!selectedPlan) return false;
+  const form = e.target;
+  const btn = document.getElementById('btn-pay');
+  const result = document.getElementById('result');
+  btn.disabled = true; btn.textContent = 'Procesando...';
+  result.innerHTML = '';
+  try{
+    const body = {
+      email: form.email.value.trim(),
+      nombre: form.nombre.value.trim(),
+      org_name: form.org_name.value.trim(),
+      plan: selectedPlan,
+      subdomain_pref: form.subdomain_pref.value.trim(),
+      phone: form.phone.value.trim() || null,
+      accept_terms: true,
+    };
+    const r = await fetch('https://app.validanet.cl/api/aulas/comprar-publico', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(body),
+    });
+    const data = await r.json();
+    if(!r.ok){
+      result.innerHTML = `<div class="alert error">${data.detail || 'Error procesando solicitud'}</div>`;
+      btn.disabled = false; updateBtn();
+      return false;
+    }
+    if(data.waitlist){
+      result.innerHTML = `<div class="alert info"><strong>Estás en lista de espera (posición ${data.position}).</strong> Nuestro servidor está temporalmente al máximo. No se cobró nada — te enviaremos un email cuando se libere cupo.</div>`;
+      btn.textContent = 'En lista de espera';
+      return false;
+    }
+    if(data.payment_url){
+      result.innerHTML = `<div class="alert success">Redirigiendo a Flow para completar el pago...</div>`;
+      setTimeout(()=>{ window.location = data.payment_url; }, 800);
+    }
+  }catch(err){
+    result.innerHTML = `<div class="alert error">Error de red: ${err.message}</div>`;
+    btn.disabled = false; updateBtn();
+  }
+  return false;
+}
+
+loadPlanes();
+</script>
+</body>
+</html>
