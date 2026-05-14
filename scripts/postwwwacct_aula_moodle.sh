@@ -1,0 +1,169 @@
+#!/bin/bash
+# ─────────────────────────────────────────────────────────────────────────────
+# ValidaNet — postwwwacct hook para auto-instalar Moodle 4.5 LTS en aulas
+# ─────────────────────────────────────────────────────────────────────────────
+# Este script vive públicamente en:
+#   https://raw.githubusercontent.com/arojasc2/validanet-web/master/scripts/postwwwacct_aula_moodle.sh
+# y también en:
+#   https://validanet.cl/scripts/postwwwacct_aula_moodle.sh
+#
+# Instalación one-time en el WHM box (requiere SSH o WHM Terminal):
+#
+#   curl -fsSL https://validanet.cl/scripts/postwwwacct_aula_moodle.sh \
+#     -o /usr/local/cpanel/scripts/postwwwacct
+#   chmod +x /usr/local/cpanel/scripts/postwwwacct
+#
+# Y configurar las dos variables de entorno (en /etc/environment o /root/.bashrc):
+#   export AULA_HOOK_TOKEN="<copiar valor de /opt/tutorai/.env de VPS1>"
+#   export VALIDANET_CALLBACK_URL="https://app.validanet.cl/webhooks/aulas/hook-completed"
+#
+# Docs cPanel: https://docs.cpanel.net/whm/scripts/the-postwwwacct-script/
+# El script recibe ENV vars: $user, $domain, $plan, $contactemail
+#
+# Solo procesa cuentas con plan que matchee root_aula_*. Las 9 cuentas
+# pre-ValidaNet (gremm2025, academia, vidasa2024, etc) se ignoran.
+# ─────────────────────────────────────────────────────────────────────────────
+
+set -e
+
+# Log unificado
+LOGFILE="/var/log/validanet_aulas.log"
+exec >>"$LOGFILE" 2>&1
+
+# Captura ENV vars de WHM hook
+user="${1:-${user}}"
+domain="${2:-${domain}}"
+plan="${plan:-}"
+contactemail="${contactemail:-}"
+
+echo "=== $(date -Iseconds) postwwwacct user=$user domain=$domain plan=$plan ==="
+
+# ─── Lectura de configuración del entorno ───
+# AULA_HOOK_TOKEN — debe coincidir con el del .env de ValidaNet (VPS1)
+# VALIDANET_CALLBACK_URL — endpoint que recibe el callback HTTP tras install
+: "${AULA_HOOK_TOKEN:=}"
+: "${VALIDANET_CALLBACK_URL:=https://app.validanet.cl/webhooks/aulas/hook-completed}"
+
+if [ -z "$AULA_HOOK_TOKEN" ]; then
+  echo "[!] AULA_HOOK_TOKEN no configurado en environment — el callback no se autenticará"
+fi
+
+# ─── Filtro: solo planes aula_* ───
+case "$plan" in
+  root_aula_starter|root_aula_pro|root_aula_business|aula_starter|aula_pro|aula_business)
+    echo "[+] Plan aula detectado: $plan — procediendo con install Moodle 4.5 LTS"
+    ;;
+  *)
+    echo "[-] Plan '$plan' no es de aula — skip (no afecta cuentas pre-existentes)"
+    exit 0
+    ;;
+esac
+
+if [ -z "$user" ] || [ -z "$domain" ]; then
+  echo "[!] user o domain vacíos — abort"
+  exit 1
+fi
+
+HOME_DIR="/home/$user"
+PHP="/usr/local/cpanel/3rdparty/bin/php"
+# Moodle 4.5 LTS — release oct/2024, soporte hasta dic/2027
+MOODLE_URL="https://download.moodle.org/download.php/direct/stable405/moodle-latest-405.tgz"
+TGZ="/tmp/moodle-${user}-$(date +%s).tgz"
+
+# ─── 1) Descargar Moodle 4.5 LTS ───
+echo "[1/9] Descargando Moodle 4.5 LTS desde $MOODLE_URL..."
+wget -q --tries=3 --timeout=60 "$MOODLE_URL" -O "$TGZ"
+if [ ! -s "$TGZ" ]; then
+  echo "[!] Descarga Moodle falló — tarball vacío"
+  exit 2
+fi
+
+# ─── 2) Extraer en public_html ───
+echo "[2/9] Extrayendo a $HOME_DIR/public_html..."
+rm -rf "$HOME_DIR/public_html/cgi-bin" 2>/dev/null || true
+tar -xzf "$TGZ" -C "$HOME_DIR/public_html/" --strip-components=1
+rm -f "$TGZ"
+
+# ─── 3) moodledata fuera de public_html ───
+echo "[3/9] Creando moodledata..."
+mkdir -p "$HOME_DIR/moodledata"
+
+# ─── 4) Permisos ───
+echo "[4/9] Ajustando permisos..."
+chown -R "$user:nobody" "$HOME_DIR/public_html"
+chown -R "$user:nobody" "$HOME_DIR/moodledata"
+chmod 770 "$HOME_DIR/moodledata"
+chmod -R 755 "$HOME_DIR/public_html"
+
+# ─── 5) Crear BD via UAPI ───
+echo "[5/9] Creando BD via UAPI..."
+DBNAME="${user}_mdl"
+DBUSER="${user}_mdl"
+DBPASS=$(openssl rand -base64 24 | tr -d '/+=' | head -c 24)
+uapi --user="$user" Mysql create_database name="$DBNAME" >/dev/null 2>&1 || echo "  (db quizá ya existía)"
+uapi --user="$user" Mysql create_user name="$DBUSER" password="$DBPASS" >/dev/null 2>&1 || echo "  (user quizá ya existía)"
+uapi --user="$user" Mysql set_privileges_on_database \
+  user="$DBUSER" database="$DBNAME" privileges="ALL PRIVILEGES" >/dev/null 2>&1
+
+# ─── 6) Install Moodle CLI ───
+echo "[6/9] Instalando Moodle CLI..."
+ADMIN_PASS=$(openssl rand -base64 24 | tr -d '/+=' | head -c 20)
+SHORTNAME=$(echo "$user" | tr -cd 'a-z0-9' | head -c 20)
+
+sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/install_database.php" \
+  --agree-license --fullname="Aula Virtual" --shortname="$SHORTNAME" \
+  --adminuser=admin --adminpass="$ADMIN_PASS" --adminemail="$contactemail" \
+  >/dev/null 2>&1 || true
+
+# install.php es la entrada universal (4.x acepta install_database.php por separado)
+sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/install.php" \
+  --non-interactive --lang=es \
+  --wwwroot="https://$domain" \
+  --dataroot="$HOME_DIR/moodledata" \
+  --dbtype=mariadb --dbhost=localhost \
+  --dbname="$DBNAME" --dbuser="$DBUSER" --dbpass="$DBPASS" \
+  --fullname="Aula Virtual" --shortname="$SHORTNAME" \
+  --adminuser=admin --adminpass="$ADMIN_PASS" \
+  --adminemail="$contactemail" --agree-license
+
+# ─── 7) Habilitar plugins desde UI (admin completo en todos los planes) ───
+echo "[7/9] Habilitando instalación de plugins desde UI..."
+sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/cfg.php" --name=disableupdateautodeploy --set=0 || true
+sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/cfg.php" --name=updateautocheck --set=1 || true
+sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/cfg.php" --name=enableupdatenotifications --set=1 || true
+
+# ─── 8) Marcar instalación OK ───
+echo "[8/9] Moodle 4.5 LTS instalado OK para $user @ $domain"
+
+# ─── 9) Callback HTTP a ValidaNet ───
+echo "[9/9] POST callback a $VALIDANET_CALLBACK_URL..."
+CALLBACK_PAYLOAD=$(cat <<JSON
+{
+  "cpanel_user": "$user",
+  "domain": "$domain",
+  "plan": "$plan",
+  "admin_user": "admin",
+  "admin_password": "$ADMIN_PASS",
+  "db_name": "$DBNAME",
+  "db_user": "$DBUSER",
+  "moodle_version": "4.5",
+  "hook_token": "$AULA_HOOK_TOKEN"
+}
+JSON
+)
+
+HTTP_CODE=$(curl -s -m 15 -X POST "$VALIDANET_CALLBACK_URL" \
+  -H "Content-Type: application/json" \
+  -d "$CALLBACK_PAYLOAD" \
+  -o /tmp/validanet_callback_${user}.log \
+  -w "%{http_code}" || echo "000")
+
+if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
+  echo "    ✓ Callback OK (HTTP $HTTP_CODE)"
+else
+  echo "    ⚠ Callback respondió HTTP $HTTP_CODE — admin puede marcar manualmente"
+  echo "      Body: $(cat /tmp/validanet_callback_${user}.log 2>/dev/null | head -c 200)"
+fi
+
+echo "=== $(date -Iseconds) postwwwacct DONE — $user ==="
+exit 0
