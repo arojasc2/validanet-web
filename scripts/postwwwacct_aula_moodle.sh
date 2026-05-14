@@ -92,7 +92,13 @@ if [ -z "$user" ] || [ -z "$domain" ]; then
 fi
 
 HOME_DIR="/home/$user"
-PHP="/usr/local/cpanel/3rdparty/bin/php"
+# PHP 8.3 EA (Moodle 4.5 requiere PHP 8.1-8.3, NO 8.4).
+# /usr/local/cpanel/3rdparty/bin/php es PHP 8.4 default del cPanel y NO sirve.
+PHP="/opt/cpanel/ea-php83/root/usr/bin/php"
+if [ ! -x "$PHP" ]; then
+  echo "[!] $PHP no existe — instalar con: yum install ea-php83 ea-php83-php-sodium ea-php83-php-mysqlnd ea-php83-php-gd ea-php83-php-intl ea-php83-php-mbstring ea-php83-php-xml ea-php83-php-zip ea-php83-php-soap ea-php83-php-curl"
+  exit 3
+fi
 # Moodle 4.5 LTS — release oct/2024, soporte hasta dic/2027
 MOODLE_URL="https://download.moodle.org/download.php/direct/stable405/moodle-latest-405.tgz"
 TGZ="/tmp/moodle-${user}-$(date +%s).tgz"
@@ -137,17 +143,14 @@ echo "[6/9] Instalando Moodle CLI..."
 ADMIN_PASS=$(openssl rand -base64 24 | tr -d '/+=' | head -c 20)
 SHORTNAME=$(echo "$user" | tr -cd 'a-z0-9' | head -c 20)
 
-sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/install_database.php" \
-  --agree-license --fullname="Aula Virtual" --shortname="$SHORTNAME" \
-  --adminuser=admin --adminpass="$ADMIN_PASS" --adminemail="$contactemail" \
-  >/dev/null 2>&1 || true
-
-# install.php es la entrada universal (4.x acepta install_database.php por separado)
+# install.php hace todo (DB schema + admin user + config). dbtype=mysqli en
+# lugar de mariadb evita que Moodle aplique checks de MariaDB legacy que
+# fallan contra MySQL 8.x (que cPanel reporta como "mariadb 8.x").
 sudo -u "$user" "$PHP" "$HOME_DIR/public_html/admin/cli/install.php" \
   --non-interactive --lang=es \
   --wwwroot="https://$domain" \
   --dataroot="$HOME_DIR/moodledata" \
-  --dbtype=mariadb --dbhost=localhost \
+  --dbtype=mysqli --dbhost=localhost \
   --dbname="$DBNAME" --dbuser="$DBUSER" --dbpass="$DBPASS" \
   --fullname="Aula Virtual" --shortname="$SHORTNAME" \
   --adminuser=admin --adminpass="$ADMIN_PASS" \
