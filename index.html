@@ -670,5 +670,182 @@ footer .links a:hover{color:white;}
 </script>
 
 <script src="/vn-precios.js"></script>
+
+<!-- ════ EXIT INTENT POPUP + CHAT VENTAS ════ -->
+<style>
+/* Exit popup */
+#vn-exit-pop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:9998;animation:vnFadeIn .2s ease;}
+#vn-exit-pop.open{display:flex;align-items:center;justify-content:center;padding:20px;}
+.vn-exit-card{background:white;max-width:440px;width:100%;border-radius:16px;padding:36px 30px;text-align:center;animation:vnSlideUp .25s ease;}
+.vn-exit-card .ic{font-size:48px;margin-bottom:10px;}
+.vn-exit-card h3{font-size:22px;font-weight:800;color:#1e3a5f;margin-bottom:8px;}
+.vn-exit-card p{color:#64748b;font-size:14px;margin-bottom:18px;line-height:1.55;}
+.vn-exit-card input{width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;font-family:inherit;outline:none;}
+.vn-exit-card input:focus{border-color:#7ab31a;}
+.vn-exit-card button{width:100%;background:#7ab31a;color:white;border:0;padding:13px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;margin-top:10px;}
+.vn-exit-card .close{position:absolute;top:14px;right:18px;background:none;border:0;font-size:24px;color:#94a3b8;cursor:pointer;}
+.vn-exit-card .vnmsg{font-size:12px;margin-top:8px;display:none;}
+.vn-exit-card .vnmsg.ok{color:#166534;display:block;}
+.vn-exit-card .vnmsg.err{color:#991b1b;display:block;}
+/* Chat ventas */
+#vn-chat-bubble{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#7ab31a,#5d8916);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 8px 20px rgba(122,179,26,.4);z-index:9997;transition:transform .15s;}
+#vn-chat-bubble:hover{transform:scale(1.08);}
+#vn-chat-bubble::after{content:"";position:absolute;top:6px;right:6px;width:10px;height:10px;background:#f47920;border:2px solid white;border-radius:50%;}
+#vn-chat-pop{display:none;position:fixed;bottom:90px;right:20px;width:360px;max-width:calc(100vw - 30px);height:520px;max-height:calc(100vh - 110px);background:white;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.18);z-index:9999;flex-direction:column;overflow:hidden;}
+#vn-chat-pop.open{display:flex;}
+.vnc-hdr{background:linear-gradient(135deg,#1e3a5f,#0f172a);color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;}
+.vnc-hdr .avatar{width:36px;height:36px;background:#7ab31a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.vnc-hdr .meta{flex:1;}
+.vnc-hdr .meta .name{font-weight:700;font-size:14px;}
+.vnc-hdr .meta .role{font-size:11px;opacity:.7;}
+.vnc-hdr .close-btn{background:none;border:0;color:white;font-size:22px;cursor:pointer;opacity:.8;}
+.vnc-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8fafc;}
+.vnc-msg{padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5;max-width:85%;}
+.vnc-msg.bot{background:white;border:1px solid #e2e8f0;align-self:flex-start;}
+.vnc-msg.user{background:#1e3a5f;color:white;align-self:flex-end;}
+.vnc-typing{font-size:12px;color:#94a3b8;padding:0 4px;}
+.vnc-input{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;background:white;}
+.vnc-input input{flex:1;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:20px;font-size:13px;font-family:inherit;outline:none;}
+.vnc-input input:focus{border-color:#7ab31a;}
+.vnc-input button{background:#7ab31a;color:white;border:0;width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;}
+@keyframes vnFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes vnSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  #vn-chat-pop{bottom:80px;right:10px;width:calc(100vw - 20px);height:calc(100vh - 100px);}
+  #vn-chat-bubble{width:54px;height:54px;font-size:24px;bottom:14px;right:14px;}
+}
+</style>
+
+<!-- Exit Popup -->
+<div id="vn-exit-pop">
+  <div class="vn-exit-card" style="position:relative;">
+    <button class="close" onclick="vnExitClose()" aria-label="Cerrar">×</button>
+    <div class="ic">⏰</div>
+    <h3>¿Te vas sin probar?</h3>
+    <p><strong>7 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
+    <input type="email" id="vn-exit-email" placeholder="tu@empresa.cl" autocomplete="email">
+    <button onclick="vnExitSubmit()">📧 Enviarme la info gratis</button>
+    <div class="vnmsg" id="vn-exit-msg"></div>
+    <p style="font-size:11px;color:#94a3b8;margin-top:12px;margin-bottom:0;">Sin spam · cancelable cuando quieras · Ley 21.719</p>
+  </div>
+</div>
+
+<!-- Chat Ventas -->
+<div id="vn-chat-bubble" onclick="vnChatToggle()" title="Hablar con ventas">💬</div>
+<div id="vn-chat-pop">
+  <div class="vnc-hdr">
+    <div class="avatar">🤖</div>
+    <div class="meta">
+      <div class="name">Validín · Asesor de ventas</div>
+      <div class="role">IA · Responde 24/7</div>
+    </div>
+    <button class="close-btn" onclick="vnChatToggle()">×</button>
+  </div>
+  <div class="vnc-msgs" id="vnc-msgs">
+    <div class="vnc-msg bot">Hola 👋 Soy Validín, asesor de ventas de ValidaNet. ¿Buscas digitalizar una OTEC, contratar capacitación para tu empresa, o eres relator independiente?</div>
+  </div>
+  <div class="vnc-input">
+    <input type="text" id="vnc-input" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')vnChatSend()" maxlength="500">
+    <button onclick="vnChatSend()" aria-label="Enviar">→</button>
+  </div>
+</div>
+
+<script>
+// ─── Exit intent popup (solo desktop, una vez por sesión) ───
+(function(){
+  if (window.innerWidth < 768) return;  // skip mobile (no hay mouseleave útil)
+  if (sessionStorage.getItem('vn_exit_shown')) return;
+  document.addEventListener('mouseout', function(e){
+    if (e.clientY < 5 && !sessionStorage.getItem('vn_exit_shown')) {
+      sessionStorage.setItem('vn_exit_shown', '1');
+      document.getElementById('vn-exit-pop').classList.add('open');
+    }
+  });
+})();
+function vnExitClose(){ document.getElementById('vn-exit-pop').classList.remove('open'); }
+async function vnExitSubmit(){
+  var email = document.getElementById('vn-exit-email').value.trim();
+  var msg = document.getElementById('vn-exit-msg');
+  msg.className = 'vnmsg'; msg.textContent = '';
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    msg.textContent = 'Email inválido'; msg.classList.add('err'); return;
+  }
+  try {
+    var r = await fetch('https://app.validanet.cl/api/validanet/public/lead', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email: email, origen: 'exit_popup'})
+    });
+    if (!r.ok) throw new Error();
+    msg.textContent = '✓ Listo, te enviamos info al email. Revisa tu bandeja en 5 min.';
+    msg.classList.add('ok');
+    setTimeout(vnExitClose, 2500);
+  } catch(e){
+    msg.textContent = 'Error de conexión, intenta nuevamente.'; msg.classList.add('err');
+  }
+}
+
+// ─── Chat ventas con Claude Haiku ───
+var vncHistory = [];
+var vncSessionId = 'sess-' + Math.random().toString(36).slice(2,12);
+
+function vnChatToggle(){
+  document.getElementById('vn-chat-pop').classList.toggle('open');
+  if (document.getElementById('vn-chat-pop').classList.contains('open')){
+    setTimeout(function(){ document.getElementById('vnc-input').focus(); }, 100);
+  }
+}
+
+function vncRender(){
+  var box = document.getElementById('vnc-msgs');
+  // Mantener saludo inicial; renderizar history
+  box.innerHTML = '<div class="vnc-msg bot">Hola 👋 Soy Validín, asesor de ventas de ValidaNet. ¿Buscas digitalizar una OTEC, contratar capacitación para tu empresa, o eres relator independiente?</div>';
+  vncHistory.forEach(function(h){
+    var d = document.createElement('div');
+    d.className = 'vnc-msg ' + h.role;
+    d.textContent = h.content;
+    box.appendChild(d);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+
+async function vnChatSend(){
+  var inp = document.getElementById('vnc-input');
+  var msg = inp.value.trim();
+  if (!msg) return;
+  vncHistory.push({role:'user', content: msg});
+  inp.value = '';
+  vncRender();
+
+  // Typing indicator
+  var box = document.getElementById('vnc-msgs');
+  var typing = document.createElement('div');
+  typing.className = 'vnc-typing';
+  typing.id = 'vnc-typing-el';
+  typing.textContent = 'Validín está escribiendo…';
+  box.appendChild(typing);
+  box.scrollTop = box.scrollHeight;
+
+  try {
+    var r = await fetch('https://app.validanet.cl/api/validanet/public/chat-ventas', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        message: msg,
+        session_id: vncSessionId,
+        history: vncHistory.slice(-6)
+      })
+    });
+    var d = await r.json();
+    var reply = d.reply || 'Disculpa, tuve un problema. Intenta de nuevo.';
+    vncHistory.push({role:'assistant', content: reply});
+    vncRender();
+  } catch(e){
+    var t = document.getElementById('vnc-typing-el');
+    if (t) t.remove();
+    vncHistory.push({role:'assistant', content: 'Error de conexión. Escríbenos a contacto@norteduc.cl'});
+    vncRender();
+  }
+}
+</script>
+
 </body>
 </html>
