@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reportería Académica — ValidaNet</title>
+<meta name="description" content="Dashboards y reportes en tiempo real: progreso de alumnos, asistencia, certificados emitidos, MRR, retención. Exportables a Excel y PDF.">
+<link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon.ico">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:white;padding:72px 40px;text-align:center;}
+.hero .icon{font-size:64px;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,48px);font-weight:800;margin-bottom:16px;line-height:1.15;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 32px;line-height:1.55;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-w{background:white;color:#0f172a;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.btn-o2{border:2px solid white;color:white;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:56px 0;}
+h2.tit{font-size:28px;font-weight:800;margin-bottom:8px;text-align:center;}
+p.sub{color:#64748b;font-size:15px;margin-bottom:36px;text-align:center;max-width:640px;margin-left:auto;margin-right:auto;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;}
+.card .ic{font-size:32px;margin-bottom:12px;}
+.card h3{font-size:16px;font-weight:700;margin-bottom:6px;color:#0f172a;}
+.card p{font-size:13px;color:#64748b;line-height:1.55;}
+.cta{background:linear-gradient(135deg,#7ab31a,#f47920);padding:64px 40px;text-align:center;color:white;}
+.cta h2{font-size:28px;font-weight:800;margin-bottom:12px;}
+.cta p{font-size:16px;opacity:.92;margin-bottom:28px;}
+.cta a{background:white;color:#0f172a;border-radius:10px;padding:14px 32px;font-size:15px;font-weight:700;text-decoration:none;}
+footer{background:#0f172a;color:#64748b;padding:32px 40px;text-align:center;font-size:13px;}
+footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
+.tag{display:inline-block;background:rgba(122,179,26,.15);border:1px solid rgba(122,179,26,.3);color:#7ab31a;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;margin-bottom:14px;}
+@media (max-width:768px){
+  nav{padding:0 16px !important;height:58px !important;}
+  nav a img{height:30px !important;}
+  .nav-links{gap:8px;}
+  .nav-links a:not(.btn-orange):not(.btn-green-o){display:none;}
+  .btn-orange{padding:9px 14px;font-size:12px;}
+  .btn-green-o{padding:7px 12px;font-size:12px;}
+  .hero{padding:48px 20px;}
+  .hero p{font-size:15px;}
+  .hero-btns .btn-w,.hero-btns .btn-o2{padding:13px 22px;font-size:14px;}
+  section{padding:40px 0;}
+  h2.tit{font-size:24px;}
+  .cta{padding:48px 20px;}
+  .cta h2{font-size:24px;}
+  .cta p{font-size:14px;}
+  footer{padding:24px 20px;}
+}
+@media (max-width:480px){
+  .nav-links a.btn-green-o{display:none;}
+  nav a img{height:26px !important;}
+  .hero{padding:36px 16px;}
+  .cards{gap:14px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://validanet.cl"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:36px;"></a>
+  <div class="nav-links">
+    <a href="https://validanet.cl/#features">Funciones</a>
+    <a href="https://validanet.cl/#addons">Addons</a>
+    <a href="https://validanet.cl/#pricing">Precios</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-orange">Comenzar gratis</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="icon">📊</div>
+  <span class="tag">Addon · Incluido en Pro y Enterprise</span>
+  <h1>Reportería <span>académica y financiera</span> en tiempo real</h1>
+  <p>Dashboards interactivos con KPIs operativos y comerciales: progreso de alumnos, asistencia, certificados emitidos, ingresos recurrentes (MRR), retención por cohorte. Sin Excels que actualizar manualmente.</p>
+  <div class="hero-btns">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-w">Probar gratis 14 días</a>
+    <a href="https://validanet.cl/#pricing" class="btn-o2">Ver planes</a>
+  </div>
+</section>
+
+<section style="background:white;">
+  <div class="wrap">
+    <h2 class="tit">¿Qué incluye?</h2>
+    <p class="sub">Reportes que necesitas para SENCE, gerencia y ventas — todos exportables a Excel y PDF.</p>
+    <div class="cards">
+      <div class="card"><div class="ic">📈</div><h3>Dashboard académico</h3><p>Progreso por alumno, curso y módulo. Alertas de inactividad y predicción de deserción con IA.</p></div>
+      <div class="card"><div class="ic">📅</div><h3>Asistencia diaria</h3><p>Registro automatizado vía Moodle + integración SENCE. Listas exportables para fiscalización OTEC.</p></div>
+      <div class="card"><div class="ic">🎓</div><h3>Certificados emitidos</h3><p>Volumen mensual, por curso, por relator. Trazabilidad SHA-256 y QR de verificación pública.</p></div>
+      <div class="card"><div class="ic">💰</div><h3>Finanzas</h3><p>MRR, ARR, churn, LTV. Cohortes de retención mes a mes y proyección de ingresos a 12 meses.</p></div>
+      <div class="card"><div class="ic">🎯</div><h3>Funnel comercial</h3><p>Registro → primer login → primer certificado → primer pago. Detecta dónde se pierden tus clientes.</p></div>
+      <div class="card"><div class="ic">📤</div><h3>Exportación</h3><p>Excel, PDF, CSV y API REST. Conecta tu propio BI (Power BI, Looker, Metabase) vía endpoints autenticados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="tit">Para quién es</h2>
+    <p class="sub">Pensado para los 3 roles que necesitan datos en tu OTEC.</p>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+      <div class="card"><div class="ic">👔</div><h3>Dirección / Gerencia</h3><p>MRR, retención, costo por cliente. Decisiones de pricing y expansión basadas en datos reales, no intuición.</p></div>
+      <div class="card"><div class="ic">📋</div><h3>Coordinación académica</h3><p>Listas SENCE, asistencia para fiscalización, alertas de alumnos en riesgo de deserción.</p></div>
+      <div class="card"><div class="ic">💼</div><h3>Equipo comercial</h3><p>Funnel de conversión, leads activos, oportunidades por cliente. Integrado con CRM vía webhook.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Empieza a tomar decisiones con datos</h2>
+  <p>14 días gratis. Sin tarjeta. Cancela cuando quieras.</p>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/#register">Comenzar gratis</a>
+</section>
+
+<footer>
+  <div>ValidaNet · Norteduc Edtech SpA · RUT 76.624.932-9</div>
+  <div style="margin-top:10px;">
+    <a href="https://validanet.cl">Home</a> ·
+    <a href="https://validanet.cl/addons">Todos los addons</a> ·
+    <a href="https://connect.validanet.cl/legal/terminos">Términos</a> ·
+    <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
+    <a href="mailto:contacto@validanet.cl">contacto@validanet.cl</a>
+  </div>
+</footer>
+
+</body>
+</html>

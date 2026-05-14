@@ -1,0 +1,27 @@
+# Sitio estático validanet.cl
+# Backups
+*.bak
+*.bak*
+*_OK_*.html
+*_pre_*.html
+*~
+
+# Logs locales (nginx logs viven en /var/log/)
+*.log
+logs/
+
+# Secrets / config local
+.env
+.env.*
+config.local.*
+
+# Editores
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Generados por scripts (si alguien crea uno futuro)
+node_modules/
+dist/
+.cache/

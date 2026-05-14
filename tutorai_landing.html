@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<title>TutorIA — Asistente IA para Moodle | ValidaNet</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A0F1E;--paper:#F4F2ED;--primary:#1B4FFF;--ps:#EBF0FF;--accent:#00C57A;--as:#E0FFF5;--warn:#FF6B2B;--muted:#6B7280;--border:#E2DFD8;--card:#FFFFFF;--dark:#111827;--sh:0 4px 24px rgba(10,15,30,.07);--shl:0 16px 56px rgba(10,15,30,.13)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;backdrop-filter:blur(18px);background:rgba(244,242,237,.9);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw}
+.brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;text-decoration:none;color:var(--ink)}.brand em{color:var(--primary);font-style:normal}
+.nav-links{display:flex;gap:1.75rem;list-style:none}.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--primary);color:#fff;padding:.45rem 1.1rem;border-radius:7px;font-size:.85rem;font-weight:600;text-decoration:none;transition:all .2s}.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(27,79,255,.28)}
+.hero{min-height:100vh;padding:110px 5vw 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center;max-width:1360px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--ps);color:var(--primary);font-size:.75rem;font-weight:700;padding:.35rem .85rem;border-radius:100px;margin-bottom:1.5rem;border:1px solid rgba(27,79,255,.2)}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:1.5rem}.hl{color:var(--primary)}
+.hero-p{font-size:1.05rem;color:var(--muted);line-height:1.75;margin-bottom:2.25rem;max-width:500px}
+.btns{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn{padding:.8rem 1.75rem;border-radius:9px;font-size:.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;display:inline-block}
+.btn-p{background:var(--primary);color:#fff}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(27,79,255,.32)}
+.btn-g{background:transparent;color:var(--ink);border:1.5px solid var(--border)}.btn-g:hover{border-color:var(--primary);color:var(--primary)}
+.btn-w{background:#fff;color:var(--primary)}.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.15)}
+.btn-ow{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);font-weight:600}.btn-ow:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.kpis{display:flex;gap:2.25rem;margin-top:2.75rem;padding-top:2rem;border-top:1px solid var(--border)}
+.kn{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--primary)}.kl{font-size:.75rem;color:var(--muted);margin-top:.15rem}
+.cb-wrap{background:var(--card);border-radius:18px;box-shadow:var(--shl);border:1px solid var(--border);overflow:hidden}
+.cb-head{background:var(--primary);padding:.9rem 1.1rem;display:flex;align-items:center;gap:.7rem}
+.cb-av{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cb-tit{color:#fff;font-weight:600;font-size:.9rem}.cb-sub{color:rgba(255,255,255,.65);font-size:.7rem}
+.cb-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:auto;box-shadow:0 0 0 3px rgba(0,197,122,.25)}
+.cb-msgs{padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:260px;background:#FAFAF8;max-height:320px;overflow-y:auto}
+.msg{max-width:86%;padding:.65rem .9rem;border-radius:11px;font-size:.82rem;line-height:1.55}
+.bot{background:var(--card);border:1px solid var(--border);align-self:flex-start;border-radius:3px 11px 11px 11px}
+.usr{background:var(--primary);color:#fff;align-self:flex-end;border-radius:11px 3px 11px 11px}
+.sndr{font-size:.65rem;font-weight:700;color:var(--primary);margin-bottom:.25rem}
+.cb-in{padding:.9rem 1rem;border-top:1px solid var(--border);display:flex;gap:.625rem;background:var(--card)}
+.cb-in input{flex:1;border:1.5px solid var(--border);border-radius:7px;padding:.55rem .8rem;font-size:.82rem;font-family:inherit;outline:none;transition:border-color .2s;background:var(--paper)}
+.cb-in input:focus{border-color:var(--primary)}
+.cb-in button{background:var(--primary);color:#fff;border:none;border-radius:7px;padding:.55rem .9rem;cursor:pointer;font-weight:700;font-size:.85rem;transition:background .15s}
+.ruta-btn{margin:.5rem 0 0;background:var(--as);border:1px solid rgba(0,197,122,.3);border-radius:8px;padding:.45rem .75rem;font-size:.72rem;color:#065F46;font-weight:600;display:flex;align-items:center;gap:.4rem;cursor:pointer;transition:all .2s;width:fit-content}
+.ruta-btn:hover{background:var(--accent);color:#fff}
+.tp{display:flex;gap:.3rem;align-self:flex-start;padding:.3rem 0}
+.tp span{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:tpa 1.2s infinite}
+.tp span:nth-child(2){animation-delay:.2s}.tp span:nth-child(3){animation-delay:.4s}
+@keyframes tpa{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-4px);opacity:1}}
+.sec{padding:5.5rem 5vw;max-width:1360px;margin:0 auto}
+.slbl{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.7rem}
+.sh{font-family:'Syne',sans-serif;font-size:clamp(1.75rem,3vw,2.6rem);font-weight:800;line-height:1.14;letter-spacing:-.025em;margin-bottom:.875rem}
+.sp{font-size:.95rem;color:var(--muted);line-height:1.75;max-width:580px;margin-bottom:2.75rem}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:2.5rem}
+.flow::before{content:'';position:absolute;top:36px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:0}
+.fs{text-align:center;padding:1.25rem .75rem;position:relative;z-index:1}
+.fn{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;box-shadow:0 4px 14px rgba(27,79,255,.28);transition:transform .3s}
+.fs:hover .fn{transform:scale(1.1) rotate(-3deg)}.fs h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:.4rem}.fs p{font-size:.78rem;color:var(--muted);line-height:1.5}
+.dark{background:var(--dark);padding:5.5rem 5vw;margin:4rem 0}.dark .slbl{color:var(--accent)}.dark .sh{color:#fff}.dark .sp{color:rgba(255,255,255,.55)}
+.ftabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.25rem}
+.ftab{padding:.45rem 1.1rem;border-radius:100px;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);background:transparent;transition:all .2s;font-family:inherit}
+.ftab.on{background:var(--primary);color:#fff;border-color:var(--primary)}.ftab:hover:not(.on){border-color:rgba(255,255,255,.35);color:#fff}
+.fc{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.fi{display:none}.fi.on{display:block}.fi h3{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:.875rem}
+.fi p{color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.5rem;font-size:.92rem}
+.flist{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.flist li{display:flex;align-items:flex-start;gap:.65rem;font-size:.875rem;color:rgba(255,255,255,.8)}.flist li::before{content:'✓';color:var(--accent);font-weight:800;flex-shrink:0}
+.fm{display:none}.fm.on{display:block}
+.mp{background:#151D2E;border-radius:14px;border:1px solid rgba(255,255,255,.07);overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.38)}
+.mpbar{background:#0E1520;padding:.65rem .9rem;display:flex;align-items:center;gap:.45rem}
+.mpdot{width:9px;height:9px;border-radius:50%}.mptit{font-size:.68rem;color:rgba(255,255,255,.3);margin-left:.4rem}
+.mpbody{padding:1.1rem}
+.rtabs{display:flex;margin-bottom:.875rem;background:rgba(255,255,255,.06);border-radius:8px;padding:.3rem;gap:.25rem}
+.rtab{flex:1;padding:.35rem .25rem;font-size:.68rem;font-weight:700;border:none;border-bottom:2px solid transparent;cursor:pointer;background:transparent;color:rgba(255,255,255,.4);border-radius:5px;transition:all .2s;font-family:inherit}
+.rtab.on{background:#fff;color:#1e3a5f}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.875rem}
+.mc{border-radius:9px;padding:.65rem .6rem;font-size:.7rem;border:1.5px solid transparent;cursor:pointer;transition:all .25s}.mc:hover{transform:translateY(-2px)}
+.mc-ok{background:rgba(0,197,122,.1);border-color:rgba(0,197,122,.25);color:#00C57A}
+.mc-al{background:rgba(255,107,43,.1);border-color:rgba(255,107,43,.25);color:#FF6B2B}
+.mc-ac{background:rgba(27,79,255,.13);border-color:rgba(27,79,255,.3);color:#7DAFFF}
+.mc-pe{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.4)}
+.mc-ico{font-size:1rem;margin-bottom:.3rem}.mc-nm{font-weight:700;font-size:.68rem}.mc-nt{font-size:.63rem;opacity:.8;margin-top:.15rem}
+.rmini{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.rms{background:rgba(255,255,255,.04);border-radius:7px;padding:.55rem;text-align:center}
+.rmsn{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:#fff}.rmsl{font-size:.62rem;color:rgba(255,255,255,.4);margin-top:.15rem}
+.alrt{background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.2);border-radius:8px;padding:.65rem .75rem;margin-bottom:.5rem;font-size:.75rem;color:rgba(255,255,255,.85)}
+.lgro{background:rgba(0,197,122,.08);border:1px solid rgba(0,197,122,.18);border-radius:8px;padding:.65rem .75rem;margin-bottom:.5rem;font-size:.75rem;color:rgba(255,255,255,.85)}
+.pli{display:flex;gap:.55rem;align-items:flex-start;margin-bottom:.45rem;font-size:.73rem;color:rgba(255,255,255,.8)}
+.pld{background:var(--primary);color:#fff;font-size:.6rem;font-weight:700;padding:.15rem .4rem;border-radius:4px;flex-shrink:0;margin-top:.1rem}
+.dtabs{display:flex;gap:.3rem;margin-bottom:.875rem;background:rgba(255,255,255,.04);padding:.3rem;border-radius:8px}
+.dtab{padding:.3rem .65rem;border-radius:6px;font-size:.68rem;font-weight:600;cursor:pointer;color:rgba(255,255,255,.45);transition:all .2s;border:none;background:transparent;font-family:inherit}
+.dtab.on{background:var(--primary);color:#fff}
+.dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-bottom:.875rem}
+.dsc{background:rgba(255,255,255,.055);border-radius:9px;padding:.75rem}
+.dsn{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;color:#fff}.dsl{font-size:.65rem;color:rgba(255,255,255,.45);margin-top:.15rem}.dst{font-size:.63rem;color:var(--accent);margin-top:.2rem}
+.tqs{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.tqi{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.04);border-radius:7px;padding:.55rem}
+.tqt{font-size:.7rem;color:rgba(255,255,255,.8);flex:3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tqb{flex:1;height:4px;background:rgba(255,255,255,.07);border-radius:2px}.tqf{height:100%;border-radius:2px;background:var(--primary)}
+.tqn{font-size:.68rem;color:var(--accent);font-weight:700;flex-shrink:0}
+.eml{background:rgba(255,255,255,.04);border-radius:9px;padding:.75rem;margin-bottom:.5rem;display:flex;gap:.75rem;align-items:flex-start}
+.emli{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.emlsub{font-size:.77rem;font-weight:600;color:#fff;margin-bottom:.2rem}.emlpv{font-size:.68rem;color:rgba(255,255,255,.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.emltag{font-size:.62rem;font-weight:700;padding:.15rem .45rem;border-radius:100px;flex-shrink:0;margin-top:.15rem;white-space:nowrap}
+.cflbl{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin:.875rem 0 .45rem}
+.cfrow{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.04);border-radius:7px;padding:.55rem .75rem;margin-bottom:.35rem}
+.cfnm{font-size:.77rem;color:rgba(255,255,255,.85)}.cfvl{font-size:.72rem;color:rgba(255,255,255,.45)}
+.tog{width:30px;height:17px;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}
+.tog.on{background:var(--accent)}.tog.off{background:rgba(255,255,255,.18)}
+.tog::after{content:'';position:absolute;top:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .2s}
+.tog.on::after{left:calc(100% - 15px)}.tog.off::after{left:2px}
+.tkb{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px;margin:0 .75rem}
+.tkf{height:100%;border-radius:3px}
+.pgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.875rem;margin-top:2.75rem;overflow-x:auto}
+.pc{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:1.25rem .9rem;position:relative;transition:all .28s}
+.pc:hover{transform:translateY(-4px);box-shadow:var(--shl);border-color:rgba(27,79,255,.3)}
+.pc.hot{border-color:var(--primary);background:linear-gradient(180deg,var(--ps) 0%,#fff 60%)}
+.pc.hot::before{content:'MÁS POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.1em;padding:.2rem .8rem;border-radius:100px}
+.pcn{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem}
+.pcp{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--ink);line-height:1}.pcp small{font-size:.85rem;font-weight:400;color:var(--muted)}
+.pctk{font-size:.78rem;color:var(--muted);margin:.7rem 0 1.1rem;padding:.45rem .7rem;background:var(--paper);border-radius:7px;font-weight:500}
+.pcfl{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.5rem;min-height:160px}
+.pcfl li{font-size:.72rem;display:flex;align-items:flex-start;gap:.55rem}.pcfl li.y{color:var(--ink)}.pcfl li.y::before{content:'✓';color:var(--accent);font-weight:800;flex-shrink:0}.pcfl li.n{color:#C4C0B8}.pcfl li.n::before{content:'—';color:var(--border);flex-shrink:0}
+.pcb{width:100%;padding:.7rem;border-radius:9px;font-size:.875rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--ink);transition:all .2s;font-family:inherit}
+.pc.hot .pcb{background:var(--primary);color:#fff;border-color:var(--primary)}.pcb:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.cbox{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:2.25rem;margin-top:2.5rem;box-shadow:var(--sh)}
+.cbox h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem}.cbox p{font-size:.85rem;color:var(--muted);margin-bottom:1.75rem}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.cig label{font-size:.78rem;font-weight:600;color:var(--muted);display:block;margin-bottom:.5rem}
+.cig input[type=range]{width:100%;accent-color:var(--primary);margin-bottom:.3rem;cursor:pointer}
+.cig .cv{font-family:'Syne',sans-serif;font-size:1.75rem;font-weight:800;color:var(--primary)}.cig .cv small{font-size:.85rem;font-weight:400;color:var(--muted)}
+.cres{background:var(--ps);border-radius:13px;padding:1.4rem;display:flex;flex-direction:column;gap:.65rem;border:1px solid rgba(27,79,255,.18)}
+.rl{display:flex;justify-content:space-between;align-items:center;font-size:.85rem}
+.rl.tot{font-weight:700;font-size:.95rem;color:var(--primary);border-top:1px solid rgba(27,79,255,.18);padding-top:.65rem;margin-top:.1rem}
+.prec{margin-top:.875rem;background:var(--as);border:1px solid rgba(0,197,122,.3);border-radius:9px;padding:.8rem .9rem;font-size:.85rem;font-weight:600;color:#065F46;display:flex;align-items:center;gap:.55rem}
+.comp{width:100%;border-collapse:collapse;margin-top:2.25rem;font-size:.85rem}
+.comp th,.comp td{padding:.8rem .9rem;border-bottom:1px solid var(--border);text-align:left}
+.comp th{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--paper)}
+.comp th:not(:first-child),.comp td:not(:first-child){text-align:center}.comp tr:hover td{background:#faf8f4}
+.comp td.vn{background:var(--ps);font-weight:700;color:var(--primary)}.comp th.vn{color:var(--primary);background:var(--ps)}
+.ck{color:var(--accent);font-size:1.05rem}.cx{color:#D1D5DB}.cp{color:var(--warn)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.tc{background:var(--card);border:1.5px solid var(--border);border-radius:15px;padding:1.6rem;box-shadow:var(--sh)}
+.tst{color:#FBBF24;font-size:.95rem;margin-bottom:.8rem}.ttx{font-size:.875rem;color:var(--ink);line-height:1.72;margin-bottom:1.1rem;font-style:italic}
+.tau{display:flex;align-items:center;gap:.65rem}.tav{width:36px;height:36px;border-radius:9px;background:var(--ps);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.tnm{font-weight:600;font-size:.85rem}.tro{font-size:.72rem;color:var(--muted)}
+.cta{background:var(--primary);padding:5.5rem 5vw;text-align:center}
+.cta h2{font-family:'Syne',sans-serif;font-size:clamp(1.85rem,3.5vw,2.75rem);font-weight:800;color:#fff;margin-bottom:.875rem}
+.cta p{color:rgba(255,255,255,.7);font-size:1rem;margin-bottom:2.25rem}.ctabtns{display:flex;gap:.875rem;justify-content:center;flex-wrap:wrap}
+footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.82rem}
+.fbrand{font-family:'Syne',sans-serif;font-weight:800;color:#fff;font-size:1.05rem}.fbrand em{color:var(--primary);font-style:normal}
+.fia{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.fia.vis{opacity:1;transform:none}
+
+/* ── TABLET 1024px ── */
+@media(max-width:1024px){
+  .pgrid{grid-template-columns:repeat(3,1fr)}
+  .fc{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:repeat(2,1fr)}
+  .sec{padding:4rem 4vw}
+}
+
+/* ── TABLET/MÓVIL 768px ── */
+@media(max-width:768px){
+  nav{padding:0 4vw}
+  .nav-links{display:none}
+  .nav-cta{font-size:.78rem;padding:.4rem .875rem}
+  .hero{grid-template-columns:1fr;gap:2rem;min-height:auto;padding-top:80px;padding-bottom:3rem}
+  .hero>div:last-child{max-width:100%}
+  h1{font-size:clamp(1.9rem,7vw,2.8rem)}
+  .hero-p{font-size:.95rem}
+  .kpis{gap:1.25rem;flex-wrap:wrap}
+  .kn{font-size:1.6rem}
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:.75rem}
+  .fc{grid-template-columns:1fr}
+  .cgrid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr}
+  .sec{padding:3rem 5vw}
+  .sh{font-size:clamp(1.5rem,5vw,2.2rem)}
+  .sp{font-size:.9rem}
+  .btns{flex-direction:column;gap:.625rem}
+  .btn{text-align:center}
+  .cta-sec{padding:3.5rem 5vw}
+  footer .fg{grid-template-columns:1fr 1fr}
+}
+
+/* ── MÓVIL 480px ── */
+@media(max-width:480px){
+  .pgrid{grid-template-columns:1fr}
+  .pc.hot{order:-1}
+  .flow{grid-template-columns:1fr}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .kn{font-size:1.4rem}
+  .ftabs{flex-wrap:wrap;gap:.375rem}
+  .ftab{font-size:.72rem;padding:.4rem .625rem}
+  h1{font-size:1.85rem}
+  .hero-p{font-size:.88rem}
+  footer .fg{grid-template-columns:1fr}
+  .btn{padding:.7rem 1.25rem;font-size:.88rem}
+  .pcp{font-size:1.75rem!important}
+  .cgrid{gap:1rem}
+  .sec{padding:2.5rem 5vw}
+  .cbox{padding:1.5rem 1.1rem}
+}
+
+/* Responsive adicional */
+@media(max-width:768px){
+  footer{flex-direction:column;gap:.875rem;text-align:center;padding:2.5rem 5vw}
+  .hero>div:last-child{overflow:hidden}
+  .ftcont{gap:1rem}
+}
+@media(max-width:480px){
+  .ftcont .fi,.ftcont .fm{display:block}
+  nav .nav-links{display:none}
+  .brand span:last-child{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="brand" style="display:flex;align-items:center;gap:.5rem"><span style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em"><span style="color:#5bb033">Valida</span><span style="color:#e07b20">net</span></span><span style="font-size:.75rem;font-weight:500;color:var(--muted);border-left:1px solid var(--border);padding-left:.5rem">TutorIA</span></a>
+  <ul class="nav-links">
+    <li><a href="#integracion">Integración</a></li>
+    <li><a href="#funciones">Funciones</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#comparacion">Comparar</a></li>
+  </ul>
+  <a href="#precios" class="nav-cta">14 días gratis →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <span style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.02em;display:block;margin-bottom:1.25rem"><span style="color:#5bb033">Valida</span><span style="color:#e07b20">net</span></span><div class="badge"><span class="bdot"></span>Activo en producción · Chile 2026</div>
+    <h1>La IA que <span class="hl">enseña</span> dentro de tu Moodle</h1>
+    <p class="hero-p">TutorIA lee todos los recursos de tus cursos y guía a cada estudiante 24/7 con respuestas precisas, ruta de aprendizaje personalizada y alertas inteligentes — sin tocar tu servidor.</p>
+    <div class="btns">
+      <a href="#precios" class="btn btn-p">Comenzar gratis 14 días</a>
+      <a href="#integracion" class="btn btn-g">Ver cómo se instala ↓</a>
+    </div>
+    <div class="kpis">
+      <div><div class="kn">24/7</div><div class="kl">Disponibilidad</div></div>
+      <div><div class="kn">5 min</div><div class="kl">Instalación</div></div>
+      <div><div class="kn">98.6%</div><div class="kl">Margen bruto</div></div>
+      <div><div class="kn">37</div><div class="kl">Func. Moodle</div></div>
+    </div>
+  </div>
+  <!-- MOCKUP ESTÁTICO: TutorIA en Moodle (fiel a capturas reales) -->
+  <div style="max-width:480px;width:100%">
+    <!-- Barra Moodle -->
+    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(10,15,30,.12)">
+      <!-- Topbar tipo Moodle -->
+      <div style="background:#f8fafc;border-bottom:1px solid #e2e8f0;padding:.55rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <div style="font-size:.78rem;font-weight:700;color:#1e3a5f">ValidaNet TutorIA</div>
+        <div style="background:#e2e8f0;height:14px;width:1px;margin:0 4px"></div>
+        <div style="font-size:.7rem;color:#94a3b8">suempresa.campusonline.cl/course/view.php?id=12</div>
+      </div>
+      <!-- Botones plugin reales -->
+      <div style="display:grid;grid-template-columns:1fr 1fr">
+        <div style="background:#3d9e45;padding:.75rem;text-align:center;font-size:.85rem;font-weight:700;color:#fff">🤖 TutorIA</div>
+        <div style="background:#1e3a5f;padding:.75rem;text-align:center;font-size:.85rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</div>
+      </div>
+      <!-- Panel TutorIA abierto — header -->
+      <div style="background:#1e3a5f;padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:.5rem">
+          <span style="font-size:.8rem">🤖</span>
+          <span style="font-size:.8rem;font-weight:700;color:#fff">TutorIA</span>
+        </div>
+        <div style="display:flex;gap:.5rem;opacity:.5">
+          <span style="color:#fff;font-size:.85rem">⊞</span>
+          <span style="color:#fff;font-size:.85rem">✕</span>
+        </div>
+      </div>
+      <!-- Área chat estática -->
+      <div style="background:#f8fafc;padding:1rem;min-height:200px">
+        <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:3px 11px 11px 11px;padding:.75rem 1rem;max-width:90%">
+          <div style="font-size:.68rem;font-weight:700;color:#2e7d32;margin-bottom:.3rem">TutorIA</div>
+          <div style="font-size:.83rem;color:#1a3a2a;line-height:1.55">
+            Hola Alexis 👋<br>
+            Para hoy: <em>continuar con el siguiente módulo</em><br>
+            ¿En qué te puedo ayudar?
+          </div>
+        </div>
+      </div>
+      <!-- Input estático (decorativo) -->
+      <div style="padding:.85rem 1rem;border-top:1px solid #e2e8f0;background:#fff;display:flex;gap:.625rem;align-items:center">
+        <div style="flex:1;border:1.5px solid #e2e8f0;border-radius:7px;padding:.55rem .85rem;font-size:.82rem;color:#94a3b8;background:#f8fafc">Escribe tu pregunta...</div>
+        <div style="background:#3d9e45;border-radius:7px;padding:.55rem .9rem;color:#fff;font-size:1rem;opacity:.85">▶</div>
+      </div>
+    </div>
+    <!-- Progreso del curso debajo -->
+    <div style="margin-top:.875rem;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.875rem 1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+        <span style="font-size:.78rem;font-weight:600;color:#1e3a5f">Técnicas de Servicio y Atención al Cliente</span>
+        <span style="font-size:.75rem;font-weight:700;color:#3d9e45">32%</span>
+      </div>
+      <div style="background:#e2e8f0;border-radius:4px;height:6px">
+        <div style="background:#3d9e45;width:32%;height:6px;border-radius:4px"></div>
+      </div>
+      <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem">
+        <div style="display:flex;align-items:center;gap:.5rem;font-size:.76rem"><span style="color:#3d9e45;font-weight:700">1</span><span style="color:#1e3a5f;font-weight:600">Módulo 0. Inducción tecnológica metodológica</span><span style="margin-left:auto;font-size:.68rem;color:#3d9e45">0%</span></div>
+        <div style="display:flex;align-items:center;gap:.5rem;font-size:.76rem"><span style="color:#64748b;font-weight:700">2</span><span style="color:#374151">Módulo 1. Conceptos generales... 🔒</span><span style="margin-left:auto;font-size:.68rem;color:#64748b">50%</span></div>
+        <div style="display:flex;align-items:center;gap:.5rem;font-size:.76rem"><span style="color:#64748b;font-weight:700">3</span><span style="color:#374151">Módulo 2. Atención en el proceso... 🔒</span><span style="margin-left:auto;font-size:.68rem;color:#64748b">38%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTEGRACIÓN -->
+<section class="sec fia" id="integracion">
+  <div class="slbl">Integración</div>
+  <h2 class="sh">Activo en tu Moodle en 5 minutos</h2>
+  <p class="sp">Dos plugins ZIP, una API Key y listo. Sin modificar código ni romper tu instalación. Compatible con Moodle 3.9+.</p>
+  <div class="flow">
+    <div class="fs fia"><div class="fn" style="background:var(--primary)">1</div><h4>Instalar Plugins</h4><p>Sube block_validanet y local_validanet desde el panel admin Moodle</p></div>
+    <div class="fs fia"><div class="fn" style="background:var(--accent)">2</div><h4>Conectar API</h4><p>Ingresa tu API Key desde el dashboard ValidaNet. Un solo campo.</p></div>
+    <div class="fs fia"><div class="fn" style="background:var(--primary)">3</div><h4>Indexar Cursos</h4><p>TutorIA lee PDFs, páginas, foros, tareas y actividades automáticamente</p></div>
+    <div class="fs fia"><div class="fn" style="background:var(--warn)">4</div><h4>¡Listo!</h4><p>Estudiantes ven el chatbot en cada curso. Monitoreas todo en tiempo real.</p></div>
+  </div>
+  <div style="margin-top:3.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+    <div class="fia" style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:2rem;margin-bottom:.75rem">🎓</div>
+      <h4 style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem">Tu Moodle</h4>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.6">block_validanet + local_validanet instalados. JWT seguro, se renueva automáticamente.</p>
+    </div>
+    <div class="fia" style="background:var(--ps);border:2px solid rgba(27,79,255,.2);border-radius:14px;padding:1.5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:2rem;margin-bottom:.75rem">⚡</div>
+      <h4 style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem;color:var(--primary)">API ValidaNet</h4>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.6">FastAPI + PostgreSQL + pgvector. 37 funciones webservice. Comunicación HTTPS cifrada.</p>
+    </div>
+    <div class="fia" style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;box-shadow:var(--sh)">
+      <div style="font-size:2rem;margin-bottom:.75rem">🧠</div>
+      <h4 style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem">Claude IA</h4>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.6">Haiku 4.5 (Starter/Pro) o Sonnet 4.6 (Enterprise). Prompt caching hasta 90% ahorro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONES DARK -->
+<div class="dark" id="funciones">
+<div style="max-width:1360px;margin:0 auto">
+  <div class="slbl">Funcionalidades reales</div>
+  <h2 class="sh">Todo lo que necesita tu institución</h2>
+  <p class="sp">Desde el chatbot del estudiante hasta el panel del docente, emails automáticos y reportería avanzada.</p>
+  <div class="ftabs">
+    <button class="ftab on" onclick="ft('chatbot',this)">💬 Chatbot TutorIA</button>
+    <button class="ftab" onclick="ft('ruta',this)">🗺️ Mi Ruta</button>
+    <button class="ftab" onclick="ft('dash',this)">📊 Dashboard</button>
+    <button class="ftab" onclick="ft('mails',this)">✉️ Emails IA</button>
+    <button class="ftab" onclick="ft('cfg',this)">⚙️ Configuración</button>
+  </div>
+  <div class="fc">
+    <div>
+      <div class="fi on" id="fi-chatbot"><h3>Chatbot contextual del curso</h3><p>TutorIA indexa todos los recursos de cada curso y responde con el contexto exacto. No es genérico — conoce tu curso.</p><ul class="flist"><li>Lee PDFs, páginas, URLs, foros, tareas y actividades Moodle</li><li>Historial de conversación persistente por alumno y curso</li><li>Detecta automáticamente si es estudiante o docente</li><li>4 tabs docente: Chat IA, Consultas, Contenido, Evaluación</li><li>Botón "Insertar en Moodle" — publica contenido IA en el curso</li><li>Respuestas en segundos, 24h/7d</li></ul></div>
+      <div class="fi" id="fi-ruta"><h3>Mi Ruta de Aprendizaje</h3><p>Mapa visual del progreso con notas chilenas 1.0–7.0. 4 pestañas reales: Módulos, Alertas, Plan semanal y Logros — igual que en el plugin Moodle.</p><ul class="flist"><li>Notas chilenas calculadas desde puntajes Moodle (exigencia configurable)</li><li>Estados: completado ✅, alerta ⚠️, en progreso ▶️, pendiente 🔒</li><li>Plan semanal IA generado automáticamente cada semana</li><li>Alertas de bajo rendimiento, inactividad y próximas entregas</li><li>Logros desbloqueados al completar módulos con buena nota</li></ul></div>
+      <div class="fi" id="fi-dash"><h3>Dashboard de Administración</h3><p>Panel web completo en app.validanet.cl para gestionar TutorIA, reportes, certificados y monitoreo de tokens en tiempo real.</p><ul class="flist"><li>Top preguntas del curso con frecuencia y tendencias</li><li>Consumo de tokens por curso y costo estimado CLP</li><li>Exportación CSV / Excel / PDF</li><li>Certificados digitales masivos con QR verificable</li><li>Alertas de estudiantes en riesgo detectados por IA</li><li>Reportería SENCE: asistencia, grupos, progreso</li></ul></div>
+      <div class="fi" id="fi-mails"><h3>Emails Automáticos Inteligentes</h3><p>TutorIA envía correos en nombre de tu institución según el comportamiento del estudiante, con anti-spam integrado.</p><ul class="flist"><li>5 tipos: bienvenida, inactividad, bajo rendimiento, logro, certificado</li><li>Anti-spam: máx. 2 emails/semana, mín. 48h entre mensajes</li><li>Los correos NO mencionan TutorIA — aparecen como tu institución</li><li>Log completo y configuración desde el dashboard</li><li>Enviados por Brevo con alta entregabilidad</li></ul></div>
+      <div class="fi" id="fi-cfg"><h3>Panel de Configuración</h3><p>Cada institución configura TutorIA a medida: modelo IA, integración Moodle, parámetros pedagógicos y control de tokens.</p><ul class="flist"><li>Toggle escritura docente en Moodle (insertar contenido IA)</li><li>Conexión Moodle con token webservice seguro verificado</li><li>Exigencia y nota de corte por curso (default 60%)</li><li>Barra de uso de tokens con alerta automática al 80%</li><li>Programa pedagógico IA — sube PDF y extrae competencias</li></ul></div>
+    </div>
+    <div>
+      <!-- CHATBOT MOCK -->
+      <div class="fm on mp" id="fm-chatbot">
+        <div class="mpbar"><div class="mpdot" style="background:#FF5F57"></div><div class="mpdot" style="background:#FFBD2E"></div><div class="mpdot" style="background:#28CA41"></div><span class="mptit">TutorIA — Bloque Moodle (Estudiante)</span></div>
+        <div class="mpbody">
+          <div style="display:flex;gap:.375rem;margin-bottom:.75rem;background:rgba(255,255,255,.05);padding:.3rem;border-radius:7px">
+            <div style="padding:.3rem .7rem;background:var(--primary);border-radius:5px;font-size:.68rem;color:#fff;font-weight:700">💬 Chat</div>
+            <div style="padding:.3rem .7rem;font-size:.68rem;color:rgba(255,255,255,.4)">🗺️ Mi Ruta</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;min-height:180px">
+            <div style="background:rgba(255,255,255,.07);border-radius:3px 10px 10px 10px;padding:.6rem .8rem;font-size:.75rem;color:rgba(255,255,255,.9);max-width:86%;align-self:flex-start"><div style="font-size:.62rem;color:var(--accent);margin-bottom:.2rem;font-weight:700">TutorIA</div>Hola, he revisado el material del curso. ¿En qué puedo ayudarte?</div>
+            <div style="background:var(--primary);border-radius:10px 3px 10px 10px;padding:.6rem .8rem;font-size:.75rem;color:#fff;max-width:80%;align-self:flex-end">¿Cuál es la fecha límite del módulo 3?</div>
+            <div style="background:rgba(255,255,255,.07);border-radius:3px 10px 10px 10px;padding:.6rem .8rem;font-size:.75rem;color:rgba(255,255,255,.9);max-width:86%;align-self:flex-start"><div style="font-size:.62rem;color:var(--accent);margin-bottom:.2rem;font-weight:700">TutorIA</div>La evaluación del módulo 3 vence el <strong style="color:#fff">viernes 16 de mayo a las 23:59</strong>. Tienes nota 3.7 — ¿quieres un plan de repaso? 📋</div>
+          </div>
+          <div style="display:flex;gap:.45rem;margin-top:.65rem"><div style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:.45rem .7rem;font-size:.7rem;color:rgba(255,255,255,.35)">Escribe tu consulta...</div><div style="background:var(--primary);border-radius:6px;padding:.45rem .8rem;font-size:.72rem;color:#fff;font-weight:700">→</div></div>
+        </div>
+      </div>
+      <!-- RUTA MOCK — 4 mockups estáticos fiel a capturas reales -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.875rem">
+
+        <!-- MOCKUP 1: Tab Módulos -->
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(10,15,30,.08)">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="background:#3d9e45;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🤖 TutorIA</div>
+            <div style="background:#1e3a5f;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</div>
+          </div>
+          <div style="background:#1e3a5f;padding:.5rem .75rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</span>
+            <span style="color:rgba(255,255,255,.5);font-size:.8rem">✕</span>
+          </div>
+          <!-- Tabs -->
+          <div style="display:flex;border-bottom:1px solid #e2e8f0">
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:700;text-align:center;color:#1e3a5f;border-bottom:2px solid #1e3a5f;background:#fff">📍 Módulos</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🚨 Alertas</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📅 Plan</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🏅 Logros</div>
+          </div>
+          <!-- Contenido Módulos -->
+          <div style="padding:.625rem">
+            <div style="background:linear-gradient(135deg,#1e3a5f,#2d5a8e);border-radius:8px;padding:8px;margin-bottom:8px;display:flex;align-items:center;gap:8px">
+              <div style="width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff;flex-shrink:0">0%</div>
+              <span style="font-size:.72rem;font-weight:600;color:#fff">Hola, Alexis Rojas</span>
+            </div>
+            <div style="font-size:.58rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">MÓDULOS DEL CURSO</div>
+            <div style="border:1px solid #e2e8f0;border-radius:6px;overflow:hidden">
+              <div style="padding:6px 8px;border-bottom:1px solid #f1f5f9;font-size:.68rem;font-weight:600;color:#1e3a5f;display:flex;gap:5px;align-items:center"><div style="width:9px;height:9px;border:1.5px solid #cbd5e1;border-radius:2px;flex-shrink:0"></div>1. Módulo 1. Conceptos generales...</div>
+              <div style="padding:6px 8px;border-bottom:1px solid #f1f5f9;font-size:.68rem;color:#374151;display:flex;gap:5px;align-items:center"><div style="width:9px;height:9px;border:1.5px solid #cbd5e1;border-radius:2px;flex-shrink:0"></div>2. Módulo 2. Atención en ventas.</div>
+              <div style="padding:6px 8px;border-bottom:1px solid #f1f5f9;font-size:.68rem;color:#374151;display:flex;gap:5px;align-items:center"><div style="width:9px;height:9px;border:1.5px solid #cbd5e1;border-radius:2px;flex-shrink:0"></div>3. Módulo 3. Comunicación efectiva...</div>
+              <div style="padding:6px 8px;font-size:.68rem;color:#374151;display:flex;gap:5px;align-items:center"><div style="width:9px;height:9px;border:1.5px solid #cbd5e1;border-radius:2px;flex-shrink:0"></div>4. EVALUACIÓN FINAL</div>
+            </div>
+            <div style="background:#1e3a5f;border-radius:6px;padding:6px 8px;margin-top:7px;display:flex;align-items:center;justify-content:space-between">
+              <span style="font-size:.65rem;color:rgba(255,255,255,.8)">🤖 TutorIA puede ayudarte</span>
+              <span style="background:#00C57A;color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:4px">Chatear</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP 2: Tab Alertas -->
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(10,15,30,.08)">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="background:#3d9e45;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🤖 TutorIA</div>
+            <div style="background:#1e3a5f;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</div>
+          </div>
+          <div style="background:#1e3a5f;padding:.5rem .75rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</span>
+            <span style="color:rgba(255,255,255,.5);font-size:.8rem">✕</span>
+          </div>
+          <div style="display:flex;border-bottom:1px solid #e2e8f0">
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📍 Módulos</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:700;text-align:center;color:#1e3a5f;border-bottom:2px solid #1e3a5f;background:#fff">🚨 Alertas</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📅 Plan</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🏅 Logros</div>
+          </div>
+          <div style="padding:2rem 1rem;text-align:center">
+            <span style="font-size:.85rem;font-weight:600;color:#16a34a">✅ Sin alertas. ¡Vas muy bien!</span>
+          </div>
+        </div>
+
+        <!-- MOCKUP 3: Tab Plan -->
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(10,15,30,.08)">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="background:#3d9e45;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🤖 TutorIA</div>
+            <div style="background:#1e3a5f;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</div>
+          </div>
+          <div style="background:#1e3a5f;padding:.5rem .75rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</span>
+            <span style="color:rgba(255,255,255,.5);font-size:.8rem">✕</span>
+          </div>
+          <div style="display:flex;border-bottom:1px solid #e2e8f0">
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📍 Módulos</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🚨 Alertas</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:700;text-align:center;color:#1e3a5f;border-bottom:2px solid #1e3a5f;background:#fff">📅 Plan</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🏅 Logros</div>
+          </div>
+          <div style="padding:.625rem">
+            <div style="font-size:.68rem;font-weight:700;color:#1e3a5f;margin-bottom:.5rem">📅 Plan esta semana</div>
+            <div style="border:1px solid #e2e8f0;border-radius:6px;overflow:hidden">
+              <div style="display:flex;align-items:center;padding:5px 7px;border-bottom:1px solid #f1f5f9"><span style="font-size:.62rem;font-weight:800;color:#1e3a5f;width:24px">Lun</span><span style="font-size:.66rem;color:#374151;flex:1">Estudiar Módulo 1...</span><span style="font-size:.8rem;margin-left:5px">📖</span></div>
+              <div style="display:flex;align-items:center;padding:5px 7px;border-bottom:1px solid #f1f5f9"><span style="font-size:.62rem;font-weight:800;color:#1e3a5f;width:24px">Mar</span><span style="font-size:.66rem;color:#374151;flex:1">Actividades Módulo 1...</span><span style="font-size:.8rem;margin-left:5px">✏️</span></div>
+              <div style="display:flex;align-items:center;padding:5px 7px;border-bottom:1px solid #f1f5f9"><span style="font-size:.62rem;font-weight:800;color:#1e3a5f;width:24px">Mié</span><span style="font-size:.66rem;color:#374151;flex:1">Estudiar Módulo 2...</span><span style="font-size:.8rem;margin-left:5px">📖</span></div>
+              <div style="display:flex;align-items:center;padding:5px 7px;border-bottom:1px solid #f1f5f9"><span style="font-size:.62rem;font-weight:800;color:#1e3a5f;width:24px">Jue</span><span style="font-size:.66rem;color:#374151;flex:1">Actividades Módulo 2...</span><span style="font-size:.8rem;margin-left:5px">✏️</span></div>
+              <div style="display:flex;align-items:center;padding:5px 7px"><span style="font-size:.62rem;font-weight:800;color:#1e3a5f;width:24px">Vie</span><span style="font-size:.66rem;color:#374151;flex:1">Estudiar Módulo 3...</span><span style="font-size:.8rem;margin-left:5px">📖</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOCKUP 4: Tab Logros -->
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(10,15,30,.08)">
+          <div style="display:grid;grid-template-columns:1fr 1fr">
+            <div style="background:#3d9e45;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🤖 TutorIA</div>
+            <div style="background:#1e3a5f;padding:.5rem;text-align:center;font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</div>
+          </div>
+          <div style="background:#1e3a5f;padding:.5rem .75rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.72rem;font-weight:700;color:#fff">🏠 Mi Ruta Formativa</span>
+            <span style="color:rgba(255,255,255,.5);font-size:.8rem">✕</span>
+          </div>
+          <div style="display:flex;border-bottom:1px solid #e2e8f0">
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📍 Módulos</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">🚨 Alertas</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:600;text-align:center;color:#94a3b8;background:#f8fafc">📅 Plan</div>
+            <div style="flex:1;padding:.4rem .2rem;font-size:.6rem;font-weight:700;text-align:center;color:#1e3a5f;border-bottom:2px solid #1e3a5f;background:#fff">🏅 Logros</div>
+          </div>
+          <div style="padding:.625rem;display:flex;flex-direction:column;gap:5px">
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:8px"><span style="font-size:.95rem">🚀</span><div><div style="font-size:.7rem;font-weight:700;color:#15803d">Primer paso</div><div style="font-size:.63rem;color:#4ade80">Ingresaste al curso</div></div><span style="margin-left:auto;color:#16a34a">✅</span></div>
+            <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:8px"><span style="font-size:.95rem">🔥</span><div><div style="font-size:.7rem;font-weight:700;color:#15803d">Constancia</div><div style="font-size:.63rem;color:#4ade80">4+ días activo</div></div><span style="margin-left:auto;color:#16a34a">✅</span></div>
+            <div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:8px;opacity:.65"><span style="font-size:.95rem">⭐</span><div><div style="font-size:.7rem;font-weight:600;color:#374151">Buen rendimiento</div><div style="font-size:.63rem;color:#9ca3af">Nota ≥ 5.0</div></div><span style="margin-left:auto;color:#f59e0b;font-size:.8rem">🔒</span></div>
+            <div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:8px;opacity:.65"><span style="font-size:.95rem">💯</span><div><div style="font-size:.7rem;font-weight:600;color:#374151">Excelencia Académica</div><div style="font-size:.63rem;color:#9ca3af">Nota ≥ 6.0</div></div><span style="margin-left:auto;color:#f59e0b;font-size:.8rem">🔒</span></div>
+            <div style="background:#fafafa;border:1px solid #e5e7eb;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:8px;opacity:.65"><span style="font-size:.95rem">🎓</span><div><div style="font-size:.7rem;font-weight:600;color:#374151">Graduado</div><div style="font-size:.63rem;color:#9ca3af">Curso al 100%</div></div><span style="margin-left:auto;color:#f59e0b;font-size:.8rem">🔒</span></div>
+          </div>
+        </div>
+
+      </div>
+      <!-- DASH MOCK -->
+      <div class="fm mp" id="fm-dash">
+        <div class="mpbar"><div class="mpdot" style="background:#FF5F57"></div><div class="mpdot" style="background:#FFBD2E"></div><div class="mpdot" style="background:#28CA41"></div><span class="mptit">Dashboard ValidaNet — Reportería</span></div>
+        <div class="mpbody">
+          <div class="dtabs"><button class="dtab on">Resumen</button><button class="dtab">Top Preguntas</button><button class="dtab">Estudiantes</button><button class="dtab">Tokens</button></div>
+          <div class="dstats">
+            <div class="dsc"><div class="dsn">1,247</div><div class="dsl">Consultas mes</div><div class="dst">▲ +23%</div></div>
+            <div class="dsc"><div class="dsn">89</div><div class="dsl">Alumnos activos</div><div class="dst">▲ +8</div></div>
+            <div class="dsc"><div class="dsn" style="color:var(--accent)">94%</div><div class="dsl">Satisfacción</div><div class="dst">Estimado IA</div></div>
+          </div>
+          <div style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.55rem">Top preguntas del curso</div>
+          <ul class="tqs">
+            <li class="tqi"><span class="tqt">¿Cuándo vence la tarea del módulo 4?</span><div class="tqb"><div class="tqf" style="width:92%"></div></div><span class="tqn">47</span></li>
+            <li class="tqi"><span class="tqt">¿Qué es el DS 594 y cómo se aplica?</span><div class="tqb"><div class="tqf" style="width:74%"></div></div><span class="tqn">37</span></li>
+            <li class="tqi"><span class="tqt">Cómo usar el EPP correctamente</span><div class="tqb"><div class="tqf" style="width:56%"></div></div><span class="tqn">28</span></li>
+            <li class="tqi"><span class="tqt">¿Dónde descargo mi certificado?</span><div class="tqb"><div class="tqf" style="width:40%"></div></div><span class="tqn">20</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- EMAILS MOCK -->
+      <div class="fm mp" id="fm-mails">
+        <div class="mpbar"><div class="mpdot" style="background:#FF5F57"></div><div class="mpdot" style="background:#FFBD2E"></div><div class="mpdot" style="background:#28CA41"></div><span class="mptit">Emails Automáticos TutorIA</span></div>
+        <div class="mpbody">
+          <div class="eml"><div class="emli" style="background:rgba(0,197,122,.12)">👋</div><div style="flex:1;min-width:0"><div class="emlsub">Bienvenido/a al curso</div><div class="emlpv">Hola Juan, TutorIA estará contigo durante el aprendizaje...</div></div><div class="emltag" style="background:rgba(0,197,122,.15);color:#00C57A">Bienvenida</div></div>
+          <div class="eml"><div class="emli" style="background:rgba(255,107,43,.12)">⚠️</div><div style="flex:1;min-width:0"><div class="emlsub">Te echamos de menos</div><div class="emlpv">Han pasado 5 días desde tu última visita al curso...</div></div><div class="emltag" style="background:rgba(255,107,43,.15);color:#FF6B2B">Inactividad</div></div>
+          <div class="eml"><div class="emli" style="background:rgba(251,191,36,.12)">📉</div><div style="flex:1;min-width:0"><div class="emlsub">Oportunidad de mejora detectada</div><div class="emlpv">Obtuviste nota 3.7 en el módulo 3. Podemos ayudarte...</div></div><div class="emltag" style="background:rgba(251,191,36,.15);color:#D97706">Rendimiento</div></div>
+          <div class="eml"><div class="emli" style="background:rgba(27,79,255,.12)">🏆</div><div style="flex:1;min-width:0"><div class="emlsub">¡Completaste el Módulo 2!</div><div class="emlpv">Excelente trabajo. Tu nota 6.1 es sobresaliente...</div></div><div class="emltag" style="background:rgba(27,79,255,.15);color:#7DAFFF">Logro</div></div>
+          <div style="background:rgba(255,255,255,.04);border-radius:7px;padding:.6rem;text-align:center;font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.25rem">Máx 2 emails/sem · Mín 48h · Configurable</div>
+        </div>
+      </div>
+      <!-- CONFIG MOCK -->
+      <div class="fm mp" id="fm-cfg">
+        <div class="mpbar"><div class="mpdot" style="background:#FF5F57"></div><div class="mpdot" style="background:#FFBD2E"></div><div class="mpdot" style="background:#28CA41"></div><span class="mptit">Configuración — Dashboard ValidaNet</span></div>
+        <div class="mpbody">
+          <div class="cflbl">Integración Moodle</div>
+          <div class="cfrow"><span class="cfnm">URL Moodle</span><span class="cfvl">aula.miinstituto.cl</span></div>
+          <div class="cfrow"><span class="cfnm">Webservice token</span><span style="color:var(--accent);font-size:.72rem;font-weight:700">✓ Verificado</span></div>
+          <div class="cfrow"><span class="cfnm">Escritura docente en Moodle</span><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div class="cflbl">TutorIA</div>
+          <div class="cfrow"><span class="cfnm">Modelo IA</span><span class="cfvl">Claude Haiku 4.5</span></div>
+          <div class="cfrow"><span class="cfnm">Emails automáticos</span><div class="tog on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div class="cflbl">Uso de Tokens este mes</div>
+          <div class="cfrow"><span class="cfnm" style="font-size:.72rem">247,000 / 300,000</span><div class="tkb"><div class="tkf" style="width:82%;background:linear-gradient(90deg,var(--accent),var(--primary))"></div></div><span style="font-size:.7rem;color:var(--warn);font-weight:700">82%</span></div>
+          <div style="background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.2);border-radius:7px;padding:.55rem .75rem;font-size:.7rem;color:#FF6B2B;margin-top:.35rem">⚠️ Alcanzas el 80% del límite. Considera actualizar tu plan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PRECIOS -->
+<section class="sec fia" id="precios">
+  <div class="slbl">Planes y precios</div>
+  <h2 class="sh">Escala según el tamaño de tu institución</h2>
+  <p class="sp">Todos los planes incluyen TutorIA chatbot, Mi Ruta de Aprendizaje, dashboard y soporte por correo. Sin tarjeta para el trial.</p>
+  <div class="pgrid">
+    <!-- FREE -->
+    <div class="pc fia">
+      <div class="pcn">Free</div>
+      <div class="pcp">$0 <small>/mes</small></div>
+      <div class="pctk">🎁 14 días trial · 15.000 tokens</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA chatbot básico</li>
+        <li class="y">1 curso Moodle</li>
+        <li class="y">Mi Ruta de Aprendizaje</li>
+        <li class="n">Reportería avanzada</li>
+        <li class="n">Emails automáticos</li>
+        <li class="n">Certificados</li>
+      </ul>
+      <button class="pcb">Empezar gratis</button>
+    </div>
+    <!-- STARTER -->
+    <div class="pc fia">
+      <div class="pcn">Starter</div>
+      <div class="pcp">$19.990 <small>/mes</small></div>
+      <div class="pctk">📦 hasta ~30 alumnos activos</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA chatbot</li>
+        <li class="y">Cursos ilimitados</li>
+        <li class="y">Mi Ruta + Plan semanal</li>
+        <li class="y">Reportería general</li>
+        <li class="y">Certificados digitales</li>
+        <li class="n">Emails automáticos IA</li>
+      </ul>
+      <button class="pcb">Comenzar</button>
+    </div>
+    <!-- PRO -->
+    <div class="pc hot fia">
+      <div class="pcn">Pro</div>
+      <div class="pcp">$79.990 <small>/mes</small></div>
+      <div class="pctk">🚀 hasta ~200 alumnos activos</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA chatbot avanzado</li>
+        <li class="y">Ruta + alertas + logros</li>
+        <li class="y">Reportería SENCE completa</li>
+        <li class="y">Certificados + firma digital</li>
+        <li class="y">Emails automáticos IA</li>
+        <li class="y">ValidaNet Connect</li>
+      </ul>
+      <button class="pcb">Comenzar Pro</button>
+    </div>
+    <!-- UNIVERSIDAD -->
+    <div class="pc fia" style="border:2px solid #1e3a5f;position:relative">
+      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .75rem;border-radius:20px;white-space:nowrap">🎓 IDEAL UNIVERSIDADES</div>
+      <div class="pcn">Universidad</div>
+      <div class="pcp">$990.000 <small>/mes</small></div>
+      <div class="pctk">🏫 hasta 3.000 alumnos activos</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA Sonnet (alta calidad)</li>
+        <li class="y">Todo lo de Pro</li>
+        <li class="y">+$400/alumno adicional</li>
+        <li class="y">Integración sistema académico</li>
+        <li class="y">Reportería para acreditación</li>
+        <li class="y">SLA 99,9% + soporte prioritario</li>
+      </ul>
+      <button class="pcb" style="background:#1e3a5f">Solicitar demo</button>
+    </div>
+    <!-- ENTERPRISE -->
+    <div class="pc fia">
+      <div class="pcn">Enterprise</div>
+      <div class="pcp" style="font-size:1.4rem">A cotizar</div>
+      <div class="pctk">🏛️ +20.000 alumnos / consorcio</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA Sonnet dedicado</li>
+        <li class="y">Todo lo de Universidad</li>
+        <li class="y">ERP educativo completo</li>
+        <li class="y">CampusStore + Connect</li>
+        <li class="y">Integ. SENCE + acreditación</li>
+        <li class="y">Soporte in-site + SLA custom</li>
+      </ul>
+      <button class="pcb">Contactar</button>
+    </div>
+  </div>
+  <div class="cbox fia">
+    <h3>🔢 Calculadora de tokens</h3>
+    <p>Estima el plan adecuado según tus alumnos activos (hasta 25.000) y consultas promedio al mes.</p>
+    <div class="cgrid">
+      <div>
+        <div class="cig">
+          <label>Número de alumnos activos</label>
+          <input type="range" min="10" max="25000" value="200" id="sa" oninput="calc()">
+          <div class="cv"><span id="va">100</span> <small>alumnos</small></div>
+        </div>
+        <div class="cig" style="margin-top:1.25rem">
+          <label>Consultas promedio por alumno al mes</label>
+          <input type="range" min="2" max="300" value="20" id="sc" oninput="calc()">
+          <div class="cv"><span id="vc">20</span> <small>consultas</small></div>
+        </div>
+      </div>
+      <div class="cres">
+        <div class="rl"><span>Total consultas/mes</span><strong id="rc2">1.500</strong></div>
+        <div class="rl"><span>Alumnos activos</span><strong id="ra2">100</strong></div>
+        <div class="rl tot"><span>Plan recomendado</span><strong id="rp">Pro</strong></div>
+        <div class="prec" id="rrec">✅ El plan Pro cubre tu institución con margen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARACIÓN -->
+<section class="sec fia" id="comparacion">
+  <div class="slbl">Comparación</div>
+  <h2 class="sh">TutorIA vs. otras soluciones</h2>
+  <p class="sp">Comparamos honestamente con las alternativas del mercado.</p>
+  <div style="overflow-x:auto"><table class="comp">
+    <thead><tr><th>Característica</th><th class="vn">TutorIA ValidaNet</th><th>Chatbot genérico</th><th>Tutor humano</th><th>Otro LMS con IA</th></tr></thead>
+    <tbody>
+      <tr><td>Contexto del curso Moodle</td><td class="vn"><span class="ck">✓</span> Lee todo el contenido</td><td><span class="cx">✗</span> Sin contexto</td><td><span class="ck">✓</span> Con preparación</td><td><span class="cp">~</span> Parcial</td></tr>
+      <tr><td>Disponibilidad</td><td class="vn"><span class="ck">✓</span> 24/7 automático</td><td><span class="cp">~</span> Limitado</td><td><span class="cx">✗</span> Horario acotado</td><td><span class="ck">✓</span> 24/7</td></tr>
+      <tr><td>Plugin nativo Moodle</td><td class="vn"><span class="ck">✓</span> ZIP oficial</td><td><span class="cx">✗</span> iframe manual</td><td><span class="cx">✗</span> No aplica</td><td><span class="cp">~</span> Requiere migrar</td></tr>
+      <tr><td>Ruta aprendizaje IA</td><td class="vn"><span class="ck">✓</span> Notas 1.0-7.0 chilenas</td><td><span class="cx">✗</span> No incluye</td><td><span class="cx">✗</span> Manual</td><td><span class="cp">~</span> Básico</td></tr>
+      <tr><td>Emails automáticos</td><td class="vn"><span class="ck">✓</span> 5 tipos + anti-spam</td><td><span class="cx">✗</span> No incluye</td><td><span class="cx">✗</span> Manual</td><td><span class="cp">~</span> Básico</td></tr>
+      <tr><td>Reportería top preguntas</td><td class="vn"><span class="ck">✓</span> Tiempo real</td><td><span class="cx">✗</span> Sin reportes</td><td><span class="cx">✗</span> Sin datos</td><td><span class="cp">~</span> Limitado</td></tr>
+      <tr><td>Costo mensual</td><td class="vn"><span class="ck">✓</span> Desde $19.990 CLP</td><td><span class="cp">~</span> Variable USD</td><td><span class="cx">✗</span> $200.000+</td><td><span class="cx">✗</span> $80-300 USD</td></tr>
+      <tr><td>Integración SENCE Chile</td><td class="vn"><span class="ck">✓</span> SIC + asistencia</td><td><span class="cx">✗</span> No</td><td><span class="cx">✗</span> No</td><td><span class="cx">✗</span> No</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="sec fia">
+  <div class="slbl">Clientes</div>
+  <h2 class="sh">Lo que dicen nuestros clientes</h2>
+  <div class="tgrid">
+    <div class="tc fia"><div class="tst">★★★★★</div><p class="ttx">"Desde que implementamos TutorIA, las consultas repetitivas al docente bajaron un 80%. Los alumnos tienen respuestas inmediatas incluso los fines de semana."</p><div class="tau"><div class="tav">🏫</div><div><div class="tnm">María González</div><div class="tro">Coord. Académica · OTEC Capacita Norte</div></div></div></div>
+    <div class="tc fia"><div class="tst">★★★★★</div><p class="ttx">"La instalación fue en menos de 10 minutos. La ruta de aprendizaje con notas chilenas es exactamente lo que nuestros relatores necesitaban para el seguimiento SENCE."</p><div class="tau"><div class="tav">👨‍💼</div><div><div class="tnm">Carlos Méndez</div><div class="tro">Director · CFT Tecnológico del Norte</div></div></div></div>
+    <div class="tc fia"><div class="tst">★★★★★</div><p class="ttx">"El panel de top preguntas nos reveló que el 40% de consultas eran sobre la misma actividad. Mejoramos la instrucción y las dudas bajaron drásticamente."</p><div class="tau"><div class="tav">👩‍🏫</div><div><div class="tnm">Ana Torres</div><div class="tro">Relatora SENCE · Antofagasta</div></div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>¿Listo para transformar tu Moodle?</h2>
+  <p>14 días gratis, sin tarjeta de crédito. Activación en menos de 24 horas.</p>
+  <div class="ctabtns">
+    <button class="btn btn-w" onclick="window.location='mailto:contacto@norteduc.cl?subject=Solicitud Trial TutorIA'">Solicitar acceso gratuito</button>
+    <button class="btn btn-ow">Ver demo en vivo →</button>
+  </div>
+  <p style="margin-top:1.75rem;font-size:.82rem;color:rgba(255,255,255,.5)">contacto@norteduc.cl · www.validanet.cl · Norteduc Edtech SpA · Antofagasta, Chile</p>
+</div>
+
+<footer>
+  <div class="fbrand" style="display:flex;align-items:center;gap:.625rem"><span style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-.02em"><span style="color:#5bb033">Valida</span><span style="color:#e07b20">net</span></span><span style="color:rgba(255,255,255,.5);font-size:.82rem;font-weight:400">TutorIA</span></div>
+  <div>Norteduc Edtech SpA · RUT 76.624.932-9 · Antofagasta, Chile</div>
+  <div>contacto@norteduc.cl</div>
+</footer>
+
+<script>
+// CALCULADORA — scope global para oninput=""
+function calc(){
+  const sa=document.getElementById('sa');
+  const sc=document.getElementById('sc');
+  if(!sa||!sc)return;
+  const a=+sa.value;
+  const q=+sc.value;
+
+  // Mostrar valores actuales
+  document.getElementById('va').textContent=a.toLocaleString('es-CL');
+  document.getElementById('vc').textContent=q;
+
+  // Métricas
+  const consultas=a*q;
+  document.getElementById('rc2').textContent=consultas.toLocaleString('es-CL');
+  document.getElementById('ra2').textContent=a.toLocaleString('es-CL');
+
+  // Lógica de plan y precio estimado
+  let p, r;
+
+  if(a<=15){
+    p='Free';
+    r='✅ El plan gratuito cubre tu prueba inicial de forma ilimitada.';
+  }
+  else if(a<=30){
+    p='Starter — $19.990/mes';
+    r='✅ Starter cubre hasta 30 alumnos activos. Ahorro frente a solución propia: +90%.';
+  }
+  else if(a<=200){
+    p='Pro — $79.990/mes';
+    r='✅ Pro es ideal para OTEC, empresas y centros de capacitación hasta 200 alumnos.';
+  }
+  else if(a<=20000){
+    // Plan Universidad: $990.000 base hasta 3.000 alumnos, +$400 por alumno adicional
+    const base=990000;
+    const extra=Math.max(0,a-3000)*400;
+    const total=base+extra;
+    const fmt=n=>n.toLocaleString('es-CL');
+    p='Universidad — $'+fmt(total)+'/mes';
+    r='🎓 Base $990.000 (hasta 3.000 alumnos) + $400/alumno adicional. '
+     +'Total estimado: $'+fmt(total)+'/mes para '+fmt(a)+' alumnos y '+fmt(consultas)+' consultas/mes.';
+  }
+  else{
+    // Enterprise: mínimo $5.000.000, precio a cotizar
+    const estimado=Math.round((a/20000)*5000000/100000)*100000;
+    const fmt=n=>n.toLocaleString('es-CL');
+    p='Enterprise — cotización a medida';
+    r='🏛️ Para consorcios o instituciones sobre 20.000 alumnos. Precio de referencia desde $'+fmt(estimado)+'/mes. Contáctanos para propuesta personalizada.';
+  }
+
+  document.getElementById('rp').textContent=p;
+  document.getElementById('rrec').textContent=r;
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  // FEATURE TABS
+  function ft(id,btn){
+    document.querySelectorAll('.fi').forEach(e=>e.classList.remove('on'));
+    document.querySelectorAll('.fm').forEach(e=>e.classList.remove('on'));
+    document.querySelectorAll('.ftab').forEach(e=>e.classList.remove('on'));
+    document.getElementById('fi-'+id).classList.add('on');
+    document.getElementById('fm-'+id).classList.add('on');
+    btn.classList.add('on');
+  }
+  window.ft=ft;
+  // Inicializar calculadora
+  calc();
+  // FADE IN
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+  document.querySelectorAll('.fia').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

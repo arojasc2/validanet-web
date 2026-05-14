@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ValidaNet Connect — ValidaNet</title>
+<meta name="description" content="Tu institución visible en connect.validanet.cl. Empresas buscan capacitación y la IA les recomienda los mejores proveedores según sus necesidades.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon.ico">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'DM Sans','Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{color:white;padding:72px 40px;text-align:center;}
+.hero .icon{font-size:64px;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;line-height:1.1;font-family:'Syne',sans-serif;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-w{background:white;color:#0f172a;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.btn-o2{border:2px solid white;color:white;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:56px 0;}
+h2.tit{font-size:28px;font-weight:800;margin-bottom:8px;font-family:'Syne',sans-serif;}
+p.sub{color:#64748b;font-size:15px;margin-bottom:36px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;transition:all .2s;}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.card .ic{font-size:32px;margin-bottom:12px;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.card p{font-size:13px;color:#64748b;line-height:1.6;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.step{text-align:center;padding:24px;}
+.step .num{width:44px;height:44px;border-radius:50%;background:#7ab31a;color:white;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.step p{font-size:13px;color:#64748b;}
+.faq{background:white;border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;margin-bottom:12px;}
+.faq-q{padding:18px 24px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-a{padding:0 24px 18px;font-size:13px;color:#475569;line-height:1.6;display:none;}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.plan{border:2px solid #e2e8f0;border-radius:14px;padding:24px;text-align:center;}
+.plan.rec{border-color:#7ab31a;}
+.plan h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+.plan .price{font-size:32px;font-weight:800;color:#7ab31a;margin:10px 0 4px;}
+.plan .price span{font-size:14px;color:#64748b;font-weight:400;}
+.plan ul{list-style:none;text-align:left;margin:14px 0;}
+.plan ul li{font-size:13px;padding:5px 0;border-bottom:1px solid #f1f5f9;color:#475569;}
+.plan ul li::before{content:"✓ ";color:#7ab31a;font-weight:700;}
+.plan a{display:block;background:#7ab31a;color:white;border-radius:8px;padding:10px;font-weight:700;text-decoration:none;margin-top:14px;font-size:14px;}
+.cta{background:linear-gradient(135deg,#7ab31a,#f47920);padding:72px 40px;text-align:center;color:white;}
+.cta h2{font-size:32px;font-weight:800;margin-bottom:14px;}
+.cta p{font-size:16px;opacity:.9;margin-bottom:28px;}
+.cta a{background:white;color:#0f172a;border-radius:10px;padding:14px 36px;font-size:15px;font-weight:700;text-decoration:none;display:inline-block;}
+.breadcrumb{padding:14px 0;font-size:13px;color:#64748b;}
+.breadcrumb a{color:#7ab31a;text-decoration:none;}
+.badge{display:inline-block;border-radius:99px;padding:3px 12px;font-size:11px;font-weight:700;}
+.b-green{background:#dcfce7;color:#166534;}
+.b-blue{background:#dbeafe;color:#1e40af;}
+.b-orange{background:#ffedd5;color:#c2410c;}
+footer{background:#0f172a;color:#64748b;padding:40px;text-align:center;font-size:13px;}
+footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .plans{grid-template-columns:repeat(2,1fr)}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-links{gap:10px}
+  .nav-links a{font-size:12px}
+  h1{font-size:clamp(1.8rem,6vw,2.8rem)!important}
+  .hero{padding:56px 20px!important;text-align:center}
+  .hero-btns{flex-direction:column;align-items:center;gap:12px}
+  .plans{grid-template-columns:1fr}
+  .steps,.features-grid,.grid{grid-template-columns:1fr}
+  .wrap{padding:0 16px}
+  section{padding:40px 0}
+  footer{flex-direction:column;text-align:center;gap:12px;padding:2rem 16px}
+  footer a{display:inline-block;margin:4px 8px}
+}
+@media(max-width:480px){
+  .nav-links .btn-green-o{display:none}
+  h1{font-size:1.7rem!important}
+  .plan{padding:24px 16px}
+}.hero{padding:48px 20px;}.wrap{padding:0 16px;}}
+</style>
+<script>
+function toggleFaq(el){
+  var a=el.nextElementSibling;
+  a.style.display=a.style.display==='block'?'none':'block';
+  el.querySelector('span').textContent=a.style.display==='block'?'−':'+';
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:36px;"></a>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/addons.html">Addons</a>
+    <a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-orange">Comenzar gratis</a>
+  </div>
+</nav>
+
+<section class="hero" style="background:linear-gradient(135deg,#0f172a,#14532d);">
+  <div class="icon">🌐</div>
+  <div><span class="badge b-green">Plan Pro+</span></div>
+  <h1 style="margin-top:16px;">ValidaNet Connect</h1>
+  <p>Red de capacitación con Matching IA para toda Latinoamérica</p>
+  <p style="font-size:15px;max-width:580px;margin:0 auto 32px;">Tu institución visible en connect.validanet.cl. Empresas buscan capacitación y la IA les recomienda los mejores proveedores según sus necesidades.</p>
+  <div class="hero-btns">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-w">Comenzar gratis →</a>
+    <a href="/addons.html" class="btn-o2">Ver todos los addons</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">ValidaNet</a> › <a href="/addons.html">Addons</a> › ValidaNet Connect
+  </div>
+
+  <!-- FUNCIONES -->
+  <section>
+    <h2 class="tit">¿Qué incluye ValidaNet Connect?</h2>
+    <p class="sub">Todas las funcionalidades diseñadas para instituciones educativas en Chile</p>
+    <div class="grid">
+    <div class="card">
+      <div class="ic">🤖</div>
+      <h3>Matching con IA</h3>
+      <p>Claude analiza solicitudes de empresas y recomienda tu institución.</p>
+    </div>
+    <div class="card">
+      <div class="ic">🏢</div>
+      <h3>Perfil público</h3>
+      <p>Visible en connect.validanet.cl con cursos, ratings y acreditaciones.</p>
+    </div>
+    <div class="card">
+      <div class="ic">📩</div>
+      <h3>Solicitudes directas</h3>
+      <p>Empresas envían solicitudes de capacitación calificadas.</p>
+    </div>
+    <div class="card">
+      <div class="ic">👨‍🏫</div>
+      <h3>Bolsa de relatores</h3>
+      <p>Encuentra o publica disponibilidad de relatores especializados.</p>
+    </div>
+    <div class="card">
+      <div class="ic">⭐</div>
+      <h3>Reviews verificados</h3>
+      <p>Calificaciones reales de empresas que contrataron tus servicios.</p>
+    </div>
+    <div class="card">
+      <div class="ic">📊</div>
+      <h3>Stats de la red</h3>
+      <p>Tu posicionamiento y volumen de solicitudes en tu área.</p>
+    </div></div>
+  </section>
+
+
+<section style="background:#0f172a;padding:56px 0;">
+  <div class="wrap">
+    <h2 class="tit" style="color:white;text-align:center;">Matching IA en acción</h2>
+    <p class="sub" style="text-align:center;color:#64748b;margin-bottom:36px;">Así recibe y gestiona solicitudes de empresas desde tu dashboard</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <!-- Solicitud -->
+      <div style="background:#1e293b;border-radius:16px;padding:20px;border:1px solid #334155;">
+        <div style="color:#94a3b8;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:14px;">Nueva solicitud de capacitación</div>
+        <div style="background:#0f172a;border-radius:12px;padding:16px;margin-bottom:14px;">
+          <div style="color:#e2e8f0;font-size:14px;font-weight:700;margin-bottom:8px;">Excel Avanzado para equipo administrativo</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;">
+            <div><span style="color:#64748b;">Empresa:</span> <span style="color:#e2e8f0;font-weight:600;">Minera Los Andes SpA</span></div>
+            <div><span style="color:#64748b;">Alumnos:</span> <span style="color:#e2e8f0;font-weight:600;">25 trabajadores</span></div>
+            <div><span style="color:#64748b;">Región:</span> <span style="color:#e2e8f0;font-weight:600;">Antofagasta</span></div>
+            <div><span style="color:#64748b;">Presupuesto:</span> <span style="color:#e2e8f0;font-weight:600;">$500K - $2M</span></div>
+            <div><span style="color:#64748b;">SENCE:</span> <span style="color:#7ab31a;font-weight:600;">✓ Requerido</span></div>
+            <div><span style="color:#64748b;">Modalidad:</span> <span style="color:#e2e8f0;font-weight:600;">Híbrido</span></div>
+          </div>
+        </div>
+        <!-- Resultado matching -->
+        <div style="background:#dcfce7;border-radius:10px;padding:12px;border:1px solid #86efac;margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="color:#166534;font-size:13px;font-weight:800;">🏆 Tu institución — Match recomendado</span>
+            <span style="background:#166534;color:white;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:800;">88/100</span>
+          </div>
+          <div style="font-size:12px;color:#166534;">✓ Especialista en Excel · ✓ Región Antofagasta · ✓ Acreditado SENCE · ✓ Rating 4.8/5</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button style="flex:1;background:#7ab31a;border:none;border-radius:8px;padding:10px;color:white;font-size:13px;font-weight:600;cursor:pointer;">Enviar propuesta</button>
+          <button style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:10px 14px;color:#94a3b8;font-size:13px;cursor:pointer;">Ver detalle</button>
+        </div>
+      </div>
+      <!-- Stats red -->
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#1e293b;border-radius:12px;padding:16px;border:1px solid #334155;">
+          <div style="color:#94a3b8;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px;">Tu posición en la red</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:800;color:#7ab31a;">#1</div><div style="font-size:11px;color:#64748b;">En Antofagasta</div></div>
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:800;color:#3b82f6;">4.8★</div><div style="font-size:11px;color:#64748b;">Rating promedio</div></div>
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:800;color:#f59e0b;">12</div><div style="font-size:11px;color:#64748b;">Contratos cerrados</div></div>
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:800;color:#ec4899;">3</div><div style="font-size:11px;color:#64748b;">Solicitudes abiertas</div></div>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:12px;padding:16px;border:1px solid #334155;">
+          <div style="color:#94a3b8;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px;">Solicitudes recientes</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="background:#0f172a;border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:#e2e8f0;font-size:12px;">Excel - Minera Los Andes</span>
+              <span style="background:#dcfce7;color:#166534;border-radius:99px;padding:1px 8px;font-size:10px;font-weight:600;">Match 88</span>
+            </div>
+            <div style="background:#0f172a;border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:#e2e8f0;font-size:12px;">Liderazgo - Retail Norte</span>
+              <span style="background:#dbeafe;color:#1e40af;border-radius:99px;padding:1px 8px;font-size:10px;font-weight:600;">Match 72</span>
+            </div>
+            <div style="background:#0f172a;border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:#e2e8f0;font-size:12px;">Power BI - Constructora JR</span>
+              <span style="background:#dcfce7;color:#166534;border-radius:99px;padding:1px 8px;font-size:10px;font-weight:600;">Match 91</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section style="background:white;border-radius:16px;padding:40px;margin-bottom:24px;">
+    <h2 class="tit" style="text-align:center;">¿Cómo funciona?</h2>
+    <p class="sub" style="text-align:center;">4 pasos para empezar</p>
+    <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Activa</h3>
+      <p>Habilita Connect desde el dashboard y completa tu perfil.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Publica</h3>
+      <p>Agrega tus cursos, especialidades y regiones de cobertura.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Recibe</h3>
+      <p>Empresas encuentran tu institución y envían solicitudes.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h3>Conecta</h3>
+      <p>Responde propuestas y concreta contratos de capacitación.</p>
+    </div></div>
+  </section>
+
+  <!-- PLAN -->
+  <section>
+    <div class="wrap">
+      <h2 class="tit">Planes para cada perfil</h2>
+      <p class="sub">Empresas que buscan relatores y relatores que ofrecen sus servicios. Sin costos ocultos.</p>
+
+      <!-- EMPRESAS -->
+      <div style="margin-bottom:2.5rem">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem">
+          <div style="background:#1e3a5f;color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .875rem;border-radius:20px">🏢 PARA EMPRESAS / OTEC</div>
+          <div style="height:1px;flex:1;background:#e2e8f0"></div>
+        </div>
+        <div class="plans" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div class="plan">
+            <h3>Explorador</h3>
+            <div class="price">$0<span>/mes</span></div>
+            <p style="font-size:13px;color:#64748b;margin-bottom:1rem">Prueba sin tarjeta</p>
+            <ul>
+              <li>10 solicitudes/mes</li>
+              <li>5 propuestas recibidas</li>
+              <li>10 chats IA/mes</li>
+              <li>Vista de relatores</li>
+            </ul>
+            <a href="https://connect.validanet.cl/connect/empresa/registro">Comenzar gratis</a>
+          </div>
+          <div class="plan rec">
+            <h3>⭐ Empresa Pro</h3>
+            <div class="price">$49.990<span>/mes</span></div>
+            <p style="font-size:13px;color:rgba(255,255,255,.7);margin-bottom:1rem">Todo lo que necesitas para contratar</p>
+            <ul>
+              <li>Solicitudes ilimitadas</li>
+              <li>15 propuestas simultáneas</li>
+              <li>Contratos + firma digital</li>
+              <li>Logo empresa en perfil</li>
+              <li>Historial de contratos</li>
+              <li>Calculadora SENCE</li>
+              <li>Chat IA ilimitado</li>
+            </ul>
+            <a href="https://connect.validanet.cl/connect/empresa/registro">Comenzar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATORES -->
+      <div>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem">
+          <div style="background:#7ab31a;color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .875rem;border-radius:20px">🎓 PARA RELATORES / CAPACITADORES</div>
+          <div style="height:1px;flex:1;background:#e2e8f0"></div>
+        </div>
+        <div class="plans" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div class="plan">
+            <h3>Buscador</h3>
+            <div class="price">$0<span>/mes</span></div>
+            <p style="font-size:13px;color:#64748b;margin-bottom:1rem">Empieza a visibilizarte</p>
+            <ul>
+              <li>5 postulaciones/mes</li>
+              <li>3 contactos directos</li>
+              <li>10 chats IA/mes</li>
+              <li>Perfil público básico</li>
+            </ul>
+            <a href="https://connect.validanet.cl/connect/relator/registro">Registrarme</a>
+          </div>
+          <div class="plan">
+            <h3>Capacitador</h3>
+            <div class="price">$9.990<span>/mes</span></div>
+            <p style="font-size:13px;color:#64748b;margin-bottom:1rem">Para relatores activos</p>
+            <ul>
+              <li>20 postulaciones/mes</li>
+              <li>10 contactos directos</li>
+              <li>Match IA con empresas</li>
+              <li>Notificaciones email</li>
+              <li>Contratos digitales</li>
+              <li>Historial de contratos</li>
+            </ul>
+            <a href="https://connect.validanet.cl/connect/relator/registro">Comenzar</a>
+          </div>
+          <div class="plan rec">
+            <h3>⭐ Experto</h3>
+            <div class="price">$19.990<span>/mes</span></div>
+            <p style="font-size:13px;color:rgba(255,255,255,.7);margin-bottom:1rem">Máxima visibilidad</p>
+            <ul>
+              <li>Postulaciones ilimitadas</li>
+              <li>Contactos ilimitados</li>
+              <li>Match IA prioritario</li>
+              <li>WhatsApp + email</li>
+              <li>Firma digital</li>
+              <li>Badge Experto ✓ + Validado ✓</li>
+              <li>Stats perfil + soporte prioritario</li>
+            </ul>
+            <a href="https://connect.validanet.cl/connect/relator/registro">Ser Experto</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <!-- COMPARACIÓN -->
+  <section style="background:#f8fafc;padding:56px 0;">
+    <div class="wrap">
+      <h2 class="tit">ValidaNet Connect vs. alternativas</h2>
+      <p class="sub">Compara antes de decidir.</p>
+      <div style="overflow-x:auto;border-radius:14px;border:1px solid #e2e8f0;">
+        <table style="width:100%;border-collapse:collapse;background:#fff;font-size:14px;">
+          <thead>
+            <tr style="background:#0f172a;color:#fff;">
+              <th style="padding:14px 20px;text-align:left;border-radius:14px 0 0 0">Característica</th>
+              <th style="padding:14px 20px;text-align:center;color:#7ab31a">ValidaNet Connect</th>
+              <th style="padding:14px 20px;text-align:center">Bolsa de trabajo tradicional</th>
+              <th style="padding:14px 20px;text-align:center;border-radius:0 14px 0 0">Gestión manual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f1f5f9">
+              <td style="padding:12px 20px;font-weight:600">Matching IA con relatores</td>
+              <td style="padding:12px 20px;text-align:center;color:#7ab31a;font-size:1.1rem">✅</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9;background:#f8fafc">
+              <td style="padding:12px 20px;font-weight:600">Contratos digitales con firma</td>
+              <td style="padding:12px 20px;text-align:center;color:#7ab31a;font-size:1.1rem">✅</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9">
+              <td style="padding:12px 20px;font-weight:600">PDFs automáticos en la nube</td>
+              <td style="padding:12px 20px;text-align:center;color:#7ab31a;font-size:1.1rem">✅</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9;background:#f8fafc">
+              <td style="padding:12px 20px;font-weight:600">Portal empresa + relator</td>
+              <td style="padding:12px 20px;text-align:center;color:#7ab31a;font-size:1.1rem">✅</td>
+              <td style="padding:12px 20px;text-align:center;color:#f59e0b">Parcial</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f1f5f9">
+              <td style="padding:12px 20px;font-weight:600">Integrado con TutorIA + SENCE</td>
+              <td style="padding:12px 20px;text-align:center;color:#7ab31a;font-size:1.1rem">✅</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+              <td style="padding:12px 20px;text-align:center;color:#ef4444">❌</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="tit">Preguntas frecuentes</h2>
+    <p class="sub">Todo lo que necesitas saber sobre ValidaNet Connect</p>
+    
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Quién puede usar Connect? <span>+</span></div>
+      <div class="faq-a">Cualquier institución educativa: OTEC, CFT, IP, universidad, empresa de capacitación o consultoría.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Cómo funciona el matching con IA? <span>+</span></div>
+      <div class="faq-a">Claude evalúa la solicitud de la empresa y puntúa los proveedores según especialidad, región, SENCE y reputación.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Es gratuito para empresas que buscan capacitación? <span>+</span></div>
+      <div class="faq-a">Sí, las empresas que buscan capacitación no pagan. Solo pagan las instituciones con plan Pro o superior.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Necesito SENCE para aparecer? <span>+</span></div>
+      <div class="faq-a">No, pero tener SENCE mejora tu score en el matching IA.</div>
+    </div>
+  </section>
+</div>
+
+<section class="cta">
+  <h2>¿Listo para activar ValidaNet Connect?</h2>
+  <p>Crea tu cuenta gratis y activa este addon en minutos</p>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/#register">Crear cuenta gratis →</a>
+</section>
+
+<footer>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;"></a>
+  <p style="margin-bottom:12px;">
+    <a href="/">Inicio</a><a href="/addons.html">Addons</a><a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/">Dashboard</a>
+    <a href="mailto:contacto@validanet.cl">Contacto</a>
+  </p>
+  <p>© 2026 Norteduc Edtech SpA · Antofagasta, Chile</p>
+</footer>
+
+<script>var CHAT_PERFIL="publico";</script>
+<!-- 
+  TutorIA Connect — Widget Asistente IA
+  Insertar antes de <script src="/vn-precios.js"></script>
+</body> en todos los dashboards
+  Reemplazar PERFIL_ACTUAL por: 'empresa' | 'relator' | 'admin'
+-->
+<div id="vn-chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  
+  <!-- Burbuja flotante -->
+  <button id="vn-chat-btn" onclick="toggleChat()" style="
+    width:56px;height:56px;border-radius:50%;
+    background:linear-gradient(135deg,#7ab31a,#5a8a12);
+    border:none;cursor:pointer;
+    box-shadow:0 4px 20px rgba(122,179,26,.5);
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;transition:transform .2s;
+    position:relative;
+  " title="Asistente IA ValidaNet">
+    🤖
+    <span id="vn-chat-badge" style="
+      position:absolute;top:-2px;right:-2px;
+      background:#ef4444;color:white;
+      border-radius:50%;width:18px;height:18px;
+      font-size:10px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+    ">1</span>
+  </button>
+
+  <!-- Panel de chat -->
+  <div id="vn-chat-panel" style="
+    display:none;
+    position:absolute;bottom:70px;right:0;
+    width:340px;
+    background:white;border-radius:16px;
+    box-shadow:0 8px 40px rgba(0,0,0,.15);
+    overflow:hidden;
+    animation:chatSlideUp .2s ease;
+  ">
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#0f172a,#1e293b);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:18px;">🤖</div>
+        <div>
+          <div style="color:white;font-weight:700;font-size:14px;">TutorIA Connect</div>
+          <div style="color:#7ab31a;font-size:11px;display:flex;align-items:center;gap:4px;">
+            <span style="width:6px;height:6px;background:#7ab31a;border-radius:50%;display:inline-block;animation:pulse 2s infinite;"></span>
+            En línea · SENCE & Capacitación
+          </div>
+        </div>
+      </div>
+      <button onclick="toggleChat()" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:18px;padding:4px;">✕</button>
+    </div>
+
+    <!-- Mensajes -->
+    <div id="vn-chat-msgs" style="height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8fafc;">
+      <!-- Mensaje de bienvenida -->
+      <div style="display:flex;gap:8px;align-items:flex-start;">
+        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>
+        <div style="background:white;border:1px solid #e2e8f0;border-radius:12px;border-top-left-radius:4px;padding:10px 12px;font-size:13px;color:#475569;max-width:85%;line-height:1.5;box-shadow:0 1px 3px rgba(0,0,0,.05);">
+          ¡Hola! Soy TutorIA Connect 👋<br><br>
+          Puedo ayudarte con <strong>SENCE, franquicia tributaria, OTECs, OTICs, ATE</strong> y cómo usar ValidaNet.<br><br>
+          ¿En qué te puedo ayudar?
+        </div>
+      </div>
+      <!-- Sugerencias rápidas -->
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-left:36px;">
+        <button onclick="sendQuick('¿Cómo uso la franquicia SENCE?')" style="background:white;border:1px solid #e2e8f0;border-radius:99px;padding:5px 12px;font-size:11px;color:#475569;cursor:pointer;transition:all .15s;" onmouseover="this.style.borderColor='#7ab31a';this.style.color='#7ab31a'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#475569'">💰 Franquicia SENCE</button>
+        <button onclick="sendQuick('¿Qué es una OTEC y una OTIC?')" style="background:white;border:1px solid #e2e8f0;border-radius:99px;padding:5px 12px;font-size:11px;color:#475569;cursor:pointer;transition:all .15s;" onmouseover="this.style.borderColor='#7ab31a';this.style.color='#7ab31a'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#475569'">🏫 OTEC vs OTIC</button>
+        <button onclick="sendQuick('¿Cómo publico una solicitud de capacitación?')" style="background:white;border:1px solid #e2e8f0;border-radius:99px;padding:5px 12px;font-size:11px;color:#475569;cursor:pointer;transition:all .15s;" onmouseover="this.style.borderColor='#7ab31a';this.style.color='#7ab31a'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#475569'">📋 Publicar solicitud</button>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div style="padding:12px;border-top:1px solid #f1f5f9;background:white;display:flex;gap:8px;">
+      <input id="vn-chat-input" type="text" placeholder="Escribe tu consulta..." 
+        style="flex:1;border:1.5px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:13px;outline:none;font-family:inherit;transition:border .15s;"
+        onfocus="this.style.borderColor='#7ab31a'" onblur="this.style.borderColor='#e2e8f0'"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){sendMsg();event.preventDefault();}">
+      <button onclick="sendMsg()" id="vn-send-btn" style="
+        background:#7ab31a;color:white;border:none;
+        border-radius:8px;padding:9px 14px;
+        font-size:13px;font-weight:600;cursor:pointer;
+        transition:background .15s;white-space:nowrap;
+      " onmouseover="this.style.background='#96d422'" onmouseout="this.style.background='#7ab31a'">
+        ➤
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes chatSlideUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:.4; }
+}
+.vn-msg-user {
+  align-self:flex-end;
+  background:#7ab31a;color:white;
+  border-radius:12px;border-bottom-right-radius:4px;
+  padding:10px 12px;font-size:13px;max-width:85%;line-height:1.5;
+}
+.vn-msg-bot {
+  display:flex;gap:8px;align-items:flex-start;
+}
+.vn-msg-bot-bubble {
+  background:white;border:1px solid #e2e8f0;
+  border-radius:12px;border-top-left-radius:4px;
+  padding:10px 12px;font-size:13px;color:#475569;
+  max-width:85%;line-height:1.5;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.vn-typing {
+  display:flex;gap:4px;padding:8px 12px;
+  background:white;border:1px solid #e2e8f0;
+  border-radius:12px;border-top-left-radius:4px;
+  width:fit-content;
+}
+.vn-typing span {
+  width:6px;height:6px;border-radius:50%;
+  background:#94a3b8;animation:typing 1.2s infinite;
+}
+.vn-typing span:nth-child(2) { animation-delay:.2s; }
+.vn-typing span:nth-child(3) { animation-delay:.4s; }
+@keyframes typing {
+  0%,60%,100% { transform:translateY(0);opacity:.4; }
+  30% { transform:translateY(-4px);opacity:1; }
+}
+</style>
+
+<script>
+(function(){
+  var VN_SESSION = localStorage.getItem('vn_chat_session') || null;
+  var VN_PERFIL = (typeof CHAT_PERFIL !== 'undefined') ? CHAT_PERFIL : 'empresa';
+  var VN_TOKEN = (typeof TOKEN !== 'undefined') ? TOKEN : null;
+  var chatOpen = false;
+
+  window.toggleChat = function(){
+    chatOpen = !chatOpen;
+    var panel = document.getElementById('vn-chat-panel');
+    var btn = document.getElementById('vn-chat-btn');
+    var badge = document.getElementById('vn-chat-badge');
+    panel.style.display = chatOpen ? 'block' : 'none';
+    btn.style.transform = chatOpen ? 'scale(0.9)' : 'scale(1)';
+    if(chatOpen){
+      badge.style.display = 'none';
+      document.getElementById('vn-chat-input').focus();
+    }
+  };
+
+  window.sendQuick = function(msg){
+    document.getElementById('vn-chat-input').value = msg;
+    sendMsg();
+  };
+
+  window.sendMsg = function(){
+    var input = document.getElementById('vn-chat-input');
+    var msg = input.value.trim();
+    if(!msg) return;
+    input.value = '';
+
+    // Agregar mensaje usuario
+    var msgs = document.getElementById('vn-chat-msgs');
+    var userDiv = document.createElement('div');
+    userDiv.className = 'vn-msg-user';
+    userDiv.textContent = msg;
+    msgs.appendChild(userDiv);
+
+    // Typing indicator
+    var typing = document.createElement('div');
+    typing.className = 'vn-msg-bot';
+    typing.id = 'vn-typing';
+    typing.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div><div class="vn-typing"><span></span><span></span><span></span></div>';
+    msgs.appendChild(typing);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    // Deshabilitar input
+    document.getElementById('vn-send-btn').disabled = true;
+
+    // Llamar API
+    var headers = {'Content-Type':'application/json'};
+    if(VN_TOKEN) headers['X-Connect-Token'] = VN_TOKEN;
+
+    fetch('https://app.validanet.cl/portal/connect/asistente/chat', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({
+        mensaje: msg,
+        session_id: VN_SESSION,
+        perfil: VN_PERFIL
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      // Guardar session_id
+      if(d.session_id){
+        VN_SESSION = d.session_id;
+        localStorage.setItem('vn_chat_session', d.session_id);
+      }
+      // Remover typing
+      var t = document.getElementById('vn-typing');
+      if(t) t.remove();
+
+      // Agregar respuesta
+      var botDiv = document.createElement('div');
+      botDiv.className = 'vn-msg-bot';
+      var botBubble = document.createElement('div');
+      botBubble.className = 'vn-msg-bot-bubble';
+      botBubble.innerHTML = (d.reply||'Sin respuesta').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+      botDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>';
+      botDiv.appendChild(botBubble);
+      msgs.appendChild(botDiv);
+      msgs.scrollTop = msgs.scrollHeight;
+    })
+    .catch(function(){
+      var t = document.getElementById('vn-typing');
+      if(t) t.remove();
+      var errDiv = document.createElement('div');
+      errDiv.className = 'vn-msg-bot';
+      errDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:#ef4444;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">⚠️</div><div class="vn-msg-bot-bubble">Error de conexión. Intenta de nuevo.</div>';
+      msgs.appendChild(errDiv);
+      msgs.scrollTop = msgs.scrollHeight;
+    })
+    .finally(function(){
+      document.getElementById('vn-send-btn').disabled = false;
+      document.getElementById('vn-chat-input').focus();
+    });
+  };
+})();
+</script>
+
+<script src="/vn-precios.js"></script>
+</body></html>

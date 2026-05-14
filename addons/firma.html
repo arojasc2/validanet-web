@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firma Electrónica — ValidaNet</title>
+<meta name="description" content="Firma contratos, acuerdos y documentos educativos con firma electrónica simple y avanzada. Válida según la Ley 19.799 de Chile.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon.ico">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{color:white;padding:72px 40px;text-align:center;}
+.hero .icon{font-size:64px;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;line-height:1.1;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-w{background:white;color:#0f172a;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.btn-o2{border:2px solid white;color:white;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:56px 0;}
+h2.tit{font-size:28px;font-weight:800;margin-bottom:8px;}
+p.sub{color:#64748b;font-size:15px;margin-bottom:36px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;transition:all .2s;}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.card .ic{font-size:32px;margin-bottom:12px;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.card p{font-size:13px;color:#64748b;line-height:1.6;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.step{text-align:center;padding:24px;}
+.step .num{width:44px;height:44px;border-radius:50%;background:#7ab31a;color:white;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.step p{font-size:13px;color:#64748b;}
+.faq{background:white;border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;margin-bottom:12px;}
+.faq-q{padding:18px 24px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-a{padding:0 24px 18px;font-size:13px;color:#475569;line-height:1.6;display:none;}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.plan{border:2px solid #e2e8f0;border-radius:14px;padding:24px;text-align:center;}
+.plan.rec{border-color:#7ab31a;}
+.plan h3{font-size:16px;font-weight:700;margin-bottom:6px;}
+.plan .price{font-size:32px;font-weight:800;color:#7ab31a;margin:10px 0 4px;}
+.plan .price span{font-size:14px;color:#64748b;font-weight:400;}
+.plan ul{list-style:none;text-align:left;margin:14px 0;}
+.plan ul li{font-size:13px;padding:5px 0;border-bottom:1px solid #f1f5f9;color:#475569;}
+.plan ul li::before{content:"✓ ";color:#7ab31a;font-weight:700;}
+.plan a{display:block;background:#7ab31a;color:white;border-radius:8px;padding:10px;font-weight:700;text-decoration:none;margin-top:14px;font-size:14px;}
+.cta{background:linear-gradient(135deg,#7ab31a,#f47920);padding:72px 40px;text-align:center;color:white;}
+.cta h2{font-size:32px;font-weight:800;margin-bottom:14px;}
+.cta p{font-size:16px;opacity:.9;margin-bottom:28px;}
+.cta a{background:white;color:#0f172a;border-radius:10px;padding:14px 36px;font-size:15px;font-weight:700;text-decoration:none;display:inline-block;}
+.breadcrumb{padding:14px 0;font-size:13px;color:#64748b;}
+.breadcrumb a{color:#7ab31a;text-decoration:none;}
+.badge{display:inline-block;border-radius:99px;padding:3px 12px;font-size:11px;font-weight:700;}
+.b-green{background:#dcfce7;color:#166534;}
+.b-blue{background:#dbeafe;color:#1e40af;}
+.b-orange{background:#ffedd5;color:#c2410c;}
+footer{background:#0f172a;color:#64748b;padding:40px;text-align:center;font-size:13px;}
+footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
+
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links{gap:10px;}
+  .nav-links a{font-size:12px;}
+  .hero{padding:48px 20px;}
+  .hero h1{font-size:clamp(22px,6vw,36px);}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .wrap{padding:0 16px;}
+  .grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .plans{grid-template-columns:1fr;}
+  section{padding:36px 0;}
+}
+@media(max-width:480px){
+  .nav-links .btn-green-o{display:none;}
+  .steps{grid-template-columns:1fr;}
+}
+@media(max-width:600px){.nav-links{display:none;}.hero{padding:48px 20px;}.wrap{padding:0 16px;}}
+</style>
+<script>
+function toggleFaq(el){
+  var a=el.nextElementSibling;
+  a.style.display=a.style.display==='block'?'none':'block';
+  el.querySelector('span').textContent=a.style.display==='block'?'−':'+';
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:36px;"></a>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/addons.html">Addons</a>
+    <a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-orange">Comenzar gratis</a>
+  </div>
+</nav>
+
+<section class="hero" style="background:linear-gradient(135deg,#0f172a,#7c2d12);">
+  <div class="icon">✍️</div>
+  <div><span class="badge b-orange">Plan Pro</span></div>
+  <h1 style="margin-top:16px;">Firma Electrónica</h1>
+  <p>Firma documentos digitalmente con validez legal en Chile</p>
+  <p style="font-size:15px;max-width:580px;margin:0 auto 32px;">Firma contratos, acuerdos y documentos educativos con firma electrónica simple y avanzada. Válida según la Ley 19.799 de Chile.</p>
+  <div class="hero-btns">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-w">Comenzar gratis →</a>
+    <a href="/addons.html" class="btn-o2">Ver todos los addons</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">ValidaNet</a> › <a href="/addons.html">Addons</a> › Firma Electrónica
+  </div>
+
+  <!-- FUNCIONES -->
+  <section>
+    <h2 class="tit">¿Qué incluye Firma Electrónica?</h2>
+    <p class="sub">Todas las funcionalidades diseñadas para instituciones educativas en Chile</p>
+    <div class="grid">
+    <div class="card">
+      <div class="ic">📝</div>
+      <h3>Firma simple</h3>
+      <p>Firma digital para documentos internos y administrativos.</p>
+    </div>
+    <div class="card">
+      <div class="ic">🔒</div>
+      <h3>Firma avanzada</h3>
+      <p>Con certificado digital acreditado por el MINSEGPRES.</p>
+    </div>
+    <div class="card">
+      <div class="ic">📧</div>
+      <h3>Envío por email</h3>
+      <p>Envía documentos para firma directamente desde ValidaNet.</p>
+    </div>
+    <div class="card">
+      <div class="ic">✅</div>
+      <h3>Validación legal</h3>
+      <p>Cumple con la Ley 19.799 de firma electrónica de Chile.</p>
+    </div>
+    <div class="card">
+      <div class="ic">📁</div>
+      <h3>Gestión de documentos</h3>
+      <p>Organiza y archiva todos los documentos firmados.</p>
+    </div>
+    <div class="card">
+      <div class="ic">🔄</div>
+      <h3>Flujo de firmas</h3>
+      <p>Define el orden de firmantes para documentos con múltiples partes.</p>
+    </div></div>
+  </section>
+
+  <!-- CÓMO FUNCIONA -->
+  <section style="background:white;border-radius:16px;padding:40px;margin-bottom:24px;">
+    <h2 class="tit" style="text-align:center;">¿Cómo funciona?</h2>
+    <p class="sub" style="text-align:center;">4 pasos para empezar</p>
+    <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Sube</h3>
+      <p>Carga el documento que necesitas firmar en PDF.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Define</h3>
+      <p>Indica quiénes deben firmar y en qué orden.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Envía</h3>
+      <p>Los firmantes reciben email con link seguro para firmar.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h3>Archiva</h3>
+      <p>El documento firmado queda almacenado en ValidaNet.</p>
+    </div></div>
+  </section>
+
+  <!-- PLAN -->
+  <section>
+    <h2 class="tit">Disponible desde el plan Pro</h2>
+    <p class="sub">Sin costos ocultos. Cancela cuando quieras.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price" style="font-size:36px;font-weight:800;"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span><span>/mes</span></div>
+        <ul>
+          <li>TutorIA básico</li>
+          <li>Certificados digitales</li>
+          <li>Reportería básica</li>
+          <li>Soporte por email</li>
+        </ul>
+        <a href="https://app.validanet.cl/api/validanet/dashboard/#register">Comenzar</a>
+      </div>
+      <div class="plan rec">
+        <h3>⭐ Pro</h3>
+        <div class="price" style="font-size:36px;font-weight:800;"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span><span style="font-size:16px;color:#94a3b8;font-weight:400;">/mes</span></div>
+        <ul>
+          <li>Todos los addons Pro</li>
+          <li>CampusStore incluido</li>
+          <li>ERP + Licitaciones</li>
+          <li>ValidaNet Connect</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="https://app.validanet.cl/api/validanet/dashboard/#register">Comenzar</a>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <div class="price" style="font-size:36px;font-weight:800;">A cotizar<span style="font-size:16px;color:#94a3b8;font-weight:400;">/mes</span></div>
+        <ul>
+          <li>Todos los addons incluidos</li>
+          <li>SGC NCh2728</li>
+          <li>White label</li>
+          <li>API personalizada</li>
+          <li>SLA garantizado</li>
+          <li>Soporte 24/7</li>
+        </ul>
+        <a href="mailto:contacto@norteduc.cl">Contactar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="tit">Preguntas frecuentes</h2>
+    <p class="sub">Todo lo que necesitas saber sobre Firma Electrónica</p>
+    
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿La firma electrónica tiene validez legal? <span>+</span></div>
+      <div class="faq-a">Sí, la firma electrónica simple es válida para la mayoría de documentos según la Ley 19.799.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Necesito un certificado digital? <span>+</span></div>
+      <div class="faq-a">Para firma simple no. Para firma avanzada se requiere certificado de una entidad acreditada.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Cuántos documentos puedo firmar? <span>+</span></div>
+      <div class="faq-a">Pro: 50 doc/mes, Enterprise: ilimitado.</div>
+    </div>
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Funciona en móvil? <span>+</span></div>
+      <div class="faq-a">Sí, los firmantes pueden firmar desde cualquier dispositivo con navegador.</div>
+    </div>
+  </section>
+</div>
+
+<section class="cta">
+  <h2>¿Listo para activar Firma Electrónica?</h2>
+  <p>Crea tu cuenta gratis y activa este addon en minutos</p>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/#register">Crear cuenta gratis →</a>
+</section>
+
+<footer>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;"></a>
+  <p style="margin-bottom:12px;">
+    <a href="/">Inicio</a><a href="/addons.html">Addons</a><a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/">Dashboard</a>
+    <a href="mailto:contacto@norteduc.cl">Contacto</a>
+  </p>
+  <p>© 2026 Norteduc Edtech SpA · Antofagasta, Chile</p>
+</footer>
+<script src="/vn-precios.js"></script>
+</body></html>
