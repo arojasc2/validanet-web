@@ -25,6 +25,8 @@ nav a img{height:36px;}
 .hero h1 span{color:#7ab31a;}
 .hero p{font-size:17px;max-width:680px;margin:0 auto 24px;color:rgba(255,255,255,.88);}
 .tag{display:inline-block;background:rgba(122,179,26,.15);border:1px solid rgba(122,179,26,.3);color:#7ab31a;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:18px;}
+.cl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#93c5fd;padding:6px 14px;border-radius:99px;font-size:13px;font-weight:700;margin-top:12px;}
+.cl-badge svg{width:14px;height:14px;}
 
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
 section{padding:48px 0;}
@@ -100,6 +102,10 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
   <span class="tag">Moodle gestionado · Hosting incluido</span>
   <h1>Tu <span>Aula Virtual Moodle</span> lista en minutos</h1>
   <p>Para OTECs, universidades, CFT, IP, consultoras y áreas de capacitación. Hosting dedicado, backups diarios, 99.9% uptime, SSL, soporte chileno. Sin servidor propio, sin instalación, sin DevOps.</p>
+  <div class="cl-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    Protegido por CloudLinux LVE · Aislamiento de recursos por aula
+  </div>
 </section>
 
 <section>
@@ -154,6 +160,32 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
       </form>
     </div>
 
+    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);color:white;border-radius:14px;padding:32px;margin-top:32px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ab31a" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h2 style="font-size:22px;margin:0;color:white;">CloudLinux LVE — tu aula con recursos garantizados</h2>
+      </div>
+      <p style="color:#cbd5e1;font-size:14px;margin-bottom:14px;line-height:1.7;">A diferencia de hostings compartidos donde un vecino puede consumir toda la CPU del servidor, en ValidaNet cada aula tiene <strong>CPU, RAM, procesos e I/O aislados</strong> mediante CloudLinux LVE. Si una OTEC vecina recibe un peak de tráfico, tu aula sigue funcionando al 100% de la capacidad que pagaste.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">CPU dedicada</div>
+          <div style="font-size:14px;color:white;margin-top:4px;">Cada aula con su % asignado, sin contención</div>
+        </div>
+        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">RAM aislada</div>
+          <div style="font-size:14px;color:white;margin-top:4px;">Memoria propia, no compartida entre aulas</div>
+        </div>
+        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">I/O priorizado</div>
+          <div style="font-size:14px;color:white;margin-top:4px;">Disco rápido sin esperas por otras aulas</div>
+        </div>
+        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
+          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">Procesos limitados</div>
+          <div style="font-size:14px;color:white;margin-top:4px;">Un fork-bomb no derrumba el servidor</div>
+        </div>
+      </div>
+    </div>
+
     <div class="faq">
       <h2>Preguntas frecuentes</h2>
       <details>
@@ -170,7 +202,11 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
       </details>
       <details>
         <summary>¿Qué incluye el hosting?</summary>
-        <p>Servidor dedicado en Chile, SSL gratuito, backups automáticos diarios, soporte por email y WhatsApp en horario hábil. En el plan Business: SLA 99.95% y soporte 24/7.</p>
+        <p>Servidor dedicado en Europa con CloudLinux LVE para aislamiento de recursos, SSL gratuito vía Cloudflare, backups automáticos diarios, soporte por email y WhatsApp en horario hábil. En el plan Business: SLA 99.95% y soporte 24/7.</p>
+      </details>
+      <details>
+        <summary>¿Qué es CloudLinux LVE y por qué importa?</summary>
+        <p>Es la tecnología que aísla los recursos (CPU, RAM, procesos, I/O) de cada aula a nivel del kernel. En hostings tradicionales, si un vecino satura el servidor, todos los demás lo sufren ("noisy neighbor"). Con LVE, cada aula tiene su cuota garantizada — el plan Starter recibe 100% de CPU y 1 GB de RAM dedicada, Pro 200% / 2 GB, Business 400% / 4 GB. Es lo que usan los proveedores de hosting serios como GoDaddy, Hostinger y Namecheap.</p>
       </details>
       <details>
         <summary>¿Puedo cambiar de plan después?</summary>
@@ -222,14 +258,16 @@ async function loadPlanes(){
             <li>SSL incluido</li>
             <li>Backups diarios</li>
             <li>Soporte por email</li>
-            <li>2 GB almacenamiento</li>
+            <li>10 GB almacenamiento</li>
+            <li><strong>CloudLinux LVE</strong>: 100% CPU · 1 GB RAM dedicada</li>
           ` : p.slug === 'pro' ? `
             <li>Todo lo de Starter +</li>
             <li>Dominio propio opcional</li>
             <li>CDN para velocidad</li>
             <li>Integración SENCE</li>
             <li>Soporte WhatsApp prioritario</li>
-            <li>10 GB almacenamiento</li>
+            <li>25 GB almacenamiento</li>
+            <li><strong>CloudLinux LVE</strong>: 200% CPU · 2 GB RAM dedicada</li>
           ` : `
             <li>Todo lo de Pro +</li>
             <li>White-label completo</li>
@@ -237,6 +275,7 @@ async function loadPlanes(){
             <li>Integración con ERP</li>
             <li>Soporte 24/7</li>
             <li>SLA 99.95% · 50 GB</li>
+            <li><strong>CloudLinux LVE</strong>: 400% CPU · 4 GB RAM dedicada</li>
           `}
         </ul>
       `;
