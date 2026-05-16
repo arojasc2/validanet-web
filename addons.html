@@ -68,22 +68,41 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
   nav a img{height:26px !important;}
 }
 </style>
+<link rel="stylesheet" href="https://app.validanet.cl/static/vn_nav_shared.css">
+<link rel="stylesheet" href="/styles/a11y.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<nav>
-  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:36px;"></a>
-  <div class="nav-links">
+<nav class="vn-nav">
+  <a href="/" class="vn-logo">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
+  </a>
+  <div class="vn-links">
     <a href="/">Inicio</a>
-    <a href="/addons.html" style="color:#7ab31a;">Addons</a>
+    <a href="/addons" class="active">Addons</a>
     <a href="/#pricing">Precios</a>
     <a href="https://connect.validanet.cl">Connect</a>
-    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
-    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-orange">Comenzar gratis</a>
+    <a href="/demo">Demo</a>
   </div>
+  <div class="vn-actions">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-vn-ghost">Ingresar</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-vn-green">Comenzar gratis →</a>
+  </div>
+  <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="vn-mob">
+  <a href="/">🏠 Inicio</a>
+  <a href="/addons">🧩 Addons</a>
+  <a href="/#pricing">💰 Precios</a>
+  <a href="https://connect.validanet.cl">🌐 Connect</a>
+  <a href="/demo">📅 Demo</a>
+  <div class="vn-mob-sep"></div>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/">🔑 Ingresar</a>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="color:#7ab31a;font-weight:700;">🚀 Comenzar gratis</a>
+</div>
 
-<section class="hero">
+<section id="main-content" class="hero">
   <h1>Addons <span>ValidaNet</span></h1>
   <p>Activa solo lo que necesitas. Cada addon potencia un área específica de tu institución educativa.</p>
 </section>
@@ -265,7 +284,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:22px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div style="font-size:24px;">📊</div>
-        <span style="background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+$9.990/mes</span>
+        <span style="background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+<span data-vn-addon="reporteria_academica" data-vn-campo="precio">$9.990/mes</span></span>
       </div>
       <h4 style="font-size:15px;font-weight:700;margin-bottom:6px;color:#1e3a5f;">Reportería Académica</h4>
       <p style="font-size:13px;color:#64748b;line-height:1.5;">Dashboards específicos por curso: progreso, deserción predicha con IA, alertas tempranas.</p>
@@ -285,7 +304,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:22px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div style="font-size:24px;">🏛️</div>
-        <span style="background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+$24.990/mes</span>
+        <span style="background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+<span data-vn-addon="sence_integracion" data-vn-campo="precio">$24.990/mes</span></span>
       </div>
       <h4 style="font-size:15px;font-weight:700;margin-bottom:6px;color:#1e3a5f;">Integración SENCE</h4>
       <p style="font-size:13px;color:#64748b;line-height:1.5;">SIC, REUF, declaración mensual automatizada. Asistencia compatible con franquicia tributaria.</p>
@@ -295,7 +314,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:22px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div style="font-size:24px;">🌐</div>
-        <span style="background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+$49.990/mes</span>
+        <span style="background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;">+<span data-vn-addon="aula_virtual_pro" data-vn-campo="precio">$49.990/mes</span></span>
       </div>
       <h4 style="font-size:15px;font-weight:700;margin-bottom:6px;color:#1e3a5f;">Aula Virtual Gestionada</h4>
       <p style="font-size:13px;color:#64748b;line-height:1.5;">Moodle administrado por Norteduc: <strong>hosting dedicado + backups + CDN + 99.9% uptime + soporte chileno</strong>. Todo incluido, sin servidor propio.</p>
@@ -307,26 +326,21 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
 </div><!-- /wrap -->
 
 <footer>
-  <a href="https://validanet.cl"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:32px;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;"></a>
+  <a href="https://validanet.cl"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:32px;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" loading="lazy"></a>
   <p style="margin-bottom:12px;">
     <a href="/">Inicio</a>
     <a href="/addons.html">Addons</a>
     <a href="/#pricing">Precios</a>
     <a href="https://connect.validanet.cl">Connect</a>
     <a href="https://app.validanet.cl/api/validanet/dashboard/">Dashboard</a>
-    <a href="mailto:contacto@validanet.cl">Contacto</a>
+    <a href="mailto:contacto@norteduc.cl">Contacto</a>
   </p>
   <p style="font-size:13px;">© 2026 Norteduc Edtech SpA · Antofagasta, Chile</p>
 </footer>
 
 
 <script>var CHAT_PERFIL="publico";</script>
-<!-- 
-  TutorIA Connect — Widget Asistente IA
-  Insertar antes de <script src="/vn-precios.js"></script>
-</body> en todos los dashboards
-  Reemplazar PERFIL_ACTUAL por: 'empresa' | 'relator' | 'admin'
--->
+<!-- Chat widget -->
 <div id="vn-chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   
   <!-- Burbuja flotante -->
@@ -507,7 +521,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
     var headers = {'Content-Type':'application/json'};
     if(VN_TOKEN) headers['X-Connect-Token'] = VN_TOKEN;
 
-    fetch('https://app.validanet.cl/portal/connect/asistente/chat', {
+    fetch('https://connect.validanet.cl/portal/connect/asistente/chat', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -532,7 +546,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 10px;}
       botDiv.className = 'vn-msg-bot';
       var botBubble = document.createElement('div');
       botBubble.className = 'vn-msg-bot-bubble';
-      botBubble.innerHTML = (d.reply||'Sin respuesta').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+      botBubble.innerHTML = (function(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');})(d.reply||'Sin respuesta');
       botDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>';
       botDiv.appendChild(botBubble);
       msgs.appendChild(botDiv);

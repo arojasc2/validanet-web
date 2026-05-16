@@ -114,13 +114,10 @@ h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,4.5vw,3.8rem);font-weigh
 .tog.on::after{left:calc(100% - 15px)}.tog.off::after{left:2px}
 .tkb{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px;margin:0 .75rem}
 .tkf{height:100%;border-radius:3px}
-.pgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.1rem;margin-top:2.75rem}
-.pgrid .pc:nth-child(1){grid-column:1/3}
-.pgrid .pc:nth-child(2){grid-column:3/5}
-.pgrid .pc:nth-child(3){grid-column:5/7}
-.pgrid .pc:nth-child(4){grid-column:2/5}
-.pgrid .pc:nth-child(5){grid-column:1/4}
-.pgrid .pc:nth-child(6){grid-column:4/7}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.75rem;align-items:stretch}
+@media (max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.pgrid{grid-template-columns:1fr}}
 .pc{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:1.25rem .9rem;position:relative;transition:all .28s}
 .pc:hover{transform:translateY(-4px);box-shadow:var(--shl);border-color:rgba(27,79,255,.3)}
 .pc.hot{border-color:var(--primary);background:linear-gradient(180deg,var(--ps) 0%,#fff 60%)}
@@ -162,8 +159,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
 
 /* ── TABLET 1024px ── */
 @media(max-width:1024px){
-  .pgrid{grid-template-columns:repeat(4,1fr)}
-  .pgrid .pc:nth-child(n){grid-column:auto}
+  /* legacy override removido — grid usa auto-fit responsive */
   .fc{grid-template-columns:repeat(2,1fr)}
   .flow{grid-template-columns:repeat(2,1fr)}
   .sec{padding:4rem 4vw}
@@ -180,8 +176,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
   .hero-p{font-size:.95rem}
   .kpis{gap:1.25rem;flex-wrap:wrap}
   .kn{font-size:1.6rem}
-  .pgrid{grid-template-columns:repeat(2,1fr);gap:.75rem}
-  .pgrid .pc:nth-child(n){grid-column:auto}
+  /* mobile pgrid manejado arriba en media queries del grid principal */
   .fc{grid-template-columns:1fr}
   .cgrid{grid-template-columns:1fr}
   .flow{grid-template-columns:1fr 1fr}
@@ -197,8 +192,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
 
 /* ── MÓVIL 480px ── */
 @media(max-width:480px){
-  .pgrid{grid-template-columns:1fr}
-  .pgrid .pc:nth-child(n){grid-column:auto}
+  /* mobile <480 pgrid manejado arriba */
   .pc.hot{order:-1}
   .flow{grid-template-columns:1fr}
   .kpis{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -372,6 +366,588 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
   </div>
 </section>
 
+
+<!-- DEMO ANIMADO — TutorIA en acción (replica fiel del widget Moodle) -->
+<section class="sec fia" id="demo-animado" style="background:#f8fafc;padding:5rem 5vw;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="slbl">Demo en vivo</div>
+    <h2 class="sh">Mira a TutorIA en acción dentro de Moodle</h2>
+    <p class="sp">Representación fiel del widget real: 3 accesos directos, sugerencias contextuales, quizzes interactivos, TTS, modo accesible y descarga de conversación.</p>
+
+    <!-- Frame del demo -->
+    <div class="vn-demo" role="img" aria-label="Animación del widget TutorIA real en Moodle mostrando chat, ruta de aprendizaje, quiz interactivo, TTS, modo accesibilidad y descarga de conversación.">
+      <div class="vn-laptop">
+        <div class="vn-screen">
+          <!-- Browser bar -->
+          <div class="vn-browser">
+            <div class="vn-dots"><span></span><span></span><span></span></div>
+            <div class="vn-url">🔒 moodle.tu-otec.cl/course/excel-avanzado#section-3</div>
+          </div>
+          <!-- Moodle real mockup -->
+          <div class="vn-moodle">
+            <div class="vn-moodle-side">
+              <div class="vn-moodle-logo">📚 Excel Avanzado</div>
+              <div class="vn-moodle-item">Módulo 1: Fórmulas</div>
+              <div class="vn-moodle-item">Módulo 2: Gráficos</div>
+              <div class="vn-moodle-item active">► Módulo 3: Tablas Dinámicas</div>
+              <div class="vn-moodle-item">Módulo 4: Macros VBA</div>
+              <div class="vn-moodle-item">Evaluación final</div>
+            </div>
+            <div class="vn-moodle-main">
+              <div class="vn-moodle-title">Tablas Dinámicas con Filtros</div>
+              <div class="vn-moodle-text"></div>
+              <div class="vn-moodle-text short"></div>
+              <div class="vn-moodle-text"></div>
+              <div class="vn-moodle-img"></div>
+              <div class="vn-moodle-text short"></div>
+            </div>
+          </div>
+
+          <!-- Widget TutorIA (replica fiel) en posición fija dentro del frame -->
+          <div class="vn-widget" id="vn-widget">
+            <!-- 3 botones principales -->
+            <div class="vn-widget-row">
+              <button class="vn-w-btn vn-w-tutoria" aria-label="Abrir chat TutorIA">🤖 TutorIA</button>
+              <button class="vn-w-btn vn-w-ruta" aria-label="Mi Ruta Formativa">📚 Mi Ruta</button>
+              <button class="vn-w-btn vn-w-drawer" aria-label="Historial">📂</button>
+            </div>
+
+            <!-- Chat Box (replica fiel del plugin) -->
+            <div class="vn-chat-box" aria-hidden="true">
+              <!-- Header con todos los iconos del plugin real -->
+              <div class="vn-chat-header">
+                <span>🤖</span>
+                <strong>TutorIA</strong>
+                <span class="vn-ctx-pill">Módulo 3</span>
+                <button class="vn-h-btn" title="Maximizar" aria-label="Maximizar">⛶</button>
+                <button class="vn-h-btn vn-a11y-btn" title="Modo accesible" aria-label="Modo alto contraste">♿</button>
+                <button class="vn-h-btn vn-dl-btn" title="Descargar" aria-label="Descargar conversación">📥</button>
+                <button class="vn-h-btn" title="Limpiar" aria-label="Limpiar historial">🗑️</button>
+                <button class="vn-h-btn" title="Cerrar" aria-label="Cerrar">✕</button>
+              </div>
+              <!-- Mensajes -->
+              <div class="vn-msgs">
+                <div class="vn-msg vn-msg-user" id="vn-user-1">¿Cómo creo una tabla dinámica con filtros múltiples?</div>
+                <div class="vn-msg vn-msg-typing" id="vn-typing">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="vn-msg vn-msg-bot" id="vn-bot-1">
+                  <div class="vn-bot-text">
+                    <strong>En el Módulo 3 que estás viendo</strong> 📍, los pasos son:<br>
+                    1. Selecciona el rango de datos<br>
+                    2. <em>Insertar → Tabla Dinámica</em><br>
+                    3. Arrastra campos a "Filtros"<br>
+                    <small>Mira el video desde min 4:32</small>
+                  </div>
+                  <!-- Quiz interactivo (struct create_quiz) -->
+                  <div class="vn-quiz">
+                    <div class="vn-quiz-title">📝 Mini-quiz para reforzar:</div>
+                    <div class="vn-quiz-q">¿Qué área de la tabla dinámica permite filtrar?</div>
+                    <label class="vn-quiz-opt"><input type="radio" name="q1" disabled> Valores</label>
+                    <label class="vn-quiz-opt vn-quiz-correct"><input type="radio" name="q1" disabled> Filtros ✓</label>
+                    <label class="vn-quiz-opt"><input type="radio" name="q1" disabled> Columnas</label>
+                  </div>
+                  <!-- Controles bajo respuesta: TTS + feedback (replica real) -->
+                  <div class="vn-bot-ctrls">
+                    <button class="vn-fb-btn vn-tts-btn" aria-label="Escuchar respuesta">🔊</button>
+                    <button class="vn-fb-btn" aria-label="Útil">👍</button>
+                    <button class="vn-fb-btn" aria-label="No útil">👎</button>
+                    <span class="vn-tts-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                  </div>
+                </div>
+              </div>
+              <!-- Sugerencias contextuales -->
+              <div class="vn-suggest">
+                <span class="vn-chip">¿Y los slicers?</span>
+                <span class="vn-chip">Ejemplo paso a paso</span>
+                <span class="vn-chip">Diferencia con SUMAR.SI</span>
+              </div>
+              <!-- Streak strip -->
+              <div class="vn-strip">
+                <span class="vn-streak">🔥 <strong>3</strong> días seguidos</span>
+                <span class="vn-profile">👤 Mi perfil</span>
+              </div>
+              <!-- Input area -->
+              <div class="vn-input-area">
+                <button class="vn-h-btn" title="Voz" aria-label="Dictar por voz">🎤</button>
+                <input type="text" placeholder="Escribe tu pregunta..." aria-label="Pregunta TutorIA" disabled>
+                <button class="vn-send-btn" aria-label="Enviar">➤</button>
+              </div>
+            </div>
+
+            <!-- Ruta de aprendizaje panel -->
+            <div class="vn-ruta-box" aria-hidden="true">
+              <div class="vn-ruta-header">
+                📚 Tu ruta personalizada
+                <button class="vn-h-btn" aria-label="Cerrar ruta">✕</button>
+              </div>
+              <div class="vn-ruta-body">
+                <div class="vn-ruta-step vn-ruta-done">✅ Módulo 1: Fórmulas <small>completado</small></div>
+                <div class="vn-ruta-step vn-ruta-done">✅ Módulo 2: Gráficos <small>completado</small></div>
+                <div class="vn-ruta-step vn-ruta-now">► Módulo 3: Tablas Dinámicas <small>vas en 65%</small></div>
+                <div class="vn-ruta-step">○ Módulo 4: Macros VBA</div>
+                <div class="vn-ruta-step">○ Evaluación final</div>
+                <div class="vn-ruta-tip">💡 <strong>Sugerencia IA:</strong> dedica 45 min al ejercicio de filtros antes del Módulo 4.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cursor sintético -->
+          <div class="vn-cursor" aria-hidden="true">▲</div>
+        </div>
+        <div class="vn-laptop-base"></div>
+      </div>
+
+      <!-- Captions sincronizados con la animación -->
+      <div class="vn-captions">
+        <span class="vn-cap" data-step="1">📍 TutorIA disponible en cualquier curso Moodle</span>
+        <span class="vn-cap" data-step="2">🖱️ 1 clic abre el chat con header completo</span>
+        <span class="vn-cap" data-step="3">💬 Pregunta o usa sugerencias contextuales</span>
+        <span class="vn-cap" data-step="4">🧠 Respuesta con contexto del módulo + quiz interactivo</span>
+        <span class="vn-cap" data-step="5">🔊 TTS lee la respuesta · 👍/👎 feedback</span>
+        <span class="vn-cap" data-step="6">♿ Modo alto contraste WCAG AAA con 1 clic</span>
+        <span class="vn-cap" data-step="7">📥 Descarga toda la conversación · 📚 Ruta de aprendizaje</span>
+      </div>
+    </div>
+
+    <!-- Features grid (descripción de todo lo que vio en el demo) -->
+    <div class="vn-demo-perks">
+      <div class="vn-perk"><span>🤖</span><div><strong>Chat con contexto</strong><span>Lee PDFs, foros, tareas del curso</span></div></div>
+      <div class="vn-perk"><span>📚</span><div><strong>Mi Ruta</strong><span>Plan formativo personalizado por IA</span></div></div>
+      <div class="vn-perk"><span>📝</span><div><strong>Quizzes inline</strong><span>Refuerzo con feedback inmediato</span></div></div>
+      <div class="vn-perk"><span>🔊</span><div><strong>TTS multi-voz</strong><span>Voz humanizada, multi-idioma</span></div></div>
+      <div class="vn-perk"><span>🎤</span><div><strong>Dictado por voz</strong><span>Speech-to-text integrado</span></div></div>
+      <div class="vn-perk"><span>♿</span><div><strong>Accesibilidad WCAG AAA</strong><span>Alto contraste · Ley 20.422</span></div></div>
+      <div class="vn-perk"><span>📥</span><div><strong>Descarga PDF</strong><span>Conversación completa exportable</span></div></div>
+      <div class="vn-perk"><span>🔥</span><div><strong>Gamificación</strong><span>Streak diario · perfil de progreso</span></div></div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ═══ TutorIA demo animado — replica fiel del widget Moodle, 100% CSS ═══ */
+.vn-demo{position:relative;max-width:980px;margin:3rem auto 2rem;perspective:1500px;}
+.vn-laptop{position:relative;width:100%;}
+.vn-screen{
+  background:#1a1a2e;border:14px solid #0f0f1e;border-bottom-width:18px;
+  border-radius:14px 14px 6px 6px;aspect-ratio:16/10;overflow:hidden;position:relative;
+  box-shadow:0 30px 60px rgba(0,0,0,.25),0 10px 20px rgba(0,0,0,.15);
+}
+.vn-laptop-base{
+  height:14px;background:linear-gradient(180deg,#0f0f1e,#1a1a2e 50%,#0a0a14);
+  border-radius:0 0 18px 18px;width:108%;margin-left:-4%;box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.vn-laptop-base::before{content:"";display:block;width:14%;height:4px;background:#000;margin:5px auto 0;border-radius:0 0 8px 8px;}
+.vn-browser{background:#e2e8f0;height:30px;display:flex;align-items:center;padding:0 10px;gap:8px;border-bottom:1px solid #cbd5e1;}
+.vn-dots{display:flex;gap:5px;}
+.vn-dots span{width:8px;height:8px;border-radius:50%;background:#cbd5e1;}
+.vn-dots span:nth-child(1){background:#ef4444;}
+.vn-dots span:nth-child(2){background:#f59e0b;}
+.vn-dots span:nth-child(3){background:#10b981;}
+.vn-url{flex:1;background:white;border-radius:6px;padding:3px 10px;font-size:9px;color:#64748b;font-family:monospace;}
+
+/* Moodle */
+.vn-moodle{display:grid;grid-template-columns:25% 75%;height:calc(100% - 30px);background:white;}
+.vn-moodle-side{background:#f1f5f9;padding:10px 8px;border-right:1px solid #e2e8f0;}
+.vn-moodle-logo{font-weight:700;font-size:10px;color:#1e3a5f;margin-bottom:10px;}
+.vn-moodle-item{font-size:8.5px;color:#64748b;padding:5px 6px;border-radius:3px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vn-moodle-item.active{background:#3a8023;color:white;font-weight:600;}
+.vn-moodle-main{padding:12px 16px;overflow:hidden;}
+.vn-moodle-title{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:8px;}
+.vn-moodle-text{height:6px;background:#e2e8f0;border-radius:3px;margin-bottom:5px;}
+.vn-moodle-text.short{width:60%;}
+.vn-moodle-img{height:50px;background:linear-gradient(135deg,#3a8023,#f47920);opacity:.15;border-radius:5px;margin:6px 0;}
+
+/* ─── Widget TutorIA (replica fiel) ─────────────────────────────────── */
+.vn-widget{position:absolute;bottom:14px;right:14px;width:330px;max-width:60%;z-index:30;font-family:system-ui,sans-serif;font-size:11px;}
+.vn-widget-row{display:flex;gap:5px;margin-bottom:6px;}
+.vn-w-btn{flex:1;padding:7px 4px;border:0;border-radius:6px;font-size:10px;font-weight:700;color:white;cursor:pointer;}
+.vn-w-tutoria{background:linear-gradient(135deg,#3a8023,#2d6e1c);}
+.vn-w-ruta{background:linear-gradient(135deg,#1e40af,#1e3a8a);}
+.vn-w-drawer{background:#475569;flex:0 0 34px;font-size:14px;}
+
+/* Chat box */
+.vn-chat-box{
+  background:white;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;
+  opacity:0;transform:scale(.6) translateY(20px);transform-origin:bottom right;
+  animation:vn-chat-show 24s ease-in-out infinite;
+  margin-bottom:6px;
+}
+@keyframes vn-chat-show{
+  0%, 8% {opacity:0;transform:scale(.6) translateY(20px);}
+  10%, 70% {opacity:1;transform:scale(1) translateY(0);}
+  72%, 100% {opacity:0;transform:scale(.6) translateY(20px);}
+}
+.vn-chat-header{
+  background:#1e3a5f;color:white;padding:7px 9px;display:flex;align-items:center;gap:5px;font-weight:600;font-size:11px;
+}
+.vn-ctx-pill{font-size:9px;font-weight:500;background:rgba(255,255,255,.18);border-radius:99px;padding:1px 7px;}
+.vn-h-btn{background:none;border:0;color:white;cursor:pointer;font-size:13px;padding:1px 3px;line-height:1;opacity:.9;}
+.vn-h-btn:first-of-type{margin-left:auto;}
+/* Modo accesible: hover/active del a11y btn cambia tema */
+.vn-a11y-btn{animation:vn-a11y-pulse 24s ease-in-out infinite;}
+@keyframes vn-a11y-pulse{
+  0%, 73% {transform:scale(1);background:none;}
+  74%, 76% {transform:scale(1.3);background:rgba(255,255,255,.2);}
+  78%, 100% {transform:scale(1);}
+}
+.vn-chat-box{transition:filter .4s,background .4s;}
+.vn-chat-box{animation:vn-chat-show 24s ease-in-out infinite,vn-a11y-mode 24s ease-in-out infinite;}
+@keyframes vn-a11y-mode{
+  0%, 76% {filter:none;}
+  78%, 88% {filter:contrast(1.4) saturate(0);}
+  90%, 100% {filter:none;}
+}
+.vn-dl-btn{animation:vn-dl-anim 24s ease-in-out infinite;}
+@keyframes vn-dl-anim{
+  0%, 88% {transform:translateY(0);}
+  90%, 92% {transform:translateY(-3px);}
+  94%, 96% {transform:translateY(8px);opacity:0;}
+  97% {transform:translateY(0);opacity:.9;}
+}
+
+/* Mensajes */
+.vn-msgs{padding:8px;background:#f8fafc;display:flex;flex-direction:column;gap:6px;min-height:130px;}
+.vn-msg{padding:6px 9px;border-radius:8px;max-width:90%;font-size:10.5px;line-height:1.4;}
+.vn-msg-user{align-self:flex-end;background:#1e3a5f;color:white;opacity:0;transform:translateX(20px);animation:vn-msg-user 24s ease-in-out infinite;}
+@keyframes vn-msg-user{0%,15%{opacity:0;transform:translateX(20px);}18%,70%{opacity:1;transform:translateX(0);}72%,100%{opacity:0;transform:translateX(20px);}}
+.vn-msg-typing{align-self:flex-start;background:white;border:1px solid #e2e8f0;display:flex;gap:3px;padding:7px 10px;opacity:0;animation:vn-typing 24s ease-in-out infinite;}
+@keyframes vn-typing{0%,20%{opacity:0;}23%,30%{opacity:1;}33%,100%{opacity:0;}}
+.vn-msg-typing span{width:5px;height:5px;background:#94a3b8;border-radius:50%;animation:vn-typing-dot 1s infinite;}
+.vn-msg-typing span:nth-child(2){animation-delay:.2s;}
+.vn-msg-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes vn-typing-dot{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+.vn-msg-bot{align-self:flex-start;background:white;border:1px solid #e2e8f0;color:#1e293b;opacity:0;transform:translateX(-20px);animation:vn-msg-bot 24s ease-in-out infinite;}
+@keyframes vn-msg-bot{0%,32%{opacity:0;transform:translateX(-20px);}36%,70%{opacity:1;transform:translateX(0);}72%,100%{opacity:0;transform:translateX(-20px);}}
+.vn-bot-text small{color:#64748b;font-size:9px;}
+
+/* Quiz interactivo (struct create_quiz) */
+.vn-quiz{
+  margin-top:8px;padding:7px 9px;background:linear-gradient(135deg,#f0fdf4,#fff);
+  border:1px solid #bbf7d0;border-radius:7px;
+  opacity:0;transform:translateY(10px);animation:vn-quiz-in 24s ease-in-out infinite;
+}
+@keyframes vn-quiz-in{0%,45%{opacity:0;transform:translateY(10px);}48%,70%{opacity:1;transform:translateY(0);}72%,100%{opacity:0;}}
+.vn-quiz-title{font-size:10px;font-weight:700;color:#15803d;margin-bottom:4px;}
+.vn-quiz-q{font-size:9.5px;color:#0f172a;margin-bottom:5px;}
+.vn-quiz-opt{display:flex;align-items:center;gap:5px;font-size:9px;padding:3px 0;color:#475569;}
+.vn-quiz-correct{color:#15803d;font-weight:600;}
+
+/* Controles bajo respuesta (TTS + feedback) */
+.vn-bot-ctrls{margin-top:6px;display:flex;align-items:center;gap:4px;opacity:0;animation:vn-ctrls-in 24s ease-in-out infinite;}
+@keyframes vn-ctrls-in{0%,50%{opacity:0;}53%,70%{opacity:1;}72%,100%{opacity:0;}}
+.vn-fb-btn{background:none;border:1px solid #e2e8f0;border-radius:5px;padding:2px 6px;font-size:10px;cursor:pointer;color:#64748b;}
+.vn-tts-btn{animation:vn-tts-active 24s ease-in-out infinite;}
+@keyframes vn-tts-active{0%,57%{background:none;border-color:#e2e8f0;}60%,67%{background:#3a8023;border-color:#3a8023;color:white;}70%,100%{background:none;border-color:#e2e8f0;color:#64748b;}}
+.vn-tts-wave{display:inline-flex;gap:2px;align-items:flex-end;height:14px;margin-left:3px;opacity:0;animation:vn-wave-show 24s ease-in-out infinite;}
+@keyframes vn-wave-show{0%,57%{opacity:0;}60%,67%{opacity:1;}70%,100%{opacity:0;}}
+.vn-tts-wave i{display:block;width:3px;background:#3a8023;border-radius:2px;animation:vn-wave 0.6s ease-in-out infinite;}
+.vn-tts-wave i:nth-child(1){height:6px;animation-delay:0s;}
+.vn-tts-wave i:nth-child(2){height:11px;animation-delay:.15s;}
+.vn-tts-wave i:nth-child(3){height:8px;animation-delay:.3s;}
+.vn-tts-wave i:nth-child(4){height:13px;animation-delay:.45s;}
+@keyframes vn-wave{0%,100%{transform:scaleY(0.4);}50%{transform:scaleY(1);}}
+
+/* Sugerencias chips */
+.vn-suggest{display:flex;gap:5px;padding:6px 8px;background:#f8fafc;border-top:1px solid #e2e8f0;overflow:hidden;}
+.vn-chip{background:#f1f5f9;border:1px solid #e2e8f0;color:#475569;border-radius:99px;padding:3px 9px;font-size:9px;white-space:nowrap;opacity:0;animation:vn-chip-in 24s ease-in-out infinite;}
+.vn-chip:nth-child(1){animation-delay:.0s;}
+.vn-chip:nth-child(2){animation-delay:.15s;}
+.vn-chip:nth-child(3){animation-delay:.3s;}
+@keyframes vn-chip-in{0%,10%{opacity:0;}14%,70%{opacity:1;}72%,100%{opacity:0;}}
+
+/* Streak strip */
+.vn-strip{display:flex;gap:6px;padding:5px 8px;background:linear-gradient(90deg,#fff7ed,#fef3c7);border-top:1px solid #fed7aa;font-size:9px;color:#7c2d12;align-items:center;}
+.vn-streak{background:#f97316;color:white;border-radius:99px;padding:2px 7px;font-weight:700;}
+.vn-streak strong{font-weight:900;}
+.vn-profile{background:transparent;border:1px solid #fdba74;color:#7c2d12;border-radius:99px;padding:1px 7px;font-weight:600;}
+
+/* Input area */
+.vn-input-area{display:flex;gap:4px;padding:6px 8px;align-items:center;background:white;border-top:1px solid #e2e8f0;}
+.vn-input-area input{flex:1;border:1px solid #e2e8f0;border-radius:5px;padding:4px 8px;font-size:10px;background:#f8fafc;}
+.vn-send-btn{background:#3a8023;color:white;border:0;border-radius:5px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;}
+
+/* Ruta de aprendizaje (panel separado, aparece tras chat) */
+.vn-ruta-box{
+  background:white;border:1px solid #1e40af;border-radius:8px;overflow:hidden;
+  opacity:0;transform:scale(.85);transform-origin:bottom right;
+  animation:vn-ruta-show 24s ease-in-out infinite;
+}
+@keyframes vn-ruta-show{
+  0%, 86% {opacity:0;transform:scale(.85);height:0;}
+  88%, 98% {opacity:1;transform:scale(1);height:auto;}
+  100% {opacity:0;}
+}
+.vn-ruta-header{background:linear-gradient(135deg,#1e40af,#1e3a8a);color:white;padding:7px 9px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+.vn-ruta-body{padding:8px 10px;font-size:10px;}
+.vn-ruta-step{display:flex;justify-content:space-between;padding:3px 0;color:#475569;}
+.vn-ruta-step small{color:#94a3b8;font-size:8.5px;}
+.vn-ruta-done{color:#15803d;}
+.vn-ruta-now{color:#1e40af;font-weight:700;}
+.vn-ruta-tip{margin-top:6px;padding:5px 8px;background:#dbeafe;border-radius:5px;font-size:9px;color:#1e3a8a;}
+
+/* Cursor sintético — anima a través de los pasos */
+.vn-cursor{position:absolute;font-size:15px;color:#0f172a;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));pointer-events:none;z-index:50;transform:rotate(-25deg);animation:vn-cursor-path 24s ease-in-out infinite;}
+@keyframes vn-cursor-path{
+  /* 0-8s: cursor cerca de Moodle */
+  0%, 5% {top:55%;left:30%;opacity:.7;}
+  /* 8-10s: mueve hacia botón TutorIA */
+  9% {top:88%;left:78%;opacity:1;}
+  /* 10s: click → chat abre */
+  11% {top:88%;left:78%;opacity:1;transform:rotate(-25deg) scale(.85);}
+  /* 12-60s: cerca del chat */
+  13%, 55% {top:80%;left:88%;opacity:.6;transform:rotate(-25deg) scale(1);}
+  /* 60-67s: mueve a TTS button */
+  60% {top:62%;left:75%;opacity:1;}
+  /* 73-78s: mueve a a11y button */
+  74% {top:32%;left:75%;opacity:1;}
+  /* 88-95s: mueve a ruta button */
+  88% {top:18%;left:88%;opacity:1;}
+  /* 100%: vuelve */
+  100% {top:55%;left:30%;opacity:.7;}
+}
+
+/* Captions */
+.vn-captions{text-align:center;margin-top:1.5rem;height:30px;position:relative;}
+.vn-cap{position:absolute;left:50%;transform:translateX(-50%);font-weight:600;font-size:.95rem;color:#1e3a5f;opacity:0;animation:vn-cap-fade 24s ease-in-out infinite;white-space:nowrap;}
+.vn-cap[data-step="1"]{animation-delay:0s;}
+.vn-cap[data-step="2"]{animation-delay:2.5s;}
+.vn-cap[data-step="3"]{animation-delay:6s;}
+.vn-cap[data-step="4"]{animation-delay:9.5s;}
+.vn-cap[data-step="5"]{animation-delay:13.5s;}
+.vn-cap[data-step="6"]{animation-delay:17s;}
+.vn-cap[data-step="7"]{animation-delay:20.5s;}
+@keyframes vn-cap-fade{0%,1%{opacity:0;}3%,14%{opacity:1;}16%,100%{opacity:0;}}
+
+/* Beneficios */
+.vn-demo-perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem;margin-top:2.5rem;}
+.vn-perk{display:flex;align-items:center;gap:.85rem;background:white;border:1px solid #e2e8f0;border-radius:12px;padding:1rem;}
+.vn-perk>span{font-size:1.6rem;flex-shrink:0;}
+.vn-perk div{display:flex;flex-direction:column;gap:2px;}
+.vn-perk strong{font-size:.9rem;color:#0f172a;}
+.vn-perk span:last-child{font-size:.75rem;color:#64748b;}
+
+/* Responsive */
+@media (max-width:768px){
+  .vn-widget{width:80%;max-width:280px;font-size:10px;}
+  .vn-moodle{grid-template-columns:30% 70%;}
+}
+@media (max-width:480px){
+  .vn-widget{width:88%;max-width:240px;font-size:9px;}
+  .vn-moodle-title{font-size:10px;}
+}
+
+/* Reducir motion (a11y) */
+@media (prefers-reduced-motion:reduce){
+  .vn-chat-box,.vn-msg-user,.vn-msg-bot,.vn-quiz,.vn-bot-ctrls,
+  .vn-chip,.vn-cursor,.vn-a11y-btn,.vn-dl-btn,.vn-ruta-box,
+  .vn-tts-btn,.vn-tts-wave,.vn-cap,.vn-msg-typing{animation:none !important;}
+  .vn-chat-box,.vn-quiz,.vn-msg-user,.vn-msg-bot,.vn-bot-ctrls{opacity:1;transform:none;}
+  .vn-cap[data-step="4"]{opacity:1;}
+  .vn-ruta-box{opacity:1;transform:none;height:auto;}
+}
+</style>
+
+<style>
+/* ═══ TutorIA demo animado — 100% CSS, ~3KB ═══ */
+.vn-demo{position:relative;max-width:920px;margin:3rem auto 2rem;perspective:1500px;}
+.vn-laptop{position:relative;width:100%;}
+.vn-screen{
+  background:#1a1a2e;border:14px solid #0f0f1e;border-bottom-width:18px;
+  border-radius:14px 14px 6px 6px;aspect-ratio:16/10;overflow:hidden;
+  box-shadow:0 30px 60px rgba(0,0,0,.25),0 10px 20px rgba(0,0,0,.15);
+  transform-style:preserve-3d;
+}
+.vn-laptop-base{
+  height:14px;background:linear-gradient(180deg,#0f0f1e 0%,#1a1a2e 50%,#0a0a14 100%);
+  border-radius:0 0 18px 18px;width:108%;margin-left:-4%;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.vn-laptop-base::before{
+  content:"";display:block;width:14%;height:4px;background:#000;
+  margin:5px auto 0;border-radius:0 0 8px 8px;
+}
+.vn-browser{
+  background:#e2e8f0;height:32px;display:flex;align-items:center;
+  padding:0 12px;gap:10px;border-bottom:1px solid #cbd5e1;
+}
+.vn-dots{display:flex;gap:5px;}
+.vn-dots span{width:9px;height:9px;border-radius:50%;background:#cbd5e1;}
+.vn-dots span:nth-child(1){background:#ef4444;}
+.vn-dots span:nth-child(2){background:#f59e0b;}
+.vn-dots span:nth-child(3){background:#10b981;}
+.vn-url{
+  flex:1;background:white;border-radius:6px;padding:4px 10px;
+  font-size:10px;color:#64748b;font-family:monospace;
+}
+/* Moodle mockup */
+.vn-moodle{display:grid;grid-template-columns:30% 70%;height:calc(100% - 32px);background:#ffffff;}
+.vn-moodle-side{background:#f1f5f9;padding:12px 10px;border-right:1px solid #e2e8f0;}
+.vn-moodle-logo{font-weight:700;font-size:11px;color:#1e3a5f;margin-bottom:14px;}
+.vn-moodle-item{
+  font-size:9.5px;color:#64748b;padding:6px 8px;border-radius:4px;margin-bottom:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.vn-moodle-item.active{background:#7ab31a;color:white;font-weight:600;}
+.vn-moodle-main{padding:14px 18px;overflow:hidden;}
+.vn-moodle-title{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:10px;}
+.vn-moodle-text{
+  height:7px;background:#e2e8f0;border-radius:3px;margin-bottom:6px;
+}
+.vn-moodle-text.short{width:65%;}
+.vn-moodle-img{
+  height:60px;background:linear-gradient(135deg,#7ab31a 0%,#f47920 100%);
+  opacity:.2;border-radius:6px;margin:8px 0;
+}
+
+/* Cursor sintético */
+.vn-cursor{
+  position:absolute;font-size:14px;color:#0f172a;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));
+  pointer-events:none;z-index:50;
+  top:75%;left:50%;transform:rotate(-25deg) translate(-50%,-50%);
+  animation:vn-cursor-move 12s ease-in-out infinite;
+}
+@keyframes vn-cursor-move{
+  0%, 8% {top:50%;left:40%;}
+  12%, 22% {top:78%;left:88%;}  /* hover chat btn */
+  26%, 100% {top:55%;left:88%;opacity:0;}
+}
+
+/* Chat button (esquina inf-der) */
+.vn-chat-btn{
+  position:absolute;bottom:18px;right:18px;width:42px;height:42px;
+  background:linear-gradient(135deg,#7ab31a,#5d8916);color:white;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:0 4px 12px rgba(122,179,26,.4);
+  animation:vn-chat-btn 12s ease-in-out infinite;z-index:30;
+}
+@keyframes vn-chat-btn{
+  0%, 22% {transform:scale(1);}
+  24% {transform:scale(.85);}
+  26%, 28% {transform:scale(1);opacity:1;}
+  30%, 95% {opacity:0;transform:scale(.5);}
+  100% {opacity:1;transform:scale(1);}
+}
+
+/* Chat panel */
+.vn-chat-panel{
+  position:absolute;bottom:18px;right:18px;width:78%;max-width:340px;
+  background:white;border-radius:12px;
+  box-shadow:0 12px 32px rgba(0,0,0,.18);overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  z-index:40;opacity:0;transform:scale(.6) translateY(20px);transform-origin:bottom right;
+  animation:vn-chat-open 12s ease-in-out infinite;
+}
+@keyframes vn-chat-open{
+  0%, 28% {opacity:0;transform:scale(.6) translateY(20px);}
+  30%, 95% {opacity:1;transform:scale(1) translateY(0);}
+  100% {opacity:0;transform:scale(.6) translateY(20px);}
+}
+.vn-chat-header{
+  background:linear-gradient(135deg,#1e3a5f,#0f172a);color:white;
+  padding:9px 12px;display:flex;align-items:center;gap:9px;
+}
+.vn-chat-avatar{
+  width:28px;height:28px;background:#7ab31a;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.vn-chat-name{font-size:12px;font-weight:700;}
+.vn-chat-role{font-size:9px;opacity:.7;}
+.vn-chat-body{padding:10px;background:#f8fafc;min-height:160px;display:flex;flex-direction:column;gap:6px;font-size:10.5px;line-height:1.4;}
+.vn-msg{padding:7px 10px;border-radius:10px;max-width:88%;}
+.vn-msg-user{
+  align-self:flex-end;background:#1e3a5f;color:white;
+  opacity:0;transform:translateX(20px);
+  animation:vn-msg-user-in 12s ease-in-out infinite;
+}
+@keyframes vn-msg-user-in{
+  0%, 36% {opacity:0;transform:translateX(20px);}
+  40%, 95% {opacity:1;transform:translateX(0);}
+  100% {opacity:0;transform:translateX(20px);}
+}
+.vn-msg-typing{
+  align-self:flex-start;background:white;border:1px solid #e2e8f0;
+  display:flex;gap:3px;align-items:center;padding:8px 12px;
+  opacity:0;animation:vn-typing-show 12s ease-in-out infinite;
+}
+@keyframes vn-typing-show{
+  0%, 44% {opacity:0;}
+  48%, 60% {opacity:1;}
+  64%, 100% {opacity:0;display:none;}
+}
+.vn-msg-typing span{
+  width:5px;height:5px;background:#94a3b8;border-radius:50%;
+  animation:vn-typing-dot 1s infinite;
+}
+.vn-msg-typing span:nth-child(2){animation-delay:.2s;}
+.vn-msg-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes vn-typing-dot{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+
+.vn-msg-bot{
+  align-self:flex-start;background:white;border:1px solid #e2e8f0;color:#0f172a;
+  opacity:0;transform:translateX(-20px);
+  animation:vn-msg-bot-in 12s ease-in-out infinite;
+}
+@keyframes vn-msg-bot-in{
+  0%, 64% {opacity:0;transform:translateX(-20px);}
+  68%, 95% {opacity:1;transform:translateX(0);}
+  100% {opacity:0;transform:translateX(-20px);}
+}
+
+/* Captions sincronizados */
+.vn-captions{
+  text-align:center;margin-top:1.5rem;height:28px;position:relative;
+}
+.vn-cap{
+  position:absolute;left:50%;transform:translateX(-50%);
+  font-weight:600;font-size:.95rem;color:#1e3a5f;
+  opacity:0;animation:vn-cap-fade 12s ease-in-out infinite;
+  white-space:nowrap;
+}
+.vn-cap[data-step="1"]{animation-delay:0s;}
+.vn-cap[data-step="2"]{animation-delay:2.4s;}
+.vn-cap[data-step="3"]{animation-delay:4.8s;}
+.vn-cap[data-step="4"]{animation-delay:7.2s;}
+.vn-cap[data-step="5"]{animation-delay:9.6s;}
+@keyframes vn-cap-fade{
+  0%, 2% {opacity:0;}
+  4%, 18% {opacity:1;}
+  20%, 100% {opacity:0;}
+}
+
+/* Beneficios */
+.vn-demo-perks{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;margin-top:2.5rem;
+}
+.vn-perk{
+  display:flex;align-items:center;gap:.85rem;
+  background:white;border:1px solid #e2e8f0;border-radius:12px;padding:1rem;
+}
+.vn-perk>span{font-size:1.6rem;flex-shrink:0;}
+.vn-perk div{display:flex;flex-direction:column;gap:2px;}
+.vn-perk strong{font-size:.9rem;color:#0f172a;}
+.vn-perk span:last-child{font-size:.75rem;color:#64748b;}
+
+/* Responsive */
+@media (max-width:640px){
+  .vn-demo{margin:2rem auto;}
+  .vn-chat-panel{max-width:85%;width:85%;font-size:9px;}
+  .vn-moodle-title{font-size:11px;}
+  .vn-moodle-item{font-size:8px;padding:4px 6px;}
+}
+
+/* Respeto a prefers-reduced-motion: pausa todo */
+@media (prefers-reduced-motion:reduce){
+  .vn-cursor, .vn-chat-btn, .vn-chat-panel,
+  .vn-msg-user, .vn-msg-typing, .vn-msg-bot,
+  .vn-cap{animation:none !important;}
+  .vn-chat-panel{opacity:1;transform:none;}
+  .vn-msg-user, .vn-msg-bot{opacity:1;transform:none;}
+  .vn-cap[data-step="3"]{opacity:1;}
+}
+</style>
 
 <!-- FUNCIONES DARK -->
 <div class="dark" id="funciones">
@@ -583,30 +1159,43 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
   <div class="slbl">Planes y precios</div>
   <h2 class="sh">Escala según el tamaño de tu institución</h2>
   <p class="sp">Todos los planes incluyen TutorIA chatbot, Mi Ruta de Aprendizaje, dashboard y soporte por correo. Sin tarjeta para el trial.</p>
+  <p class="sp" style="margin-top:0;margin-bottom:1.5rem;font-size:.85rem;color:#64748b;">
+    <strong>Importante:</strong> la capacidad de IA se mide por <strong>tokens consumidos al mes</strong>, no por número de alumnos ni cursos. Cursos y alumnos son <strong>ilimitados</strong> desde el plan Starter.
+    <br><br>
+    Los tokens cubren <strong>todas las funciones con IA</strong>:
+    💬 chatbot TutorIA en Moodle ·
+    📝 generación de contenido en el dashboard ·
+    🧠 resúmenes y sugerencias ·
+    🎯 Mi Ruta de aprendizaje ·
+    🔔 alertas predictivas ·
+    📊 análisis IA de reportería.
+    Usa la calculadora abajo para estimar tu consumo total.
+  </p>
   <div class="pgrid">
     <!-- FREE -->
     <div class="pc fia">
       <div class="pcn">Free</div>
-      <div class="pcp">$0 <small>/mes</small></div>
-      <div class="pctk">🎁 14 días trial · 15.000 tokens</div>
+      <div class="pcp"><span data-vn-plan="free" data-vn-campo="precio">$0</span> <small>/mes</small></div>
+      <div class="pctk">🆓 <strong>15.000 tokens/mes</strong> · ~50 acciones IA panel</div>
       <ul class="pcfl">
-        <li class="y">TutorIA chatbot básico</li>
-        <li class="y">1 curso Moodle</li>
-        <li class="y">Mi Ruta de Aprendizaje</li>
-        <li class="n">Reportería avanzada</li>
-        <li class="n">Emails automáticos</li>
-        <li class="n">Certificados</li>
+        <li class="y">Dashboard ValidaNet</li>
+        <li class="y">Cursos y alumnos ilimitados</li>
+        <li class="y">IA en dashboard (resúmenes, sugerencias)</li>
+        <li class="y">Gestión básica de certificados</li>
+        <li class="n">Chatbot TutorIA en Moodle</li>
+        <li class="n">Mi Ruta de Aprendizaje</li>
+        <li class="n">Reportería avanzada · SENCE</li>
       </ul>
       <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Empezar gratis</a>
     </div>
     <!-- STARTER -->
     <div class="pc fia">
       <div class="pcn">Starter</div>
-      <div class="pcp">$19.990 <small>/mes</small></div>
-      <div class="pctk">📦 500K tokens · hasta ~30 alumnos</div>
+      <div class="pcp"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span> <small>/mes</small></div>
+      <div class="pctk">📦 <strong>500K tokens</strong> · IA panel + chatbot · ~1.700 acciones/mes</div>
       <ul class="pcfl">
-        <li class="y">TutorIA chatbot</li>
-        <li class="y">Cursos ilimitados</li>
+        <li class="y">TutorIA chatbot Haiku</li>
+        <li class="y">Cursos y alumnos ilimitados</li>
         <li class="y">Mi Ruta + Plan semanal</li>
         <li class="y">Reportería general</li>
         <li class="y">Certificados digitales</li>
@@ -617,48 +1206,51 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <!-- PRO -->
     <div class="pc hot fia">
       <div class="pcn">Pro</div>
-      <div class="pcp">$79.990 <small>/mes</small></div>
-      <div class="pctk">🚀 hasta ~200 alumnos activos</div>
+      <div class="pcp"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span> <small>/mes</small></div>
+      <div class="pctk">🚀 <strong>1M tokens</strong> · IA panel + chatbot · 14 días gratis</div>
       <ul class="pcfl">
-        <li class="y">TutorIA chatbot avanzado</li>
+        <li class="y">TutorIA chatbot Haiku avanzado</li>
+        <li class="y">Cursos y alumnos ilimitados</li>
         <li class="y">Ruta + alertas + logros</li>
         <li class="y">Reportería SENCE completa</li>
         <li class="y">Certificados + firma digital</li>
         <li class="y">Emails automáticos IA</li>
         <li class="y">ValidaNet Connect</li>
       </ul>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Comenzar Pro</a>
-    </div>
-    <!-- UNIVERSIDAD -->
-    <div class="pc fia" style="border:2px solid #1e3a5f;position:relative">
-      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .75rem;border-radius:20px;white-space:nowrap">🎓 IDEAL UNIVERSIDADES</div>
-      <div class="pcn">Universidad</div>
-      <div class="pcp">$990.000 <small>/mes</small></div>
-      <div class="pctk">🏫 hasta 3.000 alumnos activos</div>
-      <ul class="pcfl">
-        <li class="y">TutorIA Sonnet (alta calidad)</li>
-        <li class="y">Todo lo de Pro</li>
-        <li class="y">+$400/alumno adicional</li>
-        <li class="y">Integración sistema académico</li>
-        <li class="y">Reportería para acreditación</li>
-        <li class="y">SLA 99,9% + soporte prioritario</li>
-      </ul>
-      <a href="mailto:contacto@norteduc.cl?subject=Demo%20Plan%20Universidad%20ValidaNet" class="pcb" style="display:block;text-align:center;text-decoration:none;background:#1e3a5f">Solicitar demo</a>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Probar 14 días gratis</a>
     </div>
     <!-- ENTERPRISE -->
     <div class="pc fia">
       <div class="pcn">Enterprise</div>
-      <div class="pcp" style="font-size:1.6rem;letter-spacing:-.02em">A cotizar</div>
-      <div class="pctk">🏛️ +20.000 alumnos · 60M tokens</div>
+      <div class="pcp"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span> <small>/mes</small></div>
+      <div class="pctk">🏛️ <strong>25M tokens</strong> · IA Sonnet · todo el ecosistema IA</div>
       <ul class="pcfl">
-        <li class="y">TutorIA Sonnet dedicado</li>
-        <li class="y">Todo lo de Universidad</li>
-        <li class="y">ERP educativo completo</li>
-        <li class="y">CampusStore + Connect</li>
-        <li class="y">Integ. SENCE + acreditación</li>
-        <li class="y">Soporte in-site + SLA custom</li>
+        <li class="y">TutorIA Sonnet (alta calidad)</li>
+        <li class="y">Cursos y alumnos ilimitados</li>
+        <li class="y">Todos los addons incluidos</li>
+        <li class="y">White label</li>
+        <li class="y">Reportería + acreditación</li>
+        <li class="y">SLA garantizado</li>
+        <li class="y">Soporte 24/7</li>
       </ul>
-      <a href="mailto:contacto@norteduc.cl?subject=Cotizaci%C3%B3n%20Enterprise%20ValidaNet" class="pcb" style="display:block;text-align:center;text-decoration:none">Contactar</a>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Comenzar Enterprise</a>
+    </div>
+    <!-- UNIVERSIDAD -->
+    <div class="pc fia" style="border:2px solid #1e3a5f;position:relative">
+      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .75rem;border-radius:20px;white-space:nowrap">🎓 ACADÉMICO</div>
+      <div class="pcn">Universidad</div>
+      <div class="pcp"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span> <small>/mes</small></div>
+      <div class="pctk">🏫 <strong>100M tokens</strong> · IA Sonnet académico · multi-campus</div>
+      <ul class="pcfl">
+        <li class="y">TutorIA Sonnet (máxima calidad)</li>
+        <li class="y">Cursos y alumnos ilimitados</li>
+        <li class="y">Multi-campus / multi-sede</li>
+        <li class="y">Integración sistema académico</li>
+        <li class="y">Reportería para acreditación</li>
+        <li class="y">Account manager dedicado</li>
+        <li class="y">SLA 99,9% + onboarding</li>
+      </ul>
+      <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" class="pcb" style="display:block;text-align:center;text-decoration:none;background:#1e3a5f">Solicitar demo</a>
     </div>
   </div>
   <div class="cbox fia">
@@ -717,7 +1309,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <button class="btn btn-w" onclick="window.location='mailto:contacto@norteduc.cl?subject=Solicitud Trial TutorIA'">Solicitar acceso gratuito</button>
     <button class="btn btn-ow">Ver demo en vivo →</button>
   </div>
-  <p style="margin-top:1.75rem;font-size:.82rem;color:rgba(255,255,255,.5)">contacto@norteduc.cl · www.validanet.cl · Norteduc Edtech SpA · Antofagasta, Chile</p>
+  <p style="margin-top:1.75rem;font-size:.82rem;color:rgba(255,255,255,.5)">soporte@norteduc.cl · www.validanet.cl · Norteduc Edtech SpA · Antofagasta, Chile</p>
 </div>
 
 
@@ -725,7 +1317,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
 
 
 <footer>
-  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;"></a>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;" loading="lazy"></a>
   <p style="margin-bottom:12px;">
     <a href="/">Inicio</a><a href="/addons.html">Addons</a><a href="/#pricing">Precios</a>
     <a href="https://connect.validanet.cl">Connect</a>
@@ -736,12 +1328,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>var CHAT_PERFIL="publico";</script>
-<!-- 
-  TutorIA Connect — Widget Asistente IA
-  Insertar antes de <script src="/vn-precios.js"></script>
-</body> en todos los dashboards
-  Reemplazar PERFIL_ACTUAL por: 'empresa' | 'relator' | 'admin'
--->
+<!-- Chat widget -->
 <div id="vn-chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   
   <!-- Burbuja flotante -->
@@ -922,7 +1509,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     var headers = {'Content-Type':'application/json'};
     if(VN_TOKEN) headers['X-Connect-Token'] = VN_TOKEN;
 
-    fetch('https://app.validanet.cl/portal/connect/asistente/chat', {
+    fetch('https://connect.validanet.cl/portal/connect/asistente/chat', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -947,7 +1534,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
       botDiv.className = 'vn-msg-bot';
       var botBubble = document.createElement('div');
       botBubble.className = 'vn-msg-bot-bubble';
-      botBubble.innerHTML = (d.reply||'Sin respuesta').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+      botBubble.innerHTML = (function(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');})(d.reply||'Sin respuesta');
       botDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>';
       botDiv.appendChild(botBubble);
       msgs.appendChild(botDiv);
@@ -976,6 +1563,18 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
 <script>
 
 // CALCULADORA — scope global para oninput=""
+// Calculadora basada en TOKENS (la limitación real de TutorIA es por tokens, no por usuarios/cursos).
+// Tokens estimados por consulta (con prompt caching activo, modelo Haiku): ~300 tokens/consulta promedio.
+const TOKENS_PER_QUERY = 300;
+const PLAN_LIMITS = [
+  // Free no incluye chatbot IA en Moodle — solo dashboard. Tokens: 0 (chat).
+  // No lo incluimos como "recomendable" si hay consultas > 0.
+  {slug:'starter', label:'Starter — $19.990/mes', tokens:500000},
+  {slug:'pro',     label:'Pro — $79.990/mes (14d gratis)', tokens:1000000},
+  {slug:'enterprise', label:'Enterprise — $149.990/mes', tokens:25000000},
+  {slug:'universidad', label:'Universidad — $990.000/mes', tokens:100000000},
+];
+
 function calc(){
   const sa=document.getElementById('sa');
   const sc=document.getElementById('sc');
@@ -983,47 +1582,40 @@ function calc(){
   const a=+sa.value;
   const q=+sc.value;
 
-  // Mostrar valores actuales
   document.getElementById('va').textContent=a.toLocaleString('es-CL');
   document.getElementById('vc').textContent=q;
 
-  // Métricas
   const consultas=a*q;
+  const tokensEstimados = consultas * TOKENS_PER_QUERY;
+
   document.getElementById('rc2').textContent=consultas.toLocaleString('es-CL');
   document.getElementById('ra2').textContent=a.toLocaleString('es-CL');
 
-  // Lógica de plan y precio estimado
-  let p, r;
-
-  if(a<=15){
-    p='Free';
-    r='✅ El plan gratuito cubre tu prueba inicial de forma ilimitada.';
-  }
-  else if(a<=30){
-    p='Starter — $19.990/mes';
-    r='✅ Starter cubre hasta 30 alumnos activos. Ahorro frente a solución propia: +90%.';
-  }
-  else if(a<=200){
-    p='Pro — $79.990/mes';
-    r='✅ Pro es ideal para OTEC, empresas y centros de capacitación hasta 200 alumnos.';
-  }
-  else if(a<=20000){
-    // Plan Universidad: $990.000 base hasta 3.000 alumnos, +$400 por alumno adicional
-    const base=990000;
-    const extra=Math.max(0,a-3000)*400;
-    const total=base+extra;
-    const fmt=n=>n.toLocaleString('es-CL');
-    p='Universidad — $'+fmt(total)+'/mes';
-    r='🎓 Base $990.000 (hasta 3.000 alumnos) + $400/alumno adicional. '
-     +'Total estimado: $'+fmt(total)+'/mes para '+fmt(a)+' alumnos y '+fmt(consultas)+' consultas/mes.';
-  }
-  else{
-    const fmt=n=>n.toLocaleString('es-CL');
-    p='Enterprise — precio a cotizar';
-    r='🏛️ Plan Enterprise: +20.000 alumnos, 60M tokens/mes, SLA personalizado. Solicita una propuesta en contacto@norteduc.cl';
+  // Recomendar el menor plan que cubra los tokens estimados
+  let plan = PLAN_LIMITS[PLAN_LIMITS.length-1]; // fallback: Universidad
+  for(const p of PLAN_LIMITS){
+    if(tokensEstimados <= p.tokens){ plan = p; break; }
   }
 
-  document.getElementById('rp').textContent=p;
+  // Tope: si supera Universidad, sugerir Enterprise custom
+  let r;
+  const fmt = n => n.toLocaleString('es-CL');
+  if(consultas === 0){
+    plan = {slug:'free', label:'Free — Gratis para siempre'};
+    r = '🆓 Sin chat IA: el plan Free es gratis y cubre dashboard, certificados básicos y Mi Ruta.';
+  } else if(tokensEstimados > 100000000){
+    plan = {slug:'universidad+', label:'Universidad ampliado — cotización'};
+    r = '🏛️ Tu volumen (' + fmt(tokensEstimados) + ' tokens/mes) supera el plan Universidad estándar. Solicita cotización personalizada en soporte@norteduc.cl';
+  } else {
+    const usoPct = Math.round(tokensEstimados / plan.tokens * 100);
+    if(usoPct >= 85){
+      r = '⚠️ Estarás al ' + usoPct + '% del cupo del plan ' + plan.slug.toUpperCase() + ' (' + fmt(tokensEstimados) + ' de ' + fmt(plan.tokens) + ' tokens/mes). Considera el siguiente plan.';
+    } else {
+      r = '✅ El plan ' + plan.slug.toUpperCase() + ' cubre tu consumo estimado de ' + fmt(tokensEstimados) + ' tokens/mes (uso ~' + usoPct + '%).';
+    }
+  }
+
+  document.getElementById('rp').textContent=plan.label;
   document.getElementById('rrec').textContent=r;
 }
 

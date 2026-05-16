@@ -86,19 +86,44 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
   .form-section{padding:24px;}
 }
 </style>
+<link rel="stylesheet" href="https://app.validanet.cl/static/vn_nav_shared.css">
+<link rel="stylesheet" href="/styles/a11y.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<nav>
-  <a href="https://validanet.cl"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"></a>
-  <div class="nav-links">
-    <a href="https://validanet.cl/#features">Funciones</a>
-    <a href="https://validanet.cl/#pricing">Precios</a>
-    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+<nav class="vn-nav">
+  <a href="https://validanet.cl" class="vn-logo">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
+    <span class="vn-logo-badge">Aula Virtual</span>
+  </a>
+  <div class="vn-links">
+    <a href="/">Inicio</a>
+    <a href="/#features">Funciones</a>
+    <a href="/#pricing">Precios</a>
+    <a href="/addons">Addons</a>
+    <a href="https://connect.validanet.cl/portal/connect">Connect</a>
+    <a href="/demo">Demo</a>
   </div>
+  <div class="vn-actions">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-vn-ghost">Ingresar</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-vn-green">Comenzar gratis →</a>
+  </div>
+  <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="vn-mob">
+  <a href="/">🏠 Inicio</a>
+  <a href="/#features">⚡ Funciones</a>
+  <a href="/#pricing">💰 Precios</a>
+  <a href="/addons">🧩 Addons</a>
+  <a href="https://connect.validanet.cl/portal/connect">🌐 Connect</a>
+  <a href="/demo">📅 Demo</a>
+  <div class="vn-mob-sep"></div>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/">🔑 Ingresar</a>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="color:#7ab31a;font-weight:700;">🚀 Comenzar gratis</a>
+</div>
 
-<section class="hero">
+<section id="main-content" class="hero">
   <span class="tag">Moodle gestionado · Hosting incluido</span>
   <h1>Tu <span>Aula Virtual Moodle</span> lista en minutos</h1>
   <p>Para OTECs, universidades, CFT, IP, consultoras y áreas de capacitación. Hosting dedicado, backups diarios, 99.9% uptime, SSL, soporte chileno. Sin servidor propio, sin instalación, sin DevOps.</p>
@@ -123,22 +148,22 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
       <form id="form" onsubmit="return submitForm(event)">
         <div class="row">
           <div class="field">
-            <label>Tu nombre</label>
-            <input type="text" name="nombre" required minlength="2" placeholder="Juan Pérez">
+            <label for="f_nombre">Tu nombre</label>
+            <input type="text" id="f_nombre" name="nombre" required minlength="2" placeholder="Juan Pérez">
           </div>
           <div class="field">
-            <label>Nombre de tu organización</label>
-            <input type="text" name="org_name" required minlength="2" placeholder="Mi OTEC SpA">
+            <label for="f_org_name">Nombre de tu organización</label>
+            <input type="text" id="f_org_name" name="org_name" required minlength="2" placeholder="Mi OTEC SpA">
           </div>
         </div>
         <div class="row">
           <div class="field">
-            <label>Email</label>
-            <input type="email" name="email" required placeholder="contacto@miotec.cl">
+            <label for="f_email">Email</label>
+            <input type="email" id="f_email" name="email" required placeholder="contacto@miotec.cl">
           </div>
           <div class="field">
-            <label>Teléfono (opcional)</label>
-            <input type="tel" name="phone" placeholder="+56 9 1234 5678">
+            <label for="f_phone">Teléfono (opcional)</label>
+            <input type="tel" id="f_phone" name="phone" placeholder="+56 9 1234 5678">
           </div>
         </div>
         <div class="field">
@@ -198,7 +223,7 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
       </details>
       <details>
         <summary>¿Ya tengo un Moodle anterior, puedo usar éste también?</summary>
-        <p>Sí. Esta aula es independiente. Puedes mantener tu Moodle anterior y usar éste para nuevos cursos, o migrar gradualmente. Si quieres migrar datos del anterior, escríbenos a contacto@norteduc.cl — es un servicio aparte.</p>
+        <p>Sí. Esta aula es independiente. Puedes mantener tu Moodle anterior y usar éste para nuevos cursos, o migrar gradualmente. Si quieres migrar datos del anterior, escríbenos a soporte@norteduc.cl — es un servicio aparte.</p>
       </details>
       <details>
         <summary>¿Qué incluye el hosting?</summary>
@@ -224,11 +249,11 @@ footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
   <div>ValidaNet · NortEduc Edtech SpA · RUT 76.624.932-9 · Chile</div>
   <div style="margin-top:12px;">
     <a href="https://validanet.cl">Home</a> ·
-    <a href="https://validanet.cl/para-otec">Para OTECs</a> ·
+    <a href="https://validanet.cl/para-instituciones">Para OTECs</a> ·
     <a href="https://validanet.cl/blog/">Blog</a> ·
     <a href="https://connect.validanet.cl/legal/terminos">Términos</a> · <a href="/accesibilidad.html">Accesibilidad</a> ·
     <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
-    <a href="mailto:contacto@norteduc.cl">contacto@norteduc.cl</a>
+    <a href="mailto:contacto@norteduc.cl">soporte@norteduc.cl</a>
   </div>
 </footer>
 
@@ -242,15 +267,16 @@ async function loadPlanes(){
     const r = await fetch('https://app.validanet.cl/api/aulas/planes');
     const data = await r.json();
     const cont = document.getElementById('planes');
+    const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     data.planes.forEach((p,i)=>{
       const popular = p.slug === 'pro' ? 'popular' : '';
       const card = document.createElement('div');
       card.className = `plan ${popular}`;
       card.dataset.slug = p.slug;
       card.innerHTML = `
-        <h3>${p.name.replace('Aula Virtual ','')}</h3>
-        <div class="estudiantes">${p.max_estudiantes} estudiantes</div>
-        <div class="price">$${p.price_clp.toLocaleString('es-CL')}<small>/mes</small></div>
+        <h3>${esc(p.name.replace('Aula Virtual ',''))}</h3>
+        <div class="estudiantes">${esc(p.max_estudiantes)} estudiantes</div>
+        <div class="price">$${esc(Number(p.price_clp).toLocaleString('es-CL'))}<small>/mes</small></div>
         <ul class="features">
           ${p.slug === 'starter' ? `
             <li>Moodle 4.x última versión</li>
@@ -356,22 +382,30 @@ async function submitForm(e){
       body: JSON.stringify(body),
     });
     const data = await r.json();
+    const escMsg = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     if(!r.ok){
-      result.innerHTML = `<div class="alert error">${data.detail || 'Error procesando solicitud'}</div>`;
+      result.innerHTML = `<div class="alert error">${escMsg(data.detail || 'Error procesando solicitud')}</div>`;
       btn.disabled = false; updateBtn();
       return false;
     }
     if(data.waitlist){
-      result.innerHTML = `<div class="alert info"><strong>Estás en lista de espera (posición ${data.position}).</strong> Nuestro servidor está temporalmente al máximo. No se cobró nada — te enviaremos un email cuando se libere cupo.</div>`;
+      result.innerHTML = `<div class="alert info"><strong>Estás en lista de espera (posición ${escMsg(data.position)}).</strong> Nuestro servidor está temporalmente al máximo. No se cobró nada — te enviaremos un email cuando se libere cupo.</div>`;
       btn.textContent = 'En lista de espera';
       return false;
     }
     if(data.payment_url){
-      result.innerHTML = `<div class="alert success">Redirigiendo a Flow para completar el pago...</div>`;
-      setTimeout(()=>{ window.location = data.payment_url; }, 800);
+      // Validar que payment_url apunte a Flow.cl antes de redirigir (anti open-redirect)
+      if (/^https:\/\/(www\.)?flow\.cl\//.test(data.payment_url)) {
+        result.innerHTML = `<div class="alert success">Redirigiendo a Flow para completar el pago...</div>`;
+        setTimeout(()=>{ window.location = data.payment_url; }, 800);
+      } else {
+        result.innerHTML = `<div class="alert error">URL de pago inválida. Contacta soporte@norteduc.cl si el problema persiste.</div>`;
+        btn.disabled = false; updateBtn();
+      }
     }
   }catch(err){
-    result.innerHTML = `<div class="alert error">Error de red: ${err.message}</div>`;
+    const escMsg = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    result.innerHTML = `<div class="alert error">Error de red: ${escMsg(err.message)}</div>`;
     btn.disabled = false; updateBtn();
   }
   return false;

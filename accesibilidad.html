@@ -52,18 +52,43 @@ a:hover{text-decoration:underline;}
   .badge-partial{background:#fff;color:#000;border:2px solid #000;}
 }
 </style>
+<link rel="stylesheet" href="https://app.validanet.cl/static/vn_nav_shared.css">
+<link rel="stylesheet" href="/styles/a11y.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<nav class="nav" aria-label="Navegación principal">
-  <a href="/" class="logo">Valida<em>Net</em></a>
-  <div class="nav-links">
+<nav class="vn-nav" aria-label="Navegación principal">
+  <a href="/" class="vn-logo">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
+    <span class="vn-logo-badge">Accesibilidad</span>
+  </a>
+  <div class="vn-links">
     <a href="/">Inicio</a>
-    <a href="/para-otec.html">OTEC</a>
-    <a href="/para-empresas.html">Empresas</a>
-    <a href="mailto:contacto@norteduc.cl">Contacto</a>
+    <a href="/para-instituciones">Instituciones</a>
+    <a href="/para-empresas">Empresas</a>
+    <a href="/para-relatores">Relatores</a>
+    <a href="https://connect.validanet.cl/portal/connect">Connect</a>
+    <a href="/addons">Addons</a>
+    <a href="/demo">Demo</a>
   </div>
+  <div class="vn-actions">
+    <a href="mailto:contacto@norteduc.cl" class="btn-vn-ghost">Contacto</a>
+    <a href="/demo" class="btn-vn-green">Demo →</a>
+  </div>
+  <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="vn-mob">
+  <a href="/">🏠 Inicio</a>
+  <a href="/para-instituciones">🏛 Instituciones</a>
+  <a href="/para-empresas">🏢 Empresas</a>
+  <a href="/para-relatores">👨‍🏫 Relatores</a>
+  <a href="https://connect.validanet.cl/portal/connect">🌐 Connect</a>
+  <a href="/addons">🧩 Addons</a>
+  <a href="/demo">📅 Demo</a>
+  <div class="vn-mob-sep"></div>
+  <a href="mailto:contacto@norteduc.cl">📩 Contacto</a>
+</div>
 
 <main id="contenido" lang="es">
 
@@ -193,7 +218,7 @@ a:hover{text-decoration:underline;}
     <strong>5 días hábiles</strong>.
   </p>
   <ul>
-    <li>📧 Email: <a href="mailto:contacto@norteduc.cl?subject=Accesibilidad%20ValidaNet">contacto@norteduc.cl</a></li>
+    <li>📧 Email: <a href="mailto:soporte@norteduc.cl?subject=Accesibilidad%20ValidaNet">soporte@norteduc.cl</a></li>
     <li>📞 Teléfono: +56 9 9595 7115 (en horario laboral, idioma español)</li>
     <li>📬 Dirección: NortEduc Edtech SpA, Antofagasta, Chile</li>
   </ul>
@@ -224,7 +249,7 @@ a:hover{text-decoration:underline;}
     <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
     <a href="https://connect.validanet.cl/legal/terminos">Términos</a> ·
     <a href="/accesibilidad.html">Accesibilidad</a> ·
-    <a href="mailto:contacto@norteduc.cl?subject=Accesibilidad%20ValidaNet">Reportar barrera</a>
+    <a href="mailto:soporte@norteduc.cl?subject=Accesibilidad%20ValidaNet">Reportar barrera</a>
   </div>
   <p style="margin-top:12px;">© 2026 NortEduc Edtech SpA · RUT 76.624.932-9 · Antofagasta, Chile</p>
   <p style="font-size:11px;margin-top:6px;color:#64748b;">NortEduc® y ValidaNet® son marcas registradas de NortEduc Edtech SpA.</p>

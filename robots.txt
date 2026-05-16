@@ -1,12 +1,10 @@
 User-agent: *
 Allow: /
 
-# Áreas privadas / admin (no indexar)
-Disallow: /admin/
-Disallow: /portal/
-
 # Sitemap dinámico generado por backend (incluye perfiles OTEC + blog)
 Sitemap: https://app.validanet.cl/sitemap.xml
+# Nota: rutas /admin/ y /portal/ no existen en este dominio (viven en app.validanet.cl).
+# No declarar Disallow innecesarios — facilita reconocimiento a atacantes.
 
 # Bot específicos comunes
 User-agent: GPTBot

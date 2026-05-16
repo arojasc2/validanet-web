@@ -345,7 +345,7 @@ function toggleFaq(el){
 </section>
 
 <footer>
-  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;"></a>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;" loading="lazy"></a>
   <p style="margin-bottom:12px;">
     <a href="/">Inicio</a><a href="/addons.html">Addons</a><a href="/#pricing">Precios</a>
     <a href="https://connect.validanet.cl">Connect</a>
@@ -356,12 +356,7 @@ function toggleFaq(el){
 </footer>
 
 <script>var CHAT_PERFIL="publico";</script>
-<!-- 
-  TutorIA Connect — Widget Asistente IA
-  Insertar antes de <script src="/vn-precios.js"></script>
-</body> en todos los dashboards
-  Reemplazar PERFIL_ACTUAL por: 'empresa' | 'relator' | 'admin'
--->
+<!-- Chat widget -->
 <div id="vn-chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   
   <!-- Burbuja flotante -->
@@ -542,7 +537,7 @@ function toggleFaq(el){
     var headers = {'Content-Type':'application/json'};
     if(VN_TOKEN) headers['X-Connect-Token'] = VN_TOKEN;
 
-    fetch('https://app.validanet.cl/portal/connect/asistente/chat', {
+    fetch('https://connect.validanet.cl/portal/connect/asistente/chat', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -567,7 +562,7 @@ function toggleFaq(el){
       botDiv.className = 'vn-msg-bot';
       var botBubble = document.createElement('div');
       botBubble.className = 'vn-msg-bot-bubble';
-      botBubble.innerHTML = (d.reply||'Sin respuesta').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+      botBubble.innerHTML = (function(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');})(d.reply||'Sin respuesta');
       botDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>';
       botDiv.appendChild(botBubble);
       msgs.appendChild(botDiv);

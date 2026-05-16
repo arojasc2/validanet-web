@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════════════════
+   ValidaNet — Accesibilidad global WCAG 2.1 AA
+   Aplicado 2026-05-16 tras auditoría
+   ═══════════════════════════════════════════════════════════ */
+
+/* Skip-to-main link — WCAG 2.4.1 (Level A)
+   Permite a usuarios de teclado/screen-reader saltar el nav. */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: #7ab31a;
+    color: #0f172a;
+    font-weight: 800;
+    padding: 12px 24px;
+    border-radius: 0 0 12px 0;
+    z-index: 10000;
+    text-decoration: none;
+    font-size: 14px;
+}
+.skip-link:focus {
+    left: 0;
+    outline: 3px solid #f47920;
+    outline-offset: 2px;
+}
+
+/* :focus-visible global — WCAG 2.4.7 (Level AA)
+   Outline claro solo cuando navega por teclado (no en click). */
+*:focus-visible {
+    outline: 3px solid #7ab31a;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #7ab31a;
+    outline-offset: 2px;
+}
+
+/* Tap target mínimo 44x44px — WCAG 2.5.5 (Level AAA, buena práctica AA) */
+@media (max-width: 768px) {
+    button, a.btn-vn-green, a.btn-vn-ghost, a.btn-vn-orange,
+    a.btn-green, a.btn-outline, a.btn-orange, a.btn-green-o,
+    a.btn-cta, a.btn-ghost-light, .vn-burger, a[class*="btn"] {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* prefers-reduced-motion — respetar preferencias del usuario */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Hover effects solo cuando hay puntero hover real (no tap mobile) */
+@media (hover: hover) and (pointer: fine) {
+    .addon:hover, .card:hover, .plan:hover, .post-card:hover {
+        transform: translateY(-2px);
+    }
+}
+@media (hover: none) {
+    .addon, .card, .plan, .post-card {
+        transform: none !important;
+    }
+}

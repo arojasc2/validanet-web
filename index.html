@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ValidaNet — Plataforma SaaS para Educación Online</title>
-<meta name="description" content="ValidaNet es la plataforma SaaS para OTECs, CFT, universidades y empresas de capacitación. TutorIA, certificados digitales, SENCE y más.">
+<meta name="description" content="ValidaNet es la plataforma SaaS para instituciones educativas (OTECs, universidades, CFT, IP, consultoras) y empresas que buscan capacitar a sus equipos. TutorIA, certificados digitales, SENCE y más.">
 <link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -114,7 +114,13 @@ footer .links a:hover{color:white;}
   .cta h2{font-size:24px;}
   .cta{padding:48px 16px;}
 }
+
+/* Pricing grid 3+2 layout responsive */
+#pricing-grid > div { flex: 1 1 calc(33.333% - 16px); min-width: 240px; max-width: 320px; }
+@media (max-width: 760px) { #pricing-grid > div { flex: 1 1 100%; max-width: 100%; } }
+
 </style>
+<link rel="stylesheet" href="https://app.validanet.cl/static/vn_nav_shared.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="ValidaNet — Plataforma SaaS para Educación Online">
@@ -140,7 +146,7 @@ footer .links a:hover{color:white;}
       "legalName": "Norteduc Edtech SpA",
       "url": "https://validanet.cl/",
       "logo": "https://app.validanet.cl/static/logo-validanet.png",
-      "email": "contacto@norteduc.cl",
+      "email": "soporte@norteduc.cl",
       "vatID": "76624932-9",
       "foundingDate": "2024",
       "address": {
@@ -183,51 +189,76 @@ footer .links a:hover{color:white;}
   ]
 }
 </script>
+<link rel="stylesheet" href="/styles/a11y.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<nav class="nav">
-  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:38px;"></a>
-  <div class="nav-links">
-    <a href="/para-otec">OTEC</a>
-    <a href="/para-empresas" style="color:#f47920;">Empresas</a>
-    <a href="/para-relatores" style="color:#7ab31a;">Relatores</a>
+<nav class="vn-nav">
+  <a href="/" class="vn-logo">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
+  </a>
+  <div class="vn-links">
+    <a href="/para-instituciones">Instituciones</a>
+    <a href="/para-empresas">Empresas</a>
+    <a href="/para-relatores">Relatores</a>
+    <a href="https://connect.validanet.cl/portal/connect">Connect</a>
     <a href="/addons">Addons</a>
     <a href="/blog">Blog</a>
-    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-outline">Ingresar</a>
-    <a href="/demo" class="btn-green">Prueba gratis →</a>
   </div>
+  <div class="vn-actions">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-vn-ghost">Ingresar</a>
+    <a href="/demo" class="btn-vn-green">Prueba 14 días gratis →</a>
+  </div>
+  <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="vn-mob">
+  <a href="/para-instituciones">🏛 Instituciones</a>
+  <a href="/para-empresas">🏢 Empresas</a>
+  <a href="/para-relatores">👨‍🏫 Relatores</a>
+  <a href="https://connect.validanet.cl/portal/connect">🌐 Connect</a>
+  <a href="/addons">🧩 Addons</a>
+  <a href="/blog">📝 Blog</a>
+  <div class="vn-mob-sep"></div>
+  <a href="https://app.validanet.cl/api/validanet/dashboard/">🔑 Ingresar</a>
+  <a href="/demo" style="color:#7ab31a;font-weight:700;">🚀 Prueba 14 días gratis</a>
+</div>
 
-<section class="hero">
+<section id="main-content" class="hero">
   <h1>La plataforma SaaS para<br><span>educación online inteligente</span></h1>
   <p>El ecosistema SaaS con IA para OTECs, CFT, IP, universidades y empresas de capacitación. Integrado con Moodle, SENCE, certificados digitales y red de relatores. Hecho en Chile 🇨🇱</p>
-  <div div style="margin-top:8px;">
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px auto 0;max-width:780px;">
+    <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.92);">🛡 Compatible NCh2728:2015</span>
+    <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.92);">✅ SENCE · SIC · REUF</span>
+    <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.92);">🔒 Ley 21.719</span>
+    <span style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.92);">♿ WCAG 2.1 AA · Ley 20.422</span>
+  </div>
+  <div style="margin-top:24px;">
     <p style="font-size:13px;color:#64748b;margin-bottom:20px;">¿Con quién quieres continuar?</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:800px;margin:0 auto;">
 
-      <!-- OTEC / Institución -->
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register"
+      <!-- Empresa/Institución que OFRECE capacitación (OTEC, universidad, CFT, IP, consultora) -->
+      <a href="/para-instituciones"
          style="background:#7ab31a;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
         <span style="font-size:24px;">🏫</span>
-        <span style="font-weight:800;font-size:15px;">Soy OTEC / Institución</span>
-        <span style="font-size:12px;opacity:.85;">Gestiona cursos, SENCE, certificados y más</span>
+        <span style="font-weight:800;font-size:15px;">Ofrezco capacitación</span>
+        <span style="font-size:12px;opacity:.85;">OTEC, universidad, CFT, IP, consultora · gestiona cursos, SENCE, certificados</span>
       </a>
 
-      <!-- Empresa que busca capacitación -->
-      <a href="https://connect.validanet.cl/connect/empresa"
+      <!-- Empresa que BUSCA capacitación para su equipo -->
+      <a href="/para-empresas"
          style="background:#f47920;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
         <span style="font-size:24px;">🏢</span>
         <span style="font-weight:800;font-size:15px;">Busco capacitación</span>
-        <span style="font-size:12px;opacity:.85;">Encuentra OTECs y relatores verificados</span>
+        <span style="font-size:12px;opacity:.85;">Empresa con equipo a capacitar · encuentra relatores e instituciones</span>
       </a>
 
       <!-- Relator independiente -->
-      <a href="https://connect.validanet.cl/connect/relator"
+      <a href="/para-relatores"
          style="background:#1e293b;border:2px solid #7ab31a;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
         <span style="font-size:24px;">👨‍🏫</span>
         <span style="font-weight:800;font-size:15px;">Soy relator</span>
-        <span style="font-size:12px;color:#94a3b8;">Ofrece tus servicios de capacitación</span>
+        <span style="font-size:12px;color:#94a3b8;">Profesional independiente · ofrece tus servicios y consigue clientes</span>
       </a>
 
     </div>
@@ -342,13 +373,29 @@ footer .links a:hover{color:white;}
 </section>
 <section id="pricing" style="padding:80px 40px;background:white;">
   <h2 style="text-align:center;font-size:32px;font-weight:800;margin-bottom:12px;">Planes simples y transparentes</h2>
-  <p style="text-align:center;color:#64748b;margin-bottom:48px;">Sin costos ocultos. Cancela cuando quieras.</p>
-  <div style="display:flex;gap:20px;max-width:1100px;margin:0 auto;align-items:flex-start;flex-wrap:nowrap;">
+  <p style="text-align:center;color:#64748b;margin-bottom:12px;">Sin costos ocultos. Cancela cuando quieras. <strong>Plan Pro 14 días gratis sin tarjeta.</strong></p>
+  <p style="text-align:center;color:#94a3b8;font-size:13px;margin-bottom:40px;max-width:740px;margin-left:auto;margin-right:auto;">🪙 La capacidad de IA se mide en <strong>tokens/mes</strong> (cubren chatbot Moodle + dashboard + Mi Ruta + alertas). <strong>Cursos y alumnos ilimitados</strong> desde Starter.</p>
+  <div id="pricing-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:1100px;margin:0 auto;align-items:stretch;">
+
+    <!-- FREE -->
+    <div style="border:2px solid #e2e8f0;border-radius:16px;padding:22px;text-align:center;background:white;">
+      <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:10px;">FREE</div>
+      <div style="font-size:30px;font-weight:800;color:#0f172a;"><span data-vn-plan="free" data-vn-campo="precio">$0</span><span style="font-size:13px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;">para siempre</div>
+      <div style="font-size:11px;font-weight:700;color:#0f172a;background:#f1f5f9;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 15K tokens/mes</div>
+      <ul style="list-style:none;text-align:left;margin-bottom:20px;">
+        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Dashboard ValidaNet</li>
+        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Cursos y alumnos ilimitados</li>
+        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ IA en panel (resúmenes, sugerencias)</li>
+        <li style="padding:6px 0;font-size:13px;color:#94a3b8;">✗ Sin chatbot TutorIA en Moodle</li>
+      </ul>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:11px;font-size:14px;font-weight:700;text-decoration:none;">Empezar gratis</a>
+    </div>
 
     <!-- STARTER -->
-    <div style="flex:1;border:2px solid #e2e8f0;border-radius:16px;padding:28px;text-align:center;background:white;">
+    <div style="border:2px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;background:white;">
       <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">STARTER</div>
-      <div style="font-size:36px;font-weight:800;color:#7ab31a;"><span data-vn-plan="starter" data-vn-campo="precio">$29.990</span><span style="font-size:15px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:32px;font-weight:800;color:#7ab31a;"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
       <ul style="list-style:none;text-align:left;margin-bottom:24px;">
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ TutorIA básico</li>
@@ -360,17 +407,16 @@ footer .links a:hover{color:white;}
     </div>
 
     <!-- PRO -->
-    <div style="flex:1;border:2px solid #7ab31a;border-radius:16px;padding:28px;text-align:center;position:relative;background:white;">
+    <div style="border:2px solid #7ab31a;border-radius:16px;padding:24px;text-align:center;position:relative;background:white;">
       <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;border-radius:99px;padding:4px 16px;font-size:12px;font-weight:700;white-space:nowrap;">⭐ MÁS POPULAR</div>
       <div style="font-size:13px;font-weight:700;color:#7ab31a;letter-spacing:2px;margin-bottom:12px;">PRO</div>
-      <div style="font-size:36px;font-weight:800;color:#0f172a;"><span data-vn-plan="pro" data-vn-campo="precio">$59.990</span><span style="font-size:15px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
       <ul style="list-style:none;text-align:left;margin-bottom:24px;">
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ TutorIA avanzado</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Certificados + Open Badge</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ CampusStore</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Licitaciones</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ ERP Educativo</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Licitaciones + ERP</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ ValidaNet Connect</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Soporte prioritario</li>
       </ul>
@@ -378,9 +424,9 @@ footer .links a:hover{color:white;}
     </div>
 
     <!-- ENTERPRISE -->
-    <div style="flex:1;border:2px solid #e2e8f0;border-radius:16px;padding:28px;text-align:center;background:white;">
+    <div style="border:2px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;background:white;">
       <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">ENTERPRISE</div>
-      <div style="font-size:36px;font-weight:800;color:#0f172a;"><span data-vn-plan="enterprise" data-vn-campo="precio">$99.990</span><span style="font-size:15px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
       <ul style="list-style:none;text-align:left;margin-bottom:24px;">
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Todos los addons</li>
@@ -388,25 +434,57 @@ footer .links a:hover{color:white;}
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SENCE automático</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SGC NCh2728</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ API personalizada</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SLA garantizado</li>
         <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Soporte 24/7</li>
       </ul>
-      <a href="mailto:contacto@validanet.cl" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Contactar</a>
+      <a href="mailto:contacto@norteduc.cl?subject=Plan%20Enterprise%20ValidaNet" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Contactar</a>
+    </div>
+
+    <!-- UNIVERSIDAD -->
+    <div style="border:2px solid #1e3a8a;border-radius:16px;padding:24px;text-align:center;position:relative;background:linear-gradient(135deg,#fff 0%,#f0f7ff 100%);">
+      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#1e3a8a;color:white;border-radius:99px;padding:4px 16px;font-size:12px;font-weight:700;white-space:nowrap;">🎓 ACADEMIA</div>
+      <div style="font-size:13px;font-weight:700;color:#1e3a8a;letter-spacing:2px;margin-bottom:12px;">UNIVERSIDAD</div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
+      <ul style="list-style:none;text-align:left;margin-bottom:24px;">
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Hasta 50.000 alumnos</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Multi-campus + multi-sede</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Integración Banner/SIES</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SLA 99.9% garantizado</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Account manager dedicado</li>
+        <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Onboarding personalizado</li>
+      </ul>
+      <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" style="display:block;background:#1e3a8a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Solicitar demo</a>
     </div>
 
   </div>
 </section>
 
 <section style="padding:72px 40px;background:#0f172a;text-align:center;">
-  <h2 style="font-size:30px;font-weight:800;color:#f1f5f9;margin-bottom:12px;">¿Listo para transformar tu institución educativa?</h2>
-  <p style="color:#64748b;margin-bottom:32px;font-size:16px;">Únete a las instituciones que ya usan ValidaNet. Comienza gratis hoy.</p>
-  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="background:#7ab31a;color:white;border-radius:10px;padding:14px 28px;font-weight:700;text-decoration:none;font-size:15px;">🚀 Comenzar gratis</a>
-    <a href="https://connect.validanet.cl/connect/empresa" style="background:#f47920;color:white;border-radius:10px;padding:14px 28px;font-weight:700;text-decoration:none;font-size:15px;">🏢 Soy empresa</a>
-    <a href="https://connect.validanet.cl/connect/relator" style="border:2px solid #7ab31a;color:#7ab31a;border-radius:10px;padding:12px 28px;font-weight:700;text-decoration:none;font-size:15px;">👨‍🏫 Soy relator</a>
-    <a href="mailto:contacto@norteduc.cl" style="border:2px solid #475569;color:#94a3b8;border-radius:10px;padding:12px 28px;font-weight:700;text-decoration:none;font-size:15px;">📩 Contactar</a>
+  <h2 style="font-size:30px;font-weight:800;color:#f1f5f9;margin-bottom:12px;">¿Listo para empezar?</h2>
+  <p style="color:#64748b;margin-bottom:28px;font-size:16px;">Elige tu perfil y empezamos desde ahí.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:980px;margin:0 auto;">
+    <a href="/para-instituciones" style="background:#7ab31a;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
+      <span style="font-size:22px;">🏫</span>
+      <span style="font-weight:800;font-size:15px;">Ofrezco capacitación</span>
+      <span style="font-size:11px;opacity:.85;">OTEC · universidad · CFT · IP · consultora</span>
+    </a>
+    <a href="/para-empresas" style="background:#f47920;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
+      <span style="font-size:22px;">🏢</span>
+      <span style="font-weight:800;font-size:15px;">Busco capacitación</span>
+      <span style="font-size:11px;opacity:.85;">Empresa con equipo a capacitar</span>
+    </a>
+    <a href="/para-relatores" style="background:#1e293b;border:2px solid #7ab31a;color:white;border-radius:12px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:6px;text-align:left;">
+      <span style="font-size:22px;">👨‍🏫</span>
+      <span style="font-weight:800;font-size:15px;">Soy relator</span>
+      <span style="font-size:11px;color:#94a3b8;">Profesional independiente</span>
+    </a>
   </div>
-  <p style="color:#334155;margin-top:24px;font-size:13px;">Sin tarjeta de crédito · Cancela cuando quieras · Soporte en español</p>
+  <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="background:transparent;border:2px solid #7ab31a;color:#7ab31a;border-radius:10px;padding:10px 22px;font-weight:700;text-decoration:none;font-size:14px;">🚀 Comenzar gratis</a>
+    <a href="https://calendar.app.google/oGfFE7336t5hF7jA9" target="_blank" rel="noopener" style="background:transparent;border:2px solid #475569;color:#94a3b8;border-radius:10px;padding:10px 22px;font-weight:700;text-decoration:none;font-size:14px;">📅 Agendar demo</a>
+    <a href="https://wa.me/56978456475" target="_blank" rel="noopener" style="background:transparent;border:2px solid #475569;color:#94a3b8;border-radius:10px;padding:10px 22px;font-weight:700;text-decoration:none;font-size:14px;">💬 WhatsApp</a>
+  </div>
+  <p style="color:#334155;margin-top:20px;font-size:13px;">Sin tarjeta de crédito · Cancela cuando quieras · Soporte en español</p>
 </section>
 <section class="cta" style="display:none;">
   <h2>¿Listo para transformar tu institución?</h2>
@@ -423,7 +501,7 @@ footer .links a:hover{color:white;}
     <a href="https://connect.validanet.cl/connect/empresa" style="color:#f47920;">Empresas</a>
     <a href="https://connect.validanet.cl/connect/relator" style="color:#7ab31a;">Relatores</a>
     <a href="#pricing">Precios</a>
-    <a href="mailto:contacto@validanet.cl">Contacto</a>
+    <a href="mailto:contacto@norteduc.cl">Contacto</a>
     <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a>
     <a href="https://connect.validanet.cl/legal/terminos">Términos</a>
     <a href="/accesibilidad.html">Accesibilidad</a>
@@ -434,12 +512,7 @@ footer .links a:hover{color:white;}
 
 
 <script>var CHAT_PERFIL="publico";</script>
-<!-- 
-  TutorIA Connect — Widget Asistente IA
-  Insertar antes de <script src="/vn-precios.js"></script>
-</body> en todos los dashboards
-  Reemplazar PERFIL_ACTUAL por: 'empresa' | 'relator' | 'admin'
--->
+<!-- Chat widget -->
 <div id="vn-chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   
   <!-- Burbuja flotante -->
@@ -621,7 +694,7 @@ footer .links a:hover{color:white;}
     var headers = {'Content-Type':'application/json'};
     if(VN_TOKEN) headers['X-Connect-Token'] = VN_TOKEN;
 
-    fetch('https://app.validanet.cl/portal/connect/asistente/chat', {
+    fetch('https://connect.validanet.cl/portal/connect/asistente/chat', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -646,7 +719,7 @@ footer .links a:hover{color:white;}
       botDiv.className = 'vn-msg-bot';
       var botBubble = document.createElement('div');
       botBubble.className = 'vn-msg-bot-bubble';
-      botBubble.innerHTML = (d.reply||'Sin respuesta').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+      botBubble.innerHTML = (function(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');})(d.reply||'Sin respuesta');
       botDiv.innerHTML = '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7ab31a,#5a8a12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>';
       botDiv.appendChild(botBubble);
       msgs.appendChild(botDiv);
@@ -687,33 +760,9 @@ footer .links a:hover{color:white;}
 .vn-exit-card .vnmsg{font-size:12px;margin-top:8px;display:none;}
 .vn-exit-card .vnmsg.ok{color:#166534;display:block;}
 .vn-exit-card .vnmsg.err{color:#991b1b;display:block;}
-/* Chat ventas */
-#vn-chat-bubble{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#7ab31a,#5d8916);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 8px 20px rgba(122,179,26,.4);z-index:9997;transition:transform .15s;}
-#vn-chat-bubble:hover{transform:scale(1.08);}
-#vn-chat-bubble::after{content:"";position:absolute;top:6px;right:6px;width:10px;height:10px;background:#f47920;border:2px solid white;border-radius:50%;}
-#vn-chat-pop{display:none;position:fixed;bottom:90px;right:20px;width:360px;max-width:calc(100vw - 30px);height:520px;max-height:calc(100vh - 110px);background:white;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.18);z-index:9999;flex-direction:column;overflow:hidden;}
-#vn-chat-pop.open{display:flex;}
-.vnc-hdr{background:linear-gradient(135deg,#1e3a5f,#0f172a);color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;}
-.vnc-hdr .avatar{width:36px;height:36px;background:#7ab31a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
-.vnc-hdr .meta{flex:1;}
-.vnc-hdr .meta .name{font-weight:700;font-size:14px;}
-.vnc-hdr .meta .role{font-size:11px;opacity:.7;}
-.vnc-hdr .close-btn{background:none;border:0;color:white;font-size:22px;cursor:pointer;opacity:.8;}
-.vnc-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8fafc;}
-.vnc-msg{padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5;max-width:85%;}
-.vnc-msg.bot{background:white;border:1px solid #e2e8f0;align-self:flex-start;}
-.vnc-msg.user{background:#1e3a5f;color:white;align-self:flex-end;}
-.vnc-typing{font-size:12px;color:#94a3b8;padding:0 4px;}
-.vnc-input{display:flex;gap:8px;padding:12px;border-top:1px solid #e2e8f0;background:white;}
-.vnc-input input{flex:1;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:20px;font-size:13px;font-family:inherit;outline:none;}
-.vnc-input input:focus{border-color:#7ab31a;}
-.vnc-input button{background:#7ab31a;color:white;border:0;width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer;}
+/* Validín ventas removido — el único chat es TutorIA Connect (verde, bottom-right) */
 @keyframes vnFadeIn{from{opacity:0}to{opacity:1}}
 @keyframes vnSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:768px){
-  #vn-chat-pop{bottom:80px;right:10px;width:calc(100vw - 20px);height:calc(100vh - 100px);}
-  #vn-chat-bubble{width:54px;height:54px;font-size:24px;bottom:14px;right:14px;}
-}
 </style>
 
 <!-- Exit Popup -->
@@ -722,7 +771,7 @@ footer .links a:hover{color:white;}
     <button class="close" onclick="vnExitClose()" aria-label="Cerrar">×</button>
     <div class="ic">⏰</div>
     <h3>¿Te vas sin probar?</h3>
-    <p><strong>7 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
+    <p><strong>14 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
     <input type="email" id="vn-exit-email" placeholder="tu@empresa.cl" autocomplete="email">
     <button onclick="vnExitSubmit()">📧 Enviarme la info gratis</button>
     <div class="vnmsg" id="vn-exit-msg"></div>
@@ -730,25 +779,7 @@ footer .links a:hover{color:white;}
   </div>
 </div>
 
-<!-- Chat Ventas -->
-<div id="vn-chat-bubble" onclick="vnChatToggle()" title="Hablar con ventas">💬</div>
-<div id="vn-chat-pop">
-  <div class="vnc-hdr">
-    <div class="avatar">🤖</div>
-    <div class="meta">
-      <div class="name">Validín · Asesor de ventas</div>
-      <div class="role">IA · Responde 24/7</div>
-    </div>
-    <button class="close-btn" onclick="vnChatToggle()">×</button>
-  </div>
-  <div class="vnc-msgs" id="vnc-msgs">
-    <div class="vnc-msg bot">Hola 👋 Soy Validín, asesor de ventas de ValidaNet. ¿Buscas digitalizar una OTEC, contratar capacitación para tu empresa, o eres relator independiente?</div>
-  </div>
-  <div class="vnc-input">
-    <input type="text" id="vnc-input" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')vnChatSend()" maxlength="500">
-    <button onclick="vnChatSend()" aria-label="Enviar">→</button>
-  </div>
-</div>
+<!-- Validín removido. El único chat público es TutorIA Connect (verde, vn-chat-widget arriba). -->
 
 <script>
 // ─── Exit intent popup (solo desktop, una vez por sesión) ───
@@ -784,67 +815,7 @@ async function vnExitSubmit(){
   }
 }
 
-// ─── Chat ventas con Claude Haiku ───
-var vncHistory = [];
-var vncSessionId = 'sess-' + Math.random().toString(36).slice(2,12);
-
-function vnChatToggle(){
-  document.getElementById('vn-chat-pop').classList.toggle('open');
-  if (document.getElementById('vn-chat-pop').classList.contains('open')){
-    setTimeout(function(){ document.getElementById('vnc-input').focus(); }, 100);
-  }
-}
-
-function vncRender(){
-  var box = document.getElementById('vnc-msgs');
-  // Mantener saludo inicial; renderizar history
-  box.innerHTML = '<div class="vnc-msg bot">Hola 👋 Soy Validín, asesor de ventas de ValidaNet. ¿Buscas digitalizar una OTEC, contratar capacitación para tu empresa, o eres relator independiente?</div>';
-  vncHistory.forEach(function(h){
-    var d = document.createElement('div');
-    d.className = 'vnc-msg ' + h.role;
-    d.textContent = h.content;
-    box.appendChild(d);
-  });
-  box.scrollTop = box.scrollHeight;
-}
-
-async function vnChatSend(){
-  var inp = document.getElementById('vnc-input');
-  var msg = inp.value.trim();
-  if (!msg) return;
-  vncHistory.push({role:'user', content: msg});
-  inp.value = '';
-  vncRender();
-
-  // Typing indicator
-  var box = document.getElementById('vnc-msgs');
-  var typing = document.createElement('div');
-  typing.className = 'vnc-typing';
-  typing.id = 'vnc-typing-el';
-  typing.textContent = 'Validín está escribiendo…';
-  box.appendChild(typing);
-  box.scrollTop = box.scrollHeight;
-
-  try {
-    var r = await fetch('https://app.validanet.cl/api/validanet/public/chat-ventas', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        message: msg,
-        session_id: vncSessionId,
-        history: vncHistory.slice(-6)
-      })
-    });
-    var d = await r.json();
-    var reply = d.reply || 'Disculpa, tuve un problema. Intenta de nuevo.';
-    vncHistory.push({role:'assistant', content: reply});
-    vncRender();
-  } catch(e){
-    var t = document.getElementById('vnc-typing-el');
-    if (t) t.remove();
-    vncHistory.push({role:'assistant', content: 'Error de conexión. Escríbenos a contacto@norteduc.cl'});
-    vncRender();
-  }
-}
+// Validín JS removido — usar TutorIA Connect (vn-chat-widget) que ya está arriba.
 </script>
 
 </body>
