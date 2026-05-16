@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Declaración de accesibilidad — ValidaNet</title>
+<meta name="description" content="Declaración de conformidad WCAG 2.1 AA y compromiso de accesibilidad de la plataforma ValidaNet conforme a la Ley 20.422 de Chile.">
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#fff;line-height:1.65;}
+.nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{color:white;font-weight:800;font-size:22px;text-decoration:none;}
+.logo em{color:#7ab31a;font-style:normal;}
+.nav a:focus-visible,.nav button:focus-visible,main a:focus-visible{outline:3px solid #7ab31a;outline-offset:2px;}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover,.nav-links a:focus{color:#7ab31a;text-decoration:underline;}
+main{max-width:880px;margin:0 auto;padding:48px 24px 80px;}
+h1{font-size:clamp(28px,4vw,42px);font-weight:800;color:#0f172a;margin-bottom:8px;}
+.sub{color:#475569;font-size:16px;margin-bottom:32px;}
+h2{font-size:24px;font-weight:700;color:#0f172a;margin:40px 0 12px;border-bottom:2px solid #e2e8f0;padding-bottom:6px;}
+h3{font-size:18px;font-weight:700;color:#1e293b;margin:24px 0 8px;}
+p,li{font-size:16px;color:#1e293b;}
+ul,ol{margin:8px 0 16px 28px;}
+li{margin-bottom:6px;}
+.callout{background:#f1f5f9;border-left:4px solid #7ab31a;padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;}
+.callout-warn{background:#fff7ed;border-left-color:#f47920;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
+caption{caption-side:top;font-weight:700;text-align:left;padding-bottom:8px;color:#0f172a;}
+th,td{padding:10px 12px;border-bottom:1px solid #e2e8f0;text-align:left;}
+th{background:#0f172a;color:#fff;font-weight:600;}
+tbody tr:nth-child(even){background:#f8fafc;}
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;}
+.badge-ok{background:#dcfce7;color:#15803d;}
+.badge-partial{background:#fef9c3;color:#854d0e;}
+.badge-todo{background:#fee2e2;color:#a00000;}
+footer{background:#0f172a;color:#94a3b8;padding:32px 24px;text-align:center;margin-top:60px;font-size:14px;}
+footer a{color:#94a3b8;text-decoration:underline;}
+footer a:hover{color:#fff;}
+a{color:#1e40af;}
+a:hover{text-decoration:underline;}
+.toc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px 28px;margin-bottom:32px;}
+.toc h2{border:none;margin-top:0;font-size:18px;padding-bottom:0;}
+.toc ol{margin-left:20px;}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;}}
+@media (prefers-contrast: more){
+  body{color:#000;background:#fff;}
+  h2{border-bottom-color:#000;}
+  th{background:#000;}
+  .badge-ok{background:#fff;color:#000;border:2px solid #000;}
+  .badge-partial{background:#fff;color:#000;border:2px solid #000;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navegación principal">
+  <a href="/" class="logo">Valida<em>Net</em></a>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/para-otec.html">OTEC</a>
+    <a href="/para-empresas.html">Empresas</a>
+    <a href="mailto:contacto@validanet.cl">Contacto</a>
+  </div>
+</nav>
+
+<main id="contenido" lang="es">
+
+  <h1>Declaración de accesibilidad</h1>
+  <p class="sub">Última actualización: 16 de mayo de 2026 · Versión 1.0</p>
+
+  <div class="callout">
+    <strong>Compromiso:</strong> ValidaNet (NortEduc Edtech SpA) se compromete a hacer
+    su plataforma accesible para todas las personas, en cumplimiento de la
+    <strong>Ley N° 20.422</strong> sobre igualdad de oportunidades e inclusión
+    social de personas con discapacidad (Chile), su Reglamento, y los lineamientos
+    técnicos del <strong>Decreto Supremo N° 1/2015</strong> y el
+    <strong>D.S. 31/2018 MINSEGPRES</strong> sobre accesibilidad de sitios web.
+  </div>
+
+  <div class="toc" role="navigation" aria-label="Índice de contenido">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#estado">Estado de conformidad WCAG 2.1</a></li>
+      <li><a href="#alcance">Alcance de esta declaración</a></li>
+      <li><a href="#caracteristicas">Características de accesibilidad implementadas</a></li>
+      <li><a href="#limitaciones">Limitaciones conocidas</a></li>
+      <li><a href="#metodo">Método de evaluación</a></li>
+      <li><a href="#feedback">Reportar barreras de accesibilidad</a></li>
+      <li><a href="#legal">Marco legal aplicable</a></li>
+    </ol>
+  </div>
+
+  <h2 id="estado">1. Estado de conformidad WCAG 2.1</h2>
+  <p>
+    La plataforma ValidaNet — incluyendo el chat TutorIA embebido en sitios
+    Moodle de nuestros clientes — declara conformidad <strong>parcial con el
+    nivel AA</strong> de las
+    <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.1</a>
+    publicadas por el W3C.
+  </p>
+  <p>
+    «Conformidad parcial» significa que la mayor parte del contenido cumple los
+    requisitos del nivel AA, con las limitaciones específicas detalladas en la
+    sección 4 de este documento, que estamos en proceso de resolver.
+  </p>
+
+  <h2 id="alcance">2. Alcance de esta declaración</h2>
+  <p>Esta declaración cubre los siguientes productos y dominios:</p>
+  <ul>
+    <li><strong>https://validanet.cl</strong> — sitio público corporativo</li>
+    <li><strong>https://app.validanet.cl</strong> — plataforma SaaS (dashboard, certificación, ERP, reportes)</li>
+    <li><strong>https://connect.validanet.cl</strong> — portal Connect (empresas, relatores, OTEC)</li>
+    <li><strong>Plugins Moodle <code>block_validanet</code> y <code>local_validanet</code></strong> — chat TutorIA y ruta formativa embebidos en sitios LMS de nuestros clientes</li>
+  </ul>
+
+  <h2 id="caracteristicas">3. Características de accesibilidad implementadas</h2>
+  <table>
+    <caption>Resumen de características — chat TutorIA y dashboards</caption>
+    <thead>
+      <tr><th scope="col">Característica</th><th scope="col">Criterio WCAG</th><th scope="col">Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Etiquetas ARIA en todos los controles interactivos</td><td>4.1.2</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Roles semánticos (<code>role="log"</code>, <code>role="dialog"</code>, <code>role="status"</code>)</td><td>1.3.1, 4.1.2</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Anuncio en vivo de nuevas respuestas (<code>aria-live</code>)</td><td>4.1.3</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Botón cerrar y tecla <kbd>Esc</kbd> en todos los modales/drawers</td><td>2.1.2</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Tamaño táctil mínimo 44×44 px</td><td>2.5.5</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Indicador de foco visible (<code>:focus-visible</code>)</td><td>2.4.7</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Respeta <code>prefers-reduced-motion</code> del sistema operativo</td><td>2.3.3</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Idioma declarado (<code>lang="es"</code>) — lectores usan voz española</td><td>3.1.1, 3.1.2</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Encabezados de tabla con <code>scope="col"</code></td><td>1.3.1</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Modo alto contraste (toggle ♿ + auto vía <code>prefers-contrast</code>)</td><td>1.4.6 (AAA)</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Síntesis de voz (TTS) con interrupción y selección automática de idioma</td><td>1.4.2</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Reconocimiento de voz (STT) para entrada por dictado</td><td>2.5.4</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Contraste de color ≥ 4.5:1 (texto normal AA)</td><td>1.4.3</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Navegación completa por teclado</td><td>2.1.1</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+      <tr><td>Texto escalable hasta 200% sin pérdida de funcionalidad</td><td>1.4.4</td><td><span class="badge badge-ok">✓ Cumple</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Características adicionales por encima de AA</h3>
+  <ul>
+    <li><strong>Renderizado matemático con KaTeX</strong>: las ecuaciones LaTeX se renderizan visualmente y mantienen anotaciones MathML opcionales para lectores de pantalla compatibles.</li>
+    <li><strong>Confirmación múltiple (visual + ARIA)</strong> en quizzes interactivos: la corrección se anuncia con <code>aria-live="assertive"</code> simultáneamente al cambio de color.</li>
+    <li><strong>Sin trampas de teclado</strong>: todos los componentes modales se pueden cerrar con <kbd>Esc</kbd> y devuelven el foco al elemento que los abrió.</li>
+  </ul>
+
+  <h2 id="limitaciones">4. Limitaciones conocidas</h2>
+  <div class="callout callout-warn">
+    Estamos en proceso de resolver las siguientes limitaciones. Si alguna te
+    afecta directamente, te invitamos a <a href="#feedback">contactarnos</a>
+    para priorizar.
+  </div>
+  <ul>
+    <li>
+      <strong>Calidad de la síntesis de voz (TTS)</strong>: el chat utiliza la
+      Web Speech API del navegador del estudiante. La naturalidad de la voz
+      depende del navegador y sistema operativo. Chrome y Edge ofrecen voces
+      neurales server-side; Firefox limita a voces locales del SO.
+      <span class="badge badge-partial">Por mejorar</span>
+    </li>
+    <li>
+      <strong>Algunos PDFs de certificados</strong> generados antes de mayo 2026
+      no incluyen estructura semántica (tags) — los certificados emitidos desde
+      esa fecha sí. <span class="badge badge-partial">Por mejorar</span>
+    </li>
+    <li>
+      <strong>Contenido de los cursos del cliente</strong>: el chat responde
+      basándose en material que el cliente sube a Moodle. La accesibilidad del
+      contenido original (videos sin subtítulos, imágenes sin texto alternativo,
+      etc.) está fuera de nuestro control. Recomendamos a las OTEC seguir las
+      pautas del Servicio Nacional de la Discapacidad (SENADIS).
+      <span class="badge badge-partial">Fuera de alcance</span>
+    </li>
+  </ul>
+
+  <h2 id="metodo">5. Método de evaluación</h2>
+  <p>La conformidad fue evaluada usando:</p>
+  <ul>
+    <li>Auditoría manual con criterios WCAG 2.1 nivel AA</li>
+    <li>Cálculo de ratios de contraste de color contra las pautas 1.4.3 y 1.4.11</li>
+    <li>Pruebas con lectores de pantalla (NVDA, VoiceOver) y navegación solo-teclado</li>
+    <li>Verificación de soporte para <code>prefers-reduced-motion</code> y <code>prefers-contrast</code></li>
+  </ul>
+  <p>Las auditorías se realizan al menos cada 6 meses y al desplegar cambios mayores en la interfaz.</p>
+
+  <h2 id="feedback">6. Reportar barreras de accesibilidad</h2>
+  <p>
+    Si encuentras una barrera de accesibilidad que te impida usar ValidaNet,
+    queremos saberlo. Nos comprometemos a responder en un plazo máximo de
+    <strong>5 días hábiles</strong>.
+  </p>
+  <ul>
+    <li>📧 Email: <a href="mailto:accesibilidad@validanet.cl">accesibilidad@validanet.cl</a> (o <a href="mailto:contacto@validanet.cl">contacto@validanet.cl</a>)</li>
+    <li>📞 Teléfono: +56 9 9595 7115 (en horario laboral, idioma español)</li>
+    <li>📬 Dirección: NortEduc Edtech SpA, Antofagasta, Chile</li>
+  </ul>
+  <p>Si tu solicitud no recibe respuesta en el plazo indicado, puedes escalar al SENADIS:</p>
+  <ul>
+    <li>Servicio Nacional de la Discapacidad — <a href="https://www.senadis.gob.cl" target="_blank" rel="noopener">www.senadis.gob.cl</a></li>
+  </ul>
+
+  <h2 id="legal">7. Marco legal aplicable</h2>
+  <ul>
+    <li><strong>Ley N° 20.422</strong> (2010) — Establece normas sobre igualdad de oportunidades e inclusión social de personas con discapacidad.</li>
+    <li><strong>Decreto Supremo N° 1/2015</strong> (Ministerio de Desarrollo Social) — Reglamento que regula la accesibilidad a entornos digitales.</li>
+    <li><strong>Decreto Supremo N° 31/2018</strong> (MINSEGPRES) — Norma técnica de accesibilidad para servicios públicos. ValidaNet la adopta voluntariamente como referencia para clientes del sector público.</li>
+    <li><strong>Ley N° 21.015</strong> (2017) — Inclusión laboral de personas con discapacidad.</li>
+    <li><strong>WCAG 2.1 nivel AA</strong> — W3C/WAI, referencia internacional adoptada por el D.S. 31/2018.</li>
+  </ul>
+
+  <p style="margin-top:32px;font-size:14px;color:#475569;">
+    Esta declaración fue preparada conforme al modelo de la
+    <a href="https://www.w3.org/TR/wai-aria-practices/" target="_blank" rel="noopener">W3C Web Accessibility Initiative</a>.
+  </p>
+
+</main>
+
+<footer>
+  <div>
+    <a href="/">Inicio</a> ·
+    <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
+    <a href="https://connect.validanet.cl/legal/terminos">Términos</a> ·
+    <a href="/accesibilidad.html">Accesibilidad</a> ·
+    <a href="mailto:accesibilidad@validanet.cl">Reportar barrera</a>
+  </div>
+  <p style="margin-top:12px;">© 2026 Norteduc Edtech SpA · RUT 76.624.932-9 · Antofagasta, Chile</p>
+</footer>
+
+</body>
+</html>
