@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aula Virtual Autoprovisionada — ValidaNet</title>
+<meta name="description" content="Tu Aula Virtual Moodle lista en minutos, sin servidor propio. Autoprovisión instantánea desde $29.990/mes con hosting, backups, CDN y soporte chileno incluidos.">
+<meta property="og:title" content="Aula Virtual Autoprovisionada — ValidaNet">
+<meta property="og:description" content="Activa tu Moodle gestionado en minutos. 3 tiers: Starter $29.990, Pro $49.990, Business $89.990. Sin configurar servidor.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://app.validanet.cl/static/logo-validanet.png">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{color:white;padding:72px 40px;text-align:center;}
+.hero .icon{font-size:64px;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;line-height:1.1;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 14px;line-height:1.5;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+.btn-w{background:white;color:#0f172a;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.btn-o2{border:2px solid white;color:white;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:56px 0;}
+h2.tit{font-size:28px;font-weight:800;margin-bottom:8px;text-align:center;}
+p.sub{color:#64748b;font-size:15px;margin-bottom:36px;text-align:center;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;transition:all .2s;}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px);}
+.card .ic{font-size:32px;margin-bottom:12px;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.card p{font-size:13px;color:#64748b;line-height:1.6;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.step{text-align:center;padding:24px;}
+.step .num{width:44px;height:44px;border-radius:50%;background:#7ab31a;color:white;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.step p{font-size:13px;color:#64748b;}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.plan{border:2px solid #e2e8f0;border-radius:14px;padding:24px;text-align:center;background:white;position:relative;}
+.plan.rec{border-color:#7ab31a;}
+.plan .rec-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;border-radius:99px;padding:4px 14px;font-size:11px;font-weight:700;}
+.plan h3{font-size:18px;font-weight:800;margin-bottom:6px;}
+.plan .price{font-size:32px;font-weight:800;color:#7ab31a;margin:10px 0 4px;}
+.plan .price span{font-size:14px;color:#64748b;font-weight:400;}
+.plan ul{list-style:none;text-align:left;margin:14px 0;}
+.plan ul li{font-size:13px;padding:5px 0;border-bottom:1px solid #f1f5f9;color:#475569;}
+.plan ul li::before{content:"✓ ";color:#7ab31a;font-weight:700;}
+.plan a{display:block;background:#7ab31a;color:white;border-radius:8px;padding:11px;font-weight:700;text-decoration:none;margin-top:14px;font-size:14px;}
+.plan.gestionada{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:white;border-color:#f47920;}
+.plan.gestionada h3,.plan.gestionada .price{color:white;}
+.plan.gestionada ul li{color:#cbd5e1;border-color:rgba(255,255,255,.1);}
+.plan.gestionada .price span{color:#94a3b8;}
+.plan.gestionada a{background:#f47920;}
+.faq{background:white;border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;margin-bottom:12px;}
+.faq-q{padding:18px 24px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-a{padding:0 24px 18px;font-size:13px;color:#475569;line-height:1.6;display:none;}
+.cta{background:linear-gradient(135deg,#7ab31a,#f47920);padding:72px 40px;text-align:center;color:white;}
+.cta h2{font-size:32px;font-weight:800;margin-bottom:14px;}
+.cta p{font-size:16px;opacity:.9;margin-bottom:28px;}
+.cta a{background:white;color:#0f172a;border-radius:10px;padding:14px 36px;font-size:15px;font-weight:700;text-decoration:none;display:inline-block;}
+.breadcrumb{padding:14px 0;font-size:13px;color:#64748b;}
+.breadcrumb a{color:#7ab31a;text-decoration:none;}
+.badge{display:inline-block;border-radius:99px;padding:3px 12px;font-size:11px;font-weight:700;}
+.b-orange{background:#ffedd5;color:#c2410c;}
+.b-green{background:#dcfce7;color:#166534;}
+footer{background:#0f172a;color:#64748b;padding:40px;text-align:center;font-size:13px;}
+footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links{gap:10px;}
+  .nav-links a{font-size:12px;}
+  .hero{padding:48px 20px;}
+  .hero h1{font-size:clamp(22px,6vw,36px);}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .wrap{padding:0 16px;}
+  .grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .plans{grid-template-columns:1fr;}
+  section{padding:36px 0;}
+}
+@media(max-width:600px){.nav-links{display:none;}}
+</style>
+<script>
+function toggleFaq(el){
+  var a=el.nextElementSibling;
+  a.style.display=a.style.display==='block'?'none':'block';
+  el.querySelector('span').textContent=a.style.display==='block'?'−':'+';
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:36px;"></a>
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/addons.html">Addons</a>
+    <a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Ingresar</a>
+    <a href="/comprar-aula" class="btn-orange">Activar mi Aula →</a>
+  </div>
+</nav>
+
+<section class="hero" style="background:linear-gradient(135deg,#0f172a,#0f4c5c);">
+  <div class="icon">🎓</div>
+  <div><span class="badge b-orange">Addon de pago — no incluido en planes</span></div>
+  <h1 style="margin-top:16px;">Tu <span>Aula Virtual</span> lista en minutos</h1>
+  <p>¿No tienes un Moodle propio? Activa tu Aula Virtual <strong>autoprovisionada</strong> y empieza a dictar cursos hoy mismo.</p>
+  <p style="font-size:14px;opacity:.75;">Sin servidor propio · Sin configurar IT · Sin tarjeta de crédito para empezar</p>
+  <div class="hero-btns">
+    <a href="/comprar-aula" class="btn-w">Activar mi Aula desde $29.990 →</a>
+    <a href="#planes" class="btn-o2">Ver los 4 planes</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">ValidaNet</a> › <a href="/addons.html">Addons</a> › Aula Virtual
+  </div>
+
+  <!-- ¿Por qué Aula Virtual autoprovisionada? -->
+  <section>
+    <h2 class="tit">¿Por qué autoprovisionada?</h2>
+    <p class="sub">Olvídate de servidores, instalaciones y dolores de cabeza. Tu Moodle se crea solo.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">⚡</div>
+        <h3>Listo en minutos</h3>
+        <p>Tras la compra, recibes por email el link a tu Aula Virtual y las credenciales de administrador. Sin esperas ni instalación.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🏗️</div>
+        <h3>Hosting incluido</h3>
+        <p>Infraestructura dedicada en datacenter chileno. No pagas servidor aparte, no contratas IT.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔄</div>
+        <h3>Actualizaciones automáticas</h3>
+        <p>Moodle siempre al día con la última versión estable y parches de seguridad. Nosotros nos encargamos.</p>
+      </div>
+      <div class="card">
+        <div class="ic">💾</div>
+        <h3>Backups diarios</h3>
+        <p>Respaldo automático todos los días. Restauración en menos de 1 hora ante cualquier incidente.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🚀</div>
+        <h3>CDN global</h3>
+        <p>Videos y materiales servidos desde Cloudflare en menos de 100ms a cualquier alumno en Latinoamérica.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🎯</div>
+        <h3>99.9% uptime garantizado</h3>
+        <p>SLA monitoreado 24/7. Si tu aula cae, devolvemos pro-rata. Reportes de status públicos.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🤖</div>
+        <h3>TutorIA preconfigurado</h3>
+        <p>Tu Aula viene con TutorIA listo para integrarse: chatbot IA, asistente docente y reportería automática.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📞</div>
+        <h3>Soporte chileno</h3>
+        <p>Equipo en Chile, horario hábil. Email, WhatsApp y videollamada incluidos según tier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section>
+    <h2 class="tit">Cómo funciona</h2>
+    <p class="sub">3 pasos. Sin formularios eternos.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Eliges tu plan</h3>
+        <p>Starter, Pro o Business según volumen de alumnos y soporte que necesites.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Pagas con Webpay</h3>
+        <p>Tarjeta o transferencia. Tu Aula se aprovisiona automáticamente al confirmar el pago.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Recibes credenciales</h3>
+        <p>Email con la URL de tu Aula (tu-instituto.aula-virtual.cl) y el acceso de administrador.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Planes -->
+<section style="background:#f1f5f9;padding:64px 24px;" id="planes">
+  <div class="wrap">
+    <h2 class="tit">4 tiers · Para cada tamaño de institución</h2>
+    <p class="sub">Desde un coach independiente hasta una OTEC con miles de alumnos activos</p>
+    <div class="plans">
+
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price">$29.990<span> /mes</span></div>
+        <div style="font-size:11px;color:#64748b;">+ IVA</div>
+        <ul>
+          <li>Hasta 200 alumnos activos</li>
+          <li>10 GB almacenamiento</li>
+          <li>Subdominio aula-virtual.cl</li>
+          <li>Backups diarios</li>
+          <li>Soporte email (48h)</li>
+          <li>TutorIA chatbot incluido</li>
+        </ul>
+        <a href="/comprar-aula">Activar Starter</a>
+      </div>
+
+      <div class="plan rec">
+        <span class="rec-badge">★ Más popular</span>
+        <h3>Pro</h3>
+        <div class="price">$49.990<span> /mes</span></div>
+        <div style="font-size:11px;color:#64748b;">+ IVA</div>
+        <ul>
+          <li>Hasta 1.000 alumnos activos</li>
+          <li>50 GB almacenamiento</li>
+          <li>Dominio propio + SSL</li>
+          <li>Backups diarios + retención 30d</li>
+          <li>Soporte email + WhatsApp (24h)</li>
+          <li>TutorIA + Reportería avanzada</li>
+          <li>Integraciones SENCE / Webpay</li>
+        </ul>
+        <a href="/comprar-aula">Activar Pro</a>
+      </div>
+
+      <div class="plan">
+        <h3>Business</h3>
+        <div class="price">$89.990<span> /mes</span></div>
+        <div style="font-size:11px;color:#64748b;">+ IVA</div>
+        <ul>
+          <li>Hasta 5.000 alumnos activos</li>
+          <li>200 GB almacenamiento</li>
+          <li>Dominio propio + SSL</li>
+          <li>Backups por hora + retención 90d</li>
+          <li>Soporte prioritario (4h hábiles)</li>
+          <li>Onboarding 1 a 1 (2h)</li>
+          <li>CDN dedicado para video</li>
+        </ul>
+        <a href="/comprar-aula">Activar Business</a>
+      </div>
+
+      <div class="plan gestionada">
+        <h3>Gestionada</h3>
+        <div class="price">$99.990<span> /mes</span></div>
+        <div style="font-size:11px;color:#94a3b8;">+ IVA · Setup incluido</div>
+        <ul>
+          <li>Alumnos ilimitados</li>
+          <li>Almacenamiento ilimitado</li>
+          <li>Configuración personalizada</li>
+          <li>Migración desde tu Moodle actual</li>
+          <li>Soporte 24/7 + tu account manager</li>
+          <li>SLA 99.95% uptime</li>
+          <li>Capacitación a tu equipo</li>
+        </ul>
+        <a href="mailto:contacto@norteduc.cl?subject=Aula%20Virtual%20Gestionada">Solicitar info</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:12px;color:#64748b;margin-top:18px;">
+      Todos los planes incluyen el ecosistema ValidaNet: TutorIA, Reportería General, ValidaNet Connect y más addons activables desde tu dashboard.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="wrap">
+  <section>
+    <h2 class="tit">Preguntas frecuentes</h2>
+    <p class="sub">Lo que más nos preguntan antes de activar el Aula</p>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Necesito conocimientos técnicos para activarla? <span>+</span></div>
+      <div class="faq-a">No. La autoprovisión es 100% automática: pagas, recibes el email con tu URL y credenciales, e ingresas. Configurar cursos, alumnos y plantillas se hace desde la interfaz visual de Moodle, sin tocar servidor.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Puedo migrar mi Moodle actual? <span>+</span></div>
+      <div class="faq-a">Sí. El tier <strong>Gestionada</strong> incluye migración asistida desde tu instalación actual (cursos, alumnos, certificados, plantillas). En Pro y Business también puedes migrar tú con nuestro asistente o pedir migración como servicio adicional ($199.990 único).</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Está incluida en algún plan ValidaNet? <span>+</span></div>
+      <div class="faq-a">No. El Aula Virtual es un <strong>addon de pago adicional</strong>, separado de los planes (Starter, Pro, Enterprise, Universidad). Esto te permite contratar ValidaNet sin Aula si ya tienes tu propio Moodle, o sumarla cuando la necesites.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si supero el límite de alumnos? <span>+</span></div>
+      <div class="faq-a">Te avisamos por email cuando llegues al 85% del límite. Puedes subir al siguiente tier en cualquier momento desde tu dashboard, sin perder datos ni configuración. El upgrade se prorratea al ciclo de facturación.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Puedo cancelar cuando quiera? <span>+</span></div>
+      <div class="faq-a">Sí. Cancelas desde el dashboard. Mantienes acceso hasta el final del ciclo pagado y te enviamos un export completo de tu Aula (backup .mbz de Moodle + base de datos) para que migres a cualquier otro hosting Moodle si decides irte.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Funciona con SENCE? <span>+</span></div>
+      <div class="faq-a">Sí, en planes Pro, Business y Gestionada. Se integra con el addon <a href="/addons/sence" style="color:#7ab31a;font-weight:600;">Integración SENCE</a> ($24.990/mes adicional) para SIC, REUF, asistencia compatible con franquicia tributaria y declaración mensual automatizada.</div>
+    </div>
+
+  </section>
+</div>
+
+<section class="cta">
+  <h2>Activa tu Aula Virtual en minutos</h2>
+  <p>Desde $29.990/mes. Sin tarjeta para crear tu cuenta — paga solo al activar.</p>
+  <a href="/comprar-aula">Activar mi Aula Virtual →</a>
+</section>
+
+<footer>
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:28px;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;" loading="lazy"></a>
+  <p style="margin-bottom:12px;">
+    <a href="/">Inicio</a><a href="/addons.html">Addons</a><a href="/#pricing">Precios</a>
+    <a href="https://connect.validanet.cl">Connect</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/">Dashboard</a>
+    <a href="mailto:contacto@norteduc.cl">Contacto</a>
+  </p>
+  <p>© 2026 Norteduc Edtech SpA · Antofagasta, Chile</p>
+</footer>
+</body></html>
