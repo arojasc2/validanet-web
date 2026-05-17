@@ -162,9 +162,9 @@ function toggleFaq(el){
         <p>SLA monitoreado 24/7. Si tu aula cae, devolvemos pro-rata. Reportes de status públicos.</p>
       </div>
       <div class="card">
-        <div class="ic">🤖</div>
-        <h3>TutorIA preconfigurado</h3>
-        <p>Tu Aula viene con TutorIA listo para integrarse: chatbot IA, asistente docente y reportería automática.</p>
+        <div class="ic">🔌</div>
+        <h3>Listo para integrar ValidaNet</h3>
+        <p>Si después contratas un plan ValidaNet, conectas tu Aula con TutorIA, certificados y SENCE en un clic vía SSO. No incluido en el Aula sola.</p>
       </div>
       <div class="card">
         <div class="ic">📞</div>
@@ -202,7 +202,12 @@ function toggleFaq(el){
 <section style="background:#f1f5f9;padding:64px 24px;" id="planes">
   <div class="wrap">
     <h2 class="tit">4 tiers · Para cada tamaño de institución</h2>
-    <p class="sub">Desde un coach independiente hasta una OTEC con miles de alumnos activos</p>
+    <p class="sub">Desde un coach independiente hasta una OTEC con miles de alumnos matriculados</p>
+
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;max-width:760px;margin:0 auto 28px;font-size:13px;color:#1e40af;line-height:1.55;">
+      <strong>📌 Matriculados vs concurrentes:</strong> los "matriculados" son el total de alumnos con cuenta y curso asignado en tu Aula. Los "concurrentes" son los que pueden estar <strong>conectados al mismo tiempo</strong> sin afectar el rendimiento. Una institución con 1.000 matriculados típicamente tiene picos de 100–150 concurrentes en horarios laborales.
+    </div>
+
     <div class="plans">
 
       <div class="plan">
@@ -210,12 +215,12 @@ function toggleFaq(el){
         <div class="price">$29.990<span> /mes</span></div>
         <div style="font-size:11px;color:#64748b;">+ IVA</div>
         <ul>
-          <li>Hasta 200 alumnos activos</li>
+          <li>Hasta <strong>200 matriculados</strong></li>
+          <li>~30 conectados simultáneos</li>
           <li>10 GB almacenamiento</li>
           <li>Subdominio aula-virtual.cl</li>
           <li>Backups diarios</li>
           <li>Soporte email (48h)</li>
-          <li>TutorIA chatbot incluido</li>
         </ul>
         <a href="/comprar-aula">Activar Starter</a>
       </div>
@@ -226,13 +231,12 @@ function toggleFaq(el){
         <div class="price">$49.990<span> /mes</span></div>
         <div style="font-size:11px;color:#64748b;">+ IVA</div>
         <ul>
-          <li>Hasta 1.000 alumnos activos</li>
+          <li>Hasta <strong>1.000 matriculados</strong></li>
+          <li>~150 conectados simultáneos</li>
           <li>50 GB almacenamiento</li>
           <li>Dominio propio + SSL</li>
           <li>Backups diarios + retención 30d</li>
           <li>Soporte email + WhatsApp (24h)</li>
-          <li>TutorIA + Reportería avanzada</li>
-          <li>Integraciones SENCE / Webpay</li>
         </ul>
         <a href="/comprar-aula">Activar Pro</a>
       </div>
@@ -242,7 +246,8 @@ function toggleFaq(el){
         <div class="price">$89.990<span> /mes</span></div>
         <div style="font-size:11px;color:#64748b;">+ IVA</div>
         <ul>
-          <li>Hasta 5.000 alumnos activos</li>
+          <li>Hasta <strong>5.000 matriculados</strong></li>
+          <li>~600 conectados simultáneos</li>
           <li>200 GB almacenamiento</li>
           <li>Dominio propio + SSL</li>
           <li>Backups por hora + retención 90d</li>
@@ -258,11 +263,12 @@ function toggleFaq(el){
         <div class="price">$99.990<span> /mes</span></div>
         <div style="font-size:11px;color:#94a3b8;">+ IVA · Setup incluido</div>
         <ul>
-          <li>Alumnos ilimitados</li>
+          <li><strong>Matriculados ilimitados</strong></li>
+          <li>Concurrentes a medida (dimensionamiento dedicado)</li>
           <li>Almacenamiento ilimitado</li>
           <li>Configuración personalizada</li>
           <li>Migración desde tu Moodle actual</li>
-          <li>Soporte 24/7 + tu account manager</li>
+          <li>Soporte 24/7 + account manager</li>
           <li>SLA 99.95% uptime</li>
           <li>Capacitación a tu equipo</li>
         </ul>
@@ -270,9 +276,10 @@ function toggleFaq(el){
       </div>
 
     </div>
-    <p style="text-align:center;font-size:12px;color:#64748b;margin-top:18px;">
-      Todos los planes incluyen el ecosistema ValidaNet: TutorIA, Reportería General, ValidaNet Connect y más addons activables desde tu dashboard.
-    </p>
+
+    <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:14px 18px;max-width:780px;margin:24px auto 0;font-size:13px;color:#9a3412;line-height:1.55;">
+      <strong>⚠️ Importante:</strong> el Aula Virtual es un <strong>addon independiente</strong>. <u>No incluye</u> TutorIA, Certificados Digitales, Reportería Académica, Integración SENCE ni los demás módulos de ValidaNet. Si quieres sumarlos a tu Aula, contrata un <a href="/#pricing" style="color:#c2410c;font-weight:700;">plan ValidaNet</a> (Starter / Pro / Enterprise / Universidad) por separado — todos se integran con tu Aula vía SSO con un clic.
+    </div>
   </div>
 </section>
 
@@ -309,7 +316,7 @@ function toggleFaq(el){
 
     <div class="faq">
       <div class="faq-q" onclick="toggleFaq(this)">¿Funciona con SENCE? <span>+</span></div>
-      <div class="faq-a">Sí, en planes Pro, Business y Gestionada. Se integra con el addon <a href="/addons/sence" style="color:#7ab31a;font-weight:600;">Integración SENCE</a> ($24.990/mes adicional) para SIC, REUF, asistencia compatible con franquicia tributaria y declaración mensual automatizada.</div>
+      <div class="faq-a">Sí. Tu Aula Virtual se conecta vía SSO con el addon <a href="/addons/sence" style="color:#7ab31a;font-weight:600;">Integración SENCE</a> de ValidaNet ($24.990/mes, contratado por separado) para SIC, REUF, asistencia compatible con franquicia tributaria y declaración mensual automatizada. El Aula Virtual por sí sola NO declara a SENCE — es el addon Integración SENCE el que hace ese trabajo.</div>
     </div>
 
   </section>
