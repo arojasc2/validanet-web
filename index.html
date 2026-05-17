@@ -756,7 +756,8 @@ footer .links a:hover{color:white;}
 .vn-exit-card input{width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;font-family:inherit;outline:none;}
 .vn-exit-card input:focus{border-color:#7ab31a;}
 .vn-exit-card button{width:100%;background:#7ab31a;color:white;border:0;padding:13px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;margin-top:10px;}
-.vn-exit-card .close{position:absolute;top:14px;right:18px;background:none;border:0;font-size:24px;color:#94a3b8;cursor:pointer;}
+.vn-exit-card .close{position:absolute;top:10px;right:10px;width:36px;height:36px;background:#f1f5f9;border:0;border-radius:50%;font-size:22px;line-height:1;color:#475569;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.vn-exit-card .close:hover{background:#e2e8f0;color:#0f172a;}
 .vn-exit-card .vnmsg{font-size:12px;margin-top:8px;display:none;}
 .vn-exit-card .vnmsg.ok{color:#166534;display:block;}
 .vn-exit-card .vnmsg.err{color:#991b1b;display:block;}
@@ -783,14 +784,23 @@ footer .links a:hover{color:white;}
 
 <script>
 // ─── Exit intent popup (solo desktop, una vez por sesión) ───
+// Patrón anterior con `mouseout` + clientY<5 disparaba inmediatamente al
+// salir el cursor hacia la barra de tabs/dirección — molesto. Ahora usa
+// `mouseleave` en el root (solo dispara al abandonar el viewport) +
+// relatedTarget===null + delay mínimo de 15s para evitar trigger
+// involuntario al cargar la página.
 (function(){
   if (window.innerWidth < 768) return;  // skip mobile (no hay mouseleave útil)
   if (sessionStorage.getItem('vn_exit_shown')) return;
-  document.addEventListener('mouseout', function(e){
-    if (e.clientY < 5 && !sessionStorage.getItem('vn_exit_shown')) {
-      sessionStorage.setItem('vn_exit_shown', '1');
-      document.getElementById('vn-exit-pop').classList.add('open');
-    }
+  var armed = false;
+  setTimeout(function(){ armed = true; }, 15000);
+  document.documentElement.addEventListener('mouseleave', function(e){
+    if (!armed) return;
+    if (e.relatedTarget !== null) return;  // ignora salidas a iframes/elementos hijos
+    if (e.clientY > 5) return;             // confirma salida por arriba (intención de cerrar pestaña)
+    if (sessionStorage.getItem('vn_exit_shown')) return;
+    sessionStorage.setItem('vn_exit_shown', '1');
+    document.getElementById('vn-exit-pop').classList.add('open');
   });
 })();
 function vnExitClose(){ document.getElementById('vn-exit-pop').classList.remove('open'); }
