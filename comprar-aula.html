@@ -279,29 +279,29 @@ async function loadPlanes(){
         <div class="price">$${esc(Number(p.price_clp).toLocaleString('es-CL'))}<small>/mes</small></div>
         <ul class="features">
           ${p.slug === 'starter' ? `
+            <li>Hasta <strong>200 matriculados</strong> · ~30 concurrentes</li>
+            <li>5 GB almacenamiento</li>
             <li>Moodle 4.x última versión</li>
-            <li>Subdominio gratuito</li>
-            <li>SSL incluido</li>
+            <li>Subdominio gratuito + SSL</li>
             <li>Backups diarios</li>
-            <li>Soporte por email</li>
-            <li>10 GB almacenamiento</li>
-            <li><strong>CloudLinux LVE</strong>: 100% CPU · 1 GB RAM dedicada</li>
+            <li>Soporte por email (48h)</li>
+            <li><strong>CloudLinux LVE</strong>: 100% CPU · 1 GB RAM</li>
           ` : p.slug === 'pro' ? `
+            <li>Hasta <strong>1.000 matriculados</strong> · ~150 concurrentes</li>
+            <li>20 GB almacenamiento</li>
             <li>Todo lo de Starter +</li>
             <li>Dominio propio opcional</li>
             <li>CDN para velocidad</li>
-            <li>Integración SENCE</li>
-            <li>Soporte WhatsApp prioritario</li>
-            <li>25 GB almacenamiento</li>
-            <li><strong>CloudLinux LVE</strong>: 200% CPU · 2 GB RAM dedicada</li>
+            <li>Soporte WhatsApp prioritario (24h)</li>
+            <li><strong>CloudLinux LVE</strong>: 200% CPU · 2 GB RAM</li>
           ` : `
+            <li>Hasta <strong>3.000 matriculados</strong> · ~400 concurrentes</li>
+            <li>50 GB almacenamiento</li>
             <li>Todo lo de Pro +</li>
             <li>White-label completo</li>
             <li>Backups cada 6 horas</li>
-            <li>Integración con ERP</li>
-            <li>Soporte 24/7</li>
-            <li>SLA 99.95% · 50 GB</li>
-            <li><strong>CloudLinux LVE</strong>: 400% CPU · 4 GB RAM dedicada</li>
+            <li>Soporte prioritario (4h hábiles)</li>
+            <li>SLA 99.95% · <strong>CloudLinux LVE</strong>: 400% CPU · 4 GB RAM</li>
           `}
         </ul>
       `;
