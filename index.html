@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ValidaNet — Plataforma SaaS para Educación Online</title>
-<meta name="description" content="ValidaNet es la plataforma SaaS para instituciones educativas (OTECs, universidades, CFT, IP, consultoras) y empresas que buscan capacitar a sus equipos. TutorIA, certificados digitales, SENCE y más.">
+<meta name="description" content="ValidaNet es la plataforma SaaS para OTECs, universidades, CFT, IP y empresas de capacitación. Crea cursos completos con IA desde $64.900, TutorIA, certificados digitales, SENCE, ERP educativo y más. Integrado con Moodle.">
 <link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<script src="/vn-precios.js" defer></script>
+<style>
+  .vn-plan-feats-list { list-style:none; text-align:left; margin-bottom:24px; padding:0; }
+  .vn-plan-feats-list li { padding:7px 0; font-size:14px; color:#475569; border-bottom:1px solid #f1f5f9; }
+  .vn-plan-feats-list li:last-child { border-bottom:0; }
+  .vn-plan-feats-list li:before { content:"✓ "; color:#7ab31a; font-weight:700; }
+</style>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#fff;}
@@ -124,14 +131,14 @@ footer .links a:hover{color:white;}
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="ValidaNet — Plataforma SaaS para Educación Online">
-<meta property="og:description" content="El ecosistema SaaS con IA para OTECs, CFT, IP, universidades y empresas de capacitación. Integrado con Moodle, SENCE, certificados digitales y red de relatores.">
+<meta property="og:description" content="Crea cursos SENCE completos con IA desde $64.900. Más TutorIA chatbot, Moodle gestionado, certificados digitales, SENCE, ERP y red de relatores. Para OTECs, CFT, IP, universidades y empresas.">
 <meta property="og:url" content="https://validanet.cl/">
 <meta property="og:image" content="https://app.validanet.cl/static/logo-validanet.png">
 <meta property="og:locale" content="es_CL">
 <meta property="og:site_name" content="ValidaNet">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ValidaNet — Plataforma SaaS para Educación Online">
-<meta name="twitter:description" content="OTECs, CFT, IP, universidades. TutorIA + Moodle + SENCE + certificados + relatores.">
+<meta name="twitter:description" content="Creador de Cursos IA desde $64.900 · TutorIA + Moodle + SENCE + certificados + relatores. Para OTECs, CFT, IP, universidades.">
 <link rel="canonical" href="https://validanet.cl/">
 
 <!-- Schema.org: Organization + SoftwareApplication -->
@@ -190,6 +197,7 @@ footer .links a:hover{color:white;}
 }
 </script>
 <link rel="stylesheet" href="/styles/a11y.css">
+<script src="/vn-footer.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -276,6 +284,12 @@ footer .links a:hover{color:white;}
   <h2>Todo lo que necesita tu institución educativa</h2>
   <p class="sub">Ecosistema IA completo para OTECs, CFT, IP, universidades y empresas de capacitación</p>
   <div class="grid">
+    <a href="/addons/creador-cursos" style="text-decoration:none;color:inherit;display:block;"><div class="card" style="border:2px solid #7ab31a;background:linear-gradient(180deg,#f0fdf4,white);position:relative;">
+      <div style="position:absolute;top:-10px;right:14px;background:#7ab31a;color:white;border-radius:99px;padding:3px 12px;font-size:10px;font-weight:700;">🆕 Sin suscripción</div>
+      <div class="icon">✨</div>
+      <h3>Creador de Cursos IA</h3>
+      <p>De plan formativo en PDF a curso completo en Moodle en minutos. Genera contenido HTML, evaluaciones con rúbrica, H5P interactivos y narración por voz IA. <strong>Desde $64.900 por curso</strong> — pagas solo lo que usas, sin mensualidad.</p>
+    </div></a>
     <a href="/addons/tutoria" style="text-decoration:none;color:inherit;display:block;"><div class="card">
       <div class="icon">🤖</div>
       <h3>TutorIA con IA</h3>
@@ -301,7 +315,7 @@ footer .links a:hover{color:white;}
       <h3>Integración SENCE</h3>
       <p>Reporte automático de avance al SIC SENCE. Gestiona cursos con código SENCE, controla franquicia tributaria y genera informes de asistencia.</p>
     </div></a>
-    <a href="/addons/firma" style="text-decoration:none;color:inherit;display:block;"><div class="card">
+    <a href="/addons/firma" style="text-decoration:none;color:inherit;display:block;" data-vn-addon-card="firma_electronica"><div class="card">
       <div class="icon">✍️</div>
       <h3>Firma Electrónica</h3>
       <p>Firma contratos, actas y documentos digitalmente con validez legal en Chile. Integrado con el flujo de certificación y Connect.</p>
@@ -341,8 +355,8 @@ footer .links a:hover{color:white;}
     <a href="/addons/erp" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">💼</div><h4 onclick="window.location='/addons/erp'" style="cursor:pointer;">ERP Educativo <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Finanzas y documentos</p></div>
     <a href="/addons/licitaciones" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">📋</div><h4 onclick="window.location='/addons/licitaciones'" style="cursor:pointer;">Licitaciones <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>ChileCompra automático</p></div>
     <a href="/addons/connect" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">🌐</div><h4 onclick="window.location='/addons/connect'" style="cursor:pointer;">Connect <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Red de capacitación</p></div>
-    <a href="/addons/firma" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">✍️</div><h4 onclick="window.location='/addons/firma'" style="cursor:pointer;">Firma Electrónica <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Documentos digitales</p></div>
-    <a href="/addons/reporteria" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">📊</div><h4 onclick="window.location='/addons/reporteria'" style="cursor:pointer;">Reportería <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Dashboards y métricas</p></div>
+    <a href="/addons/firma" style="text-decoration:none;color:inherit;" data-vn-addon-card="firma_electronica"><div class="addon" style="cursor:pointer;transition:all .2s;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">✍️</div><h4 onclick="window.location='/addons/firma'" style="cursor:pointer;">Firma Electrónica <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Documentos digitales</p></div>
+    <a href="/addons/creador-cursos" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;border:1px solid #bbf7d0;background:#f0fdf4;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">✨</div><h4 onclick="window.location='/addons/creador-cursos'" style="cursor:pointer;">Creador de Cursos IA <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Desde $64.900 por curso, sin suscripción</p></div>
     <a href="/addons/aula-virtual" style="text-decoration:none;color:inherit;"><div class="addon" style="cursor:pointer;transition:all .2s;border:1px solid #bbf7d0;background:#f0fdf4;" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''"><div class="ic">🎓</div><h4 onclick="window.location='/addons/aula-virtual'" style="cursor:pointer;">Aula Virtual <span style="color:#7ab31a;font-size:11px;">Ver más →</span></h4><p>Moodle gestionado, listo en minutos</p></div>
   </div>
 </section>
@@ -391,12 +405,7 @@ footer .links a:hover{color:white;}
       <div style="font-size:30px;font-weight:800;color:#0f172a;"><span data-vn-plan="free" data-vn-campo="precio">$0</span><span style="font-size:13px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;">para siempre</div>
       <div style="font-size:11px;font-weight:700;color:#0f172a;background:#f1f5f9;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 15K tokens/mes</div>
-      <ul style="list-style:none;text-align:left;margin-bottom:20px;">
-        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Dashboard ValidaNet</li>
-        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Cursos y alumnos ilimitados</li>
-        <li style="padding:6px 0;font-size:13px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ IA en panel (resúmenes, sugerencias)</li>
-        <li style="padding:6px 0;font-size:13px;color:#94a3b8;">✗ Sin chatbot TutorIA en Moodle</li>
-      </ul>
+      <ul class="vn-plan-feats-list" data-vn-plan-features="free"></ul>
       <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:11px;font-size:14px;font-weight:700;text-decoration:none;">Empezar gratis</a>
     </div>
 
@@ -405,12 +414,7 @@ footer .links a:hover{color:white;}
       <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">STARTER</div>
       <div style="font-size:32px;font-weight:800;color:#7ab31a;"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
-      <ul style="list-style:none;text-align:left;margin-bottom:24px;">
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ TutorIA básico</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Certificados digitales</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Reportería básica</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Soporte por email</li>
-      </ul>
+      <ul class="vn-plan-feats-list" data-vn-plan-features="starter"></ul>
       <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Comenzar</a>
     </div>
 
@@ -420,14 +424,7 @@ footer .links a:hover{color:white;}
       <div style="font-size:13px;font-weight:700;color:#7ab31a;letter-spacing:2px;margin-bottom:12px;">PRO</div>
       <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
-      <ul style="list-style:none;text-align:left;margin-bottom:24px;">
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ TutorIA avanzado</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Certificados + Open Badge</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ CampusStore</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Licitaciones + ERP</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ ValidaNet Connect</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Soporte prioritario</li>
-      </ul>
+      <ul class="vn-plan-feats-list" data-vn-plan-features="pro"></ul>
       <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#7ab31a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Comenzar</a>
     </div>
 
@@ -436,14 +433,7 @@ footer .links a:hover{color:white;}
       <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">ENTERPRISE</div>
       <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
-      <ul style="list-style:none;text-align:left;margin-bottom:24px;">
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Todos los addons</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ White label</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SENCE automático</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SGC NCh2728</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ API personalizada</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Soporte 24/7</li>
-      </ul>
+      <ul class="vn-plan-feats-list" data-vn-plan-features="enterprise"></ul>
       <a href="mailto:contacto@norteduc.cl?subject=Plan%20Enterprise%20ValidaNet" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Contactar</a>
     </div>
 
@@ -453,14 +443,7 @@ footer .links a:hover{color:white;}
       <div style="font-size:13px;font-weight:700;color:#1e3a8a;letter-spacing:2px;margin-bottom:12px;">UNIVERSIDAD</div>
       <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
       <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
-      <ul style="list-style:none;text-align:left;margin-bottom:24px;">
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Hasta 50.000 alumnos</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Multi-campus + multi-sede</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Integración Banner/SIES</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ SLA 99.9% garantizado</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;border-bottom:1px solid #f1f5f9;">✓ Account manager dedicado</li>
-        <li style="padding:7px 0;font-size:14px;color:#475569;">✓ Onboarding personalizado</li>
-      </ul>
+      <ul class="vn-plan-feats-list" data-vn-plan-features="universidad"></ul>
       <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" style="display:block;background:#1e3a8a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Solicitar demo</a>
     </div>
 

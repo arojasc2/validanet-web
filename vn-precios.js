@@ -1,90 +1,246 @@
 /**
- * vn-precios.js — Sincronización automática de precios desde BD Validanet
- * Uso: <script src="/vn-precios.js"></script>
- * Tags: data-vn-plan="starter" data-vn-addon="certificados" data-vn-connect="pro" data-vn-relator="pro"
+ * vn-precios.js v2 — Sincronización dinámica de precios/features/tiers/packs.
+ * Source of truth: /api/public/precios (DB validanet_addons_catalog + validanet_plans).
+ *
+ * Tags soportados:
+ *   Básicos (campo: precio | nombre | desc | tokens):
+ *     <span data-vn-plan="starter" data-vn-campo="precio">...</span>
+ *     <span data-vn-addon="certificados" data-vn-campo="precio">...</span>
+ *     <span data-vn-connect="pro" data-vn-campo="precio">...</span>
+ *     <span data-vn-relator="pro" data-vn-campo="precio">...</span>
+ *
+ *   Avanzados (v2):
+ *     <span data-vn-addon-tier="creador_cursos:express" data-vn-campo="price_neto">...</span>
+ *       campos: price_neto | price_total | label | credits_value | hours_range
+ *     <span data-vn-addon-pack="creador_cursos:decena" data-vn-campo="price_total">...</span>
+ *       campos: credits | price_neto | price_total | discount_pct | label
+ *     <ul data-vn-addon-features="certificados"></ul>     ← se llena con <li> por feature
+ *     <ul data-vn-plan-features="pro"></ul>
+ *
+ *   Visibilidad condicional:
+ *     <div data-vn-addon-tier-recommended="creador_cursos">visible solo si hay tier recommended</div>
+ *
+ * Cache: sessionStorage 1h. Cambios admin se ven al cerrar/abrir pestaña o tras
+ * 1h. Para forzar refresh inmediato: sessionStorage.removeItem('vn_precios_cache').
  */
 (function(){
   var API = 'https://app.validanet.cl/api/public/precios';
+  var IVA_RATE = 0.19;
 
-  function fmtClp(n){
-    if(!n || n===0) return 'Gratis';
-    return '$' + parseInt(n).toLocaleString('es-CL');
+  function fmtClp(n, suffix){
+    if(n == null) return 'Cotización';
+    n = parseInt(n);
+    if(!n || n === 0) return 'Gratis';
+    return '$' + n.toLocaleString('es-CL') + (suffix || '');
+  }
+  function withIva(neto){
+    if(neto == null) return null;
+    return Math.round(neto * (1 + IVA_RATE));
+  }
+
+  function findInList(list, slug){
+    return (list || []).find(function(x){ return x.slug === slug; });
   }
 
   function aplicarPrecios(data){
-    // ── Planes ValidaNet ──────────────────────────────
-    var planesMap = {};
-    (data.planes||[]).forEach(function(p){ planesMap[p.slug]=p; });
-
-    document.querySelectorAll('[data-vn-plan]').forEach(function(el){
-      var slug = el.getAttribute('data-vn-plan');
-      var campo = el.getAttribute('data-vn-campo') || 'precio';
-      var plan = planesMap[slug];
-      if(!plan) return;
-      if(campo==='precio')      el.textContent = fmtClp(plan.price_clp);
-      else if(campo==='nombre') el.textContent = plan.nombre;
-      else if(campo==='tokens') el.textContent = parseInt(plan.tokens||0).toLocaleString('es-CL');
-      else if(campo==='desc')   el.textContent = plan.descripcion||'';
+    // ── Planes ValidaNet ──────────────────────────────────────────────
+    (data.planes || []).forEach(function(plan){
+      document.querySelectorAll('[data-vn-plan="'+plan.slug+'"]').forEach(function(el){
+        var campo = el.getAttribute('data-vn-campo') || 'precio';
+        if(campo === 'precio')       el.textContent = fmtClp(plan.price_clp);
+        else if(campo === 'nombre')  el.textContent = plan.nombre;
+        else if(campo === 'tokens')  el.textContent = parseInt(plan.tokens||0).toLocaleString('es-CL');
+        else if(campo === 'desc')    el.textContent = plan.descripcion || '';
+      });
+    });
+    document.querySelectorAll('[data-vn-plan-features]').forEach(function(el){
+      var slug = el.getAttribute('data-vn-plan-features');
+      var plan = findInList(data.planes, slug);
+      if(!plan || !plan.features || !plan.features.length) return;
+      el.innerHTML = plan.features.map(function(f){ return '<li>' + escapeHtml(f) + '</li>'; }).join('');
     });
 
-    // ── Addons ────────────────────────────────────────
-    var addonsMap = {};
-    (data.addons||[]).forEach(function(a){ addonsMap[a.slug]=a; });
+    // ── Addons (precio base + nombre + desc) ──────────────────────────
+    (data.addons || []).forEach(function(addon){
+      document.querySelectorAll('[data-vn-addon="'+addon.slug+'"]').forEach(function(el){
+        var campo = el.getAttribute('data-vn-campo') || 'precio';
+        if(campo === 'precio')       el.textContent = addon.gratis ? 'Gratis' : fmtClp(addon.price_clp, '/mes');
+        else if(campo === 'precio_desde') {
+          // "desde $X" — útil para addons con varios tiers (toma el menor)
+          var tiers = addon.pricing_tiers || [];
+          var prices = tiers.map(function(t){ return t.price_clp_neto || t.price_clp; })
+                            .filter(function(p){ return p && p > 0; });
+          el.textContent = prices.length ? 'desde $' + Math.min.apply(null, prices).toLocaleString('es-CL') : fmtClp(addon.price_clp);
+        }
+        else if(campo === 'nombre')  el.textContent = addon.nombre;
+        else if(campo === 'desc')    el.textContent = addon.descripcion || '';
+        else if(campo === 'icon')    el.textContent = addon.icon || '🔧';
+      });
+    });
 
-    document.querySelectorAll('[data-vn-addon]').forEach(function(el){
-      var slug = el.getAttribute('data-vn-addon');
-      var campo = el.getAttribute('data-vn-campo') || 'precio';
-      var addon = addonsMap[slug];
+    // ── Addon features (lista) ────────────────────────────────────────
+    document.querySelectorAll('[data-vn-addon-features]').forEach(function(el){
+      var slug = el.getAttribute('data-vn-addon-features');
+      var addon = findInList(data.addons, slug);
+      if(!addon || !addon.features || !addon.features.length) return;
+      el.innerHTML = addon.features.map(function(f){ return '<li>' + escapeHtml(f) + '</li>'; }).join('');
+    });
+
+    // ── Addon tiers (Creador de Cursos, Aula Virtual, etc.) ───────────
+    document.querySelectorAll('[data-vn-addon-tier]').forEach(function(el){
+      var ref = (el.getAttribute('data-vn-addon-tier')||'').split(':');
+      if(ref.length !== 2) return;
+      var addon = findInList(data.addons, ref[0]);
       if(!addon) return;
-      if(campo==='precio')      el.textContent = addon.gratis ? 'Gratis' : fmtClp(addon.price_clp)+'/mes';
-      else if(campo==='nombre') el.textContent = addon.nombre;
-      else if(campo==='desc')   el.textContent = addon.descripcion||'';
+      var tier = findInList(addon.pricing_tiers, ref[1]);
+      if(!tier) return;
+      var campo = el.getAttribute('data-vn-campo') || 'price_neto';
+      if(campo === 'price_neto')         el.textContent = fmtClp(tier.price_clp_neto);
+      else if(campo === 'price_total')   el.textContent = fmtClp(withIva(tier.price_clp_neto));
+      else if(campo === 'label')         el.textContent = tier.label || tier.slug;
+      else if(campo === 'credits_value') el.textContent = tier.credits_value || 1;
+      else if(campo === 'hours_range') {
+        var hi = tier.hours_max==null ? '+' : ('-' + tier.hours_max);
+        el.textContent = (tier.hours_min||0) + (tier.hours_max==null ? '+ h' : ('-' + tier.hours_max + ' h'));
+      }
+      else if(campo === 'modules_range') {
+        el.textContent = (tier.modules_min||0) + (tier.modules_max==null ? '+ módulos' : ('-' + tier.modules_max + ' módulos'));
+      }
     });
 
-    // ── Connect Empresas ──────────────────────────────
-    var conectMap = {};
-    (data.connect_empresas||[]).forEach(function(p){ conectMap[p.slug]=p; });
-
-    document.querySelectorAll('[data-vn-connect]').forEach(function(el){
-      var slug = el.getAttribute('data-vn-connect');
-      var campo = el.getAttribute('data-vn-campo') || 'precio';
-      var plan = conectMap[slug];
-      if(!plan) return;
-      if(campo==='precio')      el.textContent = fmtClp(plan.price_clp);
-      else if(campo==='nombre') el.textContent = plan.nombre;
+    // ── Addon packs (Creador de Cursos prepago) ───────────────────────
+    // Soporta slugs compound (trio_express, decena_pro, etc.) y aliases
+    // legacy cortos (trio → trio_express) por compat con HTML viejo.
+    document.querySelectorAll('[data-vn-addon-pack]').forEach(function(el){
+      var ref = (el.getAttribute('data-vn-addon-pack')||'').split(':');
+      if(ref.length !== 2) return;
+      var addon = findInList(data.addons, ref[0]);
+      if(!addon) return;
+      var pack = findInList(addon.pack_options, ref[1]);
+      if(!pack){
+        // Fallback legacy: 'trio' → 'trio_express', etc.
+        pack = findInList(addon.pack_options, ref[1] + '_express');
+      }
+      if(!pack) return;
+      var campo = el.getAttribute('data-vn-campo') || 'price_neto';
+      // 'n_cursos' (nuevo) o 'credits' (compat) — la UI muestra cursos del tier
+      var n = pack.n_cursos != null ? pack.n_cursos : (pack.credits || 0);
+      if(campo === 'credits')           el.textContent = n;
+      else if(campo === 'n_cursos')     el.textContent = n;
+      else if(campo === 'price_neto')   el.textContent = fmtClp(pack.price_clp_neto);
+      else if(campo === 'price_total')  el.textContent = fmtClp(withIva(pack.price_clp_neto));
+      else if(campo === 'discount_pct') el.textContent = (pack.discount_pct||0) + '%';
+      else if(campo === 'label')        el.textContent = pack.label || pack.slug;
+      else if(campo === 'tier_slug')    el.textContent = pack.tier_slug || 'express';
     });
 
-    // ── Relatores ────────────────────────────────────
-    var relMap = {};
-    (data.connect_relatores||[]).forEach(function(p){ relMap[p.slug]=p; });
-
-    document.querySelectorAll('[data-vn-relator]').forEach(function(el){
-      var slug = el.getAttribute('data-vn-relator');
-      var campo = el.getAttribute('data-vn-campo') || 'precio';
-      var plan = relMap[slug];
-      if(!plan) return;
-      if(campo==='precio')      el.textContent = fmtClp(plan.price_clp);
-      else if(campo==='nombre') el.textContent = plan.nombre;
+    // ── Addon packs por tier: auto-render grid completa ──────────────
+    // Markup:  <div data-vn-addon-packs-grid="creador_cursos:express"></div>
+    // Renderiza los 4 packs (Trío/Quinteto/Decena/Volumen) de ese tier como
+    // cards con su CTA "Comprar pack". El admin agrega/quita packs desde DB
+    // y la landing se actualiza sola.
+    document.querySelectorAll('[data-vn-addon-packs-grid]').forEach(function(el){
+      var ref = (el.getAttribute('data-vn-addon-packs-grid')||'').split(':');
+      if(ref.length !== 2) return;
+      var addon = findInList(data.addons, ref[0]);
+      if(!addon || !Array.isArray(addon.pack_options)) return;
+      var tierSlug = ref[1].toLowerCase();
+      var packs = addon.pack_options.filter(function(p){
+        return (p.tier_slug||'express').toLowerCase() === tierSlug;
+      });
+      // Orden estable: por n_cursos ascendente
+      packs.sort(function(a,b){
+        return (a.n_cursos||a.credits||0) - (b.n_cursos||b.credits||0);
+      });
+      if(!packs.length){ el.innerHTML = ''; return; }
+      el.innerHTML = packs.map(function(p){
+        var label = escapeHtml(p.label || p.slug);
+        var n = p.n_cursos != null ? p.n_cursos : (p.credits || 0);
+        var price = fmtClp(p.price_clp_neto);
+        var disc = (p.discount_pct||0) + '%';
+        var rec = p.recommended;
+        var buyHref = 'https://app.validanet.cl/api/validanet/dashboard/?next=buy-pack-' + encodeURIComponent(p.slug);
+        var cardStyle = rec
+          ? 'border-color:#7ab31a;background:#f0fdf4;cursor:pointer;transition:transform .15s,box-shadow .15s;'
+          : 'cursor:pointer;transition:transform .15s,box-shadow .15s;';
+        var ctaColor = rec ? '#166534' : '#92400e';
+        var nLabel = (n === 1 ? 'curso' : 'cursos');
+        return ''
+          + '<a href="'+buyHref+'" style="text-decoration:none;color:inherit;">'
+          +   '<div class="pack" style="'+cardStyle+'" '
+          +        'onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 6px 22px rgba(0,0,0,.10)\';" '
+          +        'onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\';">'
+          +     '<div class="pack-name">'+label+(rec?' ⭐':'')+'</div>'
+          +     '<div class="pack-n">'+n+' '+nLabel+'</div>'
+          +     '<div class="pack-price">'+price+'<span class="pack-iva">+ IVA</span></div>'
+          +     '<div class="pack-saving">'+disc+' OFF</div>'
+          +     '<div style="margin-top:12px;font-size:12px;color:'+ctaColor+';font-weight:700;">🛒 Comprar pack →</div>'
+          +   '</div>'
+          + '</a>';
+      }).join('');
     });
 
-    // ── Sufijos /mes automáticos ──────────────────────
+    // ── Connect Empresas ─────────────────────────────────────────────
+    (data.connect_empresas || []).forEach(function(p){
+      document.querySelectorAll('[data-vn-connect="'+p.slug+'"]').forEach(function(el){
+        var campo = el.getAttribute('data-vn-campo') || 'precio';
+        if(campo === 'precio')      el.textContent = fmtClp(p.price_clp);
+        else if(campo === 'nombre') el.textContent = p.nombre;
+      });
+    });
+    // ── Relatores ────────────────────────────────────────────────────
+    (data.connect_relatores || []).forEach(function(p){
+      document.querySelectorAll('[data-vn-relator="'+p.slug+'"]').forEach(function(el){
+        var campo = el.getAttribute('data-vn-campo') || 'precio';
+        if(campo === 'precio')      el.textContent = fmtClp(p.price_clp);
+        else if(campo === 'nombre') el.textContent = p.nombre;
+      });
+    });
+
+    // ── Sufijos /mes automáticos ─────────────────────────────────────
     document.querySelectorAll('[data-vn-sufijo]').forEach(function(el){
       el.textContent = el.getAttribute('data-vn-sufijo');
     });
 
-    console.log('[ValidaNet] Precios sincronizados desde BD');
+    // ── Auto-hide: cards/secciones cuyos addons fueron ocultados o
+    // desactivados desde el admin. Markup esperado:
+    //   <div data-vn-addon-card="firma_electronica">…</div>
+    // Si el addon NO está en la respuesta (porque show_in_marketplace=false o
+    // active=false), el elemento se oculta con display:none. Si reaparece
+    // (admin lo vuelve a marcar visible), se muestra al recargar.
+    var visibleSlugs = {};
+    (data.addons||[]).forEach(function(a){ visibleSlugs[a.slug] = true; });
+    document.querySelectorAll('[data-vn-addon-card]').forEach(function(el){
+      var slug = el.getAttribute('data-vn-addon-card');
+      el.style.display = visibleSlugs[slug] ? '' : 'none';
+    });
+    // Mismo principio para planes: data-vn-plan-card="starter"
+    var visiblePlans = {};
+    (data.planes||[]).forEach(function(p){ visiblePlans[p.slug] = true; });
+    document.querySelectorAll('[data-vn-plan-card]').forEach(function(el){
+      var slug = el.getAttribute('data-vn-plan-card');
+      el.style.display = visiblePlans[slug] ? '' : 'none';
+    });
+
+    console.log('[ValidaNet] Precios + features + tiers + packs sincronizados desde BD');
   }
 
-  // Cargar precios con cache 1 hora en sessionStorage
-  var cacheKey = 'vn_precios_cache';
-  var cacheTs  = 'vn_precios_ts';
+  function escapeHtml(s){
+    return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  var cacheKey = 'vn_precios_cache_v2';
+  var cacheTs  = 'vn_precios_ts_v2';
   var ahora    = Date.now();
   var cached   = sessionStorage.getItem(cacheKey);
   var ts       = parseInt(sessionStorage.getItem(cacheTs)||0);
-
+  // Cache 1h. Para refresh manual: sessionStorage.removeItem('vn_precios_cache_v2')
   if(cached && (ahora - ts) < 3600000){
-    aplicarPrecios(JSON.parse(cached));
+    try { aplicarPrecios(JSON.parse(cached)); } catch(_) { fetchFresh(); }
   } else {
+    fetchFresh();
+  }
+  function fetchFresh(){
     fetch(API)
       .then(function(r){ return r.json(); })
       .then(function(data){

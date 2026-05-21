@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creador de Cursos IA — ValidaNet</title>
+<meta name="description" content="Genera cursos e-learning SENCE completos con IA: páginas HTML, evaluaciones, rúbricas PDF y H5P interactivos. Despliegue directo a Moodle. Desde $64.900 por curso.">
+<meta property="og:title" content="Creador de Cursos IA — ValidaNet">
+<meta property="og:description" content="De plan formativo PDF a curso completo en Moodle en menos de 10 minutos. SENCE-compliant, sin suscripción.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<script src="/vn-precios.js" defer></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
+nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-family:Syne;font-weight:800;font-size:20px;color:white;text-decoration:none;}
+.logo span{color:#7ab31a;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
+.nav-links a:hover{color:#7ab31a;}
+.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;border:0;cursor:pointer;}
+.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+.hero{background:linear-gradient(135deg,#1a2f0a,#0f172a 70%,#1e293b);color:white;padding:72px 40px;text-align:center;}
+.hero .icon{font-size:64px;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,52px);font-weight:800;margin-bottom:16px;line-height:1.1;}
+.hero h1 span{color:#7ab31a;}
+.hero p{font-size:17px;color:rgba(255,255,255,.85);max-width:680px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-w{background:white;color:#0f172a;border-radius:10px;padding:14px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.btn-o2{border:2px solid white;color:white;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:700;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:56px 0;}
+h2.tit{font-size:28px;font-weight:800;margin-bottom:8px;text-align:center;}
+p.sub{color:#64748b;font-size:15px;margin-bottom:36px;text-align:center;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:24px;}
+.card .ic{font-size:32px;margin-bottom:12px;}
+.card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.card p{font-size:13px;color:#64748b;line-height:1.6;}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;counter-reset:s;}
+.step{text-align:center;padding:24px;position:relative;}
+.step .num{width:44px;height:44px;border-radius:50%;background:#7ab31a;color:white;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.step p{font-size:13px;color:#64748b;}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.plan{border:2px solid #e2e8f0;border-radius:14px;padding:28px 22px;text-align:center;background:white;position:relative;}
+.plan.rec{border-color:#7ab31a;}
+.plan .rec-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;padding:4px 14px;border-radius:99px;font-size:11px;font-weight:700;}
+.plan h3{font-size:17px;font-weight:700;margin-bottom:6px;}
+.plan .price{font-size:42px;font-weight:800;color:#7ab31a;margin:12px 0 4px;line-height:1.05;letter-spacing:-.5px;}
+.plan .price > span:not([data-vn-addon-tier]){font-size:13px;color:#64748b;font-weight:400;display:block;margin-top:6px;letter-spacing:0;}
+.plan ul{list-style:none;text-align:left;margin:18px 0 0;padding:0;font-size:13px;color:#475569;}
+.plan ul li{padding:6px 0;border-bottom:1px solid #f1f5f9;}
+.plan ul li:before{content:"✓ ";color:#7ab31a;font-weight:700;}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:24px;}
+.pack{background:#fffbeb;border:2px solid #fde68a;border-radius:12px;padding:20px 16px;text-align:center;}
+.pack .pack-name{font-weight:700;font-size:15px;color:#92400e;margin-bottom:6px;}
+.pack .pack-n{font-size:13px;font-weight:600;color:#78350f;margin-bottom:10px;text-transform:uppercase;letter-spacing:.3px;}
+.pack .pack-price{font-size:28px;font-weight:800;color:#0f172a;line-height:1.05;letter-spacing:-.5px;}
+.pack .pack-price .pack-iva{font-size:11px;font-weight:500;color:#64748b;display:block;margin-top:3px;letter-spacing:0;}
+.pack .pack-saving{font-size:12px;color:#15803d;font-weight:700;margin-top:10px;background:#dcfce7;display:inline-block;padding:3px 10px;border-radius:99px;}
+.faq{background:white;border-radius:14px;border:1px solid #e2e8f0;overflow:hidden;margin-bottom:12px;}
+.faq-q{padding:18px 24px;font-weight:700;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.faq-a{padding:0 24px 18px;font-size:13px;color:#475569;line-height:1.6;display:none;}
+.faq.open .faq-a{display:block;}
+.faq-a h4{font-size:13px;font-weight:700;color:#0f172a;margin:14px 0 6px;}
+.faq-a h4:first-child{margin-top:4px;}
+.faq-a ul{padding-left:18px;margin:4px 0 8px;}
+.faq-a ul li{margin:3px 0;}
+.faq-a strong{color:#0f172a;}
+.faq-a .opt{display:inline-block;background:#f1f5f9;color:#475569;font-size:11px;font-weight:600;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:middle;}
+footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-align:center;font-size:12px;}
+@media (max-width:640px){.nav-links{display:none;}.hero{padding:48px 24px;}}
+</style>
+<script src="/vn-footer.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo" style="display:inline-flex;align-items:center;">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;display:block;">
+  </a>
+  <div class="nav-links">
+    <a href="/para-instituciones">Para Instituciones</a>
+    <a href="/para-empresas">Para Empresas</a>
+    <a href="/addons">Addons</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-green-o">Iniciar sesión</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/?next=creador-cursos" class="btn-orange">Comenzar gratis</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="icon">✨</div>
+  <h1>Cursos SENCE completos<br>en minutos con <span>IA</span></h1>
+  <p>De plan formativo en PDF/DOCX a curso e-learning desplegado en tu Moodle. Páginas HTML pedagógicas, evaluaciones con rúbrica, H5P interactivos, narración por voz IA y certificación automática. Sin suscripción mensual — pagas por curso o pack.</p>
+  <div class="hero-btns">
+    <a href="https://app.validanet.cl/api/validanet/dashboard/?next=creador-cursos" class="btn-w">🚀 Crear mi primer curso</a>
+    <a href="#pricing" class="btn-o2">Ver precios</a>
+  </div>
+</header>
+
+<section style="background:white;">
+  <div class="wrap">
+    <h2 class="tit">Lo que la IA genera por ti</h2>
+    <p class="sub">Cada curso es 100% editable. La IA hace el primer borrador, tú apruebas o ajustas.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">📘</div><h3>Páginas HTML por módulo</h3><p>Contenido teórico desarrollado en lenguaje claro, con casos prácticos, ejemplos aplicados al rubro y diagramas. ~900 palabras/hora certificada.</p></div>
+      <div class="card"><div class="ic">🧠</div><h3>Quizzes con retroalimentación</h3><p>Diagnóstico + parcial por módulo + final. Multichoice, matching, abiertas. Feedback por pregunta, por opción y por rango de nota.</p></div>
+      <div class="card"><div class="ic">📄</div><h3>Rúbricas PDF descargables</h3><p>Cada evaluación lleva rúbrica con criterios SENCE, alineada al aprendizaje esperado evaluado. Se incrusta automáticamente antes del quiz en Moodle.</p></div>
+      <div class="card"><div class="ic">🎮</div><h3>H5P interactivos</h3><p>Flashcards, Drag-the-words, Mark-the-words, Course Presentation con imágenes generadas o de bancos libres (Pexels/Pixabay/Unsplash).</p></div>
+      <div class="card"><div class="ic">🎙</div><h3>Narración por voz IA (opcional)</h3><p>Audio MP3 narrado por Azure Speech disponible al lado de cada página. 14 voces en 6 idiomas. $14.900 + IVA por curso.</p></div>
+      <div class="card"><div class="ic">🎓</div><h3>Certificado automático</h3><p>Si tienes el addon Certificados activo, al completar el curso el alumno recibe certificado PDF con QR de verificación y blockchain hash.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="tit">Cómo funciona</h2>
+    <p class="sub">10 minutos del PDF al curso desplegado en tu Moodle</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Sube tu plan formativo</h3><p>PDF/DOCX SENCE. La IA extrae módulos, AEs, horas y contenidos.</p></div>
+      <div class="step"><div class="num">2</div><h3>Revisa y aprueba</h3><p>Editás en el wizard lo que la IA detectó: AEs, módulos, tutor, branding.</p></div>
+      <div class="step"><div class="num">3</div><h3>Genera contenido</h3><p>Una llamada genera páginas, glosarios, evaluaciones, rúbricas y apuntes. ~5 min.</p></div>
+      <div class="step"><div class="num">4</div><h3>Despliega a Moodle</h3><p>Plugin gratuito instala el curso completo en tu Moodle. Los alumnos pueden inscribirse al instante.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:white;">
+  <div class="wrap">
+    <h2 class="tit">Precios — solo cursos sueltos y packs</h2>
+    <p class="sub">Sin suscripciones mensuales. Pagas por curso. Mientras más compras, más ahorras.</p>
+
+    <h3 style="font-size:18px;margin:12px 0 8px;text-align:center;">Curso individual (según duración)</h3>
+    <div style="max-width:680px;margin:0 auto 24px;background:linear-gradient(135deg,#fffbeb,#fef3c7);border:2px solid #fbbf24;border-radius:12px;padding:16px 22px;text-align:center;box-shadow:0 2px 12px rgba(251,191,36,.15);">
+      <div style="font-size:15px;font-weight:700;color:#78350f;margin-bottom:4px;">
+        🔐 Click en cualquier Opción para comprar
+      </div>
+      <div style="font-size:13px;color:#92400e;">
+        Si aún no tienes cuenta, te pediremos crear una <strong>gratis</strong> antes del pago. El proceso toma menos de 1 minuto.
+      </div>
+    </div>
+    <div class="plans">
+      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-express" style="text-decoration:none;color:inherit;">
+        <div class="plan" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+          <h3><span data-vn-addon-tier="creador_cursos:express" data-vn-campo="label">Express</span></h3>
+          <div class="price"><span data-vn-addon-tier="creador_cursos:express" data-vn-campo="price_neto">$64.900</span><span>+ IVA · curso menor a 8h</span></div>
+          <ul>
+            <li>1 curso completo</li>
+            <li>Hasta 2 regeneraciones</li>
+            <li>Vence en 12 meses</li>
+            <li><span data-vn-addon-tier="creador_cursos:express" data-vn-campo="modules_range">3-4 módulos</span></li>
+          </ul>
+          <div style="margin-top:14px;background:#7ab31a;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">🛒 Comprar Express</div>
+        </div>
+      </a>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-standard" style="text-decoration:none;color:inherit;">
+        <div class="plan rec" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+          <span class="rec-badge">Más elegido</span>
+          <h3><span data-vn-addon-tier="creador_cursos:standard" data-vn-campo="label">Standard</span></h3>
+          <div class="price"><span data-vn-addon-tier="creador_cursos:standard" data-vn-campo="price_neto">$109.900</span><span>+ IVA · curso 8-16h</span></div>
+          <ul>
+            <li>1 curso completo</li>
+            <li>Hasta 2 regeneraciones</li>
+            <li>Vence en 12 meses</li>
+            <li><span data-vn-addon-tier="creador_cursos:standard" data-vn-campo="modules_range">5-7 módulos</span></li>
+          </ul>
+          <div style="margin-top:14px;background:#7ab31a;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">🛒 Comprar Standard</div>
+        </div>
+      </a>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-pro" style="text-decoration:none;color:inherit;">
+        <div class="plan" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+          <h3><span data-vn-addon-tier="creador_cursos:pro" data-vn-campo="label">Pro</span></h3>
+          <div class="price"><span data-vn-addon-tier="creador_cursos:pro" data-vn-campo="price_neto">$189.900</span><span>+ IVA · curso 17-40h</span></div>
+          <ul>
+            <li>1 curso completo</li>
+            <li>Hasta 2 regeneraciones</li>
+            <li>Vence en 12 meses</li>
+            <li><span data-vn-addon-tier="creador_cursos:pro" data-vn-campo="modules_range">8-12 módulos</span></li>
+          </ul>
+          <div style="margin-top:14px;background:#7ab31a;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">🛒 Comprar Pro</div>
+        </div>
+      </a>
+      <a href="mailto:contacto@norteduc.cl?subject=Cotización Enterprise — Creador de Cursos" style="text-decoration:none;color:inherit;">
+        <div class="plan" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+          <h3>Enterprise</h3>
+          <div class="price" style="font-size:32px;">Cotización<span>cursos &gt;40h</span></div>
+          <ul>
+            <li>Más de 12 módulos</li>
+            <li>Soporte dedicado</li>
+            <li>SLA personalizado</li>
+            <li>Factura a 30 días</li>
+          </ul>
+          <div style="margin-top:14px;background:#f47920;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">📧 Pedir cotización</div>
+        </div>
+      </a>
+    </div>
+
+    <h3 style="font-size:18px;margin:36px 0 8px;text-align:center;">Packs prepago con descuento</h3>
+    <p class="sub" style="font-size:13px;margin-bottom:18px;">Elegí packs de cursos del tier que necesités. Cada pack incluye descuento por volumen (10% / 15% / 20% / 25%). Enterprise se cotiza aparte.</p>
+
+    <!-- Tier Express -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;border-bottom:2px solid #fbbf24;padding-bottom:6px;">
+        <h4 style="margin:0;font-size:15px;color:#92400e;">📘 Packs Express <span style="font-weight:400;color:#64748b;font-size:13px;">— cursos cortos (&lt;8h)</span></h4>
+        <span style="font-size:12px;color:#64748b;">Precio por curso: <strong data-vn-addon-tier="creador_cursos:express" data-vn-campo="price_neto">$79.900</strong> neto</span>
+      </div>
+      <div class="packs" data-vn-addon-packs-grid="creador_cursos:express">
+        <!-- Auto-renderizado por vn-precios.js desde DB -->
+      </div>
+    </div>
+
+    <!-- Tier Standard -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;border-bottom:2px solid #6db33a;padding-bottom:6px;">
+        <h4 style="margin:0;font-size:15px;color:#166534;">📗 Packs Standard <span style="font-weight:400;color:#64748b;font-size:13px;">— cursos medios (8-16h)</span></h4>
+        <span style="font-size:12px;color:#64748b;">Precio por curso: <strong data-vn-addon-tier="creador_cursos:standard" data-vn-campo="price_neto">$109.900</strong> neto</span>
+      </div>
+      <div class="packs" data-vn-addon-packs-grid="creador_cursos:standard">
+        <!-- Auto-renderizado por vn-precios.js desde DB -->
+      </div>
+    </div>
+
+    <!-- Tier Pro -->
+    <div style="margin-bottom:24px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;border-bottom:2px solid #f47920;padding-bottom:6px;">
+        <h4 style="margin:0;font-size:15px;color:#9a3412;">📙 Packs Pro <span style="font-weight:400;color:#64748b;font-size:13px;">— cursos largos (17-40h)</span></h4>
+        <span style="font-size:12px;color:#64748b;">Precio por curso: <strong data-vn-addon-tier="creador_cursos:pro" data-vn-campo="price_neto">$189.900</strong> neto</span>
+      </div>
+      <div class="packs" data-vn-addon-packs-grid="creador_cursos:pro">
+        <!-- Auto-renderizado por vn-precios.js desde DB -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="tit">Preguntas frecuentes</h2>
+    <div style="margin-top:24px;">
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Qué genera exactamente cada curso? <span>+</span></div><div class="faq-a">
+        <p>Cada curso queda desplegado en Moodle con la estructura SENCE completa, lista para inscribir alumnos. Estos son todos los elementos que la IA produce:</p>
+
+        <h4>📥 Sección de inducción (al inicio del curso)</h4>
+        <ul>
+          <li><strong>Página de Bienvenida</strong> — saludo personalizado del relator, presentación del curso, datos de contacto de tutor académico y administrativo con tasas de respuesta declaradas.</li>
+          <li><strong>Inducción tecnológica</strong> — cómo usar Moodle, requisitos técnicos (navegador, ancho de banda), accesibilidad y soporte.</li>
+          <li><strong>Inducción metodológica</strong> — cómo aprovechar el curso, recomendaciones de estudio, criterios de evaluación y aprobación.</li>
+          <li><strong>Reglamento interno</strong> — basado en RE 4027/2022 SENCE: indicadores de avance 60/90/30, plazos, tasas de respuesta de tutores, conducta en foros, política de copia.</li>
+        </ul>
+
+        <h4>📘 Contenido por cada módulo</h4>
+        <ul>
+          <li><strong>Páginas HTML pedagógicas</strong> — desarrollo teórico en lenguaje claro y respetuoso, con ejemplos aplicados al rubro, tablas, callouts y diagramas. Volumen calculado en ~900 palabras por hora certificada (±20%).</li>
+          <li><strong>Glosario del curso</strong> — términos clave con definición técnica, enlazable desde cualquier página.</li>
+          <li><strong>Apuntes PDF descargables</strong> — versión imprimible con análisis de casos reales del sector, citas a normativa vigente y preguntas de reflexión al cierre de cada módulo.</li>
+          <li><strong>Material de apoyo</strong> — recursos adicionales (PDFs subidos por ti, lecturas complementarias) integrados como mod_resource.</li>
+        </ul>
+
+        <h4>🎮 Actividades interactivas</h4>
+        <ul>
+          <li><strong>H5P por módulo</strong> — Flashcards, Drag-the-Words, Mark-the-Words, Question Set y Course Presentation, con imágenes seleccionadas de Pexels/Pixabay/Unsplash (fallback a IA si no hay match).</li>
+          <li><strong>Tareas mod_assign</strong> — consigna desarrollada + archivo base descargable (Excel/Word/PowerPoint según corresponda) + rúbrica PDF con criterios evaluativos SENCE.</li>
+          <li><strong>Foro de consultas general</strong> — espacio asincrónico para preguntas al tutor académico.</li>
+          <li><strong>Foro por módulo</strong> <span class="opt">SENCE-FT</span> — discusión específica con consigna pedagógica por unidad.</li>
+        </ul>
+
+        <h4>📝 Evaluaciones (alineadas a Aprendizajes Esperados)</h4>
+        <ul>
+          <li><strong>Quiz diagnóstico</strong> al inicio del curso para medir nivel de entrada.</li>
+          <li><strong>Quiz parcial por módulo</strong> — multichoice, multi-respuesta, matching, respuesta corta, numéricas (sin V/F; mínimo 30% de aplicación). Hasta 10 preguntas, escala 100 puntos.</li>
+          <li><strong>Quiz final</strong> de cierre con cobertura transversal, rúbrica PDF embebida antes del intento.</li>
+          <li><strong>Retroalimentación en 3 niveles</strong> en cada pregunta: por pregunta, por opción elegida y global por rango de nota.</li>
+          <li><strong>Rúbricas PDF</strong> para toda evaluación abierta o final, con descriptores por criterio y nivel de logro.</li>
+        </ul>
+
+        <h4>🎯 Cierre y certificación</h4>
+        <ul>
+          <li><strong>Sección "Evaluación final del curso"</strong> dedicada — concentra prueba final + rúbrica + encuesta + acceso a certificado.</li>
+          <li><strong>Encuesta de satisfacción</strong> tipo NCh2728 (mod_feedback) con preguntas de calidad del contenido, tutor, plataforma y NPS.</li>
+          <li><strong>Certificado automático</strong> <span class="opt">requiere addon Certificados</span> — entrega PDF con QR de verificación y hash blockchain al cumplir: quiz final aprobado + encuesta completada + páginas vistas.</li>
+        </ul>
+
+        <h4>⚙️ Configuración automática en Moodle</h4>
+        <ul>
+          <li><strong>Organización visual</strong> — cada módulo se ordena en 3 bloques con etiquetas: 📚 Material de estudio / 🎯 Actividades de aprendizaje / 📝 Evaluación parcial.</li>
+          <li><strong>Restricciones de acceso (availability)</strong> y <strong>marcas de finalización (completion)</strong> configuradas por actividad, parametrizables en el wizard.</li>
+          <li><strong>Nota de aprobación 60%</strong> y escala 1-100 forzadas en modo SENCE-FT.</li>
+          <li><strong>Anti-duplicación</strong> en redeploys: si ya hay alumnos con avance, los módulos se reordenan en vez de borrarse.</li>
+        </ul>
+
+        <h4>✨ Extras opcionales</h4>
+        <ul>
+          <li><strong>🏛 Modo SENCE-FT (Franquicia Tributaria)</strong> — gratis. Activa validaciones automáticas RE 4027/2022 + REX 1560/2024, genera PDF "Detalle de Solicitud" SOLICURSO con los 17 puntos canónicos para ingresar el curso al portal SENCE.</li>
+          <li><strong>🎙 Narración por voz IA</strong> <span class="opt">$14.900 + IVA</span> — MP3 narrado por Azure Speech en 14 voces / 6 idiomas, anexo a cada página. Se puede activar y regenerar en cualquier momento desde el dashboard del curso.</li>
+          <li><strong>🌐 Traducción a otro idioma</strong> <span class="opt">desde $29.900</span> — clona el curso completo a EN/PT/FR/IT/DE conservando estructura.</li>
+          <li><strong>🎨 Branding por curso</strong> — gratis. Logo institucional y paleta de colores propia del cliente en PDFs y header (sin marcas de IA ni de ValidaNet).</li>
+          <li><strong>📦 Export SCORM 1.2</strong> — paquete portable para subir el curso a cualquier LMS externo.</li>
+          <li><strong>💾 Backup MBZ</strong> — descarga el respaldo Moodle completo (con TTL 30 días en almacenamiento R2).</li>
+        </ul>
+
+        <p style="margin-top:14px;color:#0f172a;"><strong>Todo es 100% editable</strong> desde el wizard antes de desplegar, y luego desde Moodle como cualquier otro curso.</p>
+      </div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Necesito tener Moodle propio? <span>+</span></div><div class="faq-a">Sí, te integramos a tu Moodle existente mediante un plugin gratuito (te enviamos las instrucciones). Si no tienes Moodle, podemos exportar el curso como SCORM 1.2 portable para subirlo a cualquier LMS.</div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Los cursos son SENCE-compliant? <span>+</span></div><div class="faq-a">
+        <p>Sí. Por defecto, cada curso incluye: Bienvenida, Inducción tecnológica, Inducción metodológica, Reglamento, módulos con Aprendizajes Esperados progresivos (Taxonomía de Bloom revisada), evaluaciones diagnóstica/parciales/final, rúbricas PDF, encuesta de satisfacción NCh2728 y foro de consultas. Cumple el Decreto e-learning SENCE.</p>
+
+        <h4>🏛 Modo SENCE-FT (Franquicia Tributaria)</h4>
+        <p>Al activar el toggle <strong>SENCE-FT</strong> en el wizard, el curso se genera cumpliendo además los lineamientos de la <strong>RE 4027/2022</strong> (instructivo e-learning) y la <strong>REX 1560/2024</strong> (presentación de solicitudes). Se aplican validaciones automáticas (mínimo 2 AEs, mínimo 8 horas, AE con verbo + objeto + condición, foro por módulo, tasas de respuesta de tutores, indicadores 60/90/30, nota de aprobación 60%, entre otras) y se entrega un <strong>PDF "Detalle de Solicitud" con los 17 puntos canónicos</strong> para ingresar el curso al portal <strong>SOLICURSO</strong>.</p>
+
+        <p style="background:#fef3c7;border-left:3px solid #f59e0b;padding:10px 14px;border-radius:6px;margin-top:10px;color:#78350f;">
+          <strong>⚠️ Importante sobre la aprobación SENCE:</strong> los cursos generados en modo SENCE-FT quedan <strong>listos para solicitar codificación en SOLICURSO</strong>, cumpliendo los requisitos formales del instructivo e-learning. Sin embargo, <strong>la revisión y aprobación final siempre queda a criterio del equipo evaluador de SENCE</strong>, y <strong>no garantizamos la validación en la primera revisión</strong>. Pueden requerirse ajustes solicitados por el evaluador (todos editables desde el wizard o directamente en Moodle).
+        </p>
+      </div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Puedo editar el contenido generado? <span>+</span></div><div class="faq-a">Sí. La IA hace el primer borrador y tú revisas/editas todo desde el wizard antes de desplegar. Una vez deployado, también editas desde Moodle como cualquier otro curso.</div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Cuántas regeneraciones puedo hacer? <span>+</span></div><div class="faq-a">Cada crédito incluye hasta 2 regeneraciones del contenido IA por si necesitas ajustar el enfoque. Las ediciones manuales son ilimitadas.</div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Los créditos vencen? <span>+</span></div><div class="faq-a">Sí, vencen a los 12 meses desde la compra. Recibirás un aviso por email 30 días antes del vencimiento.</div></div>
+      <div class="faq"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">¿Cómo pago? <span>+</span></div><div class="faq-a">Por Flow (WebPay/transferencia/tarjeta). Se factura electrónicamente desde Norteduc Edtech SpA. Para Enterprise emitimos factura proforma a 30 días.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:linear-gradient(135deg,#7ab31a,#5a8a12);color:white;">
+  <div class="wrap" style="text-align:center;">
+    <h2 style="font-size:28px;font-weight:800;margin-bottom:14px;">Listo para crear tu primer curso?</h2>
+    <p style="font-size:15px;margin-bottom:24px;opacity:.9;">Regístrate gratis y compra solo lo que vayas a usar. Sin tarjeta de crédito requerida para crear cuenta.</p>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/?next=creador-cursos" class="btn-w" style="background:white;color:#0f172a;">🚀 Comenzar — crear cuenta gratis</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Norteduc Edtech SpA · Chile · Todos los derechos reservados<br>
+  <a href="/" style="color:#7ab31a;text-decoration:none;">validanet.cl</a> ·
+  <a href="mailto:contacto@validanet.cl" style="color:#7ab31a;text-decoration:none;">contacto@validanet.cl</a>
+</footer>
+
+</body>
+</html>

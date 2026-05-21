@@ -101,6 +101,13 @@ footer a{color:#7ab31a;}
 }
 </style>
 <link rel="stylesheet" href="/styles/a11y.css">
+<script src="/vn-footer.js" defer></script>
+<style>
+.vn-plan-feats-list-pi { list-style:none; padding:0; margin:0 0 14px 0; }
+.vn-plan-feats-list-pi li { padding:5px 0; font-size:13px; color:#475569; }
+.vn-plan-feats-list-pi li:before { content:"✓ "; color:#7ab31a; font-weight:700; }
+</style>
+<script src="/vn-precios.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -214,25 +221,14 @@ footer a{color:#7ab31a;}
         <h3>Free</h3>
         <div class="price"><span data-vn-plan="free" data-vn-campo="precio">$0</span><small>/mes</small></div>
         <div class="price-note">para siempre · 15K tokens/mes</div>
-        <ul>
-          <li>Dashboard ValidaNet</li>
-          <li>Cursos y alumnos ilimitados</li>
-          <li>IA en panel (sin chatbot Moodle)</li>
-          <li>Gestión básica de certificados</li>
-        </ul>
+        <ul class="vn-plan-feats-list-pi" data-vn-plan-features="free"></ul>
         <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Empezar gratis →</a>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <h3>Starter</h3>
         <div class="price"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span><small>/mes</small></div>
         <div class="price-note">+ IVA · 500K tokens IA/mes</div>
-        <ul>
-          <li>TutorIA Haiku en Moodle</li>
-          <li>Certificados digitales con QR</li>
-          <li>Asistencia Moodle + SENCE básico</li>
-          <li>Mi Ruta de Aprendizaje</li>
-          <li>Soporte por email</li>
-        </ul>
+        <ul class="vn-plan-feats-list-pi" data-vn-plan-features="starter"></ul>
         <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Comenzar →</a>
       </div>
       <div class="plan featured" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
@@ -240,27 +236,14 @@ footer a{color:#7ab31a;}
         <h3>Pro</h3>
         <div class="price"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span><small>/mes</small></div>
         <div class="price-note">14 días gratis · 1M tokens IA/mes</div>
-        <ul>
-          <li>TutorIA Haiku avanzado + alertas IA</li>
-          <li>Integración SENCE completa (SIC/REUF)</li>
-          <li>Firma electrónica contratos</li>
-          <li>ValidaNet Connect (relatores)</li>
-          <li>Certificados + Open Badge</li>
-          <li>Soporte WhatsApp prioritario</li>
-        </ul>
+        <ul class="vn-plan-feats-list-pi" data-vn-plan-features="pro"></ul>
         <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Probar 14 días gratis →</a>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <h3>Enterprise</h3>
         <div class="price"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span><small>/mes</small></div>
         <div class="price-note">+ IVA · 25M tokens IA · Sonnet</div>
-        <ul>
-          <li>TutorIA Sonnet (alta calidad)</li>
-          <li>Todos los addons + White label</li>
-          <li>CampusStore + ERP educativo</li>
-          <li>API personalizada · SGC NCh2728</li>
-          <li>SLA garantizado · Soporte 24/7</li>
-        </ul>
+        <ul class="vn-plan-feats-list-pi" data-vn-plan-features="enterprise"></ul>
         <a href="mailto:contacto@norteduc.cl?subject=Plan%20Enterprise%20ValidaNet" class="btn-plan">Contactar →</a>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;border:2px solid #1e3a5f;">
@@ -268,13 +251,7 @@ footer a{color:#7ab31a;}
         <h3>Universidad</h3>
         <div class="price"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span><small>/mes</small></div>
         <div class="price-note">+ IVA · 100M tokens · Sonnet académico</div>
-        <ul>
-          <li>TutorIA Sonnet académico</li>
-          <li>Multi-campus / multi-sede</li>
-          <li>Integración sistema académico</li>
-          <li>Reportería para acreditación</li>
-          <li>Account manager + SLA 99,9%</li>
-        </ul>
+        <ul class="vn-plan-feats-list-pi" data-vn-plan-features="universidad"></ul>
         <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" class="btn-plan" style="background:#1e3a5f;">Solicitar demo →</a>
       </div>
     </div>
