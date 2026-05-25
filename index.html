@@ -6,7 +6,7 @@
 <title>ValidaNet — Plataforma SaaS para Educación Online</title>
 <meta name="description" content="ValidaNet es la plataforma SaaS para OTECs, universidades, CFT, IP y empresas de capacitación. Crea cursos completos con IA desde $64.900, TutorIA, certificados digitales, SENCE, ERP educativo y más. Integrado con Moodle.">
 <link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
-<script src="/vn-precios.js" defer></script>
+<script src="/vn-precios.js?v=1779726009" defer></script>
 <style>
   .vn-plan-feats-list { list-style:none; text-align:left; margin-bottom:24px; padding:0; }
   .vn-plan-feats-list li { padding:7px 0; font-size:14px; color:#475569; border-bottom:1px solid #f1f5f9; }
@@ -175,10 +175,10 @@ footer .links a:hover{color:white;}
       "url": "https://validanet.cl/",
       "publisher": { "@id": "https://validanet.cl/#organization" },
       "offers": [
-        {"@type":"Offer","name":"Starter","price":"19990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"19990","priceCurrency":"CLP","unitText":"MONTH"}},
-        {"@type":"Offer","name":"Pro","price":"79990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"79990","priceCurrency":"CLP","unitText":"MONTH"}},
-        {"@type":"Offer","name":"Enterprise","price":"149990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"149990","priceCurrency":"CLP","unitText":"MONTH"}},
-        {"@type":"Offer","name":"Universidad","price":"990000","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"990000","priceCurrency":"CLP","unitText":"MONTH"}}
+        {"@type":"Offer","name":"Starter","price":"69990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"69990","priceCurrency":"CLP","unitText":"MONTH"}},
+        {"@type":"Offer","name":"Pro","price":"119990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"119990","priceCurrency":"CLP","unitText":"MONTH"}},
+        {"@type":"Offer","name":"Enterprise","price":"179990","priceCurrency":"CLP","priceSpecification":{"@type":"UnitPriceSpecification","price":"179990","priceCurrency":"CLP","unitText":"MONTH"}},
+        {"@type":"Offer","name":"Universidad","priceCurrency":"CLP","availability":"https://schema.org/InStock","description":"Plan académico bajo cotización — contactar a contacto@norteduc.cl"}
       ],
       "featureList": [
         "Certificados digitales con QR y hash SHA-256",
@@ -198,6 +198,7 @@ footer .links a:hover{color:white;}
 </script>
 <link rel="stylesheet" href="/styles/a11y.css">
 <script src="/vn-footer.js" defer></script>
+<script src="/vn-cotizacion-modal.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -216,7 +217,7 @@ footer .links a:hover{color:white;}
   </div>
   <div class="vn-actions">
     <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-vn-ghost">Ingresar</a>
-    <a href="/demo" class="btn-vn-green">Prueba 14 días gratis →</a>
+    <a href="/demo" class="btn-vn-green">Prueba 7 días gratis →</a>
   </div>
   <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
@@ -229,7 +230,7 @@ footer .links a:hover{color:white;}
   <a href="/blog">📝 Blog</a>
   <div class="vn-mob-sep"></div>
   <a href="https://app.validanet.cl/api/validanet/dashboard/">🔑 Ingresar</a>
-  <a href="/demo" style="color:#7ab31a;font-weight:700;">🚀 Prueba 14 días gratis</a>
+  <a href="/demo" style="color:#7ab31a;font-weight:700;">🚀 Prueba 7 días gratis</a>
 </div>
 
 <section id="main-content" class="hero">
@@ -345,6 +346,11 @@ footer .links a:hover{color:white;}
 </section>
 
 <section class="addons" id="addons">
+  <div style="max-width:900px;margin:0 auto 48px;">
+    <div style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12);">
+      <iframe src="https://player.mediadelivery.net/embed/654022/ef87f4b7-a5c8-4b0c-84e0-250721921d60?autoplay=false&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" allowfullscreen="true"></iframe>
+    </div>
+  </div>
   <h2>Addons disponibles</h2>
   <p class="sub">Activa solo lo que necesitas. Paga por lo que usas. Todos los addons se integran en tu Moodle con un clic.</p>
   <div class="addon-grid">
@@ -395,8 +401,8 @@ footer .links a:hover{color:white;}
 </section>
 <section id="pricing" style="padding:80px 40px;background:white;">
   <h2 style="text-align:center;font-size:32px;font-weight:800;margin-bottom:12px;">Planes simples y transparentes</h2>
-  <p style="text-align:center;color:#64748b;margin-bottom:12px;">Sin costos ocultos. Cancela cuando quieras. <strong>Plan Pro 14 días gratis sin tarjeta.</strong></p>
-  <p style="text-align:center;color:#94a3b8;font-size:13px;margin-bottom:40px;max-width:740px;margin-left:auto;margin-right:auto;">🪙 La capacidad de IA se mide en <strong>tokens/mes</strong> (cubren chatbot Moodle + dashboard + Mi Ruta + alertas). <strong>Cursos y alumnos ilimitados</strong> desde Starter.</p>
+  <p style="text-align:center;color:#64748b;margin-bottom:12px;">Sin costos ocultos. Cancela cuando quieras. <strong>Plan Pro: 7 días gratis sin tarjeta</strong>. Si no contratas al vencer el trial, tu cuenta vuelve automáticamente al plan Free.</p>
+  <p style="text-align:center;color:#94a3b8;font-size:13px;margin-bottom:40px;max-width:760px;margin-left:auto;margin-right:auto;">🪙 La capacidad IA se mide en <strong>tokens/mes</strong> (cubren chatbot TutorIA + dashboard + alertas + generación de contenido). <strong>Cursos y alumnos ilimitados</strong> desde Free. Pro/Enterprise/Universidad incluyen exactamente los mismos addons — varían en tokens y capacidad.</p>
   <div id="pricing-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:1100px;margin:0 auto;align-items:stretch;">
 
     <!-- FREE -->
@@ -406,33 +412,36 @@ footer .links a:hover{color:white;}
       <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;">para siempre</div>
       <div style="font-size:11px;font-weight:700;color:#0f172a;background:#f1f5f9;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 15K tokens/mes</div>
       <ul class="vn-plan-feats-list" data-vn-plan-features="free"></ul>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:11px;font-size:14px;font-weight:700;text-decoration:none;">Empezar gratis</a>
+      <button onclick="vnOpenSignup('free')" style="display:block;width:100%;background:#0f172a;color:white;border:0;border-radius:10px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;">Empezar gratis</button>
     </div>
 
     <!-- STARTER -->
     <div style="border:2px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;background:white;">
-      <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">STARTER</div>
-      <div style="font-size:32px;font-weight:800;color:#7ab31a;"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
-      <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
+      <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:10px;">STARTER</div>
+      <div style="font-size:32px;font-weight:800;color:#7ab31a;"><span data-vn-plan="starter" data-vn-campo="precio">$69.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:8px;">+ IVA</div>
+      <div style="font-size:11px;font-weight:700;color:#0f172a;background:#f1f5f9;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 500K tokens/mes</div>
       <ul class="vn-plan-feats-list" data-vn-plan-features="starter"></ul>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Comenzar</a>
+      <button onclick="vnOpenSignup('starter')" style="display:block;width:100%;background:#0f172a;color:white;border:0;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Comenzar</button>
     </div>
 
     <!-- PRO -->
     <div style="border:2px solid #7ab31a;border-radius:16px;padding:24px;text-align:center;position:relative;background:white;">
-      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;border-radius:99px;padding:4px 16px;font-size:12px;font-weight:700;white-space:nowrap;">⭐ MÁS POPULAR</div>
-      <div style="font-size:13px;font-weight:700;color:#7ab31a;letter-spacing:2px;margin-bottom:12px;">PRO</div>
-      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
-      <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
+      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;border-radius:99px;padding:4px 16px;font-size:12px;font-weight:700;white-space:nowrap;">⭐ MÁS POPULAR · 7 DÍAS GRATIS</div>
+      <div style="font-size:13px;font-weight:700;color:#7ab31a;letter-spacing:2px;margin-bottom:10px;">PRO</div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="pro" data-vn-campo="precio">$119.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:8px;">+ IVA · 7 días gratis sin tarjeta</div>
+      <div style="font-size:11px;font-weight:700;color:#166534;background:#f0fdf4;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 1M tokens/mes</div>
       <ul class="vn-plan-feats-list" data-vn-plan-features="pro"></ul>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="display:block;background:#7ab31a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Comenzar</a>
+      <button onclick="vnOpenSignup('pro')" style="display:block;width:100%;background:#7ab31a;color:white;border:0;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Probar 7 días gratis →</button>
     </div>
 
     <!-- ENTERPRISE -->
     <div style="border:2px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;background:white;">
-      <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:12px;">ENTERPRISE</div>
-      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
-      <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
+      <div style="font-size:13px;font-weight:700;color:#64748b;letter-spacing:2px;margin-bottom:10px;">ENTERPRISE</div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="enterprise" data-vn-campo="precio">$179.990</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:8px;">+ IVA</div>
+      <div style="font-size:11px;font-weight:700;color:#0f172a;background:#f1f5f9;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 25M tokens/mes</div>
       <ul class="vn-plan-feats-list" data-vn-plan-features="enterprise"></ul>
       <a href="mailto:contacto@norteduc.cl?subject=Plan%20Enterprise%20ValidaNet" style="display:block;background:#0f172a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Contactar</a>
     </div>
@@ -440,11 +449,12 @@ footer .links a:hover{color:white;}
     <!-- UNIVERSIDAD -->
     <div style="border:2px solid #1e3a8a;border-radius:16px;padding:24px;text-align:center;position:relative;background:linear-gradient(135deg,#fff 0%,#f0f7ff 100%);">
       <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#1e3a8a;color:white;border-radius:99px;padding:4px 16px;font-size:12px;font-weight:700;white-space:nowrap;">🎓 ACADEMIA</div>
-      <div style="font-size:13px;font-weight:700;color:#1e3a8a;letter-spacing:2px;margin-bottom:12px;">UNIVERSIDAD</div>
-      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span><span style="font-size:14px;color:#94a3b8;font-weight:400;">/mes</span></div>
-      <div style="font-size:12px;color:#94a3b8;margin-bottom:20px;">+ IVA</div>
+      <div style="font-size:13px;font-weight:700;color:#1e3a8a;letter-spacing:2px;margin-bottom:10px;">UNIVERSIDAD</div>
+      <div style="font-size:32px;font-weight:800;color:#0f172a;"><span data-vn-plan="universidad" data-vn-campo="precio">Cotizar</span></div>
+      <div style="font-size:12px;color:#94a3b8;margin-bottom:8px;">Bajo cotización</div>
+      <div style="font-size:11px;font-weight:700;color:#1e3a8a;background:#eff6ff;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:16px;">🪙 100M tokens/mes</div>
       <ul class="vn-plan-feats-list" data-vn-plan-features="universidad"></ul>
-      <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" style="display:block;background:#1e3a8a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;">Solicitar demo</a>
+      <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'universidad', titulo:'Cotizar Plan Universidad', subtitulo:'El plan Universidad se cotiza caso a caso según alumnos, multi-campus, integraciones y SLA. Completa el formulario y un ejecutivo te contactará en menos de 24 horas hábiles con una propuesta personalizada.'}); return false;" style="display:block;background:#1e3a8a;color:white;border-radius:10px;padding:12px;font-weight:700;text-decoration:none;text-align:center;cursor:pointer;">Cotizar →</a>
     </div>
 
   </div>
@@ -733,7 +743,7 @@ footer .links a:hover{color:white;}
 })();
 </script>
 
-<script src="/vn-precios.js"></script>
+<script src="/vn-precios.js?v=1779726009"></script>
 
 <!-- ════ EXIT INTENT POPUP + CHAT VENTAS ════ -->
 <style>
@@ -763,7 +773,7 @@ footer .links a:hover{color:white;}
     <button class="close" onclick="vnExitClose()" aria-label="Cerrar">×</button>
     <div class="ic">⏰</div>
     <h3>¿Te vas sin probar?</h3>
-    <p><strong>14 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
+    <p><strong>7 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
     <input type="email" id="vn-exit-email" placeholder="tu@empresa.cl" autocomplete="email">
     <button onclick="vnExitSubmit()">📧 Enviarme la info gratis</button>
     <div class="vnmsg" id="vn-exit-msg"></div>
@@ -819,5 +829,216 @@ async function vnExitSubmit(){
 // Validín JS removido — usar TutorIA Connect (vn-chat-widget) que ya está arriba.
 </script>
 
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- MODAL DE SIGNUP / COMPRA DE PLAN                                  -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<style>
+#vn-signup-modal{position:fixed;inset:0;background:rgba(15,23,42,.7);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:16px;}
+#vn-signup-modal.open{display:flex;}
+#vn-signup-modal .box{background:white;max-width:480px;width:100%;border-radius:16px;
+  padding:32px 28px;box-shadow:0 16px 64px rgba(0,0,0,.3);max-height:92vh;overflow-y:auto;}
+#vn-signup-modal h3{margin:0 0 4px;color:#0f172a;font-size:22px;font-weight:800;}
+#vn-signup-modal .plan-pill{display:inline-block;background:#f0fdf4;color:#166534;
+  border-radius:99px;padding:4px 12px;font-size:12px;font-weight:700;margin-bottom:18px;}
+#vn-signup-modal label{display:block;font-size:13px;font-weight:600;color:#475569;
+  margin-bottom:6px;margin-top:14px;}
+#vn-signup-modal input[type=text],#vn-signup-modal input[type=email],
+#vn-signup-modal input[type=password]{width:100%;border:1.5px solid #e2e8f0;
+  border-radius:8px;padding:10px 12px;font-size:14px;box-sizing:border-box;}
+#vn-signup-modal input:focus{outline:none;border-color:#7ab31a;}
+#vn-signup-modal .pay-options{display:flex;gap:8px;margin-top:8px;}
+#vn-signup-modal .pay-options label{flex:1;border:1.5px solid #e2e8f0;border-radius:10px;
+  padding:12px;cursor:pointer;margin:0;text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:4px;}
+#vn-signup-modal .pay-options input{display:none;}
+#vn-signup-modal .pay-options label.sel{border-color:#7ab31a;background:#f0fdf4;}
+#vn-signup-modal .pay-icon{font-size:22px;}
+#vn-signup-modal .submit{margin-top:24px;width:100%;background:#7ab31a;color:white;
+  border:0;border-radius:10px;padding:14px;font-weight:800;font-size:15px;cursor:pointer;}
+#vn-signup-modal .submit:disabled{background:#94a3b8;cursor:not-allowed;}
+#vn-signup-modal .close{position:absolute;top:14px;right:18px;background:none;border:0;
+  font-size:24px;color:#64748b;cursor:pointer;}
+#vn-signup-modal .err{color:#b91c1c;font-size:13px;margin-top:10px;display:none;
+  background:#fef2f2;padding:8px 12px;border-radius:8px;}
+#vn-signup-modal .legal{font-size:11px;color:#94a3b8;margin-top:14px;line-height:1.5;}
+#vn-signup-modal .success{text-align:center;}
+#vn-signup-modal .success .check{font-size:54px;color:#7ab31a;}
+#vn-signup-modal .bank-info{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;
+  padding:14px;margin-top:14px;font-size:13px;}
+#vn-signup-modal .bank-info b{color:#0f172a;}
+#vn-signup-modal .ref-box{background:#f0fdf4;border:1px dashed #7ab31a;border-radius:8px;
+  padding:8px 12px;text-align:center;margin:10px 0;font-family:monospace;font-size:16px;
+  font-weight:700;color:#166534;}
+</style>
+
+<div id="vn-signup-modal">
+  <div class="box" style="position:relative;">
+    <button class="close" onclick="vnCloseSignup()">×</button>
+    <div id="vn-signup-form-wrap">
+      <h3>Crea tu cuenta Validanet</h3>
+      <div class="plan-pill" id="vn-plan-pill">Plan —</div>
+
+      <label>Email</label>
+      <input type="email" id="vn-su-email" autocomplete="email" placeholder="tucorreo@ejemplo.cl">
+
+      <label>Contraseña</label>
+      <input type="password" id="vn-su-pw" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+
+      <label>Tu nombre</label>
+      <input type="text" id="vn-su-name" autocomplete="name" placeholder="Nombre y apellido">
+
+      <div id="vn-su-pay-wrap">
+        <label style="margin-top:18px;">Método de pago</label>
+        <div class="pay-options">
+          <label id="vn-pay-flow"><input type="radio" name="vn-pay" value="flow" checked>
+            <div class="pay-icon">💳</div><div style="font-size:12px;font-weight:700;">Flow</div>
+            <div style="font-size:10px;color:#94a3b8;">Tarjeta · WebPay</div></label>
+          <label id="vn-pay-transfer"><input type="radio" name="vn-pay" value="transfer">
+            <div class="pay-icon">🏦</div><div style="font-size:12px;font-weight:700;">Transferencia</div>
+            <div style="font-size:10px;color:#94a3b8;">Espera 24h</div></label>
+        </div>
+      </div>
+
+      <div class="err" id="vn-su-err"></div>
+      <button class="submit" id="vn-su-submit" onclick="vnSubmitSignup()">Continuar →</button>
+      <p class="legal">Al continuar aceptas los <a href="/terminos" style="color:#7ab31a;">Términos</a> y la <a href="/privacidad" style="color:#7ab31a;">Política de Privacidad</a>.</p>
+    </div>
+
+    <div id="vn-signup-result-wrap" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PLAN_INFO = {
+    free:      {label:'Plan Free — Gratis',                 price:0,      payOpts:false},
+    starter:   {label:'Plan Starter',                       price:null,   payOpts:true},
+    pro:       {label:'Plan Pro',                           price:null,   payOpts:true}
+  };
+  var CURRENT_PLAN = null;
+
+  window.vnOpenSignup = function(planSlug){
+    CURRENT_PLAN = planSlug;
+    var info = PLAN_INFO[planSlug] || {label:'Plan '+planSlug, payOpts:true};
+    document.getElementById('vn-plan-pill').textContent = info.label;
+    document.getElementById('vn-su-pay-wrap').style.display = info.payOpts ? '' : 'none';
+    document.getElementById('vn-signup-form-wrap').style.display = '';
+    document.getElementById('vn-signup-result-wrap').style.display = 'none';
+    document.getElementById('vn-su-err').style.display = 'none';
+    document.getElementById('vn-su-submit').disabled = false;
+    document.getElementById('vn-su-submit').textContent = info.price === 0 ? 'Crear cuenta gratis →' : 'Continuar →';
+    document.getElementById('vn-signup-modal').classList.add('open');
+    setTimeout(function(){ document.getElementById('vn-su-email').focus(); }, 80);
+    // Tracking conversión
+    if(window.gtag) gtag('event','signup_modal_open',{plan: planSlug});
+  };
+
+  window.vnCloseSignup = function(){
+    document.getElementById('vn-signup-modal').classList.remove('open');
+  };
+
+  // Click visual en opciones de pago
+  document.addEventListener('click', function(e){
+    var r = e.target.closest && e.target.closest('#vn-signup-modal .pay-options label');
+    if(!r) return;
+    document.querySelectorAll('#vn-signup-modal .pay-options label').forEach(function(l){ l.classList.remove('sel'); });
+    r.classList.add('sel');
+  });
+
+  // Cerrar con ESC o click en backdrop
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') vnCloseSignup(); });
+  document.getElementById('vn-signup-modal').addEventListener('click', function(e){
+    if(e.target.id === 'vn-signup-modal') vnCloseSignup();
+  });
+
+  function setPayDefault(){
+    var first = document.querySelector('#vn-signup-modal .pay-options label');
+    if(first) first.classList.add('sel');
+  }
+  setPayDefault();
+
+  function showErr(msg){
+    var el = document.getElementById('vn-su-err');
+    el.textContent = msg; el.style.display = 'block';
+  }
+
+  window.vnSubmitSignup = async function(){
+    var email = document.getElementById('vn-su-email').value.trim();
+    var pw    = document.getElementById('vn-su-pw').value;
+    var name  = document.getElementById('vn-su-name').value.trim();
+    var payRadio = document.querySelector('#vn-signup-modal .pay-options input:checked');
+    var pmethod  = payRadio ? payRadio.value : (CURRENT_PLAN === 'free' ? 'free' : 'flow');
+    if(CURRENT_PLAN === 'free') pmethod = 'free';
+
+    if(!email || !email.includes('@')) return showErr('Ingresá un email válido.');
+    if(!pw || pw.length < 8)            return showErr('La contraseña debe tener al menos 8 caracteres.');
+    if(!name)                            return showErr('Ingresá tu nombre.');
+
+    var btn = document.getElementById('vn-su-submit');
+    btn.disabled = true; btn.textContent = 'Procesando…';
+
+    try {
+      var r = await fetch('https://app.validanet.cl/api/public/signup/start', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          email: email, password: pw, contact_name: name,
+          plan_slug: CURRENT_PLAN, payment_method: pmethod
+        })
+      });
+      var d = await r.json();
+      if(!r.ok){
+        btn.disabled = false; btn.textContent = 'Continuar →';
+        return showErr(d.detail || 'Error al procesar. Intentá de nuevo.');
+      }
+      if(window.gtag) gtag('event','signup_started',{plan: CURRENT_PLAN, method: pmethod});
+
+      if(d.next === 'redirect' && d.redirect_url){
+        // Flow → ir directo al checkout
+        window.location.href = d.redirect_url;
+        return;
+      }
+      // Mostrar pantalla de éxito según tipo
+      showResult(d, pmethod);
+    } catch(e){
+      btn.disabled = false; btn.textContent = 'Continuar →';
+      showErr('Error de conexión: ' + e.message);
+    }
+  };
+
+  function showResult(d, pmethod){
+    document.getElementById('vn-signup-form-wrap').style.display = 'none';
+    var w = document.getElementById('vn-signup-result-wrap');
+    w.style.display = 'block';
+    var html;
+    if(pmethod === 'free'){
+      html = '<div class="success">' +
+        '<div class="check">✓</div>' +
+        '<h3>¡Cuenta creada!</h3>' +
+        '<p style="color:#64748b;margin:8px 0 18px;">' + (d.message || 'Iniciá sesión con tu email y contraseña.') + '</p>' +
+        '<a href="' + (d.login_url || 'https://app.validanet.cl/api/validanet/dashboard/#login') + '" class="submit" style="display:inline-block;text-decoration:none;max-width:280px;">Ir al login →</a>' +
+        '</div>';
+    } else if(pmethod === 'transfer'){
+      var b = d.bank || {};
+      html = '<h3>📋 Datos para transferencia</h3>' +
+        '<p style="color:#64748b;margin:8px 0 14px;">Realiza la transferencia con esta referencia. Una vez confirmada, recibirás un email con tus credenciales en hasta 24h hábiles.</p>' +
+        '<div class="ref-box">Glosa/Asunto: ' + d.transfer_ref + '</div>' +
+        '<div class="bank-info">' +
+          '<div><b>Banco:</b> ' + (b.banco||'') + '</div>' +
+          '<div><b>Titular:</b> ' + (b.titular||'') + '</div>' +
+          '<div><b>RUT:</b> ' + (b.rut||'') + '</div>' +
+          '<div><b>Tipo:</b> ' + (b.cuenta_tipo||'') + '</div>' +
+          '<div><b>N° Cuenta:</b> ' + (b.cuenta_numero||'') + '</div>' +
+          '<div><b>Email comprobante:</b> ' + (b.email||'pagos@validanet.cl') + '</div>' +
+          '<div style="margin-top:10px;font-size:16px;"><b>Monto:</b> $' + (d.amount_clp||0).toLocaleString('es-CL') + ' CLP</div>' +
+        '</div>' +
+        '<p class="legal">Reenviamos estos datos por email a <b>' + document.getElementById('vn-su-email').value + '</b>. Guárdalos.</p>' +
+        '<button class="submit" onclick="vnCloseSignup()">Entendido</button>';
+    }
+    w.innerHTML = html;
+  }
+})();
+</script>
 </body>
 </html>

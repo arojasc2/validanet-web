@@ -42,12 +42,17 @@
     return (list || []).find(function(x){ return x.slug === slug; });
   }
 
+  // Planes que NUNCA muestran precio público — siempre bajo cotización.
+  // Mantener sincronizado con el HTML (label CTA "Solicitar demo" / mailto).
+  var COTIZACION_PLANS = { universidad: true };
+
   function aplicarPrecios(data){
     // ── Planes ValidaNet ──────────────────────────────────────────────
     (data.planes || []).forEach(function(plan){
+      var esCotizacion = COTIZACION_PLANS[plan.slug] === true;
       document.querySelectorAll('[data-vn-plan="'+plan.slug+'"]').forEach(function(el){
         var campo = el.getAttribute('data-vn-campo') || 'precio';
-        if(campo === 'precio')       el.textContent = fmtClp(plan.price_clp);
+        if(campo === 'precio')       el.textContent = esCotizacion ? 'Cotizar' : fmtClp(plan.price_clp);
         else if(campo === 'nombre')  el.textContent = plan.nombre;
         else if(campo === 'tokens')  el.textContent = parseInt(plan.tokens||0).toLocaleString('es-CL');
         else if(campo === 'desc')    el.textContent = plan.descripcion || '';
@@ -159,14 +164,19 @@
         var price = fmtClp(p.price_clp_neto);
         var disc = (p.discount_pct||0) + '%';
         var rec = p.recommended;
-        var buyHref = 'https://app.validanet.cl/api/validanet/dashboard/?next=buy-pack-' + encodeURIComponent(p.slug);
+        // Si la landing cargó vn-signup-modal.js, abrimos el modal de compra pública
+        // (crea cuenta + paga). Si no, fallback al dashboard interno (requiere login previo).
+        var safeSlug = (p.slug || '').replace(/'/g, "\\'");
+        var safeLabel = (p.label || p.slug || '').replace(/'/g, "\\'");
+        var hrefAttr = 'href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-pack-' + encodeURIComponent(p.slug) + '"';
+        var onclickAttr = 'onclick="if(window.vnOpenSignup){event.preventDefault(); window.vnOpenSignup({pack_slug:\''+safeSlug+'\', label:\'Pack '+safeLabel+'\'}); return false;}"';
         var cardStyle = rec
           ? 'border-color:#7ab31a;background:#f0fdf4;cursor:pointer;transition:transform .15s,box-shadow .15s;'
           : 'cursor:pointer;transition:transform .15s,box-shadow .15s;';
         var ctaColor = rec ? '#166534' : '#92400e';
         var nLabel = (n === 1 ? 'curso' : 'cursos');
         return ''
-          + '<a href="'+buyHref+'" style="text-decoration:none;color:inherit;">'
+          + '<a '+hrefAttr+' '+onclickAttr+' style="text-decoration:none;color:inherit;">'
           +   '<div class="pack" style="'+cardStyle+'" '
           +        'onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 6px 22px rgba(0,0,0,.10)\';" '
           +        'onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\';">'
@@ -229,26 +239,36 @@
     return (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  // Cache stale-while-revalidate: pinta cacheado instantáneo + refetch background.
+  // TTL hard: 5min. Si el cache es más viejo, no se pinta cached — sólo fetch fresh.
+  // Si admin acaba de cambiar precios: máximo 5min de delay (o instantáneo si SWR
+  // alcanza a aplicar antes de que el usuario mire). Para refresh manual:
+  //   sessionStorage.removeItem('vn_precios_cache_v2')
   var cacheKey = 'vn_precios_cache_v2';
   var cacheTs  = 'vn_precios_ts_v2';
   var ahora    = Date.now();
+  var TTL_MS   = 5 * 60 * 1000;
   var cached   = sessionStorage.getItem(cacheKey);
   var ts       = parseInt(sessionStorage.getItem(cacheTs)||0);
-  // Cache 1h. Para refresh manual: sessionStorage.removeItem('vn_precios_cache_v2')
-  if(cached && (ahora - ts) < 3600000){
-    try { aplicarPrecios(JSON.parse(cached)); } catch(_) { fetchFresh(); }
-  } else {
-    fetchFresh();
+  var cacheFresh = cached && (ahora - ts) < TTL_MS;
+  if(cacheFresh){
+    try { aplicarPrecios(JSON.parse(cached)); } catch(_) { /* fetch igual abajo */ }
   }
+  // Siempre fetch en background — SWR: si la respuesta difiere del cache,
+  // sobreescribe lo que está pintado en pantalla.
+  fetchFresh();
   function fetchFresh(){
-    fetch(API)
+    fetch(API, {cache:'no-store'})
       .then(function(r){ return r.json(); })
       .then(function(data){
-        if(data.ok){
-          sessionStorage.setItem(cacheKey, JSON.stringify(data));
-          sessionStorage.setItem(cacheTs, ahora.toString());
+        if(!data.ok) return;
+        var serialized = JSON.stringify(data);
+        // Solo re-aplicar si el contenido cambió respecto al cache (evita reflow innecesario)
+        if(serialized !== cached){
           aplicarPrecios(data);
         }
+        sessionStorage.setItem(cacheKey, serialized);
+        sessionStorage.setItem(cacheTs, Date.now().toString());
       })
       .catch(function(e){ console.warn('[ValidaNet] Error cargando precios:', e); });
   }

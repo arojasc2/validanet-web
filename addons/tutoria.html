@@ -244,6 +244,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
 
 </style>
 <script src="/vn-footer.js" defer></script>
+<script src="/vn-cotizacion-modal.js" defer></script>
 </head>
 <body>
 
@@ -266,7 +267,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <h1>La IA que <span class="hl">enseña</span> dentro de tu Moodle</h1>
     <p class="hero-p">TutorIA lee todos los recursos de tus cursos y guía a cada estudiante 24/7 con respuestas precisas, ruta de aprendizaje personalizada y alertas inteligentes — sin tocar tu servidor.</p>
     <div class="btns">
-      <a href="#precios" class="btn btn-p">Comenzar gratis 14 días</a>
+      <a href="#precios" class="btn btn-p">Comenzar gratis 7 días</a>
       <a href="#integracion" class="btn btn-g">Ver cómo se instala ↓</a>
     </div>
     <div class="kpis">
@@ -1192,7 +1193,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <!-- STARTER -->
     <div class="pc fia">
       <div class="pcn">Starter</div>
-      <div class="pcp"><span data-vn-plan="starter" data-vn-campo="precio">$19.990</span> <small>/mes</small></div>
+      <div class="pcp"><span data-vn-plan="starter" data-vn-campo="precio">$69.990</span> <small>/mes</small></div>
       <div class="pctk">📦 <strong>500K tokens</strong> · IA panel + chatbot · ~1.700 acciones/mes</div>
       <ul class="pcfl">
         <li class="y">TutorIA chatbot Haiku</li>
@@ -1207,8 +1208,8 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <!-- PRO -->
     <div class="pc hot fia">
       <div class="pcn">Pro</div>
-      <div class="pcp"><span data-vn-plan="pro" data-vn-campo="precio">$79.990</span> <small>/mes</small></div>
-      <div class="pctk">🚀 <strong>1M tokens</strong> · IA panel + chatbot · 14 días gratis</div>
+      <div class="pcp"><span data-vn-plan="pro" data-vn-campo="precio">$119.990</span> <small>/mes</small></div>
+      <div class="pctk">🚀 <strong>1M tokens</strong> · IA panel + chatbot · 7 días gratis</div>
       <ul class="pcfl">
         <li class="y">TutorIA chatbot Haiku avanzado</li>
         <li class="y">Cursos y alumnos ilimitados</li>
@@ -1218,12 +1219,12 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
         <li class="y">Emails automáticos IA</li>
         <li class="y">ValidaNet Connect</li>
       </ul>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Probar 14 días gratis</a>
+      <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="pcb" style="display:block;text-align:center;text-decoration:none">Probar 7 días gratis</a>
     </div>
     <!-- ENTERPRISE -->
     <div class="pc fia">
       <div class="pcn">Enterprise</div>
-      <div class="pcp"><span data-vn-plan="enterprise" data-vn-campo="precio">$149.990</span> <small>/mes</small></div>
+      <div class="pcp"><span data-vn-plan="enterprise" data-vn-campo="precio">$179.990</span> <small>/mes</small></div>
       <div class="pctk">🏛️ <strong>25M tokens</strong> · IA Sonnet · todo el ecosistema IA</div>
       <ul class="pcfl">
         <li class="y">TutorIA Sonnet (alta calidad)</li>
@@ -1240,8 +1241,8 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
     <div class="pc fia" style="border:2px solid #1e3a5f;position:relative">
       <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;font-size:.65rem;font-weight:700;padding:.2rem .75rem;border-radius:20px;white-space:nowrap">🎓 ACADÉMICO</div>
       <div class="pcn">Universidad</div>
-      <div class="pcp"><span data-vn-plan="universidad" data-vn-campo="precio">$990.000</span> <small>/mes</small></div>
-      <div class="pctk">🏫 <strong>100M tokens</strong> · IA Sonnet académico · multi-campus</div>
+      <div class="pcp"><span data-vn-plan="universidad" data-vn-campo="precio">Cotizar</span></div>
+      <div class="pctk">🏫 <strong>100M tokens</strong> · IA Sonnet académico · multi-campus · bajo cotización</div>
       <ul class="pcfl">
         <li class="y">TutorIA Sonnet (máxima calidad)</li>
         <li class="y">Cursos y alumnos ilimitados</li>
@@ -1251,7 +1252,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
         <li class="y">Account manager dedicado</li>
         <li class="y">SLA 99,9% + onboarding</li>
       </ul>
-      <a href="mailto:contacto@norteduc.cl?subject=Plan%20Universidad%20ValidaNet" class="pcb" style="display:block;text-align:center;text-decoration:none;background:#1e3a5f">Solicitar demo</a>
+      <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'universidad', titulo:'Cotizar Plan Universidad', subtitulo:'El plan Universidad se cotiza caso a caso según alumnos, multi-campus, integraciones y SLA. Completa el formulario y un ejecutivo te contactará en menos de 24 horas hábiles con una propuesta personalizada.'}); return false;" class="pcb" style="display:block;text-align:center;text-decoration:none;background:#1e3a5f;cursor:pointer;">Cotizar →</a>
     </div>
   </div>
   <div class="cbox fia">
@@ -1295,7 +1296,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
       <tr><td>Ruta aprendizaje IA</td><td class="vn"><span class="ck">✓</span> Notas 1.0-7.0 chilenas</td><td><span class="cx">✗</span> No incluye</td><td><span class="cx">✗</span> Manual</td><td><span class="cp">~</span> Básico</td></tr>
       <tr><td>Emails automáticos</td><td class="vn"><span class="ck">✓</span> 5 tipos + anti-spam</td><td><span class="cx">✗</span> No incluye</td><td><span class="cx">✗</span> Manual</td><td><span class="cp">~</span> Básico</td></tr>
       <tr><td>Reportería top preguntas</td><td class="vn"><span class="ck">✓</span> Tiempo real</td><td><span class="cx">✗</span> Sin reportes</td><td><span class="cx">✗</span> Sin datos</td><td><span class="cp">~</span> Limitado</td></tr>
-      <tr><td>Costo mensual</td><td class="vn"><span class="ck">✓</span> Desde $19.990 CLP</td><td><span class="cp">~</span> Variable USD</td><td><span class="cx">✗</span> $200.000+</td><td><span class="cx">✗</span> $80-300 USD</td></tr>
+      <tr><td>Costo mensual</td><td class="vn"><span class="ck">✓</span> Desde $69.990 CLP</td><td><span class="cp">~</span> Variable USD</td><td><span class="cx">✗</span> $200.000+</td><td><span class="cx">✗</span> $80-300 USD</td></tr>
       <tr><td>Integración SENCE Chile</td><td class="vn"><span class="ck">✓</span> SIC + asistencia</td><td><span class="cx">✗</span> No</td><td><span class="cx">✗</span> No</td><td><span class="cx">✗</span> No</td></tr>
     </tbody>
   </table></div>
@@ -1305,7 +1306,7 @@ nav{background:#0f172a!important;height:64px;display:flex;align-items:center;
 <!-- CTA -->
 <div class="cta">
   <h2>¿Listo para transformar tu Moodle?</h2>
-  <p>14 días gratis, sin tarjeta de crédito. Activación en menos de 24 horas.</p>
+  <p>7 días gratis, sin tarjeta de crédito. Activación en menos de 24 horas.</p>
   <div class="ctabtns">
     <button class="btn btn-w" onclick="window.location='mailto:contacto@norteduc.cl?subject=Solicitud Trial TutorIA'">Solicitar acceso gratuito</button>
     <button class="btn btn-ow">Ver demo en vivo →</button>
@@ -1570,10 +1571,10 @@ const TOKENS_PER_QUERY = 300;
 const PLAN_LIMITS = [
   // Free no incluye chatbot IA en Moodle — solo dashboard. Tokens: 0 (chat).
   // No lo incluimos como "recomendable" si hay consultas > 0.
-  {slug:'starter', label:'Starter — $19.990/mes', tokens:500000},
-  {slug:'pro',     label:'Pro — $79.990/mes (14d gratis)', tokens:1000000},
-  {slug:'enterprise', label:'Enterprise — $149.990/mes', tokens:25000000},
-  {slug:'universidad', label:'Universidad — $990.000/mes', tokens:100000000},
+  {slug:'starter', label:'Starter — $69.990/mes', tokens:500000},
+  {slug:'pro',     label:'Pro — $119.990/mes (14d gratis)', tokens:1000000},
+  {slug:'enterprise', label:'Enterprise — $179.990/mes', tokens:25000000},
+  {slug:'universidad', label:'Universidad — bajo cotización', tokens:100000000},
 ];
 
 function calc(){

@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="https://app.validanet.cl/static/favicon-validanet.png">
 <script src="/vn-precios.js" defer></script>
+<script src="/vn-signup-modal.js" defer></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;}
@@ -94,7 +95,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
 <header class="hero">
   <div class="icon">✨</div>
   <h1>Cursos SENCE completos<br>en minutos con <span>IA</span></h1>
-  <p>De plan formativo en PDF/DOCX a curso e-learning desplegado en tu Moodle. Páginas HTML pedagógicas, evaluaciones con rúbrica, H5P interactivos, narración por voz IA y certificación automática. Sin suscripción mensual — pagas por curso o pack.</p>
+  <p>De plan formativo en PDF/DOCX a curso e-learning desplegado en tu Moodle. Páginas HTML pedagógicas, evaluaciones con rúbrica, H5P interactivos, <strong>resumen narrado con voz IA gratis</strong> y certificación automática. Sin suscripción mensual — pagas por curso o pack.</p>
   <div class="hero-btns">
     <a href="https://app.validanet.cl/api/validanet/dashboard/?next=creador-cursos" class="btn-w">🚀 Crear mi primer curso</a>
     <a href="#pricing" class="btn-o2">Ver precios</a>
@@ -110,7 +111,18 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
       <div class="card"><div class="ic">🧠</div><h3>Quizzes con retroalimentación</h3><p>Diagnóstico + parcial por módulo + final. Multichoice, matching, abiertas. Feedback por pregunta, por opción y por rango de nota.</p></div>
       <div class="card"><div class="ic">📄</div><h3>Rúbricas PDF descargables</h3><p>Cada evaluación lleva rúbrica con criterios SENCE, alineada al aprendizaje esperado evaluado. Se incrusta automáticamente antes del quiz en Moodle.</p></div>
       <div class="card"><div class="ic">🎮</div><h3>H5P interactivos</h3><p>Flashcards, Drag-the-words, Mark-the-words, Course Presentation con imágenes generadas o de bancos libres (Pexels/Pixabay/Unsplash).</p></div>
-      <div class="card"><div class="ic">🎙</div><h3>Narración por voz IA (opcional)</h3><p>Audio MP3 narrado por Azure Speech disponible al lado de cada página. 14 voces en 6 idiomas. $14.900 + IVA por curso.</p></div>
+      <div class="card" style="border:2px solid #16a34a;background:#f0fdf4;position:relative;">
+        <div style="position:absolute;top:-10px;right:14px;background:#16a34a;color:white;font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:.5px;">GRATIS · INCLUIDO</div>
+        <div class="ic">🎙</div>
+        <h3>Resumen de módulo con voz IA</h3>
+        <p>Audio narrado de <strong>1-2 minutos por módulo</strong> con voces Azure Neural (Dalia, Jorge, Catalina, Lorenzo). Funciona como introducción del módulo al inicio de cada sección en Moodle. <strong style="color:#15803d;">Incluido sin costo en todos los tiers.</strong></p>
+      </div>
+      <div class="card" style="border:2px solid #d97706;background:#fffbeb;position:relative;">
+        <div style="position:absolute;top:-10px;right:14px;background:#d97706;color:white;font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:.5px;">PREMIUM · +$9.900</div>
+        <div class="ic">✨</div>
+        <h3>Voz IA Premium ultra-natural</h3>
+        <p>Upgrade a voces <strong>Google Chirp 3 HD</strong> (Aoede, Despina, Algenib, Charon). Entonación humana, prosodia natural — calidad indistinguible de un locutor profesional. <strong style="color:#92400e;">+$9.900 + IVA por curso</strong>, opcional al elegir la voz.</p>
+      </div>
       <div class="card"><div class="ic">🎓</div><h3>Certificado automático</h3><p>Si tienes el addon Certificados activo, al completar el curso el alumno recibe certificado PDF con QR de verificación y blockchain hash.</p></div>
     </div>
   </div>
@@ -125,6 +137,14 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
       <div class="step"><div class="num">2</div><h3>Revisa y aprueba</h3><p>Editás en el wizard lo que la IA detectó: AEs, módulos, tutor, branding.</p></div>
       <div class="step"><div class="num">3</div><h3>Genera contenido</h3><p>Una llamada genera páginas, glosarios, evaluaciones, rúbricas y apuntes. ~5 min.</p></div>
       <div class="step"><div class="num">4</div><h3>Despliega a Moodle</h3><p>Plugin gratuito instala el curso completo en tu Moodle. Los alumnos pueden inscribirse al instante.</p></div>
+    </div>
+
+    <div style="max-width:920px;margin:48px auto 0;">
+      <h2 class="tit" style="margin-bottom:6px;">Véelo en acción</h2>
+      <p class="sub" style="margin-bottom:24px;">Demo real: del PDF SENCE al curso desplegado en Moodle.</p>
+      <div style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(15,23,42,.18);background:#0f172a;">
+        <iframe src="https://player.mediadelivery.net/embed/654022/329d1d49-f87d-4594-8c3f-f65cf7c4e53e?autoplay=false&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" allowfullscreen="true"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -144,7 +164,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
       </div>
     </div>
     <div class="plans">
-      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-express" style="text-decoration:none;color:inherit;">
+      <a href="#" onclick="event.preventDefault(); vnOpenSignup({tier_slug:'express', label:'Crédito Express — Creador de Cursos'}); return false;" style="text-decoration:none;color:inherit;">
         <div class="plan" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
           <h3><span data-vn-addon-tier="creador_cursos:express" data-vn-campo="label">Express</span></h3>
           <div class="price"><span data-vn-addon-tier="creador_cursos:express" data-vn-campo="price_neto">$64.900</span><span>+ IVA · curso menor a 8h</span></div>
@@ -157,7 +177,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
           <div style="margin-top:14px;background:#7ab31a;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">🛒 Comprar Express</div>
         </div>
       </a>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-standard" style="text-decoration:none;color:inherit;">
+      <a href="#" onclick="event.preventDefault(); vnOpenSignup({tier_slug:'standard', label:'Crédito Standard — Creador de Cursos'}); return false;" style="text-decoration:none;color:inherit;">
         <div class="plan rec" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
           <span class="rec-badge">Más elegido</span>
           <h3><span data-vn-addon-tier="creador_cursos:standard" data-vn-campo="label">Standard</span></h3>
@@ -171,7 +191,7 @@ footer{background:#0f172a;color:rgba(255,255,255,.6);padding:32px 40px;text-alig
           <div style="margin-top:14px;background:#7ab31a;color:white;text-align:center;padding:10px;border-radius:8px;font-weight:700;font-size:13px;">🛒 Comprar Standard</div>
         </div>
       </a>
-      <a href="https://app.validanet.cl/api/validanet/dashboard/?next=buy-credit-pro" style="text-decoration:none;color:inherit;">
+      <a href="#" onclick="event.preventDefault(); vnOpenSignup({tier_slug:'pro', label:'Crédito Pro — Creador de Cursos'}); return false;" style="text-decoration:none;color:inherit;">
         <div class="plan" style="cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 22px rgba(0,0,0,.10)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
           <h3><span data-vn-addon-tier="creador_cursos:pro" data-vn-campo="label">Pro</span></h3>
           <div class="price"><span data-vn-addon-tier="creador_cursos:pro" data-vn-campo="price_neto">$189.900</span><span>+ IVA · curso 17-40h</span></div>
