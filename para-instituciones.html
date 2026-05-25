@@ -109,6 +109,7 @@ footer a{color:#7ab31a;}
 </style>
 <script src="/vn-precios.js?v=1779726009" defer></script>
 <script src="/vn-cotizacion-modal.js" defer></script>
+<script src="/vn-signup-modal.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -242,10 +243,10 @@ footer a{color:#7ab31a;}
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <h3>Enterprise</h3>
-        <div class="price"><span data-vn-plan="enterprise" data-vn-campo="precio">$179.990</span><small>/mes</small></div>
+        <div class="price"><span data-vn-plan="enterprise" data-vn-campo="precio">$239.990</span><small>/mes</small></div>
         <div class="price-note">+ IVA · 25M tokens IA · Sonnet</div>
         <ul class="vn-plan-feats-list-pi" data-vn-plan-features="enterprise"></ul>
-        <a href="mailto:contacto@norteduc.cl?subject=Plan%20Enterprise%20ValidaNet" class="btn-plan">Contactar →</a>
+        <button type="button" onclick="vnOpenSignup('enterprise')" class="btn-plan" style="border:0;cursor:pointer;">Comenzar →</button>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;border:2px solid #1e3a5f;">
         <span class="ribbon" style="background:#1e3a5f;">🎓 Académico</span>

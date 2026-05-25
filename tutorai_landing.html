@@ -217,6 +217,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
 }
 </style>
 <script src="/vn-footer.js" defer></script>
+<script src="/vn-signup-modal.js" defer></script>
+<script src="/vn-cotizacion-modal.js" defer></script>
 </head>
 <body>
 
@@ -597,7 +599,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
     <!-- ENTERPRISE -->
     <div class="pc fia">
       <div class="pcn">Enterprise</div>
-      <div class="pcp"><span data-vn-plan="enterprise" data-vn-campo="precio">$179.990</span> <small>/mes</small></div>
+      <div class="pcp"><span data-vn-plan="enterprise" data-vn-campo="precio">$239.990</span> <small>/mes</small></div>
       <div class="pctk">🏛️ <strong>25M tokens/mes</strong> · Sonnet</div>
       <ul class="pcfl">
         <li class="y">TutorIA Sonnet (alta calidad)</li>
@@ -607,7 +609,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
         <li class="y">API personalizada · SLA</li>
         <li class="y">Soporte 24/7</li>
       </ul>
-      <button class="pcb">Contactar</button>
+      <button class="pcb" onclick="vnOpenSignup('enterprise')">Comenzar</button>
     </div>
     <!-- UNIVERSIDAD -->
     <div class="pc fia" style="border:2px solid #1e3a5f;position:relative">
@@ -623,22 +625,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:2.5rem 5vw;displ
         <li class="y">Reportería para acreditación</li>
         <li class="y">Account manager + SLA 99,9%</li>
       </ul>
-      <button class="pcb" style="background:#1e3a5f">Solicitar demo</button>
-    </div>
-    <!-- ENTERPRISE -->
-    <div class="pc fia">
-      <div class="pcn">Enterprise</div>
-      <div class="pcp" style="font-size:1.4rem">A cotizar</div>
-      <div class="pctk">🏛️ +20.000 alumnos / consorcio</div>
-      <ul class="pcfl">
-        <li class="y">TutorIA Sonnet dedicado</li>
-        <li class="y">Todo lo de Universidad</li>
-        <li class="y">ERP educativo completo</li>
-        <li class="y">CampusStore + Connect</li>
-        <li class="y">Integ. SENCE + acreditación</li>
-        <li class="y">Soporte in-site + SLA custom</li>
-      </ul>
-      <button class="pcb">Contactar</button>
+      <button class="pcb" style="background:#1e3a5f" onclick="vnOpenCotizacion({tipo:'universidad', titulo:'Cotizar Plan Universidad', subtitulo:'El plan Universidad se cotiza caso a caso según alumnos, multi-campus, integraciones y SLA. Completa el formulario y un ejecutivo te contactará en menos de 24 horas hábiles con una propuesta personalizada.'})">Cotizar</button>
     </div>
   </div>
   <div class="cbox fia">
@@ -723,7 +710,7 @@ const TOKENS_PER_QUERY = 300; // tokens promedio por acción IA con prompt cachi
 const PLAN_LIMITS = [
   {slug:'starter', label:'Starter — $69.990/mes', tokens:500000},
   {slug:'pro',     label:'Pro — $119.990/mes (7 días gratis)', tokens:1000000},
-  {slug:'enterprise', label:'Enterprise — $179.990/mes', tokens:25000000},
+  {slug:'enterprise', label:'Enterprise — $239.990/mes', tokens:25000000},
   {slug:'universidad', label:'Universidad — bajo cotización', tokens:100000000},
 ];
 
