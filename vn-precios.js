@@ -199,11 +199,36 @@
       });
     });
     // ── Relatores ────────────────────────────────────────────────────
+    // Campos soportados:
+    //   precio | nombre — básico
+    //   postulaciones | contactos | chat — cuotas mensuales (número o "Ilimitado" si -1)
+    //   contratos | firma | badge_validado | badge_experto | notif_whatsapp | notif_email
+    //     | stats | historial | soporte | match_ia — booleanos (✓/—)
+    function fmtCuota(n){
+      if(n == null) return '—';
+      n = parseInt(n);
+      if(n === -1) return 'Ilimitado';
+      return n.toLocaleString('es-CL');
+    }
+    function fmtBool(b){ return b ? '✓' : '—'; }
     (data.connect_relatores || []).forEach(function(p){
       document.querySelectorAll('[data-vn-relator="'+p.slug+'"]').forEach(function(el){
         var campo = el.getAttribute('data-vn-campo') || 'precio';
-        if(campo === 'precio')      el.textContent = fmtClp(p.price_clp);
-        else if(campo === 'nombre') el.textContent = p.nombre;
+        if     (campo === 'precio')        el.textContent = fmtClp(p.price_clp);
+        else if(campo === 'nombre')        el.textContent = p.nombre;
+        else if(campo === 'postulaciones') el.textContent = fmtCuota(p.max_postulaciones_mes);
+        else if(campo === 'contactos')     el.textContent = fmtCuota(p.max_contactos_mes);
+        else if(campo === 'chat')          el.textContent = fmtCuota(p.max_chat_mes);
+        else if(campo === 'contratos')     el.textContent = fmtBool(p.permite_contratos);
+        else if(campo === 'firma')         el.textContent = fmtBool(p.permite_firma);
+        else if(campo === 'badge_validado')el.textContent = fmtBool(p.badge_validado);
+        else if(campo === 'badge_experto') el.textContent = fmtBool(p.badge_experto);
+        else if(campo === 'notif_whatsapp')el.textContent = fmtBool(p.notif_whatsapp);
+        else if(campo === 'notif_email')   el.textContent = fmtBool(p.notif_email);
+        else if(campo === 'stats')         el.textContent = fmtBool(p.stats_perfil);
+        else if(campo === 'historial')     el.textContent = fmtBool(p.historial_contratos);
+        else if(campo === 'soporte')       el.textContent = fmtBool(p.soporte_prioritario);
+        else if(campo === 'match_ia')      el.textContent = fmtBool(p.match_ia);
       });
     });
 

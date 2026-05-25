@@ -62,6 +62,7 @@ footer a{color:#7ab31a;}
 </style>
 <link rel="stylesheet" href="/styles/a11y.css">
 <script src="/vn-footer.js" defer></script>
+<script src="/vn-precios.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -155,16 +156,17 @@ footer a{color:#7ab31a;}
     <p class="sub">Sin contratos largos. Tu tarifa con el cliente es 100% tuya.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:880px;margin:0 auto;">
 
+      <!-- BUSCADOR (slug=free) — campos numéricos editables desde admin#planes → Relatores -->
       <div style="background:white;border:2px solid #e2e8f0;border-radius:16px;padding:28px 22px;text-align:center;">
-        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;">Buscador</h3>
-        <div style="font-size:36px;font-weight:800;color:#1e3a5f;margin:12px 0 2px;">$0<small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
+        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;"><span data-vn-relator="free" data-vn-campo="nombre">Buscador</span></h3>
+        <div style="font-size:36px;font-weight:800;color:#1e3a5f;margin:12px 0 2px;"><span data-vn-relator="free" data-vn-campo="precio">$0</span><small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
         <div style="font-size:11px;color:#94a3b8;margin-bottom:18px;">Plan gratuito permanente</div>
         <ul style="list-style:none;text-align:left;margin:18px 0;font-size:13px;">
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Perfil profesional básico</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><strong>Matching IA ilimitado</strong></li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>10 postulaciones/mes</li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>3 contactos directos con empresas/mes</li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>10 mensajes de chat/mes</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><span data-vn-relator="free" data-vn-campo="postulaciones">10</span> postulaciones/mes</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><span data-vn-relator="free" data-vn-campo="contactos">3</span> contactos directos con empresas/mes</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><span data-vn-relator="free" data-vn-campo="chat">10</span> mensajes de chat/mes</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#94a3b8;"><span style="color:#94a3b8;font-weight:700;">✗ </span>Sin notificaciones email/WhatsApp</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#94a3b8;"><span style="color:#94a3b8;font-weight:700;">✗ </span>Sin contratos digitales</li>
           <li style="padding:6px 0;color:#94a3b8;"><span style="color:#94a3b8;font-weight:700;">✗ </span>Sin badge de validación</li>
@@ -172,16 +174,17 @@ footer a{color:#7ab31a;}
         <a href="https://connect.validanet.cl/connect/relator/registro" style="display:block;background:#1e3a5f;color:white;padding:12px;border-radius:10px;font-weight:700;text-decoration:none;font-size:14px;">Crear cuenta gratis →</a>
       </div>
 
+      <!-- CAPACITADOR (slug=profesional) -->
       <div style="background:white;border:2px solid #7ab31a;border-radius:16px;padding:28px 22px;text-align:center;position:relative;box-shadow:0 12px 30px rgba(122,179,26,.15);">
         <span style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#7ab31a;color:white;font-size:11px;font-weight:700;padding:5px 14px;border-radius:99px;white-space:nowrap;">⭐ Más elegido</span>
-        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;">Capacitador</h3>
-        <div style="font-size:36px;font-weight:800;color:#7ab31a;margin:12px 0 2px;">$9.990<small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
+        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;"><span data-vn-relator="profesional" data-vn-campo="nombre">Capacitador</span></h3>
+        <div style="font-size:36px;font-weight:800;color:#7ab31a;margin:12px 0 2px;"><span data-vn-relator="profesional" data-vn-campo="precio">$9.990</span><small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
         <div style="font-size:11px;color:#94a3b8;margin-bottom:18px;">+ IVA · sin contrato anual</div>
         <ul style="list-style:none;text-align:left;margin:18px 0;font-size:13px;">
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><strong>Matching IA ilimitado</strong></li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>40 postulaciones/mes</li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>10 contactos directos/mes</li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Chat con empresas ilimitado</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><span data-vn-relator="profesional" data-vn-campo="postulaciones">40</span> postulaciones/mes</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><span data-vn-relator="profesional" data-vn-campo="contactos">10</span> contactos directos/mes</li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Chat con empresas: <span data-vn-relator="profesional" data-vn-campo="chat">Ilimitado</span></li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Contratos digitales</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Notificaciones por email</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Historial de contratos</li>
@@ -190,14 +193,15 @@ footer a{color:#7ab31a;}
         <a href="https://connect.validanet.cl/connect/relator/registro" style="display:block;background:#7ab31a;color:white;padding:12px;border-radius:10px;font-weight:700;text-decoration:none;font-size:14px;">Suscribirme a Capacitador →</a>
       </div>
 
+      <!-- EXPERTO (slug=pro) -->
       <div style="background:white;border:2px solid #1e3a5f;border-radius:16px;padding:28px 22px;text-align:center;position:relative;">
         <span style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:white;font-size:11px;font-weight:700;padding:5px 14px;border-radius:99px;white-space:nowrap;">🏆 Pro · 3 días gratis</span>
-        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;">Experto</h3>
-        <div style="font-size:36px;font-weight:800;color:#1e3a5f;margin:12px 0 2px;">$69.990<small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
+        <h3 style="font-size:18px;font-weight:800;color:#1e3a5f;"><span data-vn-relator="pro" data-vn-campo="nombre">Experto</span></h3>
+        <div style="font-size:36px;font-weight:800;color:#1e3a5f;margin:12px 0 2px;"><span data-vn-relator="pro" data-vn-campo="precio">$19.990</span><small style="font-size:14px;color:#64748b;font-weight:500;">/mes</small></div>
         <div style="font-size:11px;color:#94a3b8;margin-bottom:18px;">+ IVA · 3 días de prueba gratis</div>
         <ul style="list-style:none;text-align:left;margin:18px 0;font-size:13px;">
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span><strong>Todo lo de Capacitador, sin límites</strong></li>
-          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Postulaciones, contactos y chat <strong>ilimitados</strong></li>
+          <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Postulaciones (<span data-vn-relator="pro" data-vn-campo="postulaciones">Ilimitado</span>), contactos (<span data-vn-relator="pro" data-vn-campo="contactos">Ilimitado</span>) y chat (<span data-vn-relator="pro" data-vn-campo="chat">Ilimitado</span>)</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Badge Validado + Badge Experto</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Firma electrónica avanzada en contratos</li>
           <li style="padding:6px 0;border-bottom:1px solid #f1f5f9;color:#475569;"><span style="color:#7ab31a;font-weight:700;">✓ </span>Notificaciones por WhatsApp + email</li>
