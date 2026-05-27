@@ -69,7 +69,10 @@
     (data.addons || []).forEach(function(addon){
       document.querySelectorAll('[data-vn-addon="'+addon.slug+'"]').forEach(function(el){
         var campo = el.getAttribute('data-vn-campo') || 'precio';
-        if(campo === 'precio')       el.textContent = addon.gratis ? 'Gratis' : fmtClp(addon.price_clp, '/mes');
+        // No agregamos '/mes' al textContent: todos los HTML que usan
+        // data-vn-campo="precio" ya tienen un <small>/mes</small> adyacente.
+        // Si se duplicaba aparecía "$14.990/mes/mes". Consistente con planes (línea 55).
+        if(campo === 'precio')       el.textContent = addon.gratis ? 'Gratis' : fmtClp(addon.price_clp);
         else if(campo === 'precio_desde') {
           // "desde $X" — útil para addons con varios tiers (toma el menor)
           var tiers = addon.pricing_tiers || [];
