@@ -33,8 +33,8 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .card ul{list-style:none;margin:0 0 22px;flex:1}
 .card li{font-size:13px;color:#475569;padding:5px 0 5px 22px;position:relative}
 .card li:before{content:"✓";color:#7ab31a;font-weight:800;position:absolute;left:0}
-.card li.more{color:#94a3b8;font-style:italic}
-.card li.more:before{content:""}
+.card li.more{color:#475569;font-style:italic;font-weight:600;padding-left:22px;margin-top:4px;border-top:1px dashed #e2e8f0;padding-top:8px}
+.card li.more:before{content:"+";color:#7ab31a;font-weight:800;position:absolute;left:0;margin-top:8px}
 .cta{background:#7ab31a;color:white;border:0;border-radius:10px;padding:13px;font-weight:700;font-size:14px;cursor:pointer;width:100%;transition:.15s}
 .cta:hover{background:#6aa00f}
 .cta.outline{background:white;color:#7ab31a;border:1.5px solid #7ab31a}
@@ -152,7 +152,8 @@ footer a:hover{color:#7ab31a}
   function liFeatures(features){
     if (!features || !features.length) return '';
     var top = features.slice(0, 5).map(function(f){ return '<li>' + escapeHtml(f) + '</li>'; }).join('');
-    var rest = features.length > 5 ? '<li class="more">+ ' + (features.length - 5) + ' más…</li>' : '';
+    // "+ N funciones más" — el "+" lo dibuja el ::before, acá solo el texto.
+    var rest = features.length > 5 ? '<li class="more">' + (features.length - 5) + ' funciones más</li>' : '';
     return top + rest;
   }
 
