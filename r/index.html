@@ -213,8 +213,8 @@ footer a:hover{color:#7ab31a}
       + '<div class="desc">' + escapeHtml(a.descripcion || '') + '</div>'
       + precio
       + '<ul>' + liFeatures(a.features) + '</ul>'
-      + '<button class="cta outline" data-action="cotizar-addon" data-slug="' + escapeHtml(a.slug) + '" data-name="' + escapeHtml(a.nombre) + '">'
-      + 'Activar addon</button>'
+      + '<button class="cta outline" data-action="signup-addon" data-slug="' + escapeHtml(a.slug) + '">'
+      + 'Comprar addon</button>'
       + '</div>';
   }
 
@@ -231,21 +231,18 @@ footer a:hover{color:#7ab31a}
           return;
         }
         vnOpenSignup({plan_slug: btn.getAttribute('data-slug')});
+      } else if (action === 'signup-addon') {
+        if (typeof vnOpenSignup !== 'function') {
+          alert('Cargando checkout… probá de nuevo en un segundo.');
+          return;
+        }
+        vnOpenSignup({addon_slug: btn.getAttribute('data-slug')});
       } else if (action === 'cotizar-universidad') {
         if (typeof vnOpenCotizacion !== 'function') return;
         vnOpenCotizacion({
           tipo: 'plan_universidad',
           titulo: 'Cotizar Plan Universidad',
           subtitulo: 'Bajo cotización: multi-campus, integraciones Banner/SIES, SLA 99,9%.'
-        });
-      } else if (action === 'cotizar-addon') {
-        if (typeof vnOpenCotizacion !== 'function') return;
-        var slug = btn.getAttribute('data-slug');
-        var name = btn.getAttribute('data-name');
-        vnOpenCotizacion({
-          tipo: 'addon_' + slug,
-          titulo: 'Activar ' + name,
-          subtitulo: 'Un ejecutivo te activa este addon en tu cuenta (existente o nueva) en 24h hábiles.'
         });
       }
     });

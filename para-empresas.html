@@ -56,10 +56,11 @@ footer a{color:#f47920;}
 <script src="/vn-ref-capture.js"></script>
 <script src="/vn-precios.js" defer></script>
 <script src="/vn-cotizacion-modal.js" defer></script>
-<!-- vn-signup-modal NO se carga: Connect Empresa tiene su propio registro
-     en connect.validanet.cl/connect/empresa/registro (sistema aparte de
-     validanet_plans). Para no vender el plan incorrecto, los CTAs son
-     enlaces directos al registro Connect. -->
+<!-- vn-signup-modal SÍ se carga para que los CTAs de addons individuales
+     (Aula Virtual, Creador, Certificados, ERP) puedan hacer checkout real.
+     Los planes Connect Empresa siguen yendo a connect.validanet.cl porque
+     viven en otro sistema (cn_empresa_cliente_planes con auth separada). -->
+<script src="/vn-signup-modal.js" defer></script>
 <style>
 .plan-card{background:white;border:2px solid #e2e8f0;border-radius:14px;padding:24px;text-align:center;display:flex;flex-direction:column;}
 .plan-card.featured{border-color:#f47920;box-shadow:0 12px 30px rgba(244,121,32,.15);position:relative;}
@@ -230,7 +231,7 @@ footer a{color:#f47920;}
           <li>Branding corporativo + dominio propio</li>
           <li>Sin sysadmin necesario</li>
         </ul>
-        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_aula_empresa', titulo:'Activar Aula Virtual Moodle', subtitulo:'Tu propia plataforma Moodle aprovisionada en nuestros servidores con branding corporativo.'});" class="btn-em">Activar →</button>
+        <button type="button" onclick="vnOpenSignup({addon_slug:'aula_virtual'});" class="btn-em">Activar →</button>
       </div>
 
       <div class="plan-card">
@@ -242,7 +243,7 @@ footer a{color:#f47920;}
           <li>Estructura SENCE-FT lista</li>
           <li>Quizzes y rúbricas automáticas</li>
         </ul>
-        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_creador_empresa', titulo:'Activar Creador de Cursos IA', subtitulo:'Construye tu catálogo interno de cursos con IA, sin contratar productora.'});" class="btn-em">Activar →</button>
+        <button type="button" onclick="vnOpenSignup({addon_slug:'creador_cursos'});" class="btn-em">Activar →</button>
       </div>
 
       <div class="plan-card">
@@ -254,7 +255,7 @@ footer a{color:#f47920;}
           <li>Verificación pública vía QR</li>
           <li>Compartibles en LinkedIn</li>
         </ul>
-        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_certificados_empresa', titulo:'Activar Certificados Digitales', subtitulo:'Emití certificados verificables con tu marca para tus colaboradores.'});" class="btn-em">Activar →</button>
+        <button type="button" onclick="vnOpenSignup({addon_slug:'certificados'});" class="btn-em">Activar →</button>
       </div>
 
       <div class="plan-card">
@@ -266,7 +267,7 @@ footer a{color:#f47920;}
           <li>Facturación SII integrada</li>
           <li>Reportes de gasto en capacitación</li>
         </ul>
-        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_erp_empresa', titulo:'Activar ERP Educativo', subtitulo:'Centraliza contratos, facturación y nómina de capacitación.'});" class="btn-em">Activar →</button>
+        <button type="button" onclick="vnOpenSignup({addon_slug:'erp_educativo'});" class="btn-em">Activar →</button>
       </div>
 
     </div>

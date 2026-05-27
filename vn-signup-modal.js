@@ -105,17 +105,18 @@
   }
 
   // CURRENT_PURCHASE guarda los slugs efectivos a enviar al backend.
-  // Forma: {plan_slug?, tier_slug?, pack_slug?}.
+  // Forma: {plan_slug?, tier_slug?, pack_slug?, addon_slug?}.
   var CURRENT_PURCHASE = {};
 
   function normalizeOpts(arg){
     if (!arg) return {plan_slug: null};
     if (typeof arg === 'string') return {plan_slug: arg};
     return {
-      plan_slug: arg.plan_slug || null,
-      tier_slug: arg.tier_slug || null,
-      pack_slug: arg.pack_slug || null,
-      label:     arg.label     || null
+      plan_slug:  arg.plan_slug  || null,
+      tier_slug:  arg.tier_slug  || null,
+      pack_slug:  arg.pack_slug  || null,
+      addon_slug: arg.addon_slug || null,
+      label:      arg.label      || null
     };
   }
 
@@ -134,6 +135,20 @@
     }
     if (opts.pack_slug){
       return 'Pack ' + opts.pack_slug.replace(/_/g, ' ');
+    }
+    if (opts.addon_slug){
+      // Mapa de nombres bonitos por slug; fallback al slug humanizado.
+      var addonLabels = {
+        certificados:'Addon Certificados Digitales',
+        sence_integracion:'Addon Integración SENCE',
+        creador_cursos:'Addon Creador de Cursos IA',
+        aula_virtual:'Addon Aula Virtual Moodle',
+        campusstore:'Addon CampusStore',
+        erp_educativo:'Addon ERP Educativo',
+        licitaciones:'Addon Licitaciones Públicas',
+        reporteria_academica:'Addon Reportería Académica'
+      };
+      return addonLabels[opts.addon_slug] || ('Addon ' + opts.addon_slug.replace(/_/g, ' '));
     }
     return '—';
   }
@@ -206,9 +221,22 @@
     btn.disabled = true; btn.textContent = 'Procesando…';
 
     var body = {email: email, password: pw, contact_name: name, payment_method: pmethod};
-    if (CURRENT_PURCHASE.plan_slug) body.plan_slug = CURRENT_PURCHASE.plan_slug;
-    if (CURRENT_PURCHASE.tier_slug) body.tier_slug = CURRENT_PURCHASE.tier_slug;
-    if (CURRENT_PURCHASE.pack_slug) body.pack_slug = CURRENT_PURCHASE.pack_slug;
+    if (CURRENT_PURCHASE.plan_slug)  body.plan_slug  = CURRENT_PURCHASE.plan_slug;
+    if (CURRENT_PURCHASE.tier_slug)  body.tier_slug  = CURRENT_PURCHASE.tier_slug;
+    if (CURRENT_PURCHASE.pack_slug)  body.pack_slug  = CURRENT_PURCHASE.pack_slug;
+    if (CURRENT_PURCHASE.addon_slug) body.addon_slug = CURRENT_PURCHASE.addon_slug;
+
+    // Atribución a partner: lee ?ref=ec01 de la URL o localStorage (persistido entre páginas)
+    var partnerRef = null;
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      partnerRef = urlParams.get('ref') || urlParams.get('partner_ref') || localStorage.getItem('vn_partner_ref');
+      if (partnerRef) {
+        partnerRef = partnerRef.trim().toLowerCase();
+        localStorage.setItem('vn_partner_ref', partnerRef); // persistir para futuras vistas
+      }
+    } catch(e) {}
+    if (partnerRef) body.partner_ref = partnerRef;
 
     try {
       var r = await fetch(API_BASE + '/api/public/signup/start', {
