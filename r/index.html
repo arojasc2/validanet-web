@@ -122,11 +122,29 @@ footer a:hover{color:#7ab31a}
   }
 
   function planCard(p){
+    // Nota debajo del precio: derivada de trial_days y price_clp, no hardcodeada.
+    var note;
+    if (p.price_clp === 0) {
+      note = p.slug === 'universidad' ? 'Bajo cotización' : 'Sin tarjeta de crédito';
+    } else if (p.trial_days > 0) {
+      note = p.trial_days + ' días gratis · + IVA';
+    } else {
+      note = '+ IVA';
+    }
     var precio = p.price_clp === 0
-      ? '<div class="price free">Gratis</div><div class="price-note">14 días sin tarjeta</div>'
-      : '<div class="price">' + fmtClp(p.price_clp) + ' <small>/mes</small></div><div class="price-note">+ IVA</div>';
+      ? '<div class="price free">' + (p.slug === 'universidad' ? 'Cotizar' : 'Gratis') + '</div><div class="price-note">' + note + '</div>'
+      : '<div class="price">' + fmtClp(p.price_clp) + ' <small>/mes</small></div><div class="price-note">' + note + '</div>';
     var featured = (p.slug === 'pro') ? ' featured' : '';
     var tag = featured ? '<span class="card-tag">Más elegido</span>' : '';
+    // CTA: Universidad va a cotización; el resto al modal de signup.
+    var cta;
+    if (p.slug === 'universidad') {
+      cta = '<button class="cta" onclick="vnOpenCotizacion({tipo:\'plan_universidad\',titulo:\'Cotizar Plan Universidad\',subtitulo:\'Bajo cotización: multi-campus, integraciones Banner/SIES, SLA 99,9%.\'})">Cotizar →</button>';
+    } else {
+      cta = '<button class="cta" onclick="vnOpenSignup({plan_slug:' + JSON.stringify(p.slug) + '})">'
+          + (p.price_clp === 0 ? 'Comenzar gratis' : 'Suscribirme')
+          + '</button>';
+    }
     return ''
       + '<div class="card' + featured + '">'
       + tag
@@ -134,23 +152,23 @@ footer a:hover{color:#7ab31a}
       + '<div class="desc">' + escapeHtml(p.descripcion || '') + '</div>'
       + precio
       + '<ul>' + liFeatures(p.features) + '</ul>'
-      + '<button class="cta" onclick="vnOpenSignup({plan_slug:' + JSON.stringify(p.slug) + '})">'
-      + (p.price_clp === 0 ? 'Comenzar gratis' : 'Suscribirme')
-      + '</button>'
+      + cta
       + '</div>';
   }
 
   function addonCard(a){
     if (a.gratis) return ''; // Los gratis no se "compran" desde landing pública
-    var precio = '<div class="price">' + fmtClp(a.price_clp) + ' <small>/mes</small></div><div class="price-note">+ IVA</div>';
+    var precio = '<div class="price">' + fmtClp(a.price_clp) + ' <small>/mes</small></div><div class="price-note">' + (a.trial_days > 0 ? a.trial_days + ' días gratis · + IVA' : '+ IVA') + '</div>';
     return ''
       + '<div class="card">'
       + '<h3>' + escapeHtml(a.nombre) + '</h3>'
       + '<div class="desc">' + escapeHtml(a.descripcion || '') + '</div>'
       + precio
       + '<ul>' + liFeatures(a.features) + '</ul>'
-      + '<button class="cta outline" onclick="vnOpenSignup({addon_slug:' + JSON.stringify(a.slug) + '})">'
-      + 'Comprar addon</button>'
+      // Addons usan modal de cotización: el backend signup/start no acepta
+      // addon_slug standalone (solo plan/tier/pack). Un ejecutivo activa.
+      + '<button class="cta outline" onclick="vnOpenCotizacion({tipo:\'addon_\'+' + JSON.stringify(a.slug) + ',titulo:\'Activar \'+' + JSON.stringify(a.nombre) + ',subtitulo:\'Un ejecutivo te activa este addon en tu cuenta (existente o nueva) en 24h hábiles.\'})">'
+      + 'Activar addon</button>'
       + '</div>';
   }
 
@@ -223,5 +241,6 @@ footer a:hover{color:#7ab31a}
 })();
 </script>
 <script src="https://validanet.cl/vn-signup-modal.js" defer></script>
+<script src="https://validanet.cl/vn-cotizacion-modal.js" defer></script>
 </body>
 </html>
