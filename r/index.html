@@ -162,8 +162,10 @@ footer a:hover{color:#7ab31a}
     });
   }
 
+  // Para evitar el infierno de quoting con onclick inline + JSON.stringify
+  // (las " de JSON.stringify cierran prematuramente el atributo HTML),
+  // los CTAs se renderizan con data-* attrs y se atan via event delegation.
   function planCard(p){
-    // Nota debajo del precio: derivada de trial_days y price_clp, no hardcodeada.
     var note;
     if (p.price_clp === 0) {
       note = p.slug === 'universidad' ? 'Bajo cotización' : 'Sin tarjeta de crédito';
@@ -173,19 +175,24 @@ footer a:hover{color:#7ab31a}
       note = '+ IVA';
     }
     var precio = p.price_clp === 0
-      ? '<div class="price free">' + (p.slug === 'universidad' ? 'Cotizar' : 'Gratis') + '</div><div class="price-note">' + note + '</div>'
-      : '<div class="price">' + fmtClp(p.price_clp) + ' <small>/mes</small></div><div class="price-note">' + note + '</div>';
+      ? '<div class="price free">' + (p.slug === 'universidad' ? 'Cotizar' : 'Gratis') + '</div><div class="price-note">' + escapeHtml(note) + '</div>'
+      : '<div class="price">' + fmtClp(p.price_clp) + ' <small>/mes</small></div><div class="price-note">' + escapeHtml(note) + '</div>';
     var featured = (p.slug === 'pro') ? ' featured' : '';
     var tag = featured ? '<span class="card-tag">Más elegido</span>' : '';
-    // CTA: Universidad va a cotización; el resto al modal de signup.
-    var cta;
+
+    var ctaLabel, ctaAction, ctaData;
     if (p.slug === 'universidad') {
-      cta = '<button class="cta" onclick="vnOpenCotizacion({tipo:\'plan_universidad\',titulo:\'Cotizar Plan Universidad\',subtitulo:\'Bajo cotización: multi-campus, integraciones Banner/SIES, SLA 99,9%.\'})">Cotizar →</button>';
+      ctaLabel = 'Cotizar →';
+      ctaAction = 'cotizar-universidad';
+      ctaData = '';
     } else {
-      cta = '<button class="cta" onclick="vnOpenSignup({plan_slug:' + JSON.stringify(p.slug) + '})">'
-          + (p.price_clp === 0 ? 'Comenzar gratis' : 'Suscribirme')
-          + '</button>';
+      ctaLabel = (p.price_clp === 0 ? 'Comenzar gratis' : 'Suscribirme');
+      ctaAction = 'signup-plan';
+      ctaData = ' data-slug="' + escapeHtml(p.slug) + '"';
     }
+    var cta = '<button class="cta" data-action="' + ctaAction + '"' + ctaData + '>'
+            + escapeHtml(ctaLabel) + '</button>';
+
     return ''
       + '<div class="card' + featured + '">'
       + tag
@@ -199,18 +206,49 @@ footer a:hover{color:#7ab31a}
 
   function addonCard(a){
     if (a.gratis) return ''; // Los gratis no se "compran" desde landing pública
-    var precio = '<div class="price">' + fmtClp(a.price_clp) + ' <small>/mes</small></div><div class="price-note">' + (a.trial_days > 0 ? a.trial_days + ' días gratis · + IVA' : '+ IVA') + '</div>';
+    var precio = '<div class="price">' + fmtClp(a.price_clp) + ' <small>/mes</small></div><div class="price-note">+ IVA</div>';
     return ''
       + '<div class="card">'
       + '<h3>' + escapeHtml(a.nombre) + '</h3>'
       + '<div class="desc">' + escapeHtml(a.descripcion || '') + '</div>'
       + precio
       + '<ul>' + liFeatures(a.features) + '</ul>'
-      // Addons usan modal de cotización: el backend signup/start no acepta
-      // addon_slug standalone (solo plan/tier/pack). Un ejecutivo activa.
-      + '<button class="cta outline" onclick="vnOpenCotizacion({tipo:\'addon_\'+' + JSON.stringify(a.slug) + ',titulo:\'Activar \'+' + JSON.stringify(a.nombre) + ',subtitulo:\'Un ejecutivo te activa este addon en tu cuenta (existente o nueva) en 24h hábiles.\'})">'
+      + '<button class="cta outline" data-action="cotizar-addon" data-slug="' + escapeHtml(a.slug) + '" data-name="' + escapeHtml(a.nombre) + '">'
       + 'Activar addon</button>'
       + '</div>';
+  }
+
+  // Event delegation: un solo listener captura todos los clicks de los CTAs.
+  // Esto sobrevive a re-renderizados del HTML y evita el problema de quoting.
+  function setupCtaDelegation() {
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      var action = btn.getAttribute('data-action');
+      if (action === 'signup-plan') {
+        if (typeof vnOpenSignup !== 'function') {
+          alert('Cargando checkout… probá de nuevo en un segundo.');
+          return;
+        }
+        vnOpenSignup({plan_slug: btn.getAttribute('data-slug')});
+      } else if (action === 'cotizar-universidad') {
+        if (typeof vnOpenCotizacion !== 'function') return;
+        vnOpenCotizacion({
+          tipo: 'plan_universidad',
+          titulo: 'Cotizar Plan Universidad',
+          subtitulo: 'Bajo cotización: multi-campus, integraciones Banner/SIES, SLA 99,9%.'
+        });
+      } else if (action === 'cotizar-addon') {
+        if (typeof vnOpenCotizacion !== 'function') return;
+        var slug = btn.getAttribute('data-slug');
+        var name = btn.getAttribute('data-name');
+        vnOpenCotizacion({
+          tipo: 'addon_' + slug,
+          titulo: 'Activar ' + name,
+          subtitulo: 'Un ejecutivo te activa este addon en tu cuenta (existente o nueva) en 24h hábiles.'
+        });
+      }
+    });
   }
 
   async function trackClick(){
@@ -290,6 +328,7 @@ footer a:hover{color:#7ab31a}
     if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
   };
 
+  setupCtaDelegation();
   load();
 })();
 </script>
