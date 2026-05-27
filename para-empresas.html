@@ -53,6 +53,25 @@ footer a{color:#f47920;}
 </style>
 <link rel="stylesheet" href="/styles/a11y.css">
 <script src="/vn-footer.js" defer></script>
+<script src="/vn-precios.js" defer></script>
+<script src="/vn-cotizacion-modal.js" defer></script>
+<script src="/vn-signup-modal.js" defer></script>
+<style>
+.plan-card{background:white;border:2px solid #e2e8f0;border-radius:14px;padding:24px;text-align:center;display:flex;flex-direction:column;}
+.plan-card.featured{border-color:#f47920;box-shadow:0 12px 30px rgba(244,121,32,.15);position:relative;}
+.plan-card .ribbon-em{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#f47920;color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:99px;white-space:nowrap;}
+.plan-card h3{font-size:18px;font-weight:800;color:#1e3a5f;margin-bottom:8px;}
+.plan-card .price{font-size:30px;font-weight:800;color:#1e3a5f;margin-bottom:2px;}
+.plan-card .price small{font-size:13px;color:#64748b;font-weight:500;}
+.plan-card .price-note{font-size:11px;color:#94a3b8;margin-bottom:16px;}
+.plan-card ul{list-style:none;text-align:left;margin:14px 0 18px;flex:1;font-size:13px;}
+.plan-card ul li{padding:5px 0 5px 20px;position:relative;color:#475569;}
+.plan-card ul li:before{content:"✓";color:#7ab31a;font-weight:800;position:absolute;left:0;}
+.plan-card .btn-em{background:#1e3a5f;color:white;border:0;padding:12px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;width:100%;}
+.plan-card.featured .btn-em{background:#f47920;}
+.plan-card .btn-em:hover{opacity:.9;}
+.plans-em{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1000px;margin:0 auto;}
+</style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -129,6 +148,136 @@ footer a{color:#f47920;}
       <div class="b"><div class="ic">🎓</div><h3>Certificados con QR</h3><p>Tus colaboradores reciben certificado verificable online.</p></div>
       <div class="b"><div class="ic">🇨🇱</div><h3>Soporte chileno</h3><p>Mismo horario, mismo lenguaje, mismas normativas que tú.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- PLANES CONNECT EMPRESA -->
+<section style="background:#f8fafc;">
+  <div class="wrap">
+    <h2 class="title">Planes para empresas que capacitan</h2>
+    <p class="sub">Desde publicar solicitudes hasta gestionar tu nómina académica completa. Cancela cuando quieras.</p>
+    <div class="plans-em">
+
+      <div class="plan-card">
+        <h3>Free</h3>
+        <div class="price"><span data-vn-plan="free" data-vn-campo="precio">$0</span><small>/mes</small></div>
+        <div class="price-note">Para siempre</div>
+        <ul>
+          <li>3 solicitudes de cotización/semana</li>
+          <li>Acceso al directorio de OTECs</li>
+          <li>Contratos digitales básicos</li>
+          <li>Certificados con QR</li>
+        </ul>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'free'})" class="btn-em">Empezar gratis →</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Starter</h3>
+        <div class="price"><span data-vn-plan="starter" data-vn-campo="precio">$69.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · ideal RRHH PYME</div>
+        <ul>
+          <li>Solicitudes ilimitadas</li>
+          <li>Filtros avanzados de relatores</li>
+          <li>Historial completo capacitaciones</li>
+          <li>Declaración SENCE asistida</li>
+          <li>Soporte por email</li>
+        </ul>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'starter'})" class="btn-em">Suscribirme →</button>
+      </div>
+
+      <div class="plan-card featured">
+        <span class="ribbon-em">⭐ Recomendado</span>
+        <h3>Pro</h3>
+        <div class="price"><span data-vn-plan="pro" data-vn-campo="precio">$119.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · 7 días gratis</div>
+        <ul>
+          <li>Todo lo de Starter, sin límites</li>
+          <li>ERP de capacitación incluido</li>
+          <li>Reportes IA de impacto</li>
+          <li>Multi-usuario (5 cuentas)</li>
+          <li>API + integraciones</li>
+        </ul>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'pro'})" class="btn-em">Probar 7 días gratis →</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>Enterprise</h3>
+        <div class="price"><span data-vn-plan="enterprise" data-vn-campo="precio">$239.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · multi-sede</div>
+        <ul>
+          <li>Multi-sede y multi-país</li>
+          <li>SSO + Active Directory</li>
+          <li>Ejecutivo de cuenta dedicado</li>
+          <li>SLA 99.9% con penalización</li>
+          <li>Onboarding presencial</li>
+        </ul>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'enterprise'})" class="btn-em">Comenzar →</button>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:30px;font-size:13px;color:#64748b;">
+      ¿Volumen alto o requisitos específicos? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'empresa_volumen', titulo:'Cotizar plan corporativo', subtitulo:'Hablanos de tus necesidades y armamos una propuesta acorde.'}); return false;" style="color:#f47920;font-weight:700;">Cotiza un plan corporativo →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ADDONS RELEVANTES PARA EMPRESAS QUE CAPACITAN -->
+<section style="background:white;">
+  <div class="wrap">
+    <h2 class="title">Addons que potencian tu capacitación</h2>
+    <p class="sub">Activa solo los que necesitas. Cada addon es independiente del plan.</p>
+    <div class="plans-em">
+
+      <div class="plan-card">
+        <h3>🏫 Aula Virtual Moodle</h3>
+        <div class="price"><span data-vn-addon="aula_virtual" data-vn-campo="precio">$39.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · Moodle gestionado</div>
+        <ul>
+          <li>Tu propio Moodle aprovisionado</li>
+          <li>Branding corporativo + dominio propio</li>
+          <li>Sin sysadmin necesario</li>
+        </ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_aula_empresa', titulo:'Activar Aula Virtual Moodle', subtitulo:'Tu propia plataforma Moodle aprovisionada en nuestros servidores con branding corporativo.'});" class="btn-em">Activar →</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>🎓 Creador de Cursos IA</h3>
+        <div class="price"><span data-vn-addon="creador_cursos" data-vn-campo="precio">$79.900</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · in-company content</div>
+        <ul>
+          <li>Genera cursos internos con IA</li>
+          <li>Estructura SENCE-FT lista</li>
+          <li>Quizzes y rúbricas automáticas</li>
+        </ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_creador_empresa', titulo:'Activar Creador de Cursos IA', subtitulo:'Construye tu catálogo interno de cursos con IA, sin contratar productora.'});" class="btn-em">Activar →</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>📜 Certificados Digitales</h3>
+        <div class="price"><span data-vn-addon="certificados" data-vn-campo="precio">$14.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · sello QR + verificable</div>
+        <ul>
+          <li>Certificados con branding propio</li>
+          <li>Verificación pública vía QR</li>
+          <li>Compartibles en LinkedIn</li>
+        </ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_certificados_empresa', titulo:'Activar Certificados Digitales', subtitulo:'Emití certificados verificables con tu marca para tus colaboradores.'});" class="btn-em">Activar →</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>📋 ERP Educativo</h3>
+        <div class="price"><span data-vn-addon="erp_educativo" data-vn-campo="precio">$39.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · contratos + nómina</div>
+        <ul>
+          <li>Gestión de relatores contratados</li>
+          <li>Facturación SII integrada</li>
+          <li>Reportes de gasto en capacitación</li>
+        </ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_erp_empresa', titulo:'Activar ERP Educativo', subtitulo:'Centraliza contratos, facturación y nómina de capacitación.'});" class="btn-em">Activar →</button>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:13px;color:#94a3b8;">Ver todos los addons en <a href="/addons" style="color:#f47920;font-weight:700;">/addons</a></p>
   </div>
 </section>
 

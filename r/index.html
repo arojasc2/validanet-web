@@ -3,75 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ValidaNet — Ecosistema IA para gestión educativa e-learning</title>
+<title>ValidaNet — Productos y planes</title>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh}
-.card{background:white;border-radius:20px;padding:48px 40px;max-width:480px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.1)}
-.logo{font-size:28px;font-weight:800;color:#1e293b;margin-bottom:4px}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:12px}
+.logo{font-size:22px;font-weight:800}
 .logo span{color:#7ab31a}
-.sub{font-size:14px;color:#64748b;margin-bottom:32px}
-.badge{display:inline-block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:20px;padding:6px 16px;font-size:12px;font-weight:600;margin-bottom:24px}
-h1{font-size:24px;font-weight:700;color:#1e293b;margin-bottom:12px;line-height:1.3}
-p{font-size:14px;color:#64748b;margin-bottom:32px;line-height:1.6}
-.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px;text-align:left}
-.feat{background:#f8fafc;border-radius:10px;padding:10px 12px;font-size:12px;color:#475569}
-.btn{display:block;width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:10px;cursor:pointer;border:none}
-.btn-primary{background:linear-gradient(135deg,#7ab31a,#5a8f0f);color:white}
-.btn-secondary{background:#f1f5f9;color:#475569;text-align:center}
-.ref-info{font-size:11px;color:#94a3b8;margin-top:16px}
-.spinner{display:none;margin:20px auto;width:32px;height:32px;border:3px solid #e2e8f0;border-top-color:#7ab31a;border-radius:50%;animation:spin .8s linear infinite}
+.hero{text-align:center;margin:24px 0 48px}
+.hero h1{font-size:34px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
+.hero p{font-size:16px;color:#475569;max-width:620px;margin:0 auto}
+.section-title{font-size:20px;font-weight:800;margin:48px 0 18px;color:#0f172a}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.card{background:white;border-radius:14px;padding:24px;border:1.5px solid #e2e8f0;display:flex;flex-direction:column;transition:.2s}
+.card:hover{border-color:#7ab31a;box-shadow:0 8px 24px rgba(122,179,26,.12);transform:translateY(-2px)}
+.card.featured{border-color:#7ab31a;background:linear-gradient(180deg,#f0fdf4 0%,white 30%)}
+.card-tag{display:inline-block;background:#7ab31a;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-bottom:10px;align-self:flex-start;letter-spacing:.04em;text-transform:uppercase}
+.card h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.card .desc{font-size:13px;color:#64748b;margin-bottom:16px;min-height:36px}
+.card .price{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:4px}
+.card .price small{font-size:13px;font-weight:500;color:#64748b}
+.card .price.free{color:#16a34a}
+.card .price-note{font-size:11px;color:#94a3b8;margin-bottom:18px;min-height:14px}
+.card ul{list-style:none;margin:0 0 22px;flex:1}
+.card li{font-size:13px;color:#475569;padding:5px 0 5px 22px;position:relative}
+.card li:before{content:"✓";color:#7ab31a;font-weight:800;position:absolute;left:0}
+.card li.more{color:#94a3b8;font-style:italic}
+.card li.more:before{content:""}
+.cta{background:#7ab31a;color:white;border:0;border-radius:10px;padding:13px;font-weight:700;font-size:14px;cursor:pointer;width:100%;transition:.15s}
+.cta:hover{background:#6aa00f}
+.cta.outline{background:white;color:#7ab31a;border:1.5px solid #7ab31a}
+.cta.outline:hover{background:#f0fdf4}
+.loading{text-align:center;padding:60px 20px;color:#64748b}
+.spin{display:inline-block;width:32px;height:32px;border:3px solid #e2e8f0;border-top-color:#7ab31a;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.error{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:20px;border-radius:10px;text-align:center;margin:40px 0}
+.error a{color:#7ab31a;font-weight:700}
+footer{margin-top:80px;text-align:center;font-size:12px;color:#94a3b8;border-top:1px solid #e2e8f0;padding-top:24px}
+footer a{color:#64748b;margin:0 12px;text-decoration:none}
+footer a:hover{color:#7ab31a}
+@media (max-width:640px){
+  .wrap{padding:16px 14px 60px}
+  .hero h1{font-size:26px}
+  .grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="logo">Valida<span>Net</span></div>
-  <div class="sub">by NortEduc Edtech SpA</div>
-  <div class="badge">🎁 Invitación especial</div>
-  <h1>La ecosistema IA para gestión educativa e-learning en Chile</h1>
-  <p>TutorIA 24/7, Certificados digitales, integración SENCE y mucho más. Comienza gratis hoy.</p>
-  <div class="features">
-    <div class="feat">🤖 TutorIA con Claude</div>
-    <div class="feat">📜 Certificados QR</div>
-    <div class="feat">✅ Integración SENCE</div>
-    <div class="feat">🤝 Connect OTEC</div>
-    <div class="feat">📊 Reportería IA</div>
-    <div class="feat">🎓 CampusStore</div>
-  </div>
-  <button class="btn btn-primary" onclick="irRegistro()">Comenzar gratis</button>
-  <a href="https://validanet.cl" class="btn btn-secondary">Ver más información</a>
-  <div class="spinner" id="spinner"></div>
-  <div class="ref-info" id="ref-info"></div>
+<div class="wrap">
+
+<header>
+  <a href="https://validanet.cl" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#0f172a;">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
+  </a>
+  <a href="https://validanet.cl" style="font-size:13px;color:#64748b;text-decoration:none">validanet.cl →</a>
+</header>
+
+<div class="hero">
+  <h1>Elige tu plan o producto</h1>
+  <p>Suite IA para gestión educativa e-learning. Pago seguro con Webpay o transferencia.</p>
 </div>
+
+<div id="content" class="loading">
+  <div class="spin"></div>
+  <p style="margin-top:12px">Cargando catálogo…</p>
+</div>
+
+<footer>
+  <a href="https://validanet.cl">Inicio</a>
+  <a href="https://validanet.cl/addons">Addons</a>
+  <a href="https://validanet.cl/demo">Demo</a>
+  <a href="mailto:contacto@norteduc.cl">Contacto</a>
+  <p style="margin-top:12px">NortEduc Edtech SpA — RUT 76.624.932-9</p>
+</footer>
+
+</div>
+
 <script>
-const REF_CODE = (window.location.pathname.match(/\/r\/([A-Z0-9]+)/i)||[])[1]?.toUpperCase()||'';
-async function init(){
-  if(!REF_CODE){window.location.href='https://validanet.cl';return;}
-  const saved=localStorage.getItem('vn_ref_code');
-  const savedDate=parseInt(localStorage.getItem('vn_ref_date')||'0');
-  const dias=(Date.now()-savedDate)/(1000*60*60*24);
-  if(!saved||dias>30){
-    localStorage.setItem('vn_ref_code',REF_CODE);
-    localStorage.setItem('vn_ref_date',Date.now());
-    try{
-      const r=await fetch('https://app.validanet.cl/api/validanet/connect/ref/click',{
-        method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({ref_code:REF_CODE})
-      });
-      const d=await r.json();
-      if(d.click_id)localStorage.setItem('vn_ref_click_id',d.click_id);
-    }catch(e){}
-    document.getElementById('ref-info').textContent='Codigo de referido: '+REF_CODE+' · Valido por 30 dias';
-  }else{
-    document.getElementById('ref-info').textContent='Ya tienes un codigo guardado ('+saved+')';
+(function(){
+  var API = 'https://app.validanet.cl';
+  // Capturar ref_code del path /r/CODIGO. Acepta mayúsc/minúsc, normaliza a minúsculas.
+  var m = window.location.pathname.match(/^\/r\/([A-Za-z0-9_-]{1,32})\/?$/);
+  var REF = m ? m[1].toLowerCase() : '';
+
+  if (!REF) {
+    document.getElementById('content').innerHTML =
+      '<div class="error">Código de referido faltante. <a href="https://validanet.cl">Ir al sitio principal →</a></div>';
+    return;
   }
-}
-function irRegistro(){
-  document.getElementById('spinner').style.display='block';
-  setTimeout(()=>{window.location.href='https://app.validanet.cl/registro?ref='+REF_CODE;},500);
-}
-init();
+
+  // Persistir 30 días para que el modal de signup lo recoja
+  try {
+    localStorage.setItem('vn_partner_ref', REF);
+    localStorage.setItem('vn_partner_ref_date', String(Date.now()));
+  } catch(e){}
+
+  function fmtClp(n, suffix){
+    if (n == null) return 'Consultar';
+    n = parseInt(n);
+    if (!n) return 'Gratis';
+    return '$' + n.toLocaleString('es-CL') + (suffix || '');
+  }
+
+  function liFeatures(features){
+    if (!features || !features.length) return '';
+    var top = features.slice(0, 5).map(function(f){ return '<li>' + escapeHtml(f) + '</li>'; }).join('');
+    var rest = features.length > 5 ? '<li class="more">+ ' + (features.length - 5) + ' más…</li>' : '';
+    return top + rest;
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];
+    });
+  }
+
+  function planCard(p){
+    var precio = p.price_clp === 0
+      ? '<div class="price free">Gratis</div><div class="price-note">14 días sin tarjeta</div>'
+      : '<div class="price">' + fmtClp(p.price_clp) + ' <small>/mes</small></div><div class="price-note">+ IVA</div>';
+    var featured = (p.slug === 'pro') ? ' featured' : '';
+    var tag = featured ? '<span class="card-tag">Más elegido</span>' : '';
+    return ''
+      + '<div class="card' + featured + '">'
+      + tag
+      + '<h3>' + escapeHtml(p.nombre) + '</h3>'
+      + '<div class="desc">' + escapeHtml(p.descripcion || '') + '</div>'
+      + precio
+      + '<ul>' + liFeatures(p.features) + '</ul>'
+      + '<button class="cta" onclick="vnOpenSignup({plan_slug:' + JSON.stringify(p.slug) + '})">'
+      + (p.price_clp === 0 ? 'Comenzar gratis' : 'Suscribirme')
+      + '</button>'
+      + '</div>';
+  }
+
+  function addonCard(a){
+    if (a.gratis) return ''; // Los gratis no se "compran" desde landing pública
+    var precio = '<div class="price">' + fmtClp(a.price_clp) + ' <small>/mes</small></div><div class="price-note">+ IVA</div>';
+    return ''
+      + '<div class="card">'
+      + '<h3>' + escapeHtml(a.nombre) + '</h3>'
+      + '<div class="desc">' + escapeHtml(a.descripcion || '') + '</div>'
+      + precio
+      + '<ul>' + liFeatures(a.features) + '</ul>'
+      + '<button class="cta outline" onclick="vnOpenSignup({addon_slug:' + JSON.stringify(a.slug) + '})">'
+      + 'Comprar addon</button>'
+      + '</div>';
+  }
+
+  async function trackClick(){
+    try {
+      await fetch(API + '/api/public/partner/track', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          ref_code: REF,
+          path: window.location.pathname,
+          referer: document.referrer || '',
+          utm_source: new URLSearchParams(location.search).get('utm_source') || '',
+          utm_medium: new URLSearchParams(location.search).get('utm_medium') || '',
+          utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || ''
+        })
+      });
+    } catch(e){}
+  }
+
+  async function load(){
+    // 1) Validar ref_code (404 = código inexistente → redirect a home)
+    try {
+      var rr = await fetch(API + '/api/public/partner/resolve/' + encodeURIComponent(REF));
+      if (!rr.ok) {
+        window.location.href = 'https://validanet.cl';
+        return;
+      }
+    } catch(e) {
+      // Si la API está caída, no rompemos: seguimos mostrando catálogo
+    }
+
+    // 2) Track click (fire-and-forget)
+    trackClick();
+
+    // 3) Cargar catálogo
+    var data;
+    try {
+      var r = await fetch(API + '/api/public/precios');
+      data = await r.json();
+    } catch(e) {
+      document.getElementById('content').innerHTML =
+        '<div class="error">No pudimos cargar el catálogo. Reintenta en unos segundos.</div>';
+      return;
+    }
+
+    var html = '';
+
+    // Sección Planes
+    var planes = (data.planes || []).filter(function(p){ return p && p.slug; });
+    if (planes.length){
+      html += '<h2 class="section-title">📋 Planes mensuales</h2><div class="grid">';
+      html += planes.map(planCard).join('');
+      html += '</div>';
+    }
+
+    // Sección Addons (sólo de pago)
+    var addons = (data.addons || []).filter(function(a){ return a && a.slug && !a.gratis; });
+    if (addons.length){
+      html += '<h2 class="section-title">🧩 Addons adicionales</h2><div class="grid">';
+      html += addons.map(addonCard).join('');
+      html += '</div>';
+    }
+
+    document.getElementById('content').className = '';
+    document.getElementById('content').innerHTML = html;
+  }
+
+  load();
+})();
 </script>
+<script src="https://validanet.cl/vn-signup-modal.js" defer></script>
 </body>
 </html>

@@ -263,6 +263,69 @@ footer a{color:#7ab31a;}
   </div>
 </section>
 
+<!-- ADDONS INDIVIDUALES — cada uno activable suelto con cotización express -->
+<section class="planes" id="addons" style="background:#f8fafc;">
+  <div class="wrap">
+    <h2 class="title">Activa addons sueltos cuando los necesites</h2>
+    <p class="sub">Cada addon se cobra por separado. Funcionan sobre cualquier plan (Free o pago). Activa solo lo que necesitas.</p>
+    <div class="planes-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;">
+
+      <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <h3>📜 Certificados Digitales</h3>
+        <div class="price"><span data-vn-addon="certificados" data-vn-campo="precio">$14.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · sello QR + verificable</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="certificados"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_certificados', titulo:'Activar Certificados Digitales', subtitulo:'Un ejecutivo te activa el addon en tu cuenta (existente o nueva) en menos de 24h hábiles.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+      <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <h3>🇨🇱 Integración SENCE</h3>
+        <div class="price"><span data-vn-addon="sence_integracion" data-vn-campo="precio">$24.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · SIC + asistencia + REX</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="sence_integracion"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_sence', titulo:'Activar Integración SENCE', subtitulo:'SIC, asistencia y declaraciones SENCE 4027/2022. Activación en 24h hábiles.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+      <div class="plan featured" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <span class="ribbon">🤖 Más vendido</span>
+        <h3>🎓 Creador de Cursos IA</h3>
+        <div class="price"><span data-vn-addon="creador_cursos" data-vn-campo="precio">$79.900</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · Builder SENCE-FT + .mbz</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="creador_cursos"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_creador_cursos', titulo:'Activar Creador de Cursos IA', subtitulo:'Genera cursos completos SENCE-FT con IA: estructura, contenido, quizzes, rúbricas y certificados.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+      <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <h3>🏫 Aula Virtual Moodle</h3>
+        <div class="price"><span data-vn-addon="aula_virtual" data-vn-campo="precio">$39.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · Moodle gestionado en VPS</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="aula_virtual"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_aula_virtual', titulo:'Activar Aula Virtual Moodle', subtitulo:'Tu propio Moodle aprovisionado en nuestros servidores (VPS dedicado). Tu dominio + branding propio.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+      <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <h3>🛒 CampusStore</h3>
+        <div class="price"><span data-vn-addon="campusstore" data-vn-campo="precio">$24.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · venta online de cursos</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="campusstore"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_campusstore', titulo:'Activar CampusStore', subtitulo:'Tienda online con Webpay para vender tus cursos al público. Branding propio + integración Moodle.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+      <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:240px;max-width:300px;">
+        <h3>📋 ERP Educativo</h3>
+        <div class="price"><span data-vn-addon="erp_educativo" data-vn-campo="precio">$39.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · contratos + facturación</div>
+        <ul class="vn-plan-feats-list-pi" data-vn-addon-features="erp_educativo"></ul>
+        <button type="button" onclick="vnOpenCotizacion({tipo:'addon_erp', titulo:'Activar ERP Educativo', subtitulo:'Contratos digitales, facturación SII, gestión de relatores y nómina académica.'});" class="btn-plan" style="border:0;cursor:pointer;">Activar →</button>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:30px;font-size:13px;color:#64748b;">
+      Ver todos los addons en <a href="/addons" style="color:#7ab31a;font-weight:700;">/addons</a>. ¿Querés comprar varios? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'multi_addon', titulo:'Cotizar varios addons', subtitulo:'Cuéntanos qué addons necesitas y te armamos una propuesta integrada.'}); return false;" style="color:#7ab31a;font-weight:700;">Cotizá un paquete →</a>
+    </p>
+  </div>
+</section>
+
 <!-- TESTIMONIOS -->
 <section class="testimonios">
   <div class="wrap">
