@@ -155,72 +155,61 @@ footer a{color:#f47920;}
   </div>
 </section>
 
-<!-- PLANES CONNECT EMPRESA -->
+<!-- PLANES EMPRESA CLIENTE (cn_empresa_cliente_planes, vendibles directos) -->
+<!-- Antes usaba data-vn-connect que apunta a cn_empresa_planes (planes
+     heredados de Validanet, NO vendibles standalone). Corregido al
+     catálogo Connect Empresa Cliente real: Buscador / Conecta / Empresa Pro. -->
 <section style="background:#f8fafc;">
   <div class="wrap">
-    <h2 class="title">Planes para empresas que capacitan</h2>
-    <p class="sub">Desde publicar solicitudes hasta gestionar tu nómina académica completa. Cancela cuando quieras.</p>
+    <h2 class="title">Planes para empresas que buscan capacitación</h2>
+    <p class="sub">Tu acceso a Connect: encontrar relatores y OTECs, recibir propuestas y gestionar tus capacitaciones. Sin contratos, cancela cuando quieras.</p>
     <div class="plans-em">
 
       <div class="plan-card">
-        <h3>Free</h3>
-        <div class="price"><span data-vn-connect="free" data-vn-campo="precio">$0</span><small>/mes</small></div>
-        <div class="price-note">Para siempre</div>
+        <h3>Buscador</h3>
+        <div class="price"><span data-vn-empresa-cliente="free" data-vn-campo="precio">$0</span><small>/mes</small></div>
+        <div class="price-note">Gratis para siempre</div>
         <ul>
-          <li>3 solicitudes de cotización/semana</li>
-          <li>Acceso al directorio de OTECs</li>
-          <li>Contratos digitales básicos</li>
-          <li>Certificados con QR</li>
+          <li><strong><span data-vn-empresa-cliente="free" data-vn-campo="solicitudes_semana">5</span></strong> solicitudes/semana</li>
+          <li>Hasta <strong><span data-vn-empresa-cliente="free" data-vn-campo="propuestas">3</span></strong> propuestas vistas/solicitud</li>
+          <li>Directorio público de OTECs y relatores</li>
+          <li>Certificados con QR para tus colaboradores</li>
         </ul>
         <a href="https://connect.validanet.cl/connect/empresa/registro?plan=free" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Empezar gratis →</a>
       </div>
 
-      <div class="plan-card">
-        <h3>Starter</h3>
-        <div class="price"><span data-vn-connect="starter" data-vn-campo="precio">$69.990</span><small>/mes</small></div>
+      <div class="plan-card featured">
+        <span class="ribbon-em">⭐ Más elegido</span>
+        <h3>Conecta</h3>
+        <div class="price"><span data-vn-empresa-cliente="basico" data-vn-campo="precio">$9.990</span><small>/mes</small></div>
         <div class="price-note">+ IVA · ideal RRHH PYME</div>
         <ul>
-          <li>Solicitudes ilimitadas</li>
-          <li>Filtros avanzados de relatores</li>
-          <li>Historial completo capacitaciones</li>
-          <li>Declaración SENCE asistida</li>
+          <li><strong><span data-vn-empresa-cliente="basico" data-vn-campo="solicitudes_semana">20</span></strong> solicitudes/semana</li>
+          <li>Hasta <strong><span data-vn-empresa-cliente="basico" data-vn-campo="propuestas">10</span></strong> propuestas vistas/solicitud</li>
+          <li>Matching IA inteligente con relatores certificados</li>
+          <li>Calculadora franquicia SENCE 1%</li>
           <li>Soporte por email</li>
         </ul>
-        <a href="https://connect.validanet.cl/connect/empresa/registro?plan=starter" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Suscribirme →</a>
-      </div>
-
-      <div class="plan-card featured">
-        <span class="ribbon-em">⭐ Recomendado</span>
-        <h3>Pro</h3>
-        <div class="price"><span data-vn-connect="pro" data-vn-campo="precio">$119.990</span><small>/mes</small></div>
-        <div class="price-note">+ IVA · 7 días gratis</div>
-        <ul>
-          <li>Todo lo de Starter, sin límites</li>
-          <li>ERP de capacitación incluido</li>
-          <li>Reportes IA de impacto</li>
-          <li>Multi-usuario (5 cuentas)</li>
-          <li>API + integraciones</li>
-        </ul>
-        <a href="https://connect.validanet.cl/connect/empresa/registro?plan=pro" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Probar 7 días gratis →</a>
+        <a href="https://connect.validanet.cl/connect/empresa/registro?plan=basico" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Suscribirme →</a>
       </div>
 
       <div class="plan-card">
-        <h3>Enterprise</h3>
-        <div class="price"><span data-vn-connect="enterprise" data-vn-campo="precio">$179.990</span><small>/mes</small></div>
-        <div class="price-note">+ IVA · multi-sede</div>
+        <h3>Empresa Pro</h3>
+        <div class="price"><span data-vn-empresa-cliente="pro" data-vn-campo="precio">$19.990</span><small>/mes</small></div>
+        <div class="price-note">+ IVA · capacitación frecuente</div>
         <ul>
-          <li>Multi-sede y multi-país</li>
-          <li>SSO + Active Directory</li>
-          <li>Ejecutivo de cuenta dedicado</li>
-          <li>SLA 99.9% con penalización</li>
-          <li>Onboarding presencial</li>
+          <li>Solicitudes y propuestas <strong>ilimitadas</strong></li>
+          <li>Matching IA + contratos digitales</li>
+          <li>Firma electrónica avanzada</li>
+          <li>Calculadora SENCE + historial completo</li>
+          <li>Soporte prioritario</li>
         </ul>
-        <a href="https://connect.validanet.cl/connect/empresa/registro?plan=enterprise" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Comenzar →</a>
+        <a href="https://connect.validanet.cl/connect/empresa/registro?plan=pro" class="btn-em" style="display:block;text-align:center;text-decoration:none;">Suscribirme →</a>
       </div>
 
     </div>
     <p style="text-align:center;margin-top:30px;font-size:13px;color:#64748b;">
-      ¿Volumen alto o requisitos específicos? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'empresa_volumen', titulo:'Cotizar plan corporativo', subtitulo:'Hablanos de tus necesidades y armamos una propuesta acorde.'}); return false;" style="color:#f47920;font-weight:700;">Cotiza un plan corporativo →</a>
+      ¿Multi-sede, SSO o requisitos enterprise? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'empresa_corporativo', titulo:'Cotizar plan corporativo', subtitulo:'Plan a medida para grandes empresas: multi-sede, SSO/AD, SLA con penalización, account manager dedicado y onboarding presencial.'}); return false;" style="color:#f47920;font-weight:700;">Cotiza un plan corporativo →</a>
     </p>
   </div>
 </section>

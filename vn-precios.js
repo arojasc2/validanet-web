@@ -190,12 +190,32 @@
       }).join('');
     });
 
-    // ── Connect Empresas ─────────────────────────────────────────────
+    // ── Connect Empresas (cn_empresa_planes, heredados de validanet_plans) ──
     (data.connect_empresas || []).forEach(function(p){
       document.querySelectorAll('[data-vn-connect="'+p.slug+'"]').forEach(function(el){
         var campo = el.getAttribute('data-vn-campo') || 'precio';
         if(campo === 'precio')      el.textContent = fmtClp(p.price_clp);
         else if(campo === 'nombre') el.textContent = p.nombre;
+      });
+    });
+    // ── Empresas Cliente Connect (cn_empresa_cliente_planes) ────────
+    // Planes para empresas que SOLO usan Connect para buscar capacitación
+    // (sin Validanet). Buscador/Conecta/Empresa Pro a $0/$9.990/$19.990.
+    // Campos soportados: precio | nombre | solicitudes_semana | propuestas
+    //   | match_ia | contratos | firma | calculadora_sence | historial | soporte
+    (data.connect_empresas_cliente || []).forEach(function(p){
+      document.querySelectorAll('[data-vn-empresa-cliente="'+p.slug+'"]').forEach(function(el){
+        var campo = el.getAttribute('data-vn-campo') || 'precio';
+        if     (campo === 'precio')              el.textContent = fmtClp(p.price_clp);
+        else if(campo === 'nombre')              el.textContent = p.nombre;
+        else if(campo === 'solicitudes_semana') el.textContent = fmtCuota(p.max_solicitudes_semana);
+        else if(campo === 'propuestas')          el.textContent = fmtCuota(p.max_propuestas_ver);
+        else if(campo === 'match_ia')            el.textContent = fmtBool(p.match_ia);
+        else if(campo === 'contratos')           el.textContent = fmtBool(p.permite_contratos);
+        else if(campo === 'firma')               el.textContent = fmtBool(p.permite_firma);
+        else if(campo === 'calculadora_sence')   el.textContent = fmtBool(p.calculadora_sence);
+        else if(campo === 'historial')           el.textContent = fmtBool(p.historial);
+        else if(campo === 'soporte')             el.textContent = fmtBool(p.soporte_prioritario);
       });
     });
     // ── Relatores ────────────────────────────────────────────────────
