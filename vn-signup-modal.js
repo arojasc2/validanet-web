@@ -81,7 +81,7 @@
       + '      <h3>Crea tu cuenta Validanet</h3>'
       + '      <div class="plan-pill" id="vn-plan-pill">—</div>'
       + '      <div class="vn-onboarding-note">'
-      + '        <strong>¿Aún no tenés cuenta Validanet?</strong> No te preocupes — al confirmar el pago se crea automáticamente con los datos que ingreses acá, y empezás a usar todo de inmediato. Te enviamos tus credenciales al email.'
+      + '        <strong>¿Aún no tienes cuenta Validanet?</strong> No te preocupes — al confirmar el pago se crea automáticamente con los datos que ingreses aquí, y empiezas a usar todo de inmediato. Te enviamos tus credenciales al email.'
       + '      </div>'
       + '      <label>Email</label>'
       + '      <input type="email" id="vn-su-email" autocomplete="email" placeholder="tucorreo@ejemplo.cl">'
