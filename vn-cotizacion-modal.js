@@ -171,6 +171,18 @@
     var btn = document.getElementById('vn-cot-submit');
     btn.disabled = true; btn.textContent = 'Enviando…';
 
+    // Atribución a partner: leer localStorage.vn_partner_ref capturado por
+    // la landing /r/<ref> o por vn-ref-capture.js en las verticales.
+    // El backend lo resuelve a partner_id (FK vn_partners) y graba el
+    // snapshot en vn_leads.partner_ref. Sobrevive 30 días vía vn_partner_ref_date.
+    var partnerRef = null;
+    try {
+      var savedRef  = localStorage.getItem('vn_partner_ref');
+      var savedDate = parseInt(localStorage.getItem('vn_partner_ref_date') || '0', 10);
+      var dias = savedDate ? (Date.now() - savedDate) / 86400000 : 999;
+      if (savedRef && dias <= 30) partnerRef = savedRef;
+    } catch(e) {}
+
     var body = {
       email:    email,
       origen:   CURRENT_OPTS.origen,
@@ -178,11 +190,15 @@
       telefono: telefono || null,
       empresa:  empresa,
       mensaje:  mensaje || null,
+      partner_ref: partnerRef,
       metadata: {
         tipo:   CURRENT_OPTS.tipo,
         cargo:  cargo || null,
         tamano: tamano || null,
-        url:    location.href
+        url:    location.href,
+        // Duplicamos en metadata para auditoría aún si el campo top-level
+        // se ignora (defensa contra cambios futuros del schema).
+        partner_ref: partnerRef
       }
     };
 
