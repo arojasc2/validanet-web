@@ -773,7 +773,7 @@ footer .links a:hover{color:white;}
     <button class="close" onclick="vnExitClose()" aria-label="Cerrar">×</button>
     <div class="ic">⏰</div>
     <h3>¿Te vas sin probar?</h3>
-    <p><strong>7 días gratis</strong> de cualquier plan, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
+    <p>Probá el <strong>plan Pro 7 días gratis</strong>, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
     <input type="email" id="vn-exit-email" placeholder="tu@empresa.cl" autocomplete="email">
     <button onclick="vnExitSubmit()">📧 Enviarme la info gratis</button>
     <div class="vnmsg" id="vn-exit-msg"></div>
@@ -978,14 +978,28 @@ async function vnExitSubmit(){
     var btn = document.getElementById('vn-su-submit');
     btn.disabled = true; btn.textContent = 'Procesando…';
 
+    // Atribución a partner: ?ref=ec01 en URL o persistido en localStorage
+    var partnerRef = null;
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      partnerRef = urlParams.get('ref') || urlParams.get('partner_ref') || localStorage.getItem('vn_partner_ref');
+      if (partnerRef) {
+        partnerRef = partnerRef.trim().toLowerCase();
+        localStorage.setItem('vn_partner_ref', partnerRef);
+      }
+    } catch(e) {}
+
+    var signupBody = {
+      email: email, password: pw, contact_name: name,
+      plan_slug: CURRENT_PLAN, payment_method: pmethod
+    };
+    if (partnerRef) signupBody.partner_ref = partnerRef;
+
     try {
       var r = await fetch('https://app.validanet.cl/api/public/signup/start', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-          email: email, password: pw, contact_name: name,
-          plan_slug: CURRENT_PLAN, payment_method: pmethod
-        })
+        body: JSON.stringify(signupBody)
       });
       var d = await r.json();
       if(!r.ok){
