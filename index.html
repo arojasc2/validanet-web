@@ -773,7 +773,7 @@ footer .links a:hover{color:white;}
     <button class="close" onclick="vnExitClose()" aria-label="Cerrar">×</button>
     <div class="ic">⏰</div>
     <h3>¿Te vas sin probar?</h3>
-    <p>Probá el <strong>plan Pro 7 días gratis</strong>, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
+    <p>Prueba el <strong>plan Pro 7 días gratis</strong>, sin tarjeta de crédito. Te enviamos info por email para que decidas con calma.</p>
     <input type="email" id="vn-exit-email" placeholder="tu@empresa.cl" autocomplete="email">
     <button onclick="vnExitSubmit()">📧 Enviarme la info gratis</button>
     <div class="vnmsg" id="vn-exit-msg"></div>
@@ -971,9 +971,9 @@ async function vnExitSubmit(){
     var pmethod  = payRadio ? payRadio.value : (CURRENT_PLAN === 'free' ? 'free' : 'flow');
     if(CURRENT_PLAN === 'free') pmethod = 'free';
 
-    if(!email || !email.includes('@')) return showErr('Ingresá un email válido.');
+    if(!email || !email.includes('@')) return showErr('Ingresa un email válido.');
     if(!pw || pw.length < 8)            return showErr('La contraseña debe tener al menos 8 caracteres.');
-    if(!name)                            return showErr('Ingresá tu nombre.');
+    if(!name)                            return showErr('Ingresa tu nombre.');
 
     var btn = document.getElementById('vn-su-submit');
     btn.disabled = true; btn.textContent = 'Procesando…';

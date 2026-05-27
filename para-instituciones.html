@@ -225,14 +225,14 @@ footer a{color:#7ab31a;}
         <div class="price"><span data-vn-plan="free" data-vn-campo="precio">$0</span><small>/mes</small></div>
         <div class="price-note">para siempre · 15K tokens/mes</div>
         <ul class="vn-plan-feats-list-pi" data-vn-plan-features="free"></ul>
-        <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Empezar gratis →</a>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'free'});" class="btn-plan" style="border:0;cursor:pointer;">Empezar gratis →</button>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <h3>Starter</h3>
         <div class="price"><span data-vn-plan="starter" data-vn-campo="precio">$69.990</span><small>/mes</small></div>
         <div class="price-note">+ IVA · 500K tokens IA/mes</div>
         <ul class="vn-plan-feats-list-pi" data-vn-plan-features="starter"></ul>
-        <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Comenzar →</a>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'starter'});" class="btn-plan" style="border:0;cursor:pointer;">Comenzar →</button>
       </div>
       <div class="plan featured" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <span class="ribbon">⭐ Más elegido</span>
@@ -240,7 +240,7 @@ footer a{color:#7ab31a;}
         <div class="price"><span data-vn-plan="pro" data-vn-campo="precio">$119.990</span><small>/mes</small></div>
         <div class="price-note">7 días gratis · 1M tokens IA/mes</div>
         <ul class="vn-plan-feats-list-pi" data-vn-plan-features="pro"></ul>
-        <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-plan">Probar 7 días gratis →</a>
+        <button type="button" onclick="vnOpenSignup({plan_slug:'pro'});" class="btn-plan" style="border:0;cursor:pointer;">Probar 7 días gratis →</button>
       </div>
       <div class="plan" style="flex:1 1 calc(33.333% - 14px);min-width:220px;max-width:280px;">
         <h3>Enterprise</h3>
@@ -322,7 +322,7 @@ footer a{color:#7ab31a;}
 
     </div>
     <p style="text-align:center;margin-top:30px;font-size:13px;color:#64748b;">
-      Ver todos los addons en <a href="/addons" style="color:#7ab31a;font-weight:700;">/addons</a>. ¿Querés comprar varios? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'multi_addon', titulo:'Cotizar varios addons', subtitulo:'Cuéntanos qué addons necesitas y te armamos una propuesta integrada.'}); return false;" style="color:#7ab31a;font-weight:700;">Cotizá un paquete →</a>
+      Ver todos los addons en <a href="/addons" style="color:#7ab31a;font-weight:700;">/addons</a>. ¿Quieres comprar varios? <a href="#" onclick="event.preventDefault(); vnOpenCotizacion({tipo:'multi_addon', titulo:'Cotizar varios addons', subtitulo:'Cuéntanos qué addons necesitas y te armamos una propuesta integrada.'}); return false;" style="color:#7ab31a;font-weight:700;">Cotiza un paquete →</a>
     </p>
   </div>
 </section>

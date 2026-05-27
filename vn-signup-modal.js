@@ -219,9 +219,9 @@
     var payRadio = document.querySelector('#vn-signup-modal .pay-options input:checked');
     var pmethod  = isFreePlan(CURRENT_PURCHASE) ? 'free' : (payRadio ? payRadio.value : 'flow');
 
-    if (!email || !email.includes('@')) return showErr('Ingresá un email válido.');
+    if (!email || !email.includes('@')) return showErr('Ingresa un email válido.');
     if (!pw || pw.length < 8)           return showErr('La contraseña debe tener al menos 8 caracteres.');
-    if (!name)                           return showErr('Ingresá tu nombre.');
+    if (!name)                           return showErr('Ingresa tu nombre.');
 
     var btn = document.getElementById('vn-su-submit');
     btn.disabled = true; btn.textContent = 'Procesando…';

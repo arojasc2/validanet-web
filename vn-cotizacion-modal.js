@@ -164,9 +164,9 @@
     var tamano   = document.getElementById('vn-cot-tamano').value;
     var mensaje  = document.getElementById('vn-cot-mensaje').value.trim();
 
-    if (!nombre)                     return showErr('Ingresá tu nombre.');
-    if (!email || !email.includes('@')) return showErr('Ingresá un email válido.');
-    if (!empresa)                    return showErr('Ingresá tu institución.');
+    if (!nombre)                     return showErr('Ingresa tu nombre.');
+    if (!email || !email.includes('@')) return showErr('Ingresa un email válido.');
+    if (!empresa)                    return showErr('Ingresa tu institución.');
 
     var btn = document.getElementById('vn-cot-submit');
     btn.disabled = true; btn.textContent = 'Enviando…';
