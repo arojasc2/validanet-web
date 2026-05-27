@@ -16,7 +16,9 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .hero{text-align:center;margin:24px 0 48px}
 .hero h1{font-size:34px;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
 .hero p{font-size:16px;color:#475569;max-width:620px;margin:0 auto}
-.section-title{font-size:20px;font-weight:800;margin:48px 0 18px;color:#0f172a}
+.section-title{font-size:22px;font-weight:800;margin:48px 0 8px;color:#0f172a}
+.section-lead{font-size:14px;color:#475569;margin-bottom:22px;line-height:1.6;max-width:780px}
+.video-hero{margin:24px 0 32px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.12)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
 .card{background:white;border-radius:14px;padding:24px;border:1.5px solid #e2e8f0;display:flex;flex-direction:column;transition:.2s}
 .card:hover{border-color:#7ab31a;box-shadow:0 8px 24px rgba(122,179,26,.12);transform:translateY(-2px)}
@@ -42,6 +44,17 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 @keyframes spin{to{transform:rotate(360deg)}}
 .error{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:20px;border-radius:10px;text-align:center;margin:40px 0}
 .error a{color:#7ab31a;font-weight:700}
+.decider{display:flex;align-items:stretch;gap:16px;margin:32px 0 48px;flex-wrap:wrap;}
+.dec-card{flex:1;min-width:260px;background:white;border:2px solid #e2e8f0;border-radius:14px;padding:24px;cursor:pointer;transition:.2s;display:flex;flex-direction:column;}
+.dec-card:hover{border-color:#7ab31a;box-shadow:0 8px 24px rgba(122,179,26,.12);transform:translateY(-3px);}
+.dec-icon{font-size:36px;margin-bottom:10px;}
+.dec-title{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:6px;}
+.dec-desc{font-size:13px;color:#475569;flex:1;line-height:1.5;}
+.dec-cta{margin-top:14px;color:#7ab31a;font-weight:700;font-size:13px;}
+.dec-vs{display:flex;align-items:center;justify-content:center;font-size:13px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:0 8px;}
+@media (max-width:640px){
+  .dec-vs{padding:4px 0;}
+}
 footer{margin-top:80px;text-align:center;font-size:12px;color:#94a3b8;border-top:1px solid #e2e8f0;padding-top:24px}
 footer a{color:#64748b;margin:0 12px;text-decoration:none}
 footer a:hover{color:#7ab31a}
@@ -65,6 +78,34 @@ footer a:hover{color:#7ab31a}
 <div class="hero">
   <h1>Elige tu plan o producto</h1>
   <p>Suite IA para gestión educativa e-learning. Pago seguro con Webpay o transferencia.</p>
+</div>
+
+<!-- VIDEO PRESENTACIÓN — Bunny Stream responsive (16:9) -->
+<div class="video-hero">
+  <div style="position:relative;padding-top:56.25%;">
+    <iframe src="https://player.mediadelivery.net/embed/654022/ef87f4b7-a5c8-4b0c-84e0-250721921d60?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+            loading="lazy"
+            style="border:0;position:absolute;top:0;height:100%;width:100%;"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+            allowfullscreen="true"></iframe>
+  </div>
+</div>
+
+<!-- DECISOR: planes vs addons. Ayuda al visitante a entender qué le conviene. -->
+<div class="decider">
+  <div class="dec-card" onclick="scrollToSection('planes')">
+    <div class="dec-icon">📋</div>
+    <div class="dec-title">Plan ValidaNet</div>
+    <div class="dec-desc">Suscripción mensual con dashboard, chatbot TutorIA, gestión de cursos, certificados, integración SENCE y más. Para quien empieza desde cero.</div>
+    <div class="dec-cta">Ver planes ↓</div>
+  </div>
+  <div class="dec-vs">o</div>
+  <div class="dec-card" onclick="scrollToSection('addons')">
+    <div class="dec-icon">🧩</div>
+    <div class="dec-title">Addon individual</div>
+    <div class="dec-desc">Activa una sola funcionalidad sobre tu cuenta existente (o nueva). Ej: solo certificados, solo aula Moodle, solo creador de cursos IA. Pago independiente.</div>
+    <div class="dec-cta">Ver addons ↓</div>
+  </div>
 </div>
 
 <div id="content" class="loading">
@@ -217,25 +258,37 @@ footer a:hover{color:#7ab31a}
 
     var html = '';
 
-    // Sección Planes
+    // ─── Sección Planes ─────────────────────────────────────────
     var planes = (data.planes || []).filter(function(p){ return p && p.slug; });
     if (planes.length){
-      html += '<h2 class="section-title">📋 Planes mensuales</h2><div class="grid">';
+      html += '<section id="planes" style="scroll-margin-top:20px;">';
+      html += '<h2 class="section-title">📋 Planes mensuales ValidaNet</h2>';
+      html += '<p class="section-lead">Cada plan es una <strong>suscripción mensual</strong> que incluye un paquete completo: dashboard de gestión, chatbot TutorIA, certificados QR, reportería, Connect e integración SENCE (según el tier). Ideal si querés todo en uno y empezar desde cero.</p>';
+      html += '<div class="grid">';
       html += planes.map(planCard).join('');
-      html += '</div>';
+      html += '</div></section>';
     }
 
-    // Sección Addons (sólo de pago)
+    // ─── Sección Addons (sólo de pago) ──────────────────────────
     var addons = (data.addons || []).filter(function(a){ return a && a.slug && !a.gratis; });
     if (addons.length){
-      html += '<h2 class="section-title">🧩 Addons adicionales</h2><div class="grid">';
+      html += '<section id="addons" style="scroll-margin-top:20px;">';
+      html += '<h2 class="section-title">🧩 Addons individuales</h2>';
+      html += '<p class="section-lead">Cada addon se cobra <strong>por separado</strong> y agrega una función específica. Útil si <em>ya tenés una cuenta ValidaNet</em> y querés sumar algo puntual (por ejemplo: sólo Aula Moodle, o sólo Certificados, o sólo el Creador de Cursos IA). Un ejecutivo te lo activa en 24h hábiles tras solicitar.</p>';
+      html += '<div class="grid">';
       html += addons.map(addonCard).join('');
-      html += '</div>';
+      html += '</div></section>';
     }
 
     document.getElementById('content').className = '';
     document.getElementById('content').innerHTML = html;
   }
+
+  // Suaviza el scroll del decisor a la sección elegida
+  window.scrollToSection = function(id){
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  };
 
   load();
 })();
