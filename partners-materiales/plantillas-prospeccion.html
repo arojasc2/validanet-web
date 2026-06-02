@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Plantillas de prospección · Partners ValidaNet</title>
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+  :root{--primary:#1B2A47;--accent:#2D6CDF;--ok:#1E8E5A;--tinta:#16223A;--gris:#5A6577;--linea:#E3E7EE;--bg:#F6F8FB;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.55;}
+  .doc{max-width:860px;margin:0 auto;background:#fff;}
+  .cover{background:linear-gradient(135deg,#10192B,#1B2A47 60%,#22365C);color:#fff;padding:48px 48px;}
+  .cover img{height:28px;margin-bottom:24px;}
+  .cover h1{font-size:30px;font-weight:800;margin-bottom:6px;}
+  .cover p{color:#C9D4E6;font-size:14.5px;}
+  .toolbar{position:sticky;top:0;z-index:9;background:#16223A;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 18px;font-size:13px;}
+  .toolbar button{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;}
+  .body{padding:36px 48px;}
+  .tpl{border:1px solid var(--linea);border-radius:14px;margin-bottom:22px;overflow:hidden;}
+  .tpl .head{background:#F1F4F9;padding:13px 18px;display:flex;justify-content:space-between;align-items:center;}
+  .tpl .head b{font-size:15px;}
+  .tpl .head .tag{font-size:11px;background:var(--primary);color:#fff;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;}
+  .tpl .text{padding:18px;font-size:14px;white-space:pre-wrap;color:#222;background:#fff;}
+  .tpl .copy{margin:0 18px 16px;background:var(--ok);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;font-size:13px;}
+  .tpl .copy.done{background:#0f8a4f;}
+  .var{background:#FFF3CD;padding:1px 5px;border-radius:4px;font-weight:600;}
+  .intro{font-size:14.5px;color:var(--gris);margin-bottom:24px;}
+  .foot{background:#10192B;color:#9FB0C9;padding:24px 48px;font-size:12.5px;}
+  .foot a{color:#A9C6FF;text-decoration:none;}
+  @media print{.toolbar,.copy{display:none;}body{background:#fff;}.tpl{page-break-inside:avoid;}}
+  @media(max-width:640px){.cover,.body,.foot{padding-left:22px;padding-right:22px;}}
+</style>
+</head>
+<body>
+<div class="toolbar"><span>Plantillas de prospección · Partners</span><button onclick="window.print()">⤓ Descargar PDF</button></div>
+<div class="doc">
+  <div class="cover">
+    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet">
+    <h1>Plantillas de prospección</h1>
+    <p>Mensajes listos para copiar y enviar. Reemplaza los campos resaltados con los datos de tu prospecto y tu enlace de referido.</p>
+  </div>
+  <div class="body">
+    <p class="intro">💡 Reemplaza <span class="var">[Nombre]</span>, <span class="var">[Organización]</span> y <span class="var">[TU-ENLACE]</span> (lo encuentras en tu panel → pestaña <b>Mi enlace</b>). Usa el botón <b>Copiar</b> en cada plantilla.</p>
+
+    <div class="tpl">
+      <div class="head"><b>Email — Primer contacto (frío)</b><span class="tag">Email</span></div>
+      <div class="text" id="t1">Asunto: Capacitación e-learning para [Organización] (con certificación y reportería)
+
+Hola [Nombre]:
+
+Te escribo porque ayudo a organizaciones como [Organización] a montar su capacitación online en una plataforma profesional basada en Moodle, con certificados, reportería y —si aplica— integración con SENCE.
+
+ValidaNet permite crear cursos con IA, gestionar alumnos y emitir certificados sin complicaciones técnicas. Hay un plan gratuito para partir y planes que escalan según tus necesidades.
+
+¿Te parece si te muestro cómo funciona en 15 minutos? Puedes ver los planes aquí: [TU-ENLACE]
+
+Saludos,
+[Tu nombre]</div>
+      <button class="copy" onclick="cp('t1',this)">Copiar</button>
+    </div>
+
+    <div class="tpl">
+      <div class="head"><b>WhatsApp / mensaje directo (breve)</b><span class="tag">WhatsApp</span></div>
+      <div class="text" id="t2">Hola [Nombre] 👋 Te comparto una plataforma de capacitación e-learning (ValidaNet) que puede servirle mucho a [Organización]: cursos con IA, certificados y reportería, con plan gratuito para probar. Acá puedes ver los planes y crear tu cuenta: [TU-ENLACE]</div>
+      <button class="copy" onclick="cp('t2',this)">Copiar</button>
+    </div>
+
+    <div class="tpl">
+      <div class="head"><b>Email — Enfocado en OTEC / SENCE</b><span class="tag">Email</span></div>
+      <div class="text" id="t3">Asunto: Plataforma e-learning lista para SENCE para [Organización]
+
+Hola [Nombre]:
+
+Si [Organización] dicta o quiere dictar capacitaciones e-learning, ValidaNet te entrega un campus virtual basado en Moodle preparado para el modelo SENCE: registro de asistencia, indicadores de avance y emisión de certificados nativos.
+
+Además incluye un constructor de cursos con IA que arma el contenido alineado al diseño instruccional. Puedes empezar gratis y escalar.
+
+Te dejo el detalle y el acceso para crear tu cuenta: [TU-ENLACE]
+
+Quedo atento,
+[Tu nombre]</div>
+      <button class="copy" onclick="cp('t3',this)">Copiar</button>
+    </div>
+
+    <div class="tpl">
+      <div class="head"><b>Seguimiento (si no responde)</b><span class="tag">Follow-up</span></div>
+      <div class="text" id="t4">Hola [Nombre], ¿alcanzaste a ver lo de ValidaNet? Si quieres lo vemos juntos en una llamada corta y te muestro cómo quedaría la capacitación de [Organización]. Sin compromiso. Acá el enlace por si quieres explorar: [TU-ENLACE]</div>
+      <button class="copy" onclick="cp('t4',this)">Copiar</button>
+    </div>
+  </div>
+  <div class="foot">
+    Programa de Partners · Validanet — Norteduc EdTech SpA<br>
+    Soporte: <a href="mailto:contacto@validanet.cl">contacto@validanet.cl</a> · <a href="https://validanet.cl/partners">validanet.cl/partners</a>
+  </div>
+</div>
+<script>
+function cp(id,btn){
+  var t=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t).then(function(){
+    btn.textContent='✓ Copiado'; btn.classList.add('done');
+    setTimeout(function(){btn.textContent='Copiar';btn.classList.remove('done');},1800);
+  }).catch(function(){ btn.textContent='Selecciona y copia manualmente'; });
+}
+</script>
+</body>
+</html>

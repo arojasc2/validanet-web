@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex"><title>Reportería Académica · Addon ValidaNet</title>
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+:root{--primary:#1B2A47;--primary2:#22365C;--accent:#2D6CDF;--ok:#1E8E5A;--tinta:#16223A;--gris:#5A6577;--linea:#E3E7EE;--bg:#F6F8FB;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.doc{max-width:860px;margin:0 auto;background:#fff;}
+.toolbar{position:sticky;top:0;z-index:9;background:#16223A;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:13px;}
+.toolbar button{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;}
+.hero{background:linear-gradient(135deg,#10192B,#1B2A47 58%,#22365C);color:#fff;padding:46px 50px 40px;position:relative;overflow:hidden;}
+.hero::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;background:radial-gradient(circle,rgba(45,108,223,.35),transparent 65%);}
+.hero .top{display:flex;align-items:center;gap:10px;margin-bottom:22px;position:relative;z-index:2;}
+.hero .top img{height:26px;}
+.hero .top span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8DA0BD;}
+.hero .ic{font-size:46px;position:relative;z-index:2;}
+.hero h1{font-size:32px;font-weight:800;margin:8px 0 8px;position:relative;z-index:2;}
+.hero p{color:#C9D4E6;font-size:15.5px;max-width:560px;position:relative;z-index:2;}
+.body{padding:38px 50px;}
+h2{font-size:19px;margin-bottom:14px;}
+ul.feat{list-style:none;display:grid;gap:10px;margin-bottom:30px;}
+ul.feat li{padding-left:30px;position:relative;font-size:14.5px;color:var(--tinta);}
+ul.feat li::before{content:"✓";position:absolute;left:0;top:1px;color:var(--ok);font-weight:800;font-size:16px;}
+.who{background:#F1F4F9;border-radius:14px;padding:18px 22px;margin-bottom:30px;font-size:14px;color:var(--primary2);}
+.who b{display:block;margin-bottom:4px;color:var(--tinta);}
+.cta{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;border-radius:16px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.cta b{font-size:17px;} .cta p{color:#B9C6DC;font-size:13px;margin-top:3px;}
+.cta a{background:var(--accent);color:#fff;text-decoration:none;padding:11px 22px;border-radius:10px;font-weight:700;font-size:14px;}
+.foot{background:#10192B;color:#9FB0C9;padding:22px 50px;font-size:12.5px;}
+.foot a{color:#A9C6FF;text-decoration:none;}
+@media print{.toolbar{display:none;}body{background:#fff;}.hero,.who,.cta{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:640px){.hero,.body,.foot{padding-left:24px;padding-right:24px;}.hero h1{font-size:25px;}}
+</style></head><body>
+<div class="toolbar"><span>Brochure Reportería Académica · ValidaNet</span><button onclick="window.print()">⤓ Descargar PDF</button></div>
+<div class="doc">
+  <div class="hero">
+    <div class="top"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"><span>Addon · ValidaNet</span></div>
+    <div class="ic">📈</div>
+    <h1>Reportería Académica</h1>
+    <p>Reportes avanzados de rendimiento académico</p>
+  </div>
+  <div class="body">
+    <h2>¿Qué incluye?</h2>
+    <ul class="feat"><li>Dashboards de avance por estudiante y curso</li><li>Análisis de consultas frecuentes</li><li>Exportación a Excel con un clic</li><li>Métricas SENCE para auditorías</li><li>Deserción predicha con IA (alertas tempranas)</li></ul>
+    <div class="who"><b>¿Para quién es ideal?</b>Instituciones que requieren análisis profundo de rendimiento y alertas tempranas de deserción.</div>
+    <div class="cta">
+      <div><b>Suma Reportería Académica a la plataforma de tu cliente</b><p>Parte de ValidaNet. Recuerda usar tu enlace de referido al recomendar.</p></div>
+      <a id="cta-link" href="https://validanet.cl/">Conoce ValidaNet →</a>
+    </div>
+  </div>
+  <div class="foot">Validanet — Norteduc EdTech SpA · <a href="https://validanet.cl">validanet.cl</a> · <a href="mailto:contacto@validanet.cl">contacto@validanet.cl</a><br>
+  <span style="font-size:11px;color:#6C7E99;">Material para partners. © 2026 Norteduc EdTech SpA.</span></div>
+</div>
+<script>
+(function(){
+  var ref=null; try{ ref=new URLSearchParams(location.search).get('ref'); }catch(e){}
+  if(!ref) return;
+  ref=ref.trim().toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,32);
+  if(!ref) return;
+  var a=document.getElementById('cta-link');
+  if(a) a.href='https://validanet.cl/r/'+encodeURIComponent(ref);
+})();
+</script></body></html>

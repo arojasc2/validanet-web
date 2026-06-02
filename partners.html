@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa de Partners · ValidaNet</title>
+<meta name="description" content="Únete al Programa de Partners de ValidaNet: refiere clientes, gana comisiones recurrentes y accede a tu panel de partner. Crea tu cuenta o inicia sesión.">
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+  :root{
+    --primary:#1B2A47; --primary-2:#22365C; --accent:#2D6CDF; --accent-2:#1E8E5A;
+    --tinta:#16223A; --gris:#5A6577; --linea:#E3E7EE; --bg:#F6F8FB; --red:#DC2626;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--tinta);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);}
+  /* top nav */
+  .nav{background:#fff;border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:40;}
+  .nav .wrap{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;}
+  .nav img{height:30px;}
+  .nav a.back{font-size:13px;color:var(--gris);text-decoration:none;}
+  /* hero + layout */
+  .hero{background:linear-gradient(135deg,#10192B 0%,#1B2A47 60%,#22365C 100%);color:#fff;}
+  .hero .wrap{max-width:1140px;margin:0 auto;padding:56px 24px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+  .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,108,223,.18);border:1px solid rgba(45,108,223,.5);
+    color:#A9C6FF;padding:6px 15px;border-radius:30px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+  .hero h1{font-size:38px;line-height:1.12;margin:18px 0 12px;font-weight:800;}
+  .hero h1 em{color:#5B9BFF;font-style:normal;}
+  .hero p.lead{font-size:16px;color:#C9D4E6;max-width:520px;}
+  .benefits{margin-top:26px;display:grid;gap:12px;}
+  .benefits .b{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#E4EAF4;}
+  .benefits .b .ic{flex:none;width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .benefits .b b{color:#fff;}
+  /* auth card */
+  .card{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(8,15,30,.35);padding:30px;color:var(--tinta);}
+  .tabs{display:flex;background:#EEF2F8;border-radius:12px;padding:4px;margin-bottom:22px;}
+  .tabs button{flex:1;border:none;background:transparent;padding:10px;border-radius:9px;font-size:14px;font-weight:700;color:var(--gris);cursor:pointer;}
+  .tabs button.active{background:#fff;color:var(--primary);box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  .pane{display:none;}
+  .pane.active{display:block;}
+  .pane h2{font-size:20px;margin-bottom:4px;}
+  .pane .sub{font-size:13px;color:var(--gris);margin-bottom:16px;}
+  label{display:block;font-size:12px;font-weight:600;margin:12px 0 5px;}
+  input{width:100%;padding:11px 12px;border:1.5px solid var(--linea);border-radius:9px;font-size:14px;}
+  input:focus{outline:2px solid var(--accent);outline-offset:-1px;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .btn{width:100%;margin-top:18px;background:linear-gradient(135deg,var(--accent),#1E50B0);color:#fff;border:none;
+    padding:13px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;}
+  .btn:hover{opacity:.93;}
+  .btn[disabled]{opacity:.6;cursor:default;}
+  .msg{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;font-size:13.5px;}
+  .msg.err{display:block;background:#FEF2F2;color:var(--red);border:1px solid #FECACA;}
+  .msg.ok{display:block;background:#E7F6EE;color:var(--accent-2);border:1px solid #B7E4CB;}
+  .hint{font-size:12px;color:var(--gris);margin-top:6px;}
+  .legal{font-size:11.5px;color:var(--gris);margin-top:16px;text-align:center;}
+  /* franja inferior */
+  .strip{max-width:1140px;margin:0 auto;padding:46px 24px;}
+  .strip h3{font-size:22px;text-align:center;margin-bottom:6px;}
+  .strip p.c{text-align:center;color:var(--gris);max-width:620px;margin:0 auto 28px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .step{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:22px;}
+  .step .n{width:30px;height:30px;border-radius:8px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;}
+  .step b{display:block;margin-bottom:4px;}
+  .step p{font-size:13.5px;color:var(--gris);}
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:32px;padding:40px 20px;}
+    .hero h1{font-size:30px;}
+    .steps{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav"><div class="wrap">
+  <a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"></a>
+  <a class="back" href="/">← Volver al sitio</a>
+</div></div>
+
+<!-- HERO + AUTH -->
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="badge">● Programa de Partners</span>
+    <h1>Refiere, vende y <em>gana comisiones recurrentes</em> con ValidaNet</h1>
+    <p class="lead">Conviértete en Partner Comercial de ValidaNet. Trae clientes a nuestra plataforma de capacitación e-learning y gana por cada venta — con tu propio panel de seguimiento de ventas, comisiones y pagos.</p>
+    <div class="benefits">
+      <div class="b"><span class="ic">💸</span><div><b>Comisiones recurrentes</b> por cada cliente que activa un plan o addon con tu enlace.</div></div>
+      <div class="b"><span class="ic">🔗</span><div><b>Enlace de referido propio</b> con seguimiento de clics, leads y conversiones.</div></div>
+      <div class="b"><span class="ic">📊</span><div><b>Panel de partner</b> con ventas, comisiones proyectadas, pagos y materiales de venta.</div></div>
+      <div class="b"><span class="ic">🤝</span><div><b>Acompañamiento del equipo ValidaNet</b> y material comercial listo para usar.</div></div>
+    </div>
+  </div>
+
+  <!-- AUTH CARD -->
+  <div class="card">
+    <div class="tabs">
+      <button id="tab-signup" class="active" onclick="vnTab('signup')">Crear cuenta</button>
+      <button id="tab-login" onclick="vnTab('login')">Iniciar sesión</button>
+    </div>
+
+    <!-- SIGNUP -->
+    <div id="pane-signup" class="pane active">
+      <h2>Postula como Partner</h2>
+      <p class="sub">Crea tu cuenta. Revisamos tu solicitud y te avisamos por email al aprobarla.</p>
+      <label for="su-name">Nombre completo</label>
+      <input id="su-name" type="text" autocomplete="name" placeholder="Nombre y apellido">
+      <div class="row">
+        <div>
+          <label for="su-email">Email</label>
+          <input id="su-email" type="email" autocomplete="email" placeholder="tu@email.com">
+        </div>
+        <div>
+          <label for="su-country">País</label>
+          <input id="su-country" type="text" autocomplete="country-name" placeholder="Chile">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="su-phone">Teléfono <span style="font-weight:400;color:var(--gris)">(opcional)</span></label>
+          <input id="su-phone" type="tel" autocomplete="tel" placeholder="+56 9 ...">
+        </div>
+        <div>
+          <label for="su-company">Empresa <span style="font-weight:400;color:var(--gris)">(opcional)</span></label>
+          <input id="su-company" type="text" placeholder="Tu empresa">
+        </div>
+      </div>
+      <label for="su-pass">Contraseña</label>
+      <input id="su-pass" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+      <div class="hint">Usa al menos 8 caracteres.</div>
+      <button id="su-btn" class="btn" onclick="vnSignup()">Crear mi cuenta de partner</button>
+      <div id="su-msg" class="msg"></div>
+      <div class="legal">Al crear tu cuenta aceptas ser contactado por el equipo ValidaNet para activar tu programa.</div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="pane-login" class="pane">
+      <h2>Acceso de Partners</h2>
+      <p class="sub">Ingresa con el email y contraseña de tu cuenta de partner.</p>
+      <label for="li-email">Email</label>
+      <input id="li-email" type="email" autocomplete="username" placeholder="tu@email.com">
+      <label for="li-pass">Contraseña</label>
+      <input id="li-pass" type="password" autocomplete="current-password" placeholder="Tu contraseña">
+      <button id="li-btn" class="btn" onclick="vnLogin()">Entrar a mi panel</button>
+      <div id="li-msg" class="msg"></div>
+      <div class="legal" style="margin-top:12px;"><a href="/partners-reset">¿Olvidaste tu contraseña?</a></div>
+      <div class="legal" style="margin-top:4px;">¿Aún no eres partner? <a href="#" onclick="vnTab('signup');return false;">Crea tu cuenta aquí</a>.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- CÓMO FUNCIONA -->
+<div class="strip">
+  <h3>Cómo funciona</h3>
+  <p class="c">En tres pasos estás generando ingresos con ValidaNet.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Crea tu cuenta</b><p>Completa el formulario. Validamos tu solicitud y activamos tu perfil de partner con tu enlace de referido único.</p></div>
+    <div class="step"><div class="n">2</div><b>Comparte tu enlace</b><p>Difunde tu enlace de referido. Cada clic, lead y venta queda atribuido a ti automáticamente.</p></div>
+    <div class="step"><div class="n">3</div><b>Gana y cobra</b><p>Acumula comisiones recurrentes y solicita tus pagos desde el panel, con total transparencia.</p></div>
+  </div>
+</div>
+
+<script src="/vn-footer.js" defer></script>
+<script>
+  var API_BASE = 'https://app.validanet.cl';
+
+  function vnTab(which){
+    var s = which === 'signup';
+    document.getElementById('tab-signup').classList.toggle('active', s);
+    document.getElementById('tab-login').classList.toggle('active', !s);
+    document.getElementById('pane-signup').classList.toggle('active', s);
+    document.getElementById('pane-login').classList.toggle('active', !s);
+  }
+
+  function vnMsg(id, type, text){
+    var el = document.getElementById(id);
+    el.className = 'msg ' + type;
+    el.textContent = text;
+  }
+
+  async function vnSignup(){
+    var name = document.getElementById('su-name').value.trim();
+    var email = document.getElementById('su-email').value.trim();
+    var pass = document.getElementById('su-pass').value;
+    var country = document.getElementById('su-country').value.trim();
+    var phone = document.getElementById('su-phone').value.trim();
+    var company = document.getElementById('su-company').value.trim();
+    var btn = document.getElementById('su-btn');
+
+    if (name.length < 3) return vnMsg('su-msg','err','Ingresa tu nombre completo.');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return vnMsg('su-msg','err','Ingresa un email válido.');
+    if (pass.length < 8) return vnMsg('su-msg','err','La contraseña debe tener al menos 8 caracteres.');
+
+    btn.disabled = true; btn.textContent = 'Creando…';
+    try {
+      var r = await fetch(API_BASE + '/api/public/partner/signup', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({full_name:name, email:email, password:pass, country:country, phone:phone, company:company}),
+      });
+      var d = await r.json().catch(function(){return {};});
+      if (!r.ok || !d.ok) { vnMsg('su-msg','err', d.detail || 'No fue posible crear la cuenta.'); return; }
+      vnMsg('su-msg','ok', d.message || '¡Cuenta creada! Tu solicitud quedó en revisión.');
+      ['su-name','su-email','su-pass','su-phone','su-company'].forEach(function(i){document.getElementById(i).value='';});
+    } catch(e) {
+      vnMsg('su-msg','err','Error de conexión. Intenta nuevamente.');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Crear mi cuenta de partner';
+    }
+  }
+
+  async function vnLogin(){
+    var email = document.getElementById('li-email').value.trim();
+    var pass = document.getElementById('li-pass').value;
+    var btn = document.getElementById('li-btn');
+    if (!email || !pass) return vnMsg('li-msg','err','Email y contraseña son requeridos.');
+
+    btn.disabled = true; btn.textContent = 'Entrando…';
+    try {
+      var r = await fetch(API_BASE + '/api/validanet/partner/login', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email:email, password:pass}),
+      });
+      var d = await r.json().catch(function(){return {};});
+      if (r.ok && d.requires_2fa) {
+        var code = prompt('Verificación en dos pasos:\nIngresa el código de tu app autenticadora (o un código de respaldo).');
+        if (!code) { vnMsg('li-msg','err','Verificación cancelada.'); return; }
+        var r2 = await fetch(API_BASE + '/api/validanet/partner/login/2fa', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({partial_token: d.partial_token, code: code.trim()}),
+        });
+        var d2 = await r2.json().catch(function(){return {};});
+        if (!r2.ok || !d2.access_token) { vnMsg('li-msg','err', d2.detail || 'Código inválido.'); return; }
+        vnMsg('li-msg','ok','¡Listo! Redirigiendo a tu panel…');
+        window.location.href = API_BASE + '/api/validanet/partner/#token=' + encodeURIComponent(d2.access_token);
+        return;
+      }
+      if (!r.ok || !d.access_token) { vnMsg('li-msg','err', d.detail || 'No fue posible iniciar sesión.'); return; }
+      vnMsg('li-msg','ok','¡Listo! Redirigiendo a tu panel…');
+      window.location.href = API_BASE + '/api/validanet/partner/#token=' + encodeURIComponent(d.access_token);
+    } catch(e) {
+      vnMsg('li-msg','err','Error de conexión. Intenta nuevamente.');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Entrar a mi panel';
+    }
+  }
+
+  // Enter para enviar
+  document.getElementById('su-pass').addEventListener('keydown', function(e){ if(e.key==='Enter') vnSignup(); });
+  document.getElementById('li-pass').addEventListener('keydown', function(e){ if(e.key==='Enter') vnLogin(); });
+  // Deep-link: /partners#login abre directo la pestaña de login
+  if (location.hash === '#login') vnTab('login');
+</script>
+</body>
+</html>

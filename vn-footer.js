@@ -32,6 +32,7 @@
           link('https://connect.validanet.cl/portal/connect', 'Connect')+sep()+
           link('https://validanet.cl/para-empresas', 'Empresas')+sep()+
           link('https://validanet.cl/para-relatores', 'Relatores')+sep()+
+          link('https://validanet.cl/partners', 'Partners')+sep()+
           link('https://validanet.cl/#pricing', 'Precios')+sep()+
           link('mailto:contacto@validanet.cl', 'Contacto')+sep()+
           link('https://validanet.cl/privacidad', 'Privacidad')+sep()+

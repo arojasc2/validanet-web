@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperar contraseña · Partners ValidaNet</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="https://app.validanet.cl/static/favicon-validanet.png">
+<style>
+  :root{--primary:#1B2A47;--accent:#2D6CDF;--accent-2:#1E8E5A;--tinta:#16223A;--gris:#5A6577;--linea:#E3E7EE;--red:#DC2626;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(135deg,#10192B,#1B2A47 60%,#22365C);color:var(--tinta);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;-webkit-font-smoothing:antialiased;}
+  .card{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(8,15,30,.4);padding:34px;width:100%;max-width:420px;}
+  .logo{text-align:center;margin-bottom:18px;}
+  .logo img{height:34px;}
+  h1{font-size:21px;text-align:center;margin-bottom:6px;}
+  p.sub{font-size:13.5px;color:var(--gris);text-align:center;margin-bottom:18px;}
+  label{display:block;font-size:12px;font-weight:600;margin:12px 0 5px;}
+  input{width:100%;padding:11px 12px;border:1.5px solid var(--linea);border-radius:9px;font-size:14px;}
+  input:focus{outline:2px solid var(--accent);outline-offset:-1px;}
+  .btn{width:100%;margin-top:18px;background:linear-gradient(135deg,var(--accent),#1E50B0);color:#fff;border:none;
+    padding:13px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;}
+  .btn:hover{opacity:.93;} .btn[disabled]{opacity:.6;cursor:default;}
+  .msg{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;font-size:13.5px;}
+  .msg.err{display:block;background:#FEF2F2;color:var(--red);border:1px solid #FECACA;}
+  .msg.ok{display:block;background:#E7F6EE;color:var(--accent-2);border:1px solid #B7E4CB;}
+  .hint{font-size:12px;color:var(--gris);margin-top:6px;}
+  .foot{text-align:center;margin-top:18px;font-size:12.5px;}
+  .foot a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo"><a href="/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"></a></div>
+
+    <!-- MODO 1: pedir email -->
+    <div id="mode-request">
+      <h1>Recuperar contraseña</h1>
+      <p class="sub">Ingresa el email de tu cuenta de partner y te enviaremos un enlace para crear una nueva contraseña.</p>
+      <label for="rq-email">Email</label>
+      <input id="rq-email" type="email" autocomplete="username" placeholder="tu@email.com">
+      <button id="rq-btn" class="btn" onclick="vnForgot()">Enviarme el enlace</button>
+      <div id="rq-msg" class="msg"></div>
+      <div class="foot"><a href="/partners#login">← Volver al inicio de sesión</a></div>
+    </div>
+
+    <!-- MODO 2: nueva contraseña (con token) -->
+    <div id="mode-reset" style="display:none;">
+      <h1>Crea tu nueva contraseña</h1>
+      <p class="sub">Define una contraseña nueva para tu cuenta de partner.</p>
+      <label for="rs-pass">Nueva contraseña</label>
+      <input id="rs-pass" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+      <label for="rs-pass2">Repetir contraseña</label>
+      <input id="rs-pass2" type="password" autocomplete="new-password" placeholder="Repite la contraseña">
+      <div class="hint">Usa al menos 8 caracteres.</div>
+      <button id="rs-btn" class="btn" onclick="vnReset()">Guardar contraseña</button>
+      <div id="rs-msg" class="msg"></div>
+      <div class="foot"><a href="/partners#login">← Volver al inicio de sesión</a></div>
+    </div>
+  </div>
+
+<script>
+  var API_BASE = 'https://app.validanet.cl';
+  var TOKEN = new URLSearchParams(location.search).get('token') || '';
+
+  if (TOKEN) {
+    document.getElementById('mode-request').style.display = 'none';
+    document.getElementById('mode-reset').style.display = 'block';
+  }
+
+  function vnMsg(id, type, text){
+    var el = document.getElementById(id); el.className = 'msg ' + type; el.textContent = text;
+  }
+
+  async function vnForgot(){
+    var email = document.getElementById('rq-email').value.trim();
+    var btn = document.getElementById('rq-btn');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return vnMsg('rq-msg','err','Ingresa un email válido.');
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    try {
+      var r = await fetch(API_BASE + '/api/public/partner/forgot-password', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email}),
+      });
+      var d = await r.json().catch(function(){return {};});
+      vnMsg('rq-msg','ok', d.message || 'Si el email existe, te enviamos un enlace.');
+    } catch(e) {
+      vnMsg('rq-msg','err','Error de conexión. Intenta nuevamente.');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Enviarme el enlace';
+    }
+  }
+
+  async function vnReset(){
+    var p1 = document.getElementById('rs-pass').value;
+    var p2 = document.getElementById('rs-pass2').value;
+    var btn = document.getElementById('rs-btn');
+    if (p1.length < 8) return vnMsg('rs-msg','err','La contraseña debe tener al menos 8 caracteres.');
+    if (p1 !== p2) return vnMsg('rs-msg','err','Las contraseñas no coinciden.');
+    btn.disabled = true; btn.textContent = 'Guardando…';
+    try {
+      var r = await fetch(API_BASE + '/api/public/partner/reset-password', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({token:TOKEN, new_password:p1}),
+      });
+      var d = await r.json().catch(function(){return {};});
+      if (!r.ok || !d.ok) { vnMsg('rs-msg','err', d.detail || 'No fue posible actualizar la contraseña.'); return; }
+      vnMsg('rs-msg','ok','¡Listo! Contraseña actualizada. Redirigiendo al inicio de sesión…');
+      setTimeout(function(){ location.href = '/partners#login'; }, 1800);
+    } catch(e) {
+      vnMsg('rs-msg','err','Error de conexión. Intenta nuevamente.');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Guardar contraseña';
+    }
+  }
+
+  document.getElementById('rq-email').addEventListener('keydown', function(e){ if(e.key==='Enter') vnForgot(); });
+  document.getElementById('rs-pass2').addEventListener('keydown', function(e){ if(e.key==='Enter') vnReset(); });
+</script>
+</body>
+</html>
