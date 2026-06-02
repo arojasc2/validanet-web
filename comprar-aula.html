@@ -4,415 +4,816 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Compra tu Aula Virtual Moodle — ValidaNet</title>
-<meta name="description" content="Aula Virtual Moodle gestionada por NortEduc para OTECs, universidades, CFT e IP. Hosting incluido, backups diarios, 99.9% uptime. Desde $29.990/mes.">
+<meta name="description" content="Aula Virtual Moodle gestionada para OTECs, universidades y empresas. Hosting, branding, plugins y soporte incluidos. Desde $39.990/mes.">
 <link rel="icon" type="image/png" href="https://app.validanet.cl/static/favicon-validanet.png">
 <meta property="og:title" content="Aula Virtual Moodle Gestionada — ValidaNet">
-<meta property="og:description" content="Tu campus Moodle listo en minutos. Hosting + backups + SSL + soporte chileno.">
+<meta property="og:description" content="Tu campus Moodle listo en minutos, con tu logo y colores. Hosting + SSL + soporte chileno.">
 <meta property="og:image" content="https://app.validanet.cl/static/logo-validanet.png">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0f172a;background:#f8fafc;line-height:1.5;}
-nav{background:#0f172a;height:64px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;position:sticky;top:0;z-index:100;}
-nav a img{height:36px;}
-.nav-links{display:flex;gap:20px;align-items:center;}
-.nav-links a{color:#e2e8f0;text-decoration:none;font-size:14px;font-weight:500;}
-.nav-links a:hover{color:#7ab31a;}
-.btn-orange{background:#f47920;color:white;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;text-decoration:none;}
-.btn-green-o{border:1.5px solid #7ab31a;color:#7ab31a;border-radius:8px;padding:8px 18px;font-size:14px;font-weight:700;text-decoration:none;}
+:root {
+  --vg: #6db33a;
+  --vg-dark: #5a9a28;
+  --vo: #f47920;
+  --dark: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --red: #dc2626;
+  --green: #16a34a;
+  --amber: #f59e0b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       color: var(--dark); background: var(--bg); line-height: 1.5; }
 
-.hero{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:white;padding:64px 40px 48px;text-align:center;}
-.hero h1{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:16px;line-height:1.15;}
-.hero h1 span{color:#7ab31a;}
-.hero p{font-size:17px;max-width:680px;margin:0 auto 24px;color:rgba(255,255,255,.88);}
-.tag{display:inline-block;background:rgba(122,179,26,.15);border:1px solid rgba(122,179,26,.3);color:#7ab31a;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:18px;}
-.cl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.4);color:#93c5fd;padding:6px 14px;border-radius:99px;font-size:13px;font-weight:700;margin-top:12px;}
-.cl-badge svg{width:14px;height:14px;}
+/* NAV */
+nav { background: var(--dark); height: 64px; display: flex; align-items: center;
+      padding: 0 40px; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+nav a img { height: 36px; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { color: #e2e8f0; text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav-links a:hover { color: var(--vg); }
 
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
-section{padding:48px 0;}
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--dark), #1e3a5f); color: white;
+        padding: 50px 20px; text-align: center; }
+.hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+.hero p  { font-size: 16px; color: #cbd5e1; max-width: 640px; margin: 0 auto; }
 
-.planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px;}
-.plan{background:white;border:2px solid #e2e8f0;border-radius:14px;padding:32px;cursor:pointer;transition:.18s;position:relative;}
-.plan:hover{border-color:#7ab31a;transform:translateY(-3px);box-shadow:0 10px 30px rgba(122,179,26,.12);}
-.plan.selected{border-color:#7ab31a;background:#f7fdf2;}
-.plan.popular::before{content:"Más popular";position:absolute;top:-12px;right:20px;background:#f47920;color:white;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;}
-.plan h3{font-size:20px;font-weight:800;margin-bottom:6px;}
-.price{font-size:32px;font-weight:800;color:#0f172a;margin:8px 0;}
-.price small{font-size:14px;color:#64748b;font-weight:400;}
-.estudiantes{display:inline-block;background:#f1f5f9;color:#0f172a;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:16px;}
-.features{list-style:none;padding:0;margin-top:14px;}
-.features li{padding:6px 0;font-size:13px;color:#475569;}
-.features li::before{content:"✓ ";color:#7ab31a;font-weight:bold;}
+/* WIZARD CONTAINER */
+.wizard { max-width: 920px; margin: -30px auto 60px; padding: 0 16px; position: relative; }
+.steps-bar { display: flex; justify-content: space-between; margin-bottom: 28px; background: white;
+             border-radius: 14px; padding: 18px 24px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.step-pill { display: flex; align-items: center; gap: 10px; flex: 1; opacity: 0.45; transition: opacity .2s; }
+.step-pill.active { opacity: 1; }
+.step-pill.done   { opacity: 1; }
+.step-pill .num { width: 32px; height: 32px; border-radius: 50%; background: #e2e8f0; color: #475569;
+                   display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;
+                   flex-shrink: 0; }
+.step-pill.active .num { background: var(--vg); color: white; }
+.step-pill.done .num   { background: var(--green); color: white; }
+.step-pill .label { font-size: 13px; font-weight: 600; }
 
-.form-section{background:white;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.04);margin-top:32px;}
-.form-section h2{font-size:24px;margin-bottom:8px;}
-.form-section .sub{color:#64748b;font-size:14px;margin-bottom:24px;}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
-.field{display:flex;flex-direction:column;gap:6px;}
-.field label{font-size:13px;font-weight:600;color:#0f172a;}
-.field input,.field select{padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;font-family:inherit;transition:.15s;}
-.field input:focus,.field select:focus{border-color:#7ab31a;outline:0;}
-.subd-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;}
-.subd-suffix{padding:11px 14px;background:#f1f5f9;border-radius:8px;font-size:14px;color:#64748b;font-family:monospace;}
-.subd-status{font-size:12px;margin-top:4px;min-height:16px;}
-.subd-status.ok{color:#15803d;}
-.subd-status.err{color:#dc2626;}
-.tos{display:flex;gap:10px;align-items:flex-start;margin:16px 0;}
-.tos input{margin-top:3px;}
-.tos label{font-size:13px;color:#475569;line-height:1.5;}
-.tos a{color:#7ab31a;text-decoration:underline;}
-.btn-pay{background:#7ab31a;color:white;border:0;padding:16px 32px;font-size:16px;font-weight:700;border-radius:10px;cursor:pointer;width:100%;margin-top:12px;transition:.15s;}
-.btn-pay:hover{background:#5e8c14;}
-.btn-pay:disabled{background:#94a3b8;cursor:not-allowed;}
-.alert{padding:14px 16px;border-radius:8px;margin-top:16px;font-size:14px;}
-.alert.error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;}
-.alert.success{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
-.alert.info{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;}
+.card { background: var(--card); border-radius: 14px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.card h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.card h2 + p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
 
-.faq{background:white;border-radius:14px;padding:32px;margin-top:32px;}
-.faq h2{margin-bottom:20px;}
-.faq details{border-bottom:1px solid #e2e8f0;padding:14px 0;}
-.faq summary{cursor:pointer;font-weight:600;font-size:15px;color:#0f172a;}
-.faq summary:hover{color:#7ab31a;}
-.faq p{margin-top:10px;color:#475569;font-size:14px;line-height:1.6;}
+/* PASOS — solo visible el activo */
+.step { display: none; }
+.step.active { display: block; }
 
-footer{background:#0f172a;color:#64748b;padding:40px 24px;text-align:center;font-size:13px;margin-top:48px;}
-footer a{color:#7ab31a;text-decoration:none;margin:0 8px;}
+/* CARDS DE PLANES */
+.planes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+.plan-card { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;
+             transition: all .15s; position: relative; }
+.plan-card:hover { border-color: var(--vg); }
+.plan-card.selected { border-color: var(--vg); background: #f0fdf4; box-shadow: 0 4px 12px rgba(109,179,58,.15); }
+.plan-card.selected::before { content: '✓'; position: absolute; top: 10px; right: 14px; color: var(--vg);
+                              font-weight: 700; font-size: 18px; }
+.plan-card .plan-name { font-size: 17px; font-weight: 700; color: var(--dark); }
+.plan-card .plan-sim  { font-size: 12px; color: var(--muted); margin: 3px 0 10px; }
+.plan-card .plan-price { font-size: 24px; font-weight: 800; color: var(--vg); }
+.plan-card .plan-price small { font-size: 12px; color: var(--muted); font-weight: 500; }
+.plan-card ul { list-style: none; margin-top: 12px; }
+.plan-card li { font-size: 12px; color: #475569; padding: 3px 0; }
+.plan-card li::before { content: '✓ '; color: var(--vg); }
 
-@media (max-width:768px){
-  nav{padding:0 16px;}
-  .nav-links a:not(.btn-orange):not(.btn-green-o){display:none;}
-  .row{grid-template-columns:1fr;}
-  .form-section{padding:24px;}
+/* FORM */
+label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin: 14px 0 5px; }
+input[type=text], input[type=email], input[type=password], input[type=tel],
+select, textarea {
+  width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px;
+  font-size: 14px; font-family: inherit;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--vg); outline-offset: -1px; }
+.hint { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.error { color: var(--red); font-size: 12px; margin-top: 4px; display: none; }
+.error.show { display: block; }
+
+/* TOGGLE DOMINIO */
+.toggle-group { display: flex; background: #f1f5f9; border-radius: 10px; padding: 4px; gap: 4px; }
+.toggle-opt { flex: 1; text-align: center; padding: 9px; border-radius: 7px; cursor: pointer; font-size: 13px;
+              font-weight: 600; color: var(--muted); transition: all .15s; }
+.toggle-opt.active { background: white; color: var(--dark); box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+
+/* DNS INSTRUCTIONS */
+.dns-instructions { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 14px;
+                    margin-top: 10px; font-size: 12px; }
+.dns-instructions code { background: white; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace;
+                          color: var(--dark); font-size: 11px; }
+.dns-check-result { margin-top: 8px; padding: 10px; border-radius: 8px; font-size: 12px; display: none; }
+.dns-check-result.ok   { background: #f0fdf4; color: var(--green); border: 1px solid #86efac; display: block; }
+.dns-check-result.err  { background: #fef2f2; color: var(--red);   border: 1px solid #fecaca; display: block; }
+
+/* LOGO DROPZONE */
+.logo-drop { border: 2px dashed var(--border); border-radius: 10px; padding: 30px; text-align: center;
+             cursor: pointer; transition: all .15s; background: #fafbfc; }
+.logo-drop:hover { border-color: var(--vg); background: #f0fdf4; }
+.logo-drop.has-logo { padding: 14px; background: white; }
+.logo-drop img { max-height: 80px; max-width: 200px; }
+.logo-drop .drop-text { color: var(--muted); font-size: 13px; }
+.logo-drop .drop-hint { color: #94a3b8; font-size: 11px; margin-top: 4px; }
+
+/* COLOR PICKERS */
+.color-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.color-input { display: flex; align-items: center; gap: 8px; }
+.color-input input[type=color] { width: 48px; height: 38px; padding: 2px; cursor: pointer; }
+
+/* PREVIEW */
+.preview-box { background: var(--preview-bg, #fafbfc); border-radius: 10px; padding: 16px; margin-top: 12px;
+               border: 1px solid var(--border); text-align: center; }
+.preview-box .preview-logo { max-height: 50px; max-width: 180px; margin-bottom: 8px; }
+.preview-box .preview-btn { display: inline-block; padding: 8px 18px; color: white; border-radius: 6px;
+                             font-size: 12px; font-weight: 600; }
+
+/* RESUMEN */
+.summary-box { background: #f8fafc; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+.summary-box h3 { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.summary-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px;
+               border-bottom: 1px solid var(--border); }
+.summary-row:last-child { border-bottom: none; font-weight: 700; padding-top: 10px; }
+.summary-row .label { color: var(--muted); }
+.summary-row .value { color: var(--dark); font-weight: 500; }
+
+/* BUTTONS */
+.btn-row { display: flex; justify-content: space-between; gap: 10px; margin-top: 28px; }
+.btn { padding: 12px 26px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer;
+       border: none; transition: all .15s; }
+.btn-primary { background: linear-gradient(135deg, var(--vg), var(--vg-dark)); color: white; }
+.btn-primary:hover  { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(109,179,58,.3); }
+.btn-primary:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--border); }
+.btn-ghost:hover { border-color: var(--muted); color: var(--dark); }
+.btn-pay { background: linear-gradient(135deg, var(--vo), #d65d00); color: white; width: 100%; padding: 14px;
+           font-size: 16px; }
+
+/* ALERTS */
+.alert { padding: 12px 16px; border-radius: 8px; font-size: 13px; margin-top: 16px; }
+.alert.error   { background: #fef2f2; color: var(--red); border: 1px solid #fecaca; }
+.alert.success { background: #f0fdf4; color: var(--green); border: 1px solid #86efac; }
+.alert.info    { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+
+footer { background: var(--dark); color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 12px; }
+footer a { color: var(--vg); text-decoration: none; }
+
+@media (max-width: 700px) {
+  .planes-grid { grid-template-columns: 1fr; }
+  .color-row { grid-template-columns: 1fr; }
+  nav { padding: 0 16px; }
+  .hero h1 { font-size: 24px; }
+  .step-pill .label { display: none; }
+  .card { padding: 18px; }
 }
 </style>
-<link rel="stylesheet" href="https://app.validanet.cl/static/vn_nav_shared.css">
-<link rel="stylesheet" href="/styles/a11y.css">
-<script src="/vn-footer.js" defer></script>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<nav class="vn-nav">
-  <a href="https://validanet.cl" class="vn-logo">
-    <img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet" style="height:34px;">
-    <span class="vn-logo-badge">Aula Virtual</span>
-  </a>
-  <div class="vn-links">
-    <a href="/">Inicio</a>
-    <a href="/#features">Funciones</a>
-    <a href="/#pricing">Precios</a>
-    <a href="/addons">Addons</a>
-    <a href="https://connect.validanet.cl/portal/connect">Connect</a>
-    <a href="/demo">Demo</a>
+<nav>
+  <a href="https://validanet.cl/"><img src="https://app.validanet.cl/static/logo-validanet.png" alt="ValidaNet"></a>
+  <div class="nav-links">
+    <a href="https://validanet.cl/">Inicio</a>
+    <a href="https://app.validanet.cl/api/validanet/dashboard/#login">Mi cuenta</a>
   </div>
-  <div class="vn-actions">
-    <a href="https://app.validanet.cl/api/validanet/dashboard/" class="btn-vn-ghost">Ingresar</a>
-    <a href="https://app.validanet.cl/api/validanet/dashboard/#register" class="btn-vn-green">Comenzar gratis →</a>
-  </div>
-  <button class="vn-burger" onclick="var m=this.closest('nav').nextElementSibling;var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o);" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-<div class="vn-mob">
-  <a href="/">🏠 Inicio</a>
-  <a href="/#features">⚡ Funciones</a>
-  <a href="/#pricing">💰 Precios</a>
-  <a href="/addons">🧩 Addons</a>
-  <a href="https://connect.validanet.cl/portal/connect">🌐 Connect</a>
-  <a href="/demo">📅 Demo</a>
-  <div class="vn-mob-sep"></div>
-  <a href="https://app.validanet.cl/api/validanet/dashboard/">🔑 Ingresar</a>
-  <a href="https://app.validanet.cl/api/validanet/dashboard/#register" style="color:#7ab31a;font-weight:700;">🚀 Comenzar gratis</a>
+
+<section class="hero">
+  <h1>Tu Aula Virtual Moodle en minutos</h1>
+  <p>Configura, paga y recibe tu campus listo con tu marca aplicada, plugins instalados y soporte incluido.</p>
+</section>
+
+<div class="wizard">
+
+  <!-- Step indicator -->
+  <div class="steps-bar">
+    <div class="step-pill active" id="pill-1"><div class="num">1</div><div class="label">Plan y dominio</div></div>
+    <div class="step-pill"        id="pill-2"><div class="num">2</div><div class="label">Cuenta y marca</div></div>
+    <div class="step-pill"        id="pill-3"><div class="num">3</div><div class="label">Confirmar y pagar</div></div>
+  </div>
+
+  <!-- ═══════ STEP 1 — Plan + Dominio + Idioma + TZ ═══════ -->
+  <div class="step active" id="step-1">
+    <div class="card">
+      <h2>Elige tu plan</h2>
+      <p>Sin límite de alumnos registrados. El límite es la cantidad de usuarios conectados al mismo tiempo.</p>
+      <div class="planes-grid" id="planes-grid">
+        <div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);">Cargando planes…</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <h2>Dirección web del aula</h2>
+      <p>Puedes usar un subdominio Validanet (más rápido) o tu propio dominio (más profesional).</p>
+      <div class="toggle-group">
+        <div class="toggle-opt active" data-domain="subdomain" onclick="setDomainType('subdomain')">
+          🌐 Subdominio Validanet<br><small style="font-weight:400;color:#94a3b8;">tu-marca.aula.validanet.cl</small>
+        </div>
+        <div class="toggle-opt" data-domain="custom" onclick="setDomainType('custom')">
+          🏷️ Mi propio dominio<br><small style="font-weight:400;color:#94a3b8;">aula.tuempresa.cl</small>
+        </div>
+      </div>
+
+      <div id="domain-subdomain" style="margin-top:14px;">
+        <label>Elige tu subdominio</label>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <input type="text" id="subdomain-pref" placeholder="mi-otec" style="flex:1;">
+          <span style="color:var(--muted);font-size:14px;">.aula.validanet.cl</span>
+        </div>
+        <div class="hint" id="subdomain-status"></div>
+      </div>
+
+      <div id="domain-custom" style="margin-top:14px;display:none;">
+        <label>Tu dominio</label>
+        <input type="text" id="custom-domain" placeholder="aula.tuempresa.cl">
+        <button class="btn btn-ghost" style="margin-top:8px;padding:8px 14px;font-size:12px;" onclick="verifyDNS()">Verificar DNS</button>
+        <div id="dns-result" class="dns-check-result"></div>
+        <div id="dns-instructions" class="dns-instructions" style="display:none;"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <h2>Idioma y zona horaria</h2>
+      <p>Tu Moodle se configurará automáticamente en estos valores.</p>
+      <div class="color-row">
+        <div>
+          <label>Idioma del Moodle</label>
+          <select id="language"></select>
+        </div>
+        <div>
+          <label>Zona horaria</label>
+          <select id="timezone"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <div></div>
+      <button class="btn btn-primary" onclick="gotoStep(2)" id="btn-next-1">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ═══════ STEP 2 — Cuenta + Branding ═══════ -->
+  <div class="step" id="step-2">
+    <div class="card">
+      <h2>Crea tu cuenta Validanet</h2>
+      <p>Con estos datos accederás a tu panel y a la administración de tu aula.</p>
+      <div class="color-row">
+        <div>
+          <label>Email</label>
+          <input type="email" id="email" required>
+          <div class="error" id="err-email"></div>
+        </div>
+        <div>
+          <label>Contraseña</label>
+          <input type="password" id="password" placeholder="Mínimo 8 caracteres" required>
+          <div class="error" id="err-password"></div>
+        </div>
+      </div>
+      <div class="color-row">
+        <div>
+          <label>Nombre del contacto</label>
+          <input type="text" id="nombre" required>
+        </div>
+        <div>
+          <label>Teléfono <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
+          <input type="tel" id="phone" placeholder="+56 9 1234 5678">
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <h2>Datos de tu organización</h2>
+      <p>Aparecerán en tu aula y certificados.</p>
+      <label>Nombre de la organización</label>
+      <input type="text" id="org-name" placeholder="OTEC Innovación SpA" required>
+      <div class="color-row">
+        <div>
+          <label>Marca corta <span style="font-weight:400;color:#94a3b8;">(opcional, para títulos)</span></label>
+          <input type="text" id="brand-name" placeholder="OTEC Innovación">
+        </div>
+        <div>
+          <label>RUT <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
+          <input type="text" id="org-rut" placeholder="76.123.456-7">
+        </div>
+      </div>
+      <label>Giro <span style="font-weight:400;color:#94a3b8;">(opcional)</span></label>
+      <input type="text" id="giro" placeholder="Capacitación SENCE">
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <h2>Identidad visual</h2>
+      <p>Tu logo y colores se aplicarán automáticamente al aula. Puedes cambiarlos después desde el panel.</p>
+
+      <label>Logo de tu organización</label>
+      <div class="logo-drop" id="logo-drop" onclick="document.getElementById('logo-file').click()">
+        <div id="logo-empty">
+          <div style="font-size:32px;margin-bottom:6px;">📁</div>
+          <div class="drop-text">Haz clic para subir tu logo</div>
+          <div class="drop-hint">PNG, JPG, SVG o WEBP — máx. 2 MB · Si no subes uno, usaremos un placeholder Validanet</div>
+        </div>
+        <div id="logo-preview-wrap" style="display:none;">
+          <img id="logo-preview" src="" alt="Tu logo">
+          <div style="margin-top:8px;font-size:11px;color:var(--muted);">Haz clic para cambiar</div>
+        </div>
+      </div>
+      <input type="file" id="logo-file" style="display:none;" accept="image/png,image/jpeg,image/svg+xml,image/webp" onchange="uploadLogo(this.files[0])">
+      <div class="error" id="err-logo"></div>
+
+      <label>Favicon de tu organización</label>
+      <div class="logo-drop" id="favicon-drop" onclick="document.getElementById('favicon-file').click()">
+        <div id="favicon-empty">
+          <div style="font-size:32px;margin-bottom:6px;">🔖</div>
+          <div class="drop-text">Haz clic para subir tu favicon</div>
+          <div class="drop-hint">PNG o ICO cuadrado (ideal 256×256) — máx. 1 MB · Es el ícono de la pestaña del navegador</div>
+        </div>
+        <div id="favicon-preview-wrap" style="display:none;">
+          <img id="favicon-preview" src="" alt="Tu favicon" style="max-height:48px;">
+          <div style="margin-top:8px;font-size:11px;color:var(--muted);">Haz clic para cambiar</div>
+        </div>
+      </div>
+      <input type="file" id="favicon-file" style="display:none;" accept="image/png,image/x-icon,image/vnd.microsoft.icon,image/webp" onchange="uploadFavicon(this.files[0])">
+      <div class="error" id="err-favicon"></div>
+
+      <label>Colores de marca</label>
+      <div class="color-row">
+        <div>
+          <div class="color-input">
+            <input type="color" id="primary-color" value="#6db33a" oninput="updatePreview()">
+            <input type="text"  id="primary-color-hex" value="#6db33a" oninput="syncColorHex('primary')">
+          </div>
+          <div class="hint">Primario (botones, header)</div>
+        </div>
+        <div>
+          <div class="color-input">
+            <input type="color" id="secondary-color" value="#5a9a28" oninput="updatePreview()">
+            <input type="text"  id="secondary-color-hex" value="#5a9a28" oninput="syncColorHex('secondary')">
+          </div>
+          <div class="hint">Secundario (hover, enlaces)</div>
+        </div>
+      </div>
+
+      <div class="preview-box" id="preview-box">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Vista previa de tu aula:</div>
+        <img id="preview-logo" class="preview-logo" src="https://app.validanet.cl/static/logo-validanet.png">
+        <div>
+          <a class="preview-btn" id="preview-btn" style="background:#6db33a;">Entrar al aula</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="gotoStep(1)">← Atrás</button>
+      <button class="btn btn-primary" onclick="gotoStep(3)" id="btn-next-2">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ═══════ STEP 3 — Confirmar + Pagar ═══════ -->
+  <div class="step" id="step-3">
+    <div class="card">
+      <h2>Revisa tu pedido</h2>
+      <p>Una vez confirmado el pago, <strong>puedes cerrar esta ventana</strong>. Crearemos y
+         brandearemos tu plataforma automáticamente y te enviaremos por <strong>email las
+         credenciales de acceso</strong> cuando el proceso esté listo (normalmente en unos minutos).</p>
+
+      <div class="summary-box" id="summary"></div>
+
+      <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-weight:400;">
+        <input type="checkbox" id="accept-terms" style="width:auto;margin-top:3px;">
+        <span style="font-size:13px;color:#475569;">
+          Acepto los <a href="https://validanet.cl/terminos" target="_blank" style="color:var(--vg);">términos de servicio</a> y la
+          <a href="https://app.validanet.cl/politica-privacidad-aula" target="_blank" style="color:var(--vg);">política de privacidad</a>.
+        </span>
+      </label>
+
+      <button class="btn btn-pay" id="btn-pay" style="margin-top:18px;" disabled onclick="submitOrder()">
+        Pagar con Flow →
+      </button>
+
+      <div id="result"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="gotoStep(2)">← Atrás</button>
+      <div></div>
+    </div>
+  </div>
+
 </div>
 
-<section id="main-content" class="hero">
-  <span class="tag">Moodle gestionado · Hosting incluido</span>
-  <h1>Tu <span>Aula Virtual Moodle</span> lista en minutos</h1>
-  <p>Para OTECs, universidades, CFT, IP, consultoras y áreas de capacitación. Hosting dedicado, backups diarios, 99.9% uptime, SSL, soporte chileno. Sin servidor propio, sin instalación, sin DevOps.</p>
-  <div class="cl-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-    Protegido por CloudLinux LVE · Aislamiento de recursos por aula
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2 style="font-size:24px;text-align:center;margin-bottom:8px;">Elige tu plan</h2>
-    <p style="text-align:center;color:#64748b;font-size:14px;">Todos los planes incluyen hosting, SSL, backups, soporte chileno por email. Cancela cuando quieras.</p>
-    <div class="planes" id="planes">
-      <!-- Render dinámico desde /api/aulas/planes -->
-    </div>
-
-    <div class="form-section">
-      <h2>Datos de contacto y configuración</h2>
-      <p class="sub">Te enviaremos tus credenciales a este email cuando tu aula esté lista.</p>
-
-      <form id="form" onsubmit="return submitForm(event)">
-        <div class="row">
-          <div class="field">
-            <label for="f_nombre">Tu nombre</label>
-            <input type="text" id="f_nombre" name="nombre" required minlength="2" placeholder="Juan Pérez">
-          </div>
-          <div class="field">
-            <label for="f_org_name">Nombre de tu organización</label>
-            <input type="text" id="f_org_name" name="org_name" required minlength="2" placeholder="Mi OTEC SpA">
-          </div>
-        </div>
-        <div class="row">
-          <div class="field">
-            <label for="f_email">Email</label>
-            <input type="email" id="f_email" name="email" required placeholder="contacto@miotec.cl">
-          </div>
-          <div class="field">
-            <label for="f_phone">Teléfono (opcional)</label>
-            <input type="tel" id="f_phone" name="phone" placeholder="+56 9 1234 5678">
-          </div>
-        </div>
-        <div class="field">
-          <label>Subdominio para tu aula</label>
-          <div class="subd-row">
-            <input type="text" name="subdomain_pref" id="subd-input" required minlength="3" maxlength="32" pattern="[a-zA-Z0-9-]+" placeholder="mi-otec">
-            <div class="subd-suffix">.aulas.validanet.cl</div>
-          </div>
-          <div class="subd-status" id="subd-status"></div>
-        </div>
-
-        <div class="tos">
-          <input type="checkbox" id="tos" required>
-          <label for="tos">Acepto los <a href="https://connect.validanet.cl/legal/terminos" target="_blank">términos y condiciones</a> y la <a href="https://connect.validanet.cl/legal/privacidad" target="_blank">política de privacidad</a> (Ley 21.719).</label>
-        </div>
-
-        <button type="submit" class="btn-pay" id="btn-pay" disabled>Selecciona un plan para continuar</button>
-        <div id="result"></div>
-      </form>
-    </div>
-
-    <div style="background:linear-gradient(135deg,#1e293b,#0f172a);color:white;border-radius:14px;padding:32px;margin-top:32px;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ab31a" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-        <h2 style="font-size:22px;margin:0;color:white;">CloudLinux LVE — tu aula con recursos garantizados</h2>
-      </div>
-      <p style="color:#cbd5e1;font-size:14px;margin-bottom:14px;line-height:1.7;">A diferencia de hostings compartidos donde un vecino puede consumir toda la CPU del servidor, en ValidaNet cada aula tiene <strong>CPU, RAM, procesos e I/O aislados</strong> mediante CloudLinux LVE. Si una OTEC vecina recibe un peak de tráfico, tu aula sigue funcionando al 100% de la capacidad que pagaste.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
-          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">CPU dedicada</div>
-          <div style="font-size:14px;color:white;margin-top:4px;">Cada aula con su % asignado, sin contención</div>
-        </div>
-        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
-          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">RAM aislada</div>
-          <div style="font-size:14px;color:white;margin-top:4px;">Memoria propia, no compartida entre aulas</div>
-        </div>
-        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
-          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">I/O priorizado</div>
-          <div style="font-size:14px;color:white;margin-top:4px;">Disco rápido sin esperas por otras aulas</div>
-        </div>
-        <div style="background:rgba(122,179,26,.1);border:1px solid rgba(122,179,26,.3);border-radius:8px;padding:14px;">
-          <div style="font-size:11px;color:#94a3b8;text-transform:uppercase;font-weight:700;">Procesos limitados</div>
-          <div style="font-size:14px;color:white;margin-top:4px;">Un fork-bomb no derrumba el servidor</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="faq">
-      <h2>Preguntas frecuentes</h2>
-      <details>
-        <summary>¿Necesito tener cuenta en ValidaNet para comprar?</summary>
-        <p>No. Esta compra crea tu cuenta automáticamente. Recibirás un email con las credenciales de tu Aula Virtual y un link para acceder al panel de ValidaNet (donde podrás contratar otros servicios como certificados, integración SENCE, etc.).</p>
-      </details>
-      <details>
-        <summary>¿Cuánto demora la creación del aula?</summary>
-        <p>Entre 5 y 15 minutos para casos típicos. Recibirás un email con tus credenciales en cuanto esté lista. Si por capacidad temporal del servidor entras a lista de espera, no se cobra nada y te avisamos cuando se libere cupo.</p>
-      </details>
-      <details>
-        <summary>¿Ya tengo un Moodle anterior, puedo usar éste también?</summary>
-        <p>Sí. Esta aula es independiente. Puedes mantener tu Moodle anterior y usar éste para nuevos cursos, o migrar gradualmente. Si quieres migrar datos del anterior, escríbenos a soporte@norteduc.cl — es un servicio aparte.</p>
-      </details>
-      <details>
-        <summary>¿Qué incluye el hosting?</summary>
-        <p>Servidor dedicado en Europa con CloudLinux LVE para aislamiento de recursos, SSL gratuito vía Cloudflare, backups automáticos diarios, soporte por email y WhatsApp en horario hábil. En el plan Business: SLA 99.95% y soporte 24/7.</p>
-      </details>
-      <details>
-        <summary>¿Qué es CloudLinux LVE y por qué importa?</summary>
-        <p>Es la tecnología que aísla los recursos (CPU, RAM, procesos, I/O) de cada aula a nivel del kernel. En hostings tradicionales, si un vecino satura el servidor, todos los demás lo sufren ("noisy neighbor"). Con LVE, cada aula tiene su cuota garantizada — el plan Starter recibe 100% de CPU y 1 GB de RAM dedicada, Pro 200% / 2 GB, Business 400% / 4 GB. Es lo que usan los proveedores de hosting serios como GoDaddy, Hostinger y Namecheap.</p>
-      </details>
-      <details>
-        <summary>¿Puedo cambiar de plan después?</summary>
-        <p>Sí, puedes hacer upgrade en cualquier momento desde tu dashboard ValidaNet. Downgrade requiere que tengas la cantidad de estudiantes permitida en el nuevo plan.</p>
-      </details>
-      <details>
-        <summary>¿Soy OTEC, universidad, CFT, IP, empresa o relator?</summary>
-        <p>El Aula Virtual funciona para cualquier institución educativa o equipo que necesite un Moodle gestionado. No estás limitado a OTECs.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
 <footer>
-  <div>ValidaNet · NortEduc Edtech SpA · RUT 76.624.932-9 · Chile</div>
-  <div style="margin-top:12px;">
-    <a href="https://validanet.cl">Home</a> ·
-    <a href="https://validanet.cl/para-instituciones">Para OTECs</a> ·
-    <a href="https://validanet.cl/blog/">Blog</a> ·
-    <a href="https://connect.validanet.cl/legal/terminos">Términos</a> · <a href="/accesibilidad.html">Accesibilidad</a> ·
-    <a href="https://connect.validanet.cl/legal/privacidad">Privacidad</a> ·
-    <a href="mailto:contacto@norteduc.cl">soporte@norteduc.cl</a>
-  </div>
+  <p>© 2026 Norteduc EdTech SpA · RUT 76.624.932-9 · <a href="mailto:contacto@validanet.cl">contacto@validanet.cl</a></p>
 </footer>
 
 <script>
-let selectedPlan = null;
-let subdomainOk = false;
-let checkTimer = null;
+'use strict';
+const API = 'https://app.validanet.cl';
+const LS_KEY = 'vn_compra_aula_state_v1';
 
-async function loadPlanes(){
-  try{
-    const r = await fetch('https://app.validanet.cl/api/aulas/planes');
-    const data = await r.json();
-    const cont = document.getElementById('planes');
-    const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    data.planes.forEach((p,i)=>{
-      const popular = p.slug === 'pro' ? 'popular' : '';
-      const card = document.createElement('div');
-      card.className = `plan ${popular}`;
-      card.dataset.slug = p.slug;
-      card.innerHTML = `
-        <h3>${esc(p.name.replace('Aula Virtual ',''))}</h3>
-        <div class="estudiantes">${esc(p.max_estudiantes)} estudiantes</div>
-        <div class="price">$${esc(Number(p.price_clp).toLocaleString('es-CL'))}<small>/mes</small></div>
-        <ul class="features">
-          ${p.slug === 'starter' ? `
-            <li>Hasta <strong>200 matriculados</strong> · ~30 concurrentes</li>
-            <li>5 GB almacenamiento</li>
-            <li>Moodle 4.x última versión</li>
-            <li>Subdominio gratuito + SSL</li>
-            <li>Backups diarios</li>
-            <li>Soporte por email (48h)</li>
-            <li><strong>CloudLinux LVE</strong>: 100% CPU · 1 GB RAM</li>
-          ` : p.slug === 'pro' ? `
-            <li>Hasta <strong>1.000 matriculados</strong> · ~150 concurrentes</li>
-            <li>20 GB almacenamiento</li>
-            <li>Todo lo de Starter +</li>
-            <li>Dominio propio opcional</li>
-            <li>CDN para velocidad</li>
-            <li>Soporte WhatsApp prioritario (24h)</li>
-            <li><strong>CloudLinux LVE</strong>: 200% CPU · 2 GB RAM</li>
-          ` : `
-            <li>Hasta <strong>3.000 matriculados</strong> · ~400 concurrentes</li>
-            <li>50 GB almacenamiento</li>
-            <li>Todo lo de Pro +</li>
-            <li>White-label completo</li>
-            <li>Backups cada 6 horas</li>
-            <li>Soporte prioritario (4h hábiles)</li>
-            <li>SLA 99.95% · <strong>CloudLinux LVE</strong>: 400% CPU · 4 GB RAM</li>
-          `}
-        </ul>
-      `;
-      card.onclick = ()=> selectPlan(p.slug);
-      cont.appendChild(card);
-    });
-  }catch(e){
-    document.getElementById('planes').innerHTML = '<div class="alert error">Error cargando planes. Recarga la página.</div>';
+// Estado global del wizard
+let state = {
+  step: 1,
+  plan: null,
+  domain_type: 'subdomain',
+  subdomain_pref: '',
+  custom_domain: '',
+  dns_ok: false,
+  language: 'es',
+  timezone: 'America/Santiago',
+  country: null,
+  // Cuenta
+  email: '', password: '', nombre: '', phone: '',
+  org_name: '', brand_name: '', org_rut: '', giro: '',
+  // Branding
+  logo_url: '', favicon_url: '', primary_color: '#6db33a', secondary_color: '#5a9a28',
+};
+
+let PLANS = [], LANGUAGES = [], TIMEZONES = [];
+
+// ── PERSISTENCIA ─────────────────────────────────────────
+function saveState(){ try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e){} }
+function loadState(){
+  try {
+    const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    Object.assign(state, s);
+    // Restaurar inputs
+    if(state.subdomain_pref) document.getElementById('subdomain-pref').value = state.subdomain_pref;
+    if(state.custom_domain)  document.getElementById('custom-domain').value = state.custom_domain;
+    if(state.email)          document.getElementById('email').value = state.email;
+    if(state.password)       document.getElementById('password').value = state.password;
+    if(state.nombre)         document.getElementById('nombre').value = state.nombre;
+    if(state.phone)          document.getElementById('phone').value = state.phone;
+    if(state.org_name)       document.getElementById('org-name').value = state.org_name;
+    if(state.brand_name)     document.getElementById('brand-name').value = state.brand_name;
+    if(state.org_rut)        document.getElementById('org-rut').value = state.org_rut;
+    if(state.giro)           document.getElementById('giro').value = state.giro;
+    if(state.primary_color)  { document.getElementById('primary-color').value = state.primary_color;
+                               document.getElementById('primary-color-hex').value = state.primary_color; }
+    if(state.secondary_color){ document.getElementById('secondary-color').value = state.secondary_color;
+                                document.getElementById('secondary-color-hex').value = state.secondary_color; }
+    if(state.logo_url)       { document.getElementById('logo-preview').src = state.logo_url;
+                                document.getElementById('logo-empty').style.display = 'none';
+                                document.getElementById('logo-preview-wrap').style.display = 'block';
+                                document.getElementById('logo-drop').classList.add('has-logo'); }
+    if(state.domain_type === 'custom') setDomainType('custom');
+  } catch(e){}
+}
+
+// ── STEP NAVIGATION ──────────────────────────────────────
+function gotoStep(n){
+  // Validar antes de avanzar
+  if(n > state.step){
+    if(!validateStep(state.step)) return;
   }
-}
-
-function selectPlan(slug){
-  selectedPlan = slug;
-  document.querySelectorAll('.plan').forEach(c=>{
-    c.classList.toggle('selected', c.dataset.slug === slug);
+  state.step = n;
+  saveState();
+  ['1','2','3'].forEach(i => {
+    document.getElementById('step-'+i).classList.toggle('active', i == n);
+    const pill = document.getElementById('pill-'+i);
+    pill.classList.remove('active','done');
+    if(i < n) pill.classList.add('done');
+    if(i == n) pill.classList.add('active');
   });
-  updateBtn();
+  if(n == 3) buildSummary();
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
-document.getElementById('subd-input').addEventListener('input', e=>{
-  clearTimeout(checkTimer);
-  const v = e.target.value;
-  const st = document.getElementById('subd-status');
-  if(v.length < 3){ st.textContent = ''; subdomainOk = false; updateBtn(); return; }
-  st.textContent = 'Verificando...';
-  st.className = 'subd-status';
-  checkTimer = setTimeout(async ()=>{
-    try{
-      const r = await fetch('https://app.validanet.cl/api/aulas/check-subdomain?s=' + encodeURIComponent(v));
-      const data = await r.json();
-      e.target.value = data.subdomain;
-      if(data.available){
-        st.textContent = `✓ Disponible — ${data.preview_url}`;
-        st.className = 'subd-status ok';
-        subdomainOk = true;
-      }else{
-        st.textContent = `✗ No disponible (intenta otro o agregaremos sufijo único)`;
-        st.className = 'subd-status err';
-        subdomainOk = false;
+function validateStep(s){
+  if(s == 1){
+    if(!state.plan){ alert('Elige un plan'); return false; }
+    if(state.domain_type === 'subdomain'){
+      state.subdomain_pref = document.getElementById('subdomain-pref').value.trim();
+      if(!state.subdomain_pref || state.subdomain_pref.length < 3){
+        alert('Ingresa un subdominio (mínimo 3 caracteres)'); return false;
       }
-    }catch{ st.textContent = ''; subdomainOk = false; }
-    updateBtn();
+    } else {
+      state.custom_domain = document.getElementById('custom-domain').value.trim();
+      if(!state.custom_domain){ alert('Ingresa tu dominio'); return false; }
+      if(!state.dns_ok){
+        if(!confirm('El DNS de tu dominio aún no apunta correctamente al servidor. ¿Querés continuar igual? Te enviaremos las instrucciones por email y verificaremos cada 2 min — cuando esté listo se provisionará automáticamente.'))
+          return false;
+      }
+    }
+    state.language = document.getElementById('language').value;
+    state.timezone = document.getElementById('timezone').value;
+  }
+  if(s == 2){
+    const email = document.getElementById('email').value.trim();
+    const pwd = document.getElementById('password').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const orgName = document.getElementById('org-name').value.trim();
+    const errEmail = document.getElementById('err-email');
+    const errPwd = document.getElementById('err-password');
+    errEmail.classList.remove('show'); errPwd.classList.remove('show');
+    if(!email.includes('@')){ errEmail.textContent = 'Email inválido'; errEmail.classList.add('show'); return false; }
+    if(pwd.length < 8){ errPwd.textContent = 'Mínimo 8 caracteres'; errPwd.classList.add('show'); return false; }
+    if(!nombre){ alert('Ingresa tu nombre'); return false; }
+    if(!orgName){ alert('Ingresa el nombre de la organización'); return false; }
+    state.email = email; state.password = pwd; state.nombre = nombre; state.org_name = orgName;
+    state.phone = document.getElementById('phone').value.trim();
+    state.brand_name = document.getElementById('brand-name').value.trim() || orgName;
+    state.org_rut = document.getElementById('org-rut').value.trim();
+    state.giro = document.getElementById('giro').value.trim();
+    state.primary_color = document.getElementById('primary-color').value;
+    state.secondary_color = document.getElementById('secondary-color').value;
+  }
+  saveState();
+  return true;
+}
+
+// ── DOMAIN TYPE ──────────────────────────────────────────
+function setDomainType(t){
+  state.domain_type = t;
+  document.querySelectorAll('.toggle-opt').forEach(el => {
+    el.classList.toggle('active', el.dataset.domain === t);
+  });
+  document.getElementById('domain-subdomain').style.display = (t === 'subdomain') ? 'block' : 'none';
+  document.getElementById('domain-custom').style.display    = (t === 'custom')    ? 'block' : 'none';
+  saveState();
+}
+
+// ── DNS VERIFY ────────────────────────────────────────────
+async function verifyDNS(){
+  const d = document.getElementById('custom-domain').value.trim().toLowerCase();
+  const result = document.getElementById('dns-result');
+  const inst = document.getElementById('dns-instructions');
+  result.className = 'dns-check-result';
+  if(!d) { result.className = 'dns-check-result err'; result.textContent = 'Ingresa un dominio primero'; return; }
+  result.textContent = 'Verificando…'; result.className = 'dns-check-result info';
+  result.style.display = 'block';
+  try {
+    const r = await fetch(`${API}/api/aulas/verify-dns?domain=${encodeURIComponent(d)}`);
+    const data = await r.json();
+    if(!data.ok && !data.instructions){
+      result.className = 'dns-check-result err';
+      result.textContent = '❌ ' + (data.detail || 'Error verificando');
+      state.dns_ok = false; return;
+    }
+    if(data.dns_ok){
+      result.className = 'dns-check-result ok';
+      result.textContent = '✅ DNS configurado correctamente. Listo para comprar.';
+      state.dns_ok = true;
+      inst.style.display = 'none';
+    } else {
+      result.className = 'dns-check-result err';
+      result.textContent = '⚠ Tu dominio aún no apunta al servidor. Configura uno de los registros DNS abajo y vuelve a verificar:';
+      state.dns_ok = false;
+      const inst_data = data.instructions || {};
+      if(inst_data.options && inst_data.options.length){
+        inst.innerHTML = inst_data.options.map(o => `
+          <div style="margin-bottom:10px;">
+            <strong>${o.label}</strong><br>
+            Tipo: <code>${o.type}</code> · Nombre: <code>${o.name}</code> · Valor: <code>${o.value}</code> · TTL: <code>${o.ttl}</code>
+          </div>
+        `).join('');
+        inst.style.display = 'block';
+      }
+    }
+  } catch(e){
+    result.className = 'dns-check-result err';
+    result.textContent = '❌ Error: ' + e.message;
+    state.dns_ok = false;
+  }
+  saveState();
+}
+
+// Auto-check subdomain disponibilidad
+let subdomainTimer = null;
+document.getElementById('subdomain-pref').addEventListener('input', e => {
+  clearTimeout(subdomainTimer);
+  const v = e.target.value.trim().toLowerCase();
+  const st = document.getElementById('subdomain-status');
+  if(v.length < 3){ st.textContent = ''; return; }
+  st.textContent = 'Comprobando disponibilidad…';
+  subdomainTimer = setTimeout(async () => {
+    try {
+      const r = await fetch(`${API}/api/aulas/check-subdomain?s=${encodeURIComponent(v)}`);
+      const d = await r.json();
+      if(d.available){
+        st.textContent = `✓ ${d.subdomain}.aula.validanet.cl disponible`;
+        st.style.color = 'var(--green)';
+      } else {
+        st.textContent = `✗ No disponible — vamos a sugerir uno similar al continuar`;
+        st.style.color = 'var(--amber)';
+      }
+    } catch(e){ st.textContent = ''; }
   }, 400);
 });
 
-function updateBtn(){
-  const btn = document.getElementById('btn-pay');
-  if(!selectedPlan){
-    btn.disabled = true;
-    btn.textContent = 'Selecciona un plan para continuar';
-    return;
+// ── LOGO UPLOAD ──────────────────────────────────────────
+async function uploadLogo(file){
+  if(!file) return;
+  const err = document.getElementById('err-logo');
+  err.classList.remove('show');
+  if(file.size > 2*1024*1024){
+    err.textContent = 'Archivo > 2 MB. Comprime el logo y vuelve a subir.';
+    err.classList.add('show'); return;
   }
-  btn.disabled = false;
-  btn.textContent = `Pagar y crear mi Aula Virtual`;
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const r = await fetch(`${API}/api/aulas/upload-logo`, { method:'POST', body: fd });
+    const d = await r.json();
+    if(!r.ok || !d.logo_url){
+      err.textContent = '❌ ' + (d.detail || 'No se pudo subir el logo');
+      err.classList.add('show'); return;
+    }
+    state.logo_url = d.logo_url;
+    document.getElementById('logo-preview').src = d.logo_url;
+    document.getElementById('preview-logo').src = d.logo_url;
+    document.getElementById('logo-empty').style.display = 'none';
+    document.getElementById('logo-preview-wrap').style.display = 'block';
+    document.getElementById('logo-drop').classList.add('has-logo');
+    saveState();
+  } catch(e){
+    err.textContent = '❌ Error: ' + e.message;
+    err.classList.add('show');
+  }
 }
 
-async function submitForm(e){
-  e.preventDefault();
-  if(!selectedPlan) return false;
-  const form = e.target;
+// ── FAVICON UPLOAD ───────────────────────────────────────
+async function uploadFavicon(file){
+  if(!file) return;
+  const err = document.getElementById('err-favicon');
+  err.classList.remove('show');
+  if(file.size > 1*1024*1024){
+    err.textContent = 'Archivo > 1 MB. Usa un favicon más pequeño.';
+    err.classList.add('show'); return;
+  }
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const r = await fetch(`${API}/api/aulas/upload-favicon`, { method:'POST', body: fd });
+    const d = await r.json();
+    if(!r.ok || !d.favicon_url){
+      err.textContent = '❌ ' + (d.detail || 'No se pudo subir el favicon');
+      err.classList.add('show'); return;
+    }
+    state.favicon_url = d.favicon_url;
+    document.getElementById('favicon-preview').src = d.favicon_url;
+    document.getElementById('favicon-empty').style.display = 'none';
+    document.getElementById('favicon-preview-wrap').style.display = 'block';
+    saveState();
+  } catch(e){
+    err.textContent = '❌ Error: ' + e.message;
+    err.classList.add('show');
+  }
+}
+
+// ── COLOR SYNC ───────────────────────────────────────────
+function syncColorHex(which){
+  const txt = document.getElementById(which + '-color-hex').value;
+  if(/^#?[0-9A-Fa-f]{6}$/.test(txt)){
+    const norm = txt.startsWith('#') ? txt : '#' + txt;
+    document.getElementById(which + '-color').value = norm;
+    updatePreview();
+  }
+}
+function updatePreview(){
+  const p = document.getElementById('primary-color').value;
+  const s = document.getElementById('secondary-color').value;
+  document.getElementById('primary-color-hex').value = p;
+  document.getElementById('secondary-color-hex').value = s;
+  document.getElementById('preview-btn').style.background = p;
+  document.getElementById('preview-box').style.setProperty('--preview-bg', p + '10');
+  state.primary_color = p; state.secondary_color = s;
+  saveState();
+}
+
+// ── BUILD SUMMARY ────────────────────────────────────────
+function buildSummary(){
+  const p = PLANS.find(x => x.slug === state.plan) || {};
+  const dom = state.domain_type === 'subdomain'
+              ? `${state.subdomain_pref}.aula.validanet.cl`
+              : state.custom_domain;
+  const langLabel = (LANGUAGES.find(l => l.code === state.language) || {}).label || state.language;
+  const tzLabel = (TIMEZONES.find(t => t.code === state.timezone) || {}).label || state.timezone;
+  const rows = [
+    ['Plan', `${p.name || state.plan} (${p.max_simultaneos || '?'} simultáneos)`],
+    ['Dirección', dom],
+    ['Idioma', langLabel],
+    ['Zona horaria', tzLabel],
+    ['Email', state.email],
+    ['Organización', state.org_name],
+    ['Logo', state.logo_url ? '✓ Cargado' : 'Placeholder Validanet'],
+    ['Colores', `<span style="display:inline-block;width:12px;height:12px;background:${state.primary_color};border-radius:50%;vertical-align:middle;"></span> ${state.primary_color}  ·  <span style="display:inline-block;width:12px;height:12px;background:${state.secondary_color};border-radius:50%;vertical-align:middle;"></span> ${state.secondary_color}`],
+    ['Total a pagar', '<strong style="color:var(--vg);">CLP $' + Math.round(p.price_clp || 0).toLocaleString('es-CL') + '/mes</strong>'],
+  ];
+  document.getElementById('summary').innerHTML = '<h3>Resumen</h3>' +
+    rows.map(r => `<div class="summary-row"><span class="label">${r[0]}</span><span class="value">${r[1]}</span></div>`).join('');
+}
+
+document.getElementById('accept-terms').addEventListener('change', e => {
+  document.getElementById('btn-pay').disabled = !e.target.checked;
+});
+
+// ── SUBMIT ───────────────────────────────────────────────
+async function submitOrder(){
   const btn = document.getElementById('btn-pay');
   const result = document.getElementById('result');
-  btn.disabled = true; btn.textContent = 'Procesando...';
+  btn.disabled = true; btn.textContent = 'Procesando…';
   result.innerHTML = '';
-  try{
-    const body = {
-      email: form.email.value.trim(),
-      nombre: form.nombre.value.trim(),
-      org_name: form.org_name.value.trim(),
-      plan: selectedPlan,
-      subdomain_pref: form.subdomain_pref.value.trim(),
-      phone: form.phone.value.trim() || null,
-      accept_terms: true,
-    };
-    const r = await fetch('https://app.validanet.cl/api/aulas/comprar-publico', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(body),
+  const body = {
+    email:          state.email,
+    password:       state.password,
+    nombre:         state.nombre,
+    org_name:       state.org_name,
+    plan:           state.plan,
+    domain_type:    state.domain_type,
+    subdomain_pref: state.domain_type === 'subdomain' ? state.subdomain_pref : null,
+    custom_domain:  state.domain_type === 'custom'    ? state.custom_domain  : null,
+    language:       state.language,
+    timezone:       state.timezone,
+    country:        state.country,
+    phone:          state.phone || null,
+    logo_url:       state.logo_url || null,
+    favicon_url:    state.favicon_url || null,
+    primary_color:  state.primary_color,
+    secondary_color: state.secondary_color,
+    brand_name:     state.brand_name || state.org_name,
+    org_rut:        state.org_rut || null,
+    giro:           state.giro || null,
+    accept_terms:   true,
+  };
+  try {
+    const r = await fetch(`${API}/api/aulas/comprar-publico`, {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body),
     });
-    const data = await r.json();
-    const escMsg = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const d = await r.json();
+    const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     if(!r.ok){
-      result.innerHTML = `<div class="alert error">${escMsg(data.detail || 'Error procesando solicitud')}</div>`;
-      btn.disabled = false; updateBtn();
-      return false;
+      result.innerHTML = `<div class="alert error">${esc(d.detail || 'Error procesando solicitud')}</div>`;
+      btn.disabled = false; btn.textContent = 'Pagar con Flow →'; return;
     }
-    if(data.waitlist){
-      result.innerHTML = `<div class="alert info"><strong>Estás en lista de espera (posición ${escMsg(data.position)}).</strong> Nuestro servidor está temporalmente al máximo. No se cobró nada — te enviaremos un email cuando se libere cupo.</div>`;
-      btn.textContent = 'En lista de espera';
-      return false;
+    if(d.waitlist){
+      result.innerHTML = `<div class="alert info"><strong>Lista de espera (posición ${esc(d.position)}).</strong> No se cobró nada — te avisaremos por email cuando se libere cupo.</div>`;
+      btn.textContent = 'En lista de espera'; return;
     }
-    if(data.payment_url){
-      // Validar que payment_url apunte a Flow.cl antes de redirigir (anti open-redirect)
-      if (/^https:\/\/(www\.)?flow\.cl\//.test(data.payment_url)) {
-        result.innerHTML = `<div class="alert success">Redirigiendo a Flow para completar el pago...</div>`;
-        setTimeout(()=>{ window.location = data.payment_url; }, 800);
+    if(d.payment_url){
+      if (/^https:\/\/(www\.|sandbox\.)?flow\.cl\//.test(d.payment_url)) {
+        result.innerHTML = `<div class="alert success">✓ Pedido creado. Redirigiendo a Flow para completar el pago…</div>`;
+        localStorage.removeItem(LS_KEY);
+        setTimeout(() => { window.location = d.payment_url; }, 1000);
       } else {
-        result.innerHTML = `<div class="alert error">URL de pago inválida. Contacta soporte@norteduc.cl si el problema persiste.</div>`;
-        btn.disabled = false; updateBtn();
+        result.innerHTML = `<div class="alert error">URL de pago inválida. Contacta a soporte@validanet.cl</div>`;
+        btn.disabled = false; btn.textContent = 'Pagar con Flow →';
       }
     }
-  }catch(err){
-    const escMsg = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    result.innerHTML = `<div class="alert error">Error de red: ${escMsg(err.message)}</div>`;
-    btn.disabled = false; updateBtn();
+  } catch(err){
+    result.innerHTML = `<div class="alert error">Error de red: ${err.message}</div>`;
+    btn.disabled = false; btn.textContent = 'Pagar con Flow →';
   }
-  return false;
+}
+
+// ── BOOT ─────────────────────────────────────────────────
+async function loadPlanes(){
+  try {
+    const r = await fetch(`${API}/api/aulas/planes`);
+    const d = await r.json();
+    PLANS = d.planes || [];
+    LANGUAGES = d.languages || [];
+    TIMEZONES = d.timezones || [];
+    if(d.suggested){
+      state.language = d.suggested.language || 'es';
+      state.timezone = d.suggested.timezone || 'America/Santiago';
+    }
+    if(d.detected_country) state.country = d.detected_country;
+    renderPlanes();
+    renderSelects();
+  } catch(e){
+    document.getElementById('planes-grid').innerHTML =
+      '<div style="color:var(--red);text-align:center;grid-column:1/-1;padding:30px;">Error cargando planes: ' + e.message + '</div>';
+  }
+}
+
+function renderPlanes(){
+  const grid = document.getElementById('planes-grid');
+  if(!PLANS.length){ grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:20px;">Sin planes disponibles</div>'; return; }
+  grid.innerHTML = PLANS.map(p => `
+    <div class="plan-card ${state.plan === p.slug ? 'selected' : ''}" data-slug="${p.slug}" onclick="selectPlan('${p.slug}')">
+      <div class="plan-name">${p.name}</div>
+      <div class="plan-sim">${p.max_simultaneos} usuarios simultáneos</div>
+      <div class="plan-price">$${Math.round(p.price_clp).toLocaleString('es-CL')}<small>/mes</small></div>
+      <ul>${(p.features || []).map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+}
+
+function selectPlan(slug){
+  state.plan = slug;
+  document.querySelectorAll('.plan-card').forEach(c => c.classList.toggle('selected', c.dataset.slug === slug));
+  saveState();
+}
+
+function renderSelects(){
+  const lSel = document.getElementById('language');
+  const tSel = document.getElementById('timezone');
+  lSel.innerHTML = LANGUAGES.map(l => `<option value="${l.code}" ${l.code === state.language ? 'selected' : ''}>${l.label}</option>`).join('');
+  tSel.innerHTML = TIMEZONES.map(t => `<option value="${t.code}" ${t.code === state.timezone ? 'selected' : ''}>${t.label}</option>`).join('');
 }
 
 loadPlanes();
+loadState();
+updatePreview();
 </script>
 </body>
 </html>
